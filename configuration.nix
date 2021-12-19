@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   imports = [
     ./hardware-configuration.nix
+    ./services/matomo.nix
     ./services/vaultwarden.nix
   ];
 
