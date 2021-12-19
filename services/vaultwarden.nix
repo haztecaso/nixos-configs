@@ -13,6 +13,7 @@
       backupDir = "/srv/backups/vaultwarden"; #TODO: ensure that this folder exists and vaultwarden can write to it
       config = {
         signupsAllowed = false;
+        domain = "https://bw.haztecaso.com";
         rocketPort = 8222;
       };
     };
