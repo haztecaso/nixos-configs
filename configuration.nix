@@ -42,6 +42,7 @@
   };
 
   programs = {
+    bash.promptInit = ''export PS1="\[\e[00;34m\][\u@λ \w]\\$ \[\e[0m\]"'';
     tmux = {
       enable = true;
       clock24 = true;
