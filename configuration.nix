@@ -19,6 +19,8 @@
 
   boot.cleanTmpDir = true;
 
+  time.timeZone = "Europe/Madrid";
+
   networking = {
     hostName = "lambda";
     firewall = {
