@@ -11,6 +11,7 @@
     };
     mysql = {
       enable = true;
+      package = pkgs.mariadb;
       ensureDatabases = [ "matomo" ];
       ensureUsers = [
         {
