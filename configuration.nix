@@ -42,7 +42,14 @@
   };
 
   programs = {
-    bash.promptInit = ''export PS1="\[\e[00;34m\][\u@λ \w]\\$ \[\e[0m\]"'';
+    bash = {
+      promptInit = ''export PS1="\[\e[00;34m\][\u@λ \w]\\$ \[\e[0m\]"'';
+      interactiveShellInit = ''
+        if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" ]]; then
+          tmux attach-session -t lambda || tmux new-session -s lambda
+        fi
+      '';
+    };
     tmux = {
       enable = true;
       clock24 = true;
