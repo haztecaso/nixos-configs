@@ -2,6 +2,7 @@
   imports = [
     ./hardware-configuration.nix
     ./services/matomo.nix
+    ./services/moodle-dl.nix
     ./services/vaultwarden.nix
   ];
 

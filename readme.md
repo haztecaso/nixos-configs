@@ -9,17 +9,13 @@ ip: `185.215.164.95`
 
 ### To do
 
-- firefly iii
-- moodle_dl
+- containerized:
+  - firefly iii
+  - moodle_dl
 - syncthing
-- notmuch mail
 - websites
-  - haztecaso.com
-    nodejs
-  - elvivero.es 
-    nodejs
+  - haztecaso.com: nodejs
+  - elvivero.es: nodejs
+  - zulmarecchini.com: indexhibit -> nodejs
   - lagransala.es
-  - zulmarecchini.com
-    indexhibit -> nodejs
-  - twozeroeightthree.com
-    jekyll
+  - twozeroeightthree.com: jekyll
