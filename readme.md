@@ -4,7 +4,7 @@ ip: `185.215.164.95`
 
 ## Services
 
-- [bitwarden server (vaultwarden)](bw.haztecaso.com)
+- [bitwarden server (vaultwarden)](https://bw.haztecaso.com)
 
 ### To do
 
