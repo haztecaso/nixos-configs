@@ -5,6 +5,7 @@
     # ./services/moodle-dl.nix
     ./services/syncthing.nix
     ./services/vaultwarden.nix
+    ./websites
   ];
 
   nix = {
