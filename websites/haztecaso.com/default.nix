@@ -4,11 +4,7 @@
       "haztecaso.com" = {
         enableACME = true;
         forceSSL = true;
-        locations = {
-          "/" = {
-            alias = inputs.www-haztecaso;
-          };
-        };
+        root = inputs.www-haztecaso;
       };
       "www.haztecaso.com" = {
         enableACME = true;

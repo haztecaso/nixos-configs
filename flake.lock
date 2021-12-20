@@ -25,7 +25,7 @@
     "www-haztecaso": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-tNwrfHiae1ITmsWyKFovkucH0/SfcMM+pguuXQPXd/s=",
+        "narHash": "sha256-Ahh5rEBkgCvG9bKJf6RHvBULNBupNhRXjBcm6TaiBDQ=",
         "path": "/var/www/haztecaso.com",
         "type": "path"
       },
