@@ -2,11 +2,11 @@
   "nodes": {
     "nixpkgs": {
       "locked": {
-        "lastModified": 1639858105,
-        "narHash": "sha256-NjudrqfZAFu88lXgmCbJmmxVRBqHV+PvqEUjpFusQgo=",
+        "lastModified": 1640025796,
+        "narHash": "sha256-uMBl46hDSOyGRFM8rSKKvb2vvotiOK76FdOTERkofuI=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "75f3534c98a00f40f7647fa70db243f008c45ef4",
+        "rev": "df6791e6e5508a4a52decf410d06259d57377025",
         "type": "github"
       },
       "original": {
@@ -18,7 +18,20 @@
     },
     "root": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "www-haztecaso": "www-haztecaso"
+      }
+    },
+    "www-haztecaso": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-tNwrfHiae1ITmsWyKFovkucH0/SfcMM+pguuXQPXd/s=",
+        "path": "/var/www/haztecaso.com",
+        "type": "path"
+      },
+      "original": {
+        "path": "/var/www/haztecaso.com",
+        "type": "path"
       }
     }
   },
