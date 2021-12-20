@@ -19,18 +19,31 @@
     "root": {
       "inputs": {
         "nixpkgs": "nixpkgs",
-        "www-haztecaso": "www-haztecaso"
+        "www-haztecaso": "www-haztecaso",
+        "www-lagransala": "www-lagransala"
       }
     },
     "www-haztecaso": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-Ahh5rEBkgCvG9bKJf6RHvBULNBupNhRXjBcm6TaiBDQ=",
+        "narHash": "sha256-vcBbYQOat7LDWMYcH4+O3ha8XHHnnwo726M7+rjDUzc=",
         "path": "/var/www/haztecaso.com",
         "type": "path"
       },
       "original": {
         "path": "/var/www/haztecaso.com",
+        "type": "path"
+      }
+    },
+    "www-lagransala": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-xF2QhmrmbAw/0+vmBJiIn/1koESCeVA+nElPQ6CKHVc=",
+        "path": "/var/www/lagransala.es",
+        "type": "path"
+      },
+      "original": {
+        "path": "/var/www/lagransala.es",
         "type": "path"
       }
     }
