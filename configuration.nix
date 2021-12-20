@@ -2,7 +2,8 @@
   imports = [
     ./hardware-configuration.nix
     ./services/matomo.nix
-    ./services/moodle-dl.nix
+    # ./services/moodle-dl.nix
+    ./services/syncthing.nix
     ./services/vaultwarden.nix
   ];
 
@@ -36,11 +37,17 @@
     };
   };
 
+  # virtualisation.docker = {
+  #   enable = true;
+  #   autoPrune = {
+  #     enable = true;
+  #     dates = "03:30";
+  #   };
+  # };
+
   users.users.root.openssh.authorizedKeys.keyFiles = [ ./authorized_keys ];
 
-  environment = {
-    systemPackages = with pkgs; [ git vim rsync ];
-  };
+  environment.systemPackages = with pkgs; [ git vim rsync ];
 
   programs = {
     bash = {
