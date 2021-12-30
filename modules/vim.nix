@@ -5,10 +5,6 @@ let
 in {
   options.programs.vim = {
     enable = mkEnableOption "install vim package";
-    greeter = mkOption {
-      type = types.str;
-      default = "world";
-    };
     # package and defaultEditor are already defined in nixpkgs
   };
 

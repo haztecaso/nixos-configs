@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   imports = [
     ./hardware-configuration.nix
-    ./modules/vim.nix
+    ./modules
     ./services/matomo.nix
     # ./services/moodle-dl.nix
     ./services/syncthing.nix
@@ -62,6 +62,7 @@
     };
     tmux = {
       enable = true;
+      shortcut = "a";
       clock24 = true;
       keyMode = "vi";
       customPaneNavigationAndResize = true;
