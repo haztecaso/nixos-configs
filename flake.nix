@@ -1,7 +1,7 @@
 {
   inputs = {
     nixpkgs        = { url = "github:nixos/nixpkgs/release-21.11"; };
-    home-manager   = { url = "github:nix-community/home-manager"; };
+    # home-manager   = { url = "github:nix-community/home-manager"; };
     www-haztecaso  = { flake = false; url = "path:/var/www/haztecaso.com"; };
     www-lagransala = { flake = false; url = "path:/var/www/lagransala.es"; };
   };
