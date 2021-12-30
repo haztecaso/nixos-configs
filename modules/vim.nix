@@ -41,11 +41,12 @@ in {
           set splitright
           set splitbelow
 
-          set undofile
           " you must run mkdir $HOME/.vim/swap $HOME/.vim/undo $HOME/.vim/backup
           set directory=$HOME/.vim/swap//
+          set undofile
           set undodir=$HOME/.vim/undo//
           set backupdir=$HOME/.vim/backup//
+
           set autochdir
 
           set incsearch
