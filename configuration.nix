@@ -62,7 +62,7 @@
     };
     tmux = {
       enable = true;
-      statusColor = "#0000ee";
+      statusColor = "#aaaaee";
     };
     vim = {
       enable = true;

@@ -2,7 +2,7 @@
 with lib;
 let
   cfg = config.programs.tmux;
-  custom_conf = lib.readfile ./tmux.conf;
+  custom_conf = readFile ./tmux.conf;
 in
 {
   options.programs.tmux = {
