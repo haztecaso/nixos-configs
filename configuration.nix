@@ -49,7 +49,7 @@
 
   users.users.root.openssh.authorizedKeys.keyFiles = [ ./authorized_keys ];
 
-  environment.systemPackages = with pkgs; [ git rsync ];
+  environment.systemPackages = with pkgs; [ git rsync ranger ];
 
   programs = {
     bash = {
@@ -59,6 +59,10 @@
           tmux attach-session -t lambda || tmux new-session -s lambda
         fi
       '';
+      shellAliases = {
+        ".." = "cd ..";
+        "r" = "ranger";
+      };
     };
     tmux = {
       enable = true;
