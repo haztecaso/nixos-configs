@@ -26,7 +26,7 @@
     "www-haztecaso": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-vcBbYQOat7LDWMYcH4+O3ha8XHHnnwo726M7+rjDUzc=",
+        "narHash": "sha256-YaEiLR8ayZ9WuiJHhI9CO0QohscQF4dF3Dv+8i5fsRo=",
         "path": "/var/www/haztecaso.com",
         "type": "path"
       },
@@ -38,7 +38,7 @@
     "www-lagransala": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-xF2QhmrmbAw/0+vmBJiIn/1koESCeVA+nElPQ6CKHVc=",
+        "narHash": "sha256-m0nMGfozqwAVrakuoYhFzR4oSv0XHhpyhrkMGF8VSRA=",
         "path": "/var/www/lagransala.es",
         "type": "path"
       },
