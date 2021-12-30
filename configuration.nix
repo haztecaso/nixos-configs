@@ -49,7 +49,7 @@
 
   users.users.root.openssh.authorizedKeys.keyFiles = [ ./authorized_keys ];
 
-  environment.systemPackages = with pkgs; [ git vim rsync ];
+  environment.systemPackages = with pkgs; [ git rsync ];
 
   programs = {
     bash = {
@@ -65,6 +65,9 @@
       clock24 = true;
       keyMode = "vi";
       customPaneNavigationAndResize = true;
+    };
+    vim = {
+      enable = true;
     };
   };
 
