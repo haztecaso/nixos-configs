@@ -4,7 +4,8 @@
       "haztecaso.com" = {
         enableACME = true;
         forceSSL = true;
-        root = inputs.www-haztecaso;
+        # root = inputs.www-haztecaso;
+        root = "/var/www/haztecaso.com";
       };
       "www.haztecaso.com" = {
         enableACME = true;

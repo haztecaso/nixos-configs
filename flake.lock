@@ -2,11 +2,11 @@
   "nodes": {
     "nixpkgs": {
       "locked": {
-        "lastModified": 1641379640,
-        "narHash": "sha256-2Q9zmcZAJJtOlGUeNwI2pOPQVH8+0GFqcsRCgaIpw88=",
+        "lastModified": 1641397080,
+        "narHash": "sha256-3afKAdfyyOVcG/12EA58DLN2ZZfQGgcMzg7xj3TMwyw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "95a1a7708f949e3f69b4410478e5f50485ee7229",
+        "rev": "df702a2585eed498e0486cbfe96b8a78a157e28f",
         "type": "github"
       },
       "original": {
@@ -18,33 +18,7 @@
     },
     "root": {
       "inputs": {
-        "nixpkgs": "nixpkgs",
-        "www-haztecaso": "www-haztecaso",
-        "www-lagransala": "www-lagransala"
-      }
-    },
-    "www-haztecaso": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-YaEiLR8ayZ9WuiJHhI9CO0QohscQF4dF3Dv+8i5fsRo=",
-        "path": "/var/www/haztecaso.com",
-        "type": "path"
-      },
-      "original": {
-        "path": "/var/www/haztecaso.com",
-        "type": "path"
-      }
-    },
-    "www-lagransala": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-m0nMGfozqwAVrakuoYhFzR4oSv0XHhpyhrkMGF8VSRA=",
-        "path": "/var/www/lagransala.es",
-        "type": "path"
-      },
-      "original": {
-        "path": "/var/www/lagransala.es",
-        "type": "path"
+        "nixpkgs": "nixpkgs"
       }
     }
   },

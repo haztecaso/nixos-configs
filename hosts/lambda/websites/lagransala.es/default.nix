@@ -12,7 +12,8 @@ in
       "lagransala.es" = {
         enableACME = true;
         forceSSL = true;
-        root = inputs.www-lagransala;
+        # root = inputs.www-lagransala;
+        root = "/var/www/lagransala.es";
       };
       "lagransala.org" = redirectConfig;
       "lagransala.com" = redirectConfig;
