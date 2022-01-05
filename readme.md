@@ -1,7 +1,5 @@
 # Nix configs
 
-# WARNING: MANAGE AND DELETE SECRETS FROM HISTORY BEFORE GOING PUBLIC
-
 ## To do
 
 - Creación automatica de `~/.vim/swap`, `~/.vim/backup` y `~/.vim/undo`
