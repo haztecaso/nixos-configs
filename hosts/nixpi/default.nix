@@ -2,11 +2,7 @@
   hostname = "nixpi";
 in
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ./services/jobo_bot.nix
-    ];
+  imports = [ ./hardware-configuration.nix ];
 
   nix.gc.options = "--delete-older-than 3d";
 
@@ -43,7 +39,14 @@ in
       enable = true;
       passwordAuthentication = false;
     };
+    cron = {
+      enable = true;
+      systemCronJobs = [
+        "*/10 * * * *  ${pkgs.jobo_bot} --conf ${config.age.secrets."jobo_bot".path}"
+      ];
   };
+
+  age.secrets."jobo_bot".file = ./jobo_bot.age;
 
   programs = {
     bash = {

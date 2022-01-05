@@ -3,5 +3,5 @@ let
   id_rsa_nixpi = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDNFVJ3bBZC1YsMj3AR2+4n+dTD/t0GCCN4PgaMsv+sx5PssisABERhK0X3cMnw01/vP3A4Rxk9eQbOJ6OmdjkE6dfSCp5jD++YuF1T4f0aGT39+Ia5eEtN59doboiBGeNzVJP+4rOttRpxXIc2npP81jymPp+L3wQno4Uo2l0oYfVsWCLRUG/OSAPpdDICmBguZsJ//Y9THmIwhVqezpDnzD4qxnEP3HWXOA1qn2PfhgwO1AWq2fZdI7cSyPsPjPagNNxyPFSRtQkIIt5cF5xBakBCAMnGtxP/JrGjxd6psMidngA2f05ZiZ2r52hEQ1Bhazhka2ouyr6E1gm44TSWjRQXjELXd6Pgo+2u/Siud8od22GPwDrYTy1oHPQ2ePxvElr+g4ZLWsixP+kGpFFn/NRFKNjeeEZB4yh3y1nz5vZrnToUtFDWnb5Vb5DYNFFKzxXoSuSf07HT2jS9rv4HkZHfYd4JKZnAT2fOi1Z8WuXeqycMjxyGyRMLdcJxAUc=";
 in
 {
-  "secrets/jobo_bot.age".publicKeys = [ id_rsa id_rsa_nixpi ];
+  "hosts/nixpi/jobo_bot.age".publicKeys = [ id_rsa id_rsa_nixpi ];
 }
