@@ -1,3 +1,3 @@
 final: prev: {
-  deploy = prev.callPackage ./deploy {};
+  deploy = prev.callPackage ./deploy.nix {};
 }

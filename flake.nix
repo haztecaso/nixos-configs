@@ -14,14 +14,14 @@
 
   outputs = inputs@{ self, nixpkgs, agenix, utils, jobo_bot }:
   let
-    overlay = final: prev: {
+    jobo_bot_overlay = final: prev: {
       jobo_bot = jobo_bot.packages.${final.system}.jobo_bot;
     };
   in utils.lib.mkFlake
   {
     inherit self inputs;
 
-    sharedOverlays = [ overlay ];
+    sharedOverlays = [ jobo_bot_overlay self.overlay ];
 
     hostDefaults = {
       modules = [

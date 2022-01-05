@@ -34,7 +34,7 @@ in
     openssh.authorizedKeys.keys = with keys; [ skolem termux ];
   };
 
-  environment.systemPackages = with pkgs; [ vim jobo_bot ];
+  environment.systemPackages = with pkgs; [ vim jobo_bot deploy ];
 
   services = {
     openssh = {
