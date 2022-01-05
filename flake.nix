@@ -40,5 +40,7 @@
       };
     };
 
+    overlay = import ./overlay;
+
   };
 }
