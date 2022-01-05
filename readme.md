@@ -5,7 +5,7 @@
 ## To do
 
 - Creación automatica de `~/.vim/swap`, `~/.vim/backup` y `~/.vim/undo`
-- Utilizar agenix para gestionar los secretos
+- Gestionar copia de llaves ssh
 
 ## Hosts
 

@@ -17,7 +17,7 @@ in
 
   time.timeZone = "Europe/Madrid";
 
-  users.users.root.openssh.authorizedKeys.keyFiles = [ keys.skolem ];
+  users.users.root.openssh.authorizedKeys.keys = [ keys.skolem ];
 
   environment.systemPackages = with pkgs; [
     git
