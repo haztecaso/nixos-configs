@@ -55,9 +55,11 @@ in
     };
     tmux = {
       enable = true;
-      clock24 = true;
-      keyMode = "vi";
-      customPaneNavigationAndResize = true;
+      statusColor = "#ee00aa";
+    };
+    vim = {
+      enable = true;
+      defaultEditor = true;
     };
   };
 
