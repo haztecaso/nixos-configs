@@ -9,8 +9,9 @@
     nixosConfigurations.lambda = inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./hosts/lambda/configuration.nix
+        ./common.nix
         ./modules
+        ./hosts/lambda/configuration.nix
       ];
       specialArgs = { inherit inputs; };
     };

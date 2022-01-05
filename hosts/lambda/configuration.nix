@@ -8,21 +8,7 @@
     ./websites
   ];
 
-  nix = {
-    package = pkgs.nixFlakes;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-    autoOptimiseStore = true;
-    gc = {
-      automatic = true;
-      options = "--delete-older-than 3d";
-    };
-  };
-
-  boot.cleanTmpDir = true;
-
-  time.timeZone = "Europe/Madrid";
+  nix.gc.options = "--delete-older-than 3d";
 
   networking = {
     hostName = "lambda";
@@ -46,8 +32,6 @@
   #   };
   # };
 
-  users.users.root.openssh.authorizedKeys.keyFiles = [ ./authorized_keys ];
-
   environment.systemPackages = with pkgs; [ git rsync ranger ];
 
   programs = {
@@ -65,7 +49,7 @@
     };
     tmux = {
       enable = true;
-      statusColor = "#aaaaee";
+      statusColor = "#eeaa00";
     };
     vim = {
       enable = true;
@@ -85,5 +69,4 @@
     };
   };
 
-  system.stateVersion = "21.11";
 }
