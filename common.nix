@@ -13,15 +13,20 @@
 
   time.timeZone = "Europe/Madrid";
 
-  users.users.root.openssh.authorizedKeys.keyFiles = [ ./secrets/authorized_keys ];
+  users.users.root.openssh.authorizedKeys.keyFiles = [ ./secrets/authorized_keys ]; # TODO
 
-  environment.systemPackages = with pkgs; [ git rsync ranger ];
+  environment.systemPackages = with pkgs; [
+    git
+    ranger
+    rsync
+  ];
 
   programs = {
     bash = {
       shellAliases = {
         ".." = "cd ..";
         "r" = "ranger";
+        "agenix" = "nix run github:ryantm/agenix --"; 
       };
     };
   };
