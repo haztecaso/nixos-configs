@@ -1,18 +1,18 @@
-# Lambda VPS
+# Nix configs
 
-ip: `185.215.164.95`
+## Hosts
 
-## Services
+### Lambda VPS
+
+#### Services
 
 - [bitwarden server (vaultwarden)](https://bw.haztecaso.com)
 - [matomo analytics](https://matomo.haztecaso.com)
 
-### To do
+#### To do
 
 - containerized:
-  - firefly iii
   - moodle_dl
-- syncthing
 - websites
   - haztecaso.com: nodejs
   - elvivero.es: nodejs
