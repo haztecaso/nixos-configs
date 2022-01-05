@@ -1,35 +1,44 @@
 {
   inputs = {
-    nixpkgs = { url = "github:nixos/nixpkgs/release-21.11"; };
-    jobo_bot = { url = "github:haztecaso/jobo_bot"; };
+    nixpkgs.url = "github:nixos/nixpkgs/release-21.11";
+    utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    jobo_bot = {
+      url = "github:haztecaso/jobo_bot";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs:
+  outputs = inputs@{ self, nixpkgs, agenix, utils, jobo_bot }:
   let
     overlay = final: prev: {
-      jobo_bot = inputs.jobo_bot.packages.${final.system}.jobo_bot;
+      jobo_bot = jobo_bot.packages.${final.system}.jobo_bot;
     };
-    overlays_module = { config, pkgs, ... } : {
-      nixpkgs.overlays = [ overlay ];
-    };
-    commonModules = [
-        overlays_module
-        ./common.nix
-        ./modules
-    ];
-  in 
+  in utils.lib.mkFlake
   {
-    nixosConfigurations.lambda = inputs.nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = commonModules ++ [
-        ./hosts/lambda
+    inherit self inputs;
+
+    sharedOverlays = [ overlay ];
+
+    hostDefaults = {
+      modules = [
+        ./modules
+        ./common.nix
+        agenix.nixosModules.age
       ];
+      extraArgs = { inherit utils inputs; };
     };
-    nixosConfigurations.nixpi = inputs.nixpkgs.lib.nixosSystem {
-      system = "aarch64-linux";
-      modules = commonModules ++ [
-        ./hosts/nixpi
-      ];
+
+    hosts = {
+      lambda.modules = [ ./hosts/lambda ];
+      nixpi = {
+        system = "aarch64-linux";
+        modules = [ ./hosts/nixpi ];
+      };
     };
+
   };
 }
