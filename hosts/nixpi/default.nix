@@ -44,6 +44,7 @@ in
       systemCronJobs = [
         "*/10 * * * *  ${pkgs.jobo_bot} --conf ${config.age.secrets."jobo_bot".path}"
       ];
+    };
   };
 
   age.secrets."jobo_bot".file = ./jobo_bot.age;
