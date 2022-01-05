@@ -19,7 +19,8 @@ in
   config = mkIf cfg.enable {
     programs.tmux.extraConfig = ''
       ${if cfg.customConfig then custom_conf else ""}
-      set -g status-bg "${cfg.statusColor}"
+      set -g pane-border-style fg="${cfg.statusColor}"
+      set -g status-left '#[fg="${cfg.statusColor}"](#S) '
     '';
   };
 }

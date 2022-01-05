@@ -1,7 +1,6 @@
 { pkgs, ... }: {
   imports = [
     ./hardware-configuration.nix
-    ./modules
     ./services/matomo.nix
     # ./services/moodle-dl.nix
     ./services/syncthing.nix
@@ -70,6 +69,7 @@
     };
     vim = {
       enable = true;
+      defaultEditor = true;
     };
   };
 
