@@ -1,4 +1,8 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+let
+  keys = import ./ssh-keys.nix;
+in
+{
 
   nix = {
     package = pkgs.nixFlakes;
@@ -13,7 +17,7 @@
 
   time.timeZone = "Europe/Madrid";
 
-  users.users.root.openssh.authorizedKeys.keyFiles = [ ./secrets/authorized_keys ]; # TODO
+  users.users.root.openssh.authorizedKeys.keyFiles = [ keys.skolem ];
 
   environment.systemPackages = with pkgs; [
     git

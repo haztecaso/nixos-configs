@@ -1,9 +1,6 @@
 let
-  id_rsa = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQD3t3fCZLLC4qSCcltsOB6e3l6KLsQFCeOCUd2ZoaF3z9A48xhJBKu/92hV53oo9obk+A6tDaSGLY4j+3+hg0msmJbSbw/WMmeDowInGMdqBYgH4mkE8h7ybBrOVvkWJWAan7H/FviC4WLwUmOtJh0s3+oA2cX0aEGLkUGK563j+UoxXZuiutCob1CDrl48+dfzz1mMrgpK8y/h5jCry2Kfa+9lkGDHMw8Naice+71Z7ye2QHtA+bz7H7NkmZIc2Z0Thhqm7F7uueigcDyUMj9xq6v/hs9egsalBPOpkFbopft8qf9O4U9cl7EBaEqhwKZkiDJU2BP+LscQC5Wa0Ca83nKnTAaoCHxHQpcNjv0YgdQ4+iW5K8jWk6ZN9mJ4siQ/5QbhtV0CC44o1YHPsKSpDgxeU7SY1DxXde0+yAtqEW/SJwSL/23E/XWKPZPRh8u4+mKt3sp6aodvgGX0PMJm+h1FPEkgKLj6u9ESUXj6nPuN8pGKxWrwHtYciIimV60=";
-  id_rsa_nixpi = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDNFVJ3bBZC1YsMj3AR2+4n+dTD/t0GCCN4PgaMsv+sx5PssisABERhK0X3cMnw01/vP3A4Rxk9eQbOJ6OmdjkE6dfSCp5jD++YuF1T4f0aGT39+Ia5eEtN59doboiBGeNzVJP+4rOttRpxXIc2npP81jymPp+L3wQno4Uo2l0oYfVsWCLRUG/OSAPpdDICmBguZsJ//Y9THmIwhVqezpDnzD4qxnEP3HWXOA1qn2PfhgwO1AWq2fZdI7cSyPsPjPagNNxyPFSRtQkIIt5cF5xBakBCAMnGtxP/JrGjxd6psMidngA2f05ZiZ2r52hEQ1Bhazhka2ouyr6E1gm44TSWjRQXjELXd6Pgo+2u/Siud8od22GPwDrYTy1oHPQ2ePxvElr+g4ZLWsixP+kGpFFn/NRFKNjeeEZB4yh3y1nz5vZrnToUtFDWnb5Vb5DYNFFKzxXoSuSf07HT2jS9rv4HkZHfYd4JKZnAT2fOi1Z8WuXeqycMjxyGyRMLdcJxAUc=";
-  host_nixpi = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBGrod4qhlm82VkXeoto57lz3QQQcEnXUtlzGmdn7VER";
-  host_lambda = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIBf0kpg0FD8U9USfZ684QrhLnqxihW/D4FTP9xKhv1+";
+  keys = import ./ssh-keys.nix;
 in
-{
-  "hosts/nixpi/jobo_bot.age".publicKeys = [ id_rsa id_rsa_nixpi host_nixpi ];
+with keys; {
+  "hosts/nixpi/jobo_bot.age".publicKeys = [ skolem id_rsa_nixpi host_nixpi ];
 }

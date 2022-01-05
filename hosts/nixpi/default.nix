@@ -1,5 +1,6 @@
 { config, pkgs, ... }: let
   hostname = "nixpi";
+  keys = import ../../ssh-keys.nix;
 in
 {
   imports = [ ./hardware-configuration.nix ];
@@ -30,6 +31,7 @@ in
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     hashedPassword = "$6$IzsxtbrC5H9XoQTb$5pmicFaRBUfPSg26KSFV1B7ije86dszUM27gy9LF5ElgQLH/rl9GG5kyHnG.Co2vZ6LoGzZl7cJ8ZklzWnxjo1";    
+    openssh.authorizedKeys.keyFiles = [ skolem termux ];
   };
 
   environment.systemPackages = with pkgs; [ vim jobo_bot ];
