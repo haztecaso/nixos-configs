@@ -34,7 +34,7 @@ in
       root = {
         passwordFile = config.age.secrets."passwords/users/root".file;
         openssh.authorizedKeys.keys = [ keys.skolem ];
-      }
+      };
       skolem = {
         isNormalUser = true;
         extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
