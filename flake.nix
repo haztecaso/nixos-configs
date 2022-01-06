@@ -10,6 +10,10 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    impo = {
+      url = "github:haztecaso/impo";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     jobo_bot = {
       url = "github:haztecaso/jobo_bot";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,6 +23,7 @@
   outputs = inputs@{ self, nixpkgs, home-manager, utils, agenix, ... }:
   let
     flake_overlay = final: prev: {
+      impo     = inputs.impo.packages.${final.system}.impo;
       jobo_bot = inputs.jobo_bot.packages.${final.system}.jobo_bot;
     };
   in utils.lib.mkFlake
