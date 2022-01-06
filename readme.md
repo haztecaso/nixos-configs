@@ -43,3 +43,7 @@ Future:
 ### galois
 
 Macbook Pro mid 2012. Personal machine. TBD.
+
+## References
+
+- Module organization based on [chvp/nixos-config](https://github.com/chvp/nixos-config/)

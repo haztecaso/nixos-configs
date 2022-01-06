@@ -1,6 +1,5 @@
 { ... }: {
   imports = [
-    ./programs/tmux
-    ./programs/vim
+    ./base
   ];
 }
