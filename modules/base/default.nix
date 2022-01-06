@@ -29,17 +29,19 @@ in
       gc.automatic = true;
     };
 
-    users.users = {
+    users = {
       mutableUsers = false;
-      root = {
-        passwordFile = config.age.secrets."passwords/users/root".file;
-        openssh.authorizedKeys.keys = [ keys.skolem ];
-      };
-      skolem = {
-        isNormalUser = true;
-        extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-        passwordFile = config.age.secrets."passwords/users/skolem".file;
-        openssh.authorizedKeys.keys = with keys; [ skolem termux ];
+      users = {
+        root = {
+          passwordFile = config.age.secrets."passwords/users/root".path;
+          openssh.authorizedKeys.keys = [ keys.skolem ];
+        };
+        skolem = {
+          isNormalUser = true;
+          extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+          passwordFile = config.age.secrets."passwords/users/skolem".path;
+          openssh.authorizedKeys.keys = with keys; [ skolem termux ];
+        };
       };
     };
 
@@ -78,7 +80,7 @@ in
 
     time.timeZone = "Europe/Madrid";
 
-    networking.hostname = config.custom.base.hostname;
+    networking.hostName = config.custom.base.hostname;
 
     home-manager.useGlobalPkgs = true;
 
