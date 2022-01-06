@@ -13,7 +13,7 @@ in
     stateVersion = lib.mkOption {
       example = "21.11";
     };
-    base.hostname = {
+    base.hostname = lib.mkOption {
       type = lib.types.str;
       example = "mycoolmachine";
     };
