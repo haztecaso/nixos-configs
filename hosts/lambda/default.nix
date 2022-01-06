@@ -53,7 +53,7 @@
   custom = {
     stateVersion = "21.11";
     base.tmux.color = "#eeaa00";
-  }
+  };
 
   services = {
     openssh.enable = true;
