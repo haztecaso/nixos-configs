@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   imports = [
-    ./hardware-configuration.nix
+    ./hardware.nix
     ./services/matomo.nix
     # ./services/moodle-dl.nix
     ./services/syncthing.nix

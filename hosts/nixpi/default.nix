@@ -2,7 +2,7 @@
   keys = import ../../ssh-keys.nix;
 in
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ ./hardware.nix ];
 
   nix.gc.options = "--delete-older-than 3d";
 
