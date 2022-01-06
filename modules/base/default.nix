@@ -24,6 +24,13 @@ in
       gc.automatic = true;
     };
 
+    users.users.skolem = {
+      isNormalUser = true;
+      extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+      hashedPassword = "$6$IzsxtbrC5H9XoQTb$5pmicFaRBUfPSg26KSFV1B7ije86dszUM27gy9LF5ElgQLH/rl9GG5kyHnG.Co2vZ6LoGzZl7cJ8ZklzWnxjo1";    
+      openssh.authorizedKeys.keys = with keys; [ skolem termux ];
+    };
+
     environment.systemPackages = with pkgs; [
       git
       ranger
