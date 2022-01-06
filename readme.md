@@ -5,6 +5,7 @@
 - Creación automatica de `~/.vim/swap`, `~/.vim/backup` y `~/.vim/undo`
 - Gestionar copia de llaves ssh
 - Gestionar secretos con [git-crypt](https://www.agwa.name/projects/git-crypt)
+- Fusionar con configs del portatil
 
 ## Hosts
 
