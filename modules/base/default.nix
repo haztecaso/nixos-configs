@@ -24,12 +24,21 @@ in
       gc.automatic = true;
     };
 
-    users.users.skolem = {
-      isNormalUser = true;
-      extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-      hashedPassword = "$6$IzsxtbrC5H9XoQTb$5pmicFaRBUfPSg26KSFV1B7ije86dszUM27gy9LF5ElgQLH/rl9GG5kyHnG.Co2vZ6LoGzZl7cJ8ZklzWnxjo1";    
-      openssh.authorizedKeys.keys = with keys; [ skolem termux ];
+    users.users = {
+      root = {
+        passwordFile = config.age.secrets."passwords/users/root".file;
+        openssh.authorizedKeys.keys = [ keys.skolem ];
+      }
+      skolem = {
+        isNormalUser = true;
+        extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+        passwordFile = config.age.secrets."passwords/users/skolem".file;
+        openssh.authorizedKeys.keys = with keys; [ skolem termux ];
+      };
     };
+
+    age.secrets."passwords/users/skolem".file = ../../secrets/passwords/users/skolem.age;
+    age.secrets."passwords/users/root".file = ../../secrets/passwords/users/root.age;
 
     environment.systemPackages = with pkgs; [
       git
@@ -51,7 +60,6 @@ in
 
     time.timeZone = "Europe/Madrid";
 
-    users.users.root.openssh.authorizedKeys.keys = [ keys.skolem ];
 
     home-manager.useGlobalPkgs = true;
 
