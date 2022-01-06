@@ -47,15 +47,13 @@
         "r" = "ranger";
       };
     };
-    tmux = {
-      enable = true;
-      statusColor = "#eeaa00";
-    };
-    vim = {
-      enable = true;
-      defaultEditor = true;
-    };
+    vim.defaultEditor = true;
   };
+
+  custom = {
+    stateVersion = "21.11";
+    base.tmux.color = "#eeaa00";
+  }
 
   services = {
     openssh.enable = true;

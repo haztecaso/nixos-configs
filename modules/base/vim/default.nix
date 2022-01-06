@@ -1,14 +1,15 @@
 { lib, pkgs, config, ... }:
 with lib;                      
 let
-  cfg = config.programs.vim;
+  cfg = config.custom.base.vim;
 in {
-  options.programs.vim = {
-    enable = mkEnableOption "install vim package";
+  options.custom.base.vim = {
+    enable = mkEnableOption "custom vim base config";
     # package and defaultEditor are already defined in nixpkgs
   };
 
   config = mkIf cfg.enable {
+    programs.vim.enable = true;
     programs.vim.package = pkgs.vim_configurable.customize {
       name = "vim";
       vimrcConfig = {

@@ -1,6 +1,10 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/release-21.11";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-21.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
     agenix = {
       url = "github:ryantm/agenix";
@@ -12,22 +16,22 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, agenix, utils, jobo_bot }:
+  outputs = inputs@{ self, nixpkgs, home-manager, utils, agenix, ... }:
   let
-    jobo_bot_overlay = final: prev: {
-      jobo_bot = jobo_bot.packages.${final.system}.jobo_bot;
+    flake_overlay = final: prev: {
+      jobo_bot = inputs.jobo_bot.packages.${final.system}.jobo_bot;
     };
   in utils.lib.mkFlake
   {
     inherit self inputs;
 
-    sharedOverlays = [ jobo_bot_overlay self.overlay ];
+    sharedOverlays = [ flake_overlay self.overlay ];
 
     hostDefaults = {
       modules = [
         ./modules
-        ./common.nix
         agenix.nixosModules.age
+        home-manager.nixosModules.home-manager
       ];
       extraArgs = { inherit utils inputs; };
     };

@@ -59,17 +59,13 @@ in
         fi
       '';
     };
-    tmux = {
-      enable = true;
-      statusColor = "#ee00aa";
-    };
-    vim = {
-      enable = true;
-      defaultEditor = true;
-    };
+    vim.defaultEditor = true;
   };
 
-  system.stateVersion = "21.11";
+  custom = {
+    stateVersion = "21.11";
+    base.tmux.color = "#ee00aa";
+  };
 
 }
 
