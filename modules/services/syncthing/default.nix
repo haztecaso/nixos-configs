@@ -1,16 +1,25 @@
-{ pkgs, ... }: {
-  services = {
-    syncthing = {
-      enable = true;
+#TODO: Mejorar este modulo para que se pueda usar desde varios hosts
+{ config, lib, pkgs, ... }:
+let
+  cfg = options.custom.services.syncthing;
+in
+{
+  options.custom.services.syncthing = {
+    enable = lib.mkEnableOption "custom vaultwarden service";
+  };
 
+  config = lib.mkIf cfg.enable {
+    services.syncthing = {
+      enable = true;
+    
       extraOptions.gui.enabled = false;
       openDefaultPorts = true;
-
+    
       devices = {
         macbook.id = "JE3TRVV-CSMT42I-YUPYLOR-PXKMXSR-GKN3APW-SAHMJRM-JVCX66N-4BBRWQJ";
         realmi8.id = "GGY5ZY5-Y4732SG-2YWHMXT-MZMWT4B-NOVGTUL-RA6ZOIS-7LJNVRB-3M3SEA3";
       };
-
+    
       folders = {
         nube = {
           devices = [ "macbook" "realmi8" ];

@@ -50,6 +50,15 @@ in
 
     console.keyMap = "es";
 
+    boot.cleanTmpDir = true;
+
+    time.timeZone = "Europe/Madrid";
+ 
+    networking = {
+      firewall.allowedTCPPorts = [ 22 ];
+      hostName = config.custom.base.hostname;
+    };
+
     environment.systemPackages = with pkgs; [
       git
       htop
@@ -60,8 +69,8 @@ in
       unzip
       zip
     ];
- 
-    programs = {
+
+   programs = {
       bash = {
         interactiveShellInit = ''
           if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" ]]; then
@@ -76,11 +85,13 @@ in
       };
     };
 
-    boot.cleanTmpDir = true;
+    services = {
+      openssh = {
+        enable = true;
+        passwordAuthentication = false;
+      };
+    };
 
-    time.timeZone = "Europe/Madrid";
-
-    networking.hostName = config.custom.base.hostname;
 
     home-manager.useGlobalPkgs = true;
 

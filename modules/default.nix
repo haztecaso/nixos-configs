@@ -1,5 +1,7 @@
 { ... }: {
   imports = [
     ./base
+    ./services
+    ./webserver
   ];
 }
