@@ -1,14 +1,10 @@
 { config, lib, pkgs, ... }:
 let
-  cfg = options.custom.services.jobo_bot;
+  cfg = config.custom.services.jobo_bot;
 in
 {
   options.custom.services.jobo_bot = {
     enable = lib.mkEnableOption "jobo_bot service";
-    signupsAllowed = lib.mkOption = {
-      type = lib.types.bool;
-      default = false;
-    };
   };
 
   config = lib.mkIf cfg.enable {

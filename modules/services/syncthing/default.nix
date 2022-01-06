@@ -1,7 +1,7 @@
 #TODO: Mejorar este modulo para que se pueda usar desde varios hosts
 { config, lib, pkgs, ... }:
 let
-  cfg = options.custom.services.syncthing;
+  cfg = config.custom.services.syncthing;
 in
 {
   options.custom.services.syncthing = {

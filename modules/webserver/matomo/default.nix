@@ -2,7 +2,7 @@
   options.custom.webserver.matomo = {
     enable = lib.mkEnableOption "matomo analytics";
   };
-  config = lib.mkIf options.custom.webserver.matomo.enable {
+  config = lib.mkIf config.custom.webserver.matomo.enable {
     services = {
       matomo = {
         enable = true;

@@ -10,7 +10,7 @@
     enable = lib.mkEnableOption "web server";
   };
 
-  config = lib.mkIf options.custom.webserver.enable {
+  config = lib.mkIf config.custom.webserver.enable {
     security = {
       acme = {
         acceptTerms = true;

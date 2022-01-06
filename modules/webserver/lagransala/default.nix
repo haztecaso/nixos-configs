@@ -10,7 +10,7 @@ in
   options.custom.webserver.lagransala = {
     enable = lib.mkEnableOption "lagransala.es web server";
   };
-  config = lib.mkIf options.custom.webserver.lagransala.enable {
+  config = lib.mkIf config.custom.webserver.lagransala.enable {
     services = {
       nginx.virtualHosts = {
         "lagransala.es" = {

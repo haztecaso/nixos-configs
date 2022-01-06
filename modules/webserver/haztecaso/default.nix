@@ -2,7 +2,7 @@
   options.custom.webserver.haztecaso = {
     enable = lib.mkEnableOption "haztecaso.com web server";
   };
-  config = lib.mkIf options.custom.webserver.haztecaso.enable {
+  config = lib.mkIf config.custom.webserver.haztecaso.enable {
     services = {
       nginx.virtualHosts = {
         "haztecaso.com" = {
