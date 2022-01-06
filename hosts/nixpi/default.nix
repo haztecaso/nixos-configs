@@ -1,5 +1,4 @@
 { config, pkgs, ... }: let
-  hostname = "nixpi";
   keys = import ../../ssh-keys.nix;
 in
 {
@@ -20,14 +19,11 @@ in
   };
 
   networking = {
-    hostName = hostname;
     interfaces.eth0.useDHCP = true;
     firewall.allowedTCPPorts = [ 22 ];
   };
 
-  console.keyMap = "es";
-
-  environment.systemPackages = with pkgs; [ vim jobo_bot deploy ];
+  environment.systemPackages = with pkgs; [ jobo_bot ];
 
   services = {
     openssh = {
@@ -46,18 +42,16 @@ in
 
   programs = {
     bash = {
-      interactiveShellInit = ''
-        if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" ]]; then
-          tmux attach-session -t ${hostname} || tmux new-session -s ${hostname}
-        fi
-      '';
     };
     vim.defaultEditor = true;
   };
 
   custom = {
     stateVersion = "21.11";
-    base.tmux.color = "#ee00aa";
+    base = {
+      hostname = "nixpi";
+      tmux.color = "#ee00aa";
+    }
   };
 
 }
