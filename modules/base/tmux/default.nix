@@ -15,14 +15,20 @@ in
     };
   };
 
-  config = {
-    programs.tmux = {
-      enable = true;
-      extraConfig = ''
-        ${if cfg.customConfig then (readFile ./tmux.conf) else ""}
-        set -g pane-active-border-style fg="${cfg.color}"
-        set -g status-left '#[fg="${cfg.color}"](#S) '
-      '';
+  config.home-manager.users = let
+      config = {
+        programs.tmux = {
+          enable = true;
+          extraConfig = ''
+            ${if cfg.customConfig then (readFile ./tmux.conf) else ""}
+            set -g pane-active-border-style fg="${cfg.color}"
+            set -g status-left '#[fg="${cfg.color}"](#S) '
+          '';
+        };
+      };
+    in {
+      skolem = { ... }: config;
+      root = { ... }: config;
     };
-  };
+
 }

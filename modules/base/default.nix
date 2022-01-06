@@ -15,7 +15,6 @@ in
   };
 
   config = {
-
     nix = {
       package = pkgs.nixFlakes;
       extraOptions = ''
@@ -48,6 +47,15 @@ in
     users.users.root.openssh.authorizedKeys.keys = [ keys.skolem ];
 
     home-manager.useGlobalPkgs = true;
+
+    home-manager.users = {
+      skolem = { ... }: {
+        home.stateVersion = config.custom.stateVersion;
+      };
+      root = { ... }: {
+        home.stateVersion = config.custom.stateVersion;
+      };
+    };
 
     system.stateVersion = config.custom.stateVersion;
   };
