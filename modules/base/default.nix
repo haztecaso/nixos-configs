@@ -25,11 +25,6 @@ in
       gc.automatic = true;
     };
 
-    custom.base = {
-      vim.enable = true;
-      tmux.enable = true;
-    }
-
     environment.systemPackages = with pkgs; [
       git
       ranger
