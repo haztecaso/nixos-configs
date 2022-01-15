@@ -2,9 +2,22 @@
 
 ## To do
 
-- Creación automatica de `~/.vim/swap`, `~/.vim/backup` y `~/.vim/undo`
-- Gestionar copia de llaves ssh
-- Gestionar secretos con [git-crypt](https://www.agwa.name/projects/git-crypt)
+- Automatically create `~/.vim/swap`, `~/.vim/backup` and `~/.vim/undo` folders
+- Manage copy of ssh keys
+- Decide how to manage secrets:
+  - [agenix](https://github.com/ryantm/agenix/)
+    - Drawbacks
+      - Only works for system configs, not home (Problem could be avoided by converting
+        everything into system modules?)
+    - Benefits
+      - Uses ssh keys
+      - Files decrypted on tmpfs
+  - [git-crypt](https://www.agwa.name/projects/git-crypt)
+    - Drawbacks
+      - Need to use gpg or custom key
+      - Plain files decrypted on machine
+    - Benefits
+      - Can encrypt full .nix files
 - Fusionar con configs del portatil
 
 ## Hosts
@@ -44,7 +57,7 @@ Future:
 
 ### galois
 
-Macbook Pro mid 2012. Personal machine. TBD.
+Macbook Pro mid 2012. Personal machine. **Not included yet.**
 
 ## References
 
