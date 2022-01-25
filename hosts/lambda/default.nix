@@ -26,6 +26,7 @@
       enable = true;
       haztecaso.enable = true;
       lagransala.enable = true;
+      elvivero.enable = true;
       matomo.enable = true;
     };
 
