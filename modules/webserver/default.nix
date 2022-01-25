@@ -2,6 +2,7 @@
 {
   imports = [
     ./haztecaso
+    ./elvivero
     ./lagransala
     ./matomo
   ];
