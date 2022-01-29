@@ -9,6 +9,9 @@
           enableACME = true;
           forceSSL = true;
           root = "/var/www/elvivero.es";
+          extraConfig = ''
+            error_page 404 /404.html;
+          '';
         };
         "www.elvivero.es" = {
           enableACME = true;
