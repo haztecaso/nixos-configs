@@ -26,6 +26,6 @@
         };
       };
     };
-    age.secrets."credentials/cloudflare".file = ../../../secrets/credentials/cloudflare.age;
+    age.secrets."cloudflare".file = ../../../secrets/cloudflare.age;
   };
 }

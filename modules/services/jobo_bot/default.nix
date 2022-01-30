@@ -12,9 +12,9 @@ in
     services.cron = {
       enable = true;
       systemCronJobs = [
-        "*/10 * * * *  ${pkgs.jobo_bot} --conf ${config.age.secrets."configs/jobo_bot.conf".path}"
+        "*/10 * * * *  ${pkgs.jobo_bot} --conf ${config.age.secrets."jobo_bot.conf".path}"
       ];
     };
-    age.secrets."configs/jobo_bot.conf".file = ../../../secrets/jobo_bot.age;
+    age.secrets."jobo_bot.conf".file = ../../../secrets/jobo_bot.age;
   };
 }

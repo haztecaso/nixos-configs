@@ -45,8 +45,8 @@ in
       };
     };
 
-    age.secrets."passwords/users/skolem".file = ../../secrets/passwords/users/skolem.age;
-    age.secrets."passwords/users/root".file = ../../secrets/passwords/users/root.age;
+    age.secrets."users/skolem".file = ../../secrets/users/skolem.age;
+    age.secrets."users/root".file = ../../secrets/users/root.age;
 
     console.keyMap = "es";
 
