@@ -15,6 +15,6 @@ in
         "*/10 * * * *  ${pkgs.jobo_bot} --conf ${config.age.secrets."configs/jobo_bot.conf".path}"
       ];
     };
-    age.secrets."configs/jobo_bot.conf".file = ../../../secrets/configs/jobo_bot.age;
+    age.secrets."configs/jobo_bot.conf".file = ../../../secrets/jobo_bot.age;
   };
 }

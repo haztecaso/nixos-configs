@@ -33,13 +33,13 @@ in
       mutableUsers = false;
       users = {
         root = {
-          # passwordFile = config.age.secrets."passwords/users/root".path;
+          # passwordFile = config.age.secrets."users/root".path;
           openssh.authorizedKeys.keys = [ keys.skolem ];
         };
         skolem = {
           isNormalUser = true;
           extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-          # passwordFile = config.age.secrets."passwords/users/skolem".path;
+          # passwordFile = config.age.secrets."users/skolem".path;
           openssh.authorizedKeys.keys = with keys; [ skolem termux ];
         };
       };

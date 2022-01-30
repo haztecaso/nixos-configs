@@ -5,7 +5,7 @@
   config = lib.mkIf config.custom.webserver.haztecaso.enable {
     security.acme.certs."elvivero.es" = {
       dnsProvider = "cloudflare";
-      credentialsFile = config.age.secrets."credentials/cloudflare".path;
+      credentialsFile = config.age.secrets."cloudflare".path;
       group = "nginx";
     };
     services = {
