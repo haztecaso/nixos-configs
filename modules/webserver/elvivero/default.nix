@@ -10,6 +10,7 @@
           forceSSL = true;
           root = "/var/www/elvivero.es";
           extraConfig = ''
+            expires 1d;
             error_page 404 /404.html;
           '';
         };
