@@ -25,7 +25,7 @@
     webserver = {
       enable = true;
       haztecaso.enable = true;
-      lagransala.enable = true;
+      lagransala.enable = false;
       elvivero.enable = true;
       matomo.enable = true;
     };
