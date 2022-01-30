@@ -5,6 +5,7 @@
     ./elvivero
     ./lagransala
     ./matomo
+    ./thumbor
   ];
 
   options.custom.webserver = {

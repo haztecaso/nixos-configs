@@ -10,7 +10,6 @@
     vim.defaultEditor = true;
   };
 
-
   custom = {
     base = {
       hostname = "lambda";
@@ -28,6 +27,7 @@
       lagransala.enable = false;
       elvivero.enable = true;
       matomo.enable = true;
+      thumbor.enable = true;
     };
 
     stateVersion = "21.11";
