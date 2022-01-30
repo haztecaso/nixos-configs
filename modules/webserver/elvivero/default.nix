@@ -3,10 +3,15 @@
     enable = lib.mkEnableOption "elvivero.es web server";
   };
   config = lib.mkIf config.custom.webserver.haztecaso.enable {
+    security.acme.certs."elvivero.es" = {
+      dnsProvider = "cloudflare";
+      credentialsFile = config.age.secrets."credentials/cloudflare".path;
+      group = "nginx";
+    };
     services = {
       nginx.virtualHosts = {
         "elvivero.es" = {
-          enableACME = true;
+          useACMEHost = "elvivero.es";
           forceSSL = true;
           root = "/var/www/elvivero.es";
           extraConfig = ''
@@ -15,11 +20,12 @@
           '';
         };
         "www.elvivero.es" = {
-          enableACME = true;
+          useACMEHost = "elvivero.es";
           forceSSL = true;
           locations."/".return = "301 https://elvivero.es$request_uri";
         };
       };
     };
+    age.secrets."credentials/cloudflare".file = ../../../secrets/credentials/cloudflare.age;
   };
 }
