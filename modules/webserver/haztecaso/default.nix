@@ -8,8 +8,15 @@
         "haztecaso.com" = {
           enableACME = true;
           forceSSL = true;
-          # root = inputs.www-haztecaso;
           root = "/var/www/haztecaso.com";
+
+          # Radio archive
+          locations."/radio/archivo".extraConfig = ''
+            alias /var/www/haztecaso.com/radio/archivo;
+            autoindex on;
+            add_before_body /autoindex/before-radio.txt;
+            add_after_body /autoindex/after-radio.txt;
+          '';
         };
         "www.haztecaso.com" = {
           enableACME = true;
