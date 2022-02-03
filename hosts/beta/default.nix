@@ -6,10 +6,7 @@ in
 
   nix.gc.options = "--delete-older-than 7d";
 
-  networking = {
-    interfaces.enp0s31f6.useDHCP = true;
-    interfaces.wlp3s0.useDHCP = true;
-  };
+  networking.interfaces.wlp3s0.useDHCP = true;
 
   programs = {
     vim.defaultEditor = true;

@@ -20,7 +20,8 @@
 
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/7d9fface-7cf1-4464-8137-0c9bd7ef5544";
+    # device = "/dev/disk/by-uuid/7d9fface-7cf1-4464-8137-0c9bd7ef5544";
+    device = "/dev/mapper/root";
     fsType = "ext4";
   };
 
