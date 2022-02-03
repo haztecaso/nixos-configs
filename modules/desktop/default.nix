@@ -128,12 +128,19 @@ in
         #   autoLogin.user = "skolem";
         # };
         displayManager.lightdm.enable = true;
+        desktopManager.xfce.enable = true;
         windowManager.xmonad = {
           enable = true;
           enableContribAndExtras = true;
         };
       };
+      dbus = {
+        enable = true;
+        packages = [ pkgs.gnome3.dconf ];
+      };
     };
+
+    networking.networkmanager.enable = true;
 
     home-manager.users.skolem = { ... }: home-config;
 
