@@ -15,18 +15,14 @@ in
     vim.defaultEditor = true;
   };
 
-  services = {
-    xserver = {
-      enable = true;
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
-    };
-  };
-
   custom = {
     base = {
       hostname = "beta";
       tmux.color = "#aaee00";
+    };
+
+    desktop = {
+      enable = true;
     };
 
     stateVersion = "21.11";

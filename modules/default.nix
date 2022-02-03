@@ -3,5 +3,6 @@
     ./base
     ./services
     ./webserver
+    ./desktop
   ];
 }
