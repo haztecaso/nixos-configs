@@ -30,7 +30,7 @@ in
     };
 
     users = {
-      mutableUsers = false;
+      mutableUsers = true;
       users = {
         root = {
           # passwordFile = config.age.secrets."users/root".path;
