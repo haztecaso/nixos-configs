@@ -7,24 +7,25 @@
     initrd = {
       availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
       kernelModules = [ ];
+      luks.devices."root".device = "/dev/disk/by-uuid/0c432ee2-806a-4413-9513-d0191e552463";
     };
+
     kernelModules = [ "wl" ];
     extraModulePackages = [ ];
 
-    loader.grub = {
-      efiSupport = true;
-      device = "/dev/disk/by-uuid/1967-68D4";
-    };
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
 
   };
 
+
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/0e047142-e415-445d-a3a0-39f2ab2a8f4a";
+    device = "/dev/disk/by-uuid/7d9fface-7cf1-4464-8137-0c9bd7ef5544";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/1967-68D4";
+    device = "/dev/disk/by-uuid/15CC-2C93";
     fsType = "vfat";
   };
 
