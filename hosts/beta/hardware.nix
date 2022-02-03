@@ -1,32 +1,35 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot = {
-    initrd.availableKernelModules = [ "usbhid" ];
-    initrd.kernelModules = [];
-    kernelModules = [];
-    extraModulePackages = [];
-    loader = {
-      grub.enable = false;
-      generic-extlinux-compatible.enable = true;
-      raspberryPi = {
-        enable = true;
-        uboot.enable = true;
-        version = 3;
-      };
+    initrd = {
+      availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+      kernelModules = [ ];
     };
+    kernelModules = [ "wl" ];
+    extraModulePackages = [ ];
+
+    loader.grub = {
+      efiSupport = true;
+      device = "/dev/disk/by-uuid/1967-68D4";
+    };
+
   };
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/e4c1f462-6a3d-4720-b919-e89a30791639";
+    device = "/dev/disk/by-uuid/0e047142-e415-445d-a3a0-39f2ab2a8f4a";
     fsType = "ext4";
   };
 
-  swapDevices = [ { device = "/swapfile"; size=1024; } ];
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/1967-68D4";
+    fsType = "vfat";
+  };
 
-  powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
+  swapDevices = [ { device = "/dev/disk/by-uuid/29439436-30ae-4ff3-aa45-8f200ba7be08"; } ];
+
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
