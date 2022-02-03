@@ -13,6 +13,9 @@ in
 
   programs = {
     vim.defaultEditor = true;
+    bash = {
+      promptInit = ''export PS1="\[\e[00;34m\][\u@β \w]\\$ \[\e[0m\]"'';
+    };
   };
 
   custom = {
