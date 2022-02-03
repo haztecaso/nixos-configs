@@ -43,6 +43,7 @@
 
     hosts = {
       lambda.modules = [ ./hosts/lambda ];
+      beta.modules = [ ./hosts/beta ];
       nixpi = {
         system = "aarch64-linux";
         modules = [ ./hosts/nixpi ];
