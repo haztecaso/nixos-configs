@@ -7,6 +7,7 @@ let
       ./notifications.nix
       ./web.nix
       ./zathura.nix
+      ./mpv.nix
     ];
     home.packages = with pkgs; [
       # battery_level
@@ -56,10 +57,16 @@ let
       options = [ "caps:escape" ];
     };
 
-    xsession.windowManager.xmonad = {
+    xsession = {
       enable = true;
-      enableContribAndExtras = true;
-      config = ./xmonad/xmonad.hs;
+      initExtra = ''
+        ${pkgs.batsignal}/bin/batsignal -b -w 14 -c 6 -d 3
+      '';
+      windowManager.xmonad = {
+        enable = true;
+        enableContribAndExtras = true;
+        config = ./xmonad/xmonad.hs;
+      };
     };
 
     xresources.extraConfig = builtins.readFile ./.Xresources;
@@ -88,12 +95,54 @@ let
     };
 
     services = {
+      network-manager-applet.enable = true;
+      pasystray.enable = true;
+      blueman-applet.enable = true;
+
+
+      flameshot = {
+        enable = true;
+        settings.General = {
+          disabledTrayIcon = true;
+          showStartupLaunchMessage = false;
+        };
+      };
+
       polybar = {
         enable = true;
         config = ./polybar.ini;
         package = pkgs.polybarFull;
         script = "polybar bar &";
       };
+
+      screen-locker = {
+        enable = false; #TODO
+        inactiveInterval = 30;
+        lockCmd = "${pkgs.betterlockscreen}/bin/betterlockscreen -l dim";
+      };
+
+      kdeconnect = {
+        enable = true;
+        indicator = true;
+      };
+
+      udiskie = {
+        enable = true;
+        automount = false;
+        tray = "always";
+      };
+
+      redshift = {
+        enable = true;
+        latitude = "40.5249726";
+        longitude = "-4.3764132";
+        temperature = {
+          day = 5500;
+          night = 3200;
+        };
+      };
+
+      picom.enable = true;
     };
 
     programs = {
@@ -127,7 +176,7 @@ in
         #   autoLogin.enable = true;
         #   autoLogin.user = "skolem";
         # };
-        displayManager.lightdm.enable = true;
+        # displayManager.lightdm.enable = true;
         desktopManager.xfce.enable = true;
         windowManager.xmonad = {
           enable = true;
@@ -138,6 +187,38 @@ in
         enable = true;
         packages = [ pkgs.gnome3.dconf ];
       };
+    };
+
+    sound.enable = true; # Enable sound.
+
+    hardware = {
+      pulseaudio.enable = true;
+      bluetooth.enable = true;
+      opengl.enable = true;
+    };
+
+    programs = {
+      light.enable = true;
+      # adb.enable = true;
+    };
+
+    users.users.skolem = {
+      isNormalUser = true;
+      extraGroups = [ "wheel" "audio" "video" "networkmanager" ];
+    };
+
+    nixpkgs.config.allowUnfree = true; # Necessary for some nonfree programs included by this module
+
+    fonts = {
+      enableDefaultFonts = true;
+      fonts = with pkgs; [
+        google-fonts
+        dejavu_fonts
+        noto-fonts
+        noto-fonts-emoji
+        font-awesome
+        (nerdfonts.override { fonts = [ "Hack" "LiberationMono" ]; })
+      ];
     };
 
     networking.networkmanager.enable = true;
