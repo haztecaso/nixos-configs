@@ -1,6 +1,13 @@
 { config, lib, pkgs, ... }:
 let
   home-config = {
+    imports = [
+      ./alacritty.nix
+      ./keybindings.nix
+      ./notifications.nix
+      ./web.nix
+      ./zathura.nix
+    ];
     home.packages = with pkgs; [
       # battery_level
       # bitwarden-rofi
@@ -46,15 +53,58 @@ let
 
     home.keyboard = {
       layout = "es";
-      options = [
-        "caps:escape"
-        #"ctrl:nocaps"
-      ];
+      options = [ "caps:escape" ];
     };
+
     xsession.windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
       config = ./xmonad/xmonad.hs;
+    };
+
+    xresources.extraConfig = builtins.readFile ./.Xresources;
+
+    gtk = {
+      enable = true;
+      iconTheme = {
+        package = pkgs.papirus-icon-theme;
+        name = "Papirus";
+      };
+      theme = {
+        package = pkgs.arc-theme;
+        name ="Arc-Dark";
+      };
+      gtk3.bookmarks = [
+        "file:///home/skolem/Sync"
+        "file:///home/skolem/Documents"
+        "file:///home/skolem/Documents/uni/Actuales Uni (Actuales)"
+        "file:///home/skolem/Documents/desarrollo"
+        "file:///home/skolem/Documents/desarrollo/webs"
+        "file:///home/skolem/Music"
+        "file:///home/skolem/Pictures"
+        "file:///home/skolem/Videos"
+        "file:///home/skolem/Downloads"
+      ];
+    };
+
+    services = {
+      polybar = {
+        enable = true;
+        config = ./polybar.ini;
+        package = pkgs.polybarFull;
+        script = "polybar bar &";
+      };
+    };
+
+    programs = {
+      rofi = {
+        enable = true;
+        font = "Hack Nerd Font 10";
+        location = "center";
+        terminal = "${pkgs.alacritty}/bin/alacritty";
+        pass.enable = true;
+        theme = "gruvbox-dark-hard";
+      };
     };
 
   };
@@ -69,9 +119,19 @@ in
     services = {
       xserver = {
         enable = true;
+        layout = "es";
         xkbOptions = "caps:escape";
-        displayManager.gdm.enable = true;
-        desktopManager.gnome.enable = true;
+        # displayManager.gdm.enable = true;
+        # desktopManager.gnome.enable = true;
+        # displayManager = {
+        #   autoLogin.enable = true;
+        #   autoLogin.user = "skolem";
+        # };
+        displayManager.lightdm.enable = true;
+        windowManager.xmonad = {
+          enable = true;
+          enableContribAndExtras = true;
+        };
       };
     };
 
