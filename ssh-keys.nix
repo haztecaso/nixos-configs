@@ -6,7 +6,7 @@ rec {
   host_nixpi = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBGrod4qhlm82VkXeoto57lz3QQQcEnXUtlzGmdn7VER";
   host_lambda = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIBf0kpg0FD8U9USfZ684QrhLnqxihW/D4FTP9xKhv1+";
   host_galois = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIo1FjxBi1OAXAw4OlTFXgo/vCuEO6q9uzlhoAftqEqz";
-  host_beta = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINH9PljK3w0a7CBGUSfyyp0hLUIdlQdpjsHr0MbxzjbE";
+  host_beta = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBX8Vnq006RRvvQgsSoQUDkp6RPtCxesbgbfIjgf9gwf";
 
   hosts = [ host_nixpi host_lambda host_galois host_beta ];
 }
