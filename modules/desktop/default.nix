@@ -2,7 +2,6 @@
 let
   home-config = {
     imports = [
-      ./alacritty.nix
       ./keybindings.nix
       ./notifications.nix
       ./web.nix
@@ -10,11 +9,11 @@ let
       ./mpv.nix
     ];
     home.packages = with pkgs; [
-      # battery_level
-      # bitwarden-rofi
-      # dmenu_mpd
-      # dmenu_run_history
-      # message
+      battery_level
+      bitwarden-rofi
+      dmenu_mpd
+      dmenu_run_history
+      message
 
       anki
       # audacity
@@ -108,13 +107,6 @@ let
         };
       };
 
-      polybar = {
-        enable = true;
-        config = ./polybar.ini;
-        package = pkgs.polybarFull;
-        script = "polybar bar &";
-      };
-
       screen-locker = {
         enable = false; #TODO
         inactiveInterval = 30;
@@ -161,22 +153,34 @@ in
 {
   options.custom.desktop = {
     enable = lib.mkEnableOption "Custom desktop environment (wm: xmonad)";
+    bat = lib.mkOption {
+      type = lib.types.str;
+      default = "BAT0";
+      description = "Battery device name";
+    };
+    fontSize = lib.mkOption {
+      type = lib.types.int;
+      default = 10;
+      description = "Base desktop font size";
+    };
   };
 
-  config = {
+ imports = [
+    ./alacritty.nix
+    ./polybar.nix
+ ];
 
+  config = {
     services = {
       xserver = {
         enable = true;
         layout = "es";
         xkbOptions = "caps:escape";
-        # displayManager.gdm.enable = true;
-        # desktopManager.gnome.enable = true;
-        # displayManager = {
-        #   autoLogin.enable = true;
-        #   autoLogin.user = "skolem";
-        # };
-        # displayManager.lightdm.enable = true;
+        displayManager = {
+          lightdm.enable = true;
+          autoLogin.enable = true;
+          autoLogin.user = "skolem";
+        };
         desktopManager.xfce.enable = true;
         windowManager.xmonad = {
           enable = true;
