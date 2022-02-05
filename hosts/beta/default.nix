@@ -6,7 +6,6 @@ in
 
   nix.gc.options = "--delete-older-than 7d";
 
-  networking.interfaces.wlp3s0.useDHCP = true;
 
   programs = {
     vim.defaultEditor = true;
@@ -19,10 +18,14 @@ in
     base = {
       hostname = "beta";
       tmux.color = "#aaee00";
+      wlp = { interface = "wlp3s0"; useDHCP = true; };
+      eth.interface = "enp0s31f6";
     };
 
     desktop = {
       enable = true;
+      bat = "BAT1";
+      fontSize = 8;
     };
 
     stateVersion = "21.11";
