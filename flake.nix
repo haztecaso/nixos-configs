@@ -10,6 +10,10 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     impo = {
       url = "github:haztecaso/impo";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,7 +24,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, utils, agenix, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, utils, agenix, nixos-hardware, ... }:
   let
     flake_overlay = final: prev: {
       impo     = inputs.impo.packages.${final.system}.impo;
@@ -43,7 +47,7 @@
 
     hosts = {
       lambda.modules = [ ./hosts/lambda ];
-      beta.modules = [ ./hosts/beta ];
+      beta.modules = [ ./hosts/beta nixos-hardware.nixosModules.lenovo-thinkpad-x270 ];
       nixpi = {
         system = "aarch64-linux";
         modules = [ ./hosts/nixpi ];
