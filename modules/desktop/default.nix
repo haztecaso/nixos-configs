@@ -170,7 +170,7 @@ in
     ./polybar.nix
  ];
 
-  config = {
+  config = lib.mkIf config.custom.desktop.enable {
     services = {
       xserver = {
         enable = true;

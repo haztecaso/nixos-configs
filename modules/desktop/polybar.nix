@@ -4,13 +4,16 @@ let
 
   };
   cfg = config.custom.desktop.polybar;
+  base = config.custom.base;
+  wifi = lib.stringLength base.wlp.interface != 0;
+  eth  = lib.stringLength base.eth.interface != 0;
 in
 {
   options.custom.desktop.polybar = {
     mpd = lib.mkEnableOption "polybar mpd module";
-  }
+  };
 
-  home-manager.users.skolem = { ... }: {
+  config.home-manager.users.skolem = { ... }: {
     services.polybar = {
       enable = true;
       package = pkgs.polybarFull;
@@ -26,15 +29,15 @@ in
         radius = 0
         padding = 1
 
-        background = ${color.bg}
-        foreground = ${color.fg}
+        background = $${color.bg}
+        foreground = $${color.fg}
         dim-value = 1.0
 
         module-margin-left = 1
         module-margin-right = 2
 
         modules-left = ewmh
-        modules-right = ${if cfg.mpd then "mpd " else ""}temp fs wifi ethernet bat vol date
+        modules-right = ${if cfg.mpd then "mpd " else ""}temp fs ${if wifi then "wifi " else ""}${if eth then "ethernet " else ""}bat vol date
         tray-position = right
 
         font-0 = "Literation Mono Nerd Font:size=10;2"
@@ -79,18 +82,20 @@ in
         [module/temp]
         type = internal/temperature
         
+        ${if wifi then ''
         [module/wifi]
         type = internal/network
-        interface = wlp2s0
+        interface = ${base.wlp.interface}
         interval = 3
         label-connected = 直 %local_ip%
-        
+        '' else ""}
+        ${if eth then ''
         [module/ethernet]
         type = internal/network
-        interface = enp1s0f0
+        interface = ${base.eth.interface}
         interval = 3
         label-connected =  %local_ip%
-        
+        '' else ""}
         [module/vol]
         type = internal/pulseaudio
         interval = 1
@@ -104,20 +109,21 @@ in
         
         [module/custom-bat]
         type = custom/script
-        exec = battery_level BAT0
+        exec = battery_level ${config.custom.desktop.bat}
         interval = 10
-        label =   %output%%
+        label =  %output%%
         
         [module/bat]
         type = internal/battery
         full-at = 99
         adapter = ADP1
-        battery = BAT1
+        battery = ${config.custom.desktop.bat}
         poll-interval = 2
         format-charging = <animation-charging>  <label-charging>
         label-charging = %percentage%%
         format-discharging = <animation-discharging>  <label-discharging>
         label-discharging = %percentage%%
+        label-full = "  100%"
         
         animation-charging-0 = 
         animation-charging-1 = 
@@ -138,7 +144,7 @@ in
         label=%time%  %date%
         time=%H:%M:%S
       '';
-    }
+    };
   };
 
 }
