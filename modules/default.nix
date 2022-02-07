@@ -1,8 +1,9 @@
 { ... }: {
   imports = [
     ./base
+    ./desktop
+    ./dev
     ./services
     ./webserver
-    ./desktop
   ];
 }

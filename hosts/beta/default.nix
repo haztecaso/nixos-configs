@@ -28,6 +28,8 @@ in
       fontSize = 8;
     };
 
+    dev.enable = true;
+
     stateVersion = "21.11";
   };
 

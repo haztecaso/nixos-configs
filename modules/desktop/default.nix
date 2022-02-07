@@ -197,8 +197,8 @@ in
 
     hardware = {
       pulseaudio.enable = true;
-      bluetooth.enable = true;
-      opengl.enable = true;
+      bluetooth.enable  = true;
+      opengl.enable     = true;
     };
 
     programs = {

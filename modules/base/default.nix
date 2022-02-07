@@ -80,8 +80,6 @@ in
       };
     
       environment.systemPackages = with pkgs; [
-        ag
-        git
         htop
         killall
         ranger
