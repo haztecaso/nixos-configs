@@ -19,6 +19,7 @@
     services = {
       vaultwarden.enable = true;
       syncthing.enable = true;
+      jobo_bot.enable = true;
     };
 
     webserver = {
