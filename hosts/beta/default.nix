@@ -14,6 +14,11 @@ in
     };
   };
 
+
+  home-manager.users.skolem = { ... }: {
+    services.syncthing.enable = true;
+  };
+
   custom = {
     base = {
       hostname = "beta";
@@ -29,6 +34,8 @@ in
     };
 
     dev.enable = true;
+
+    # services.syncthing.enable = true; 
 
     stateVersion = "21.11";
   };
