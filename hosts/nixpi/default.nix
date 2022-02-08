@@ -19,9 +19,6 @@ in
       hostname = "nixpi";
       tmux.color = "#ee00aa";
     };
-    services = {
-      jobo_bot.enable = true;
-    };
     stateVersion = "21.11";
   };
 
