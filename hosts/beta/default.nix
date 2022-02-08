@@ -2,7 +2,7 @@
   keys = import ../../ssh-keys.nix;
 in
 {
-  imports = [ ./hardware.nix ];
+  imports = [ ./hardware.nix ./monitors.nix ];
 
   nix.gc.options = "--delete-older-than 7d";
 
@@ -34,8 +34,6 @@ in
     };
 
     dev.enable = true;
-
-    # services.syncthing.enable = true; 
 
     stateVersion = "21.11";
   };
