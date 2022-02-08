@@ -5,6 +5,11 @@ in
 {
   options.custom.services.jobo_bot = {
     enable = lib.mkEnableOption "jobo_bot service";
+    frequency = lib.mkOption {
+      type = lib.types.int;
+      default = 10;
+      description = "frequency of cron job in minutes";
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -12,7 +17,7 @@ in
     services.cron = {
       enable = true;
       systemCronJobs = [
-        "*/1 * * * *  root . /etc/profile; ${pkgs.jobo_bot}/bin/jobo_bot --conf ${config.age.secrets."jobo_bot.conf".path}"
+        "*/${cfg.frequency} * * * *  root . /etc/profile; ${pkgs.jobo_bot}/bin/jobo_bot --conf ${config.age.secrets."jobo_bot.conf".path}"
       ];
     };
     age.secrets."jobo_bot.conf".file = ../../../secrets/jobo_bot.age;
