@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   cfg = config.custom.services.jobo_bot;
+  i2s = lib.strings.floatToString;
 in
 {
   options.custom.services.jobo_bot = {
@@ -17,7 +18,7 @@ in
     services.cron = {
       enable = true;
       systemCronJobs = [
-        "*/${cfg.frequency} * * * *  root . /etc/profile; ${pkgs.jobo_bot}/bin/jobo_bot --conf ${config.age.secrets."jobo_bot.conf".path}"
+        "*/${i2s cfg.frequency} * * * *  root . /etc/profile; ${pkgs.jobo_bot}/bin/jobo_bot --conf ${config.age.secrets."jobo_bot.conf".path}"
       ];
     };
     age.secrets."jobo_bot.conf".file = ../../../secrets/jobo_bot.age;
