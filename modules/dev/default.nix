@@ -9,6 +9,7 @@
       environment.systemPackages = with pkgs; [
         python38
         ag
+        jq
         git
       ];
 
