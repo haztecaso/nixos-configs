@@ -3,8 +3,9 @@
     ./base
     ./desktop
     ./dev
+    ./programs
     ./services
-    ./webserver
     ./shortcuts
+    ./webserver
   ];
 }
