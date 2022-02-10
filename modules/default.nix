@@ -5,5 +5,6 @@
     ./dev
     ./services
     ./webserver
+    ./shortcuts
   ];
 }
