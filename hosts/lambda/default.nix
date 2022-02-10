@@ -4,9 +4,6 @@
   nix.gc.options = "--delete-older-than 3d";
 
   programs = {
-    bash = {
-      promptInit = ''export PS1="\[\e[00;34m\][\u@λ \w]\\$ \[\e[0m\]"'';
-    };
     vim.defaultEditor = true;
   };
 
@@ -14,7 +11,10 @@
     base = {
       hostname = "lambda";
       tmux.color = "#eeaa00";
-      shells.defaultShell = pkgs.bash; # TODO: Disable zsh for now, until I discover how to prolerly set EDITOR and VISUAL variables...
+      shells = {
+        defaultShell = pkgs.bash; # TODO: Disable zsh for now, until I discover how to prolerly set EDITOR and VISUAL variables...
+        hostnameSymbol = "λ"; 
+      };
     };
 
     services = {

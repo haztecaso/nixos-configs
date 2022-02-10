@@ -3,11 +3,12 @@
 with lib;
 let
   cfg = config.custom.base.shells;
+  hostname = config.custom.base.hostname;
 in
 {
   options.custom.base.shells = {
     aliases = mkOption {
-      type = types.attrsOf types.string;
+      type = types.attrsOf types.str;
       default = {
         ".." = "cd ..";
         less = "less --quit-if-one-screen --ignore-case --status-column --LONG-PROMPT --RAW-CONTROL-CHARS --HILITE-UNREAD --tabs=4 --no-init --window=-4";
@@ -21,6 +22,10 @@ in
       type = types.package;
       default = pkgs.zsh;
     };
+    hostnameSymbol = mkOption {
+      type = types.str;
+      default = hostname;
+    };
   };
 
   config = let
@@ -29,7 +34,7 @@ in
           enable = true;
           shellAliases = cfg.aliases // config.custom.shortcuts.aliases;
           initExtra = ''
-            export PS1="\[\033[1;32m\][\[\e]0;\u@\h: \w\a\]\u@\h:\w]\$\[\033[0m\]\[$(tput sgr0)\]"
+            export PS1="\[\e[00;34m\][\u@${cfg.hostnameSymbol}:\w]\\$ \[\e[0m\]"
             if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" ]]; then
               tmux attach-session -t ${config.custom.base.hostname} || tmux new-session -s ${config.custom.base.hostname}
             fi

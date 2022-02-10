@@ -9,9 +9,6 @@ in
 
   programs = {
     vim.defaultEditor = true;
-    bash = {
-      promptInit = ''export PS1="\[\e[00;34m\][\u@β \w]\\$ \[\e[0m\]"'';
-    };
   };
 
 
@@ -25,7 +22,10 @@ in
       tmux.color = "#aaee00";
       wlp = { interface = "wlp3s0"; useDHCP = true; };
       eth.interface = "enp0s31f6";
-      shells.defaultShell = pkgs.bash; # TODO: Disable zsh for now, until I discover how to prolerly set EDITOR and VISUAL variables...
+      shells = {
+        defaultShell = pkgs.bash; # TODO: Disable zsh for now, until I discover how to prolerly set EDITOR and VISUAL variables...
+        hostnameSymbol = "β"; 
+      };
     };
 
     desktop = {
