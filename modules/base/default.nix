@@ -91,21 +91,6 @@ in
         zip
       ];
     
-     programs = {
-        bash = {
-          interactiveShellInit = ''
-            if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" ]]; then
-              tmux attach-session -t ${hostname} || tmux new-session -s ${hostname}
-            fi
-          '';
-          shellAliases = {
-            ".." = "cd ..";
-            "r" = "ranger";
-            "agenix" = "nix run github:ryantm/agenix --"; 
-          };
-        };
-      };
-    
       services = {
         openssh = {
           enable = true;
