@@ -5,12 +5,6 @@ let
   cfg = config.custom.base;
 in
 {
-  imports = [
-    ./tmux
-    ./vim
-    ./shells
-  ];
-
   options.custom = {
     stateVersion = lib.mkOption {
       example = "21.11";

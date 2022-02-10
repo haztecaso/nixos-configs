@@ -2,11 +2,11 @@
 # TODO: Allow per-user configs
 with lib;
 let
-  cfg = config.custom.base.shells;
+  cfg = config.custom.programs.shells;
   hostname = config.custom.base.hostname;
 in
 {
-  options.custom.base.shells = {
+  options.custom.programs.shells = {
     aliases = mkOption {
       type = types.attrsOf types.str;
       default = {

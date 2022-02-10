@@ -1,10 +1,10 @@
 { lib, pkgs, config, ... }:
 with lib;
 let
-  cfg = config.custom.base.tmux;
+  cfg = config.custom.programs.tmux;
 in
 {
-  options.custom.base.tmux = {
+  options.custom.programs.tmux = {
     customConfig = mkOption {
       type = types.bool;
       default = true;

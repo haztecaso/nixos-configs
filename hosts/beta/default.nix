@@ -6,11 +6,9 @@ in
 
   nix.gc.options = "--delete-older-than 7d";
 
-
   programs = {
     vim.defaultEditor = true;
   };
-
 
   home-manager.users.skolem = { ... }: {
     services.syncthing.enable = true;
@@ -19,9 +17,12 @@ in
   custom = {
     base = {
       hostname = "beta";
-      tmux.color = "#aaee00";
       wlp = { interface = "wlp3s0"; useDHCP = true; };
       eth.interface = "enp0s31f6";
+    };
+
+    programs = {
+      tmux.color = "#aaee00";
       shells = {
         defaultShell = pkgs.bash; # TODO: Disable zsh for now, until I discover how to prolerly set EDITOR and VISUAL variables...
         hostnameSymbol = "β"; 
@@ -38,6 +39,5 @@ in
 
     stateVersion = "21.11";
   };
-
 }
 

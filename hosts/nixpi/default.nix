@@ -15,10 +15,13 @@ in
   };
 
   custom = {
-    base = {
-      hostname = "nixpi";
-      tmux.color = "#ee00aa";
+    base.hostname = "nixpi";
+
+    programs = {
+      tmux.color = "#aaee00";
+      shells.defaultShell = pkgs.bash; # TODO: Disable zsh for now, until I discover how to prolerly set EDITOR and VISUAL variables...
     };
+
     stateVersion = "21.11";
   };
 
