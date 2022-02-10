@@ -25,6 +25,7 @@ in
       tmux.color = "#aaee00";
       wlp = { interface = "wlp3s0"; useDHCP = true; };
       eth.interface = "enp0s31f6";
+      shells.defaultShell = pkgs.bash; # TODO: Disable zsh for now, until I discover how to prolerly set EDITOR and VISUAL variables...
     };
 
     desktop = {

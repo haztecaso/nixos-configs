@@ -14,6 +14,7 @@
     base = {
       hostname = "lambda";
       tmux.color = "#eeaa00";
+      shells.defaultShell = pkgs.bash; # TODO: Disable zsh for now, until I discover how to prolerly set EDITOR and VISUAL variables...
     };
 
     services = {

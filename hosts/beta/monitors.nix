@@ -36,5 +36,5 @@ in {
       };
     };
     defaultTarget = "onlysmall";
-  }
+  };
 }
