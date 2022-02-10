@@ -32,7 +32,7 @@
       lagransala.enable = false;
       elvivero.enable = true;
       matomo.enable = true;
-      thumbor.enable = true;
+      # thumbor.enable = true;
     };
 
     stateVersion = "21.11";
