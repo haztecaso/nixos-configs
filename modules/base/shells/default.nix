@@ -15,7 +15,6 @@ in
         r = "ranger";
         cp = "cp -i";
         ytd = "youtube-dl";
-        "sudo nixos-rebuild test" = "sudo nixos-rebuild test && sudo unlink result";
       };
       example = true;
     };
