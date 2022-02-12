@@ -1,3 +1,5 @@
+"vim specific configs
+
 call EnsureDirExists($HOME . '/.vim/backup/')
 call EnsureDirExists($HOME . '/.vim/swap/')
 call EnsureDirExists($HOME . '/.vim/undo/')
