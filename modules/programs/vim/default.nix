@@ -31,13 +31,6 @@ let
     };
   };
   mkVimConfig = pkg: lib.mkIf (cfg.package == pkg) (mkHomeConfig (if pkg == "vim" then vim-config else neovim-config));
-  bin = pkg: if pkg == "neovim" then "nvim" else pkg;
-  mkVariablesConfig = pkg: lib.mkIf (cfg.package == pkg && cfg.defaultEditor) (mkHomeConfig {
-    home.sessionVariables = {
-      EDITOR = bin pkg;
-      VISUAL = bin pkg;
-    };
-  });
 in
 {
   options.custom.programs.vim = with lib; {
@@ -55,12 +48,20 @@ in
       type = types.enum [ "vim" "neovim" ];
       default = "vim";
     };
+    bin = mkOption {
+      readOnly = true;
+      default = if cfg.package == "neovim" then "nvim" else "vim";
+    };
   };
 
   config = lib.mkMerge [
     (mkVimConfig "vim")
     (mkVimConfig "neovim")
-    (mkVariablesConfig "vim")
-    (mkVariablesConfig "neovim")
+    (lib.mkIf (cfg.defaultEditor) (mkHomeConfig {
+      home.sessionVariables = {
+          EDITOR = cfg.bin;
+          VISUAL = cfg.bin;
+      };
+    }))
   ];
 }
