@@ -3,10 +3,10 @@ let
   cfg = config.custom.services.vaultwarden;
 in
 {
-  options.custom.services.vaultwarden = {
-    enable = lib.mkEnableOption "custom vaultwarden service";
-    signupsAllowed = lib.mkOption {
-      type = lib.types.bool;
+  options.custom.services.vaultwarden = with lib; {
+    enable = mkEnableOption "custom vaultwarden service";
+    signupsAllowed = mkOption {
+      type = types.bool;
       default = false;
     };
   };

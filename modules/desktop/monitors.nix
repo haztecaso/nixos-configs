@@ -3,12 +3,12 @@ let
   cfg = config.custom.desktop.monitors;
 in
   {
-  options.custom.desktop.monitors = {
-    profiles = lib.mkOption {
+  options.custom.desktop.monitors = with lib; {
+    profiles = mkOption {
       type = lib.types.attrs;
       description = "Autorandr profiles specification (see home-manager module).";
     };
-     defaultTarget = lib.mkOption {
+     defaultTarget = mkOption {
       type = lib.types.str;
       default = "";
     };

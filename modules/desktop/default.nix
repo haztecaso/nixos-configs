@@ -151,15 +151,15 @@ let
   };
 in
 {
-  options.custom.desktop = {
-    enable = lib.mkEnableOption "Custom desktop environment (wm: xmonad)";
-    bat = lib.mkOption {
-      type = lib.types.str;
+  options.custom.desktop = with lib; {
+    enable = mkEnableOption "Custom desktop environment (wm: xmonad)";
+    bat = mkOption {
+      type = types.str;
       default = "BAT0";
       description = "Battery device name";
     };
-    fontSize = lib.mkOption {
-      type = lib.types.int;
+    fontSize = mkOption {
+      type = types.int;
       default = 10;
       description = "Base desktop font size";
     };
