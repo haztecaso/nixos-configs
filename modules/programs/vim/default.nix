@@ -5,14 +5,14 @@ let
     programs.vim = {
       enable = true;
       plugins = with pkgs.vimPlugins; [ gruvbox vim-commentary vim-fugitive vim-lastplace vim-vinegar vim-nix ];
-      extraConfig = (builtins.readFile ./common.vim);
+      extraConfig = (builtins.readFile ./common.vim) + (builtins.readFile ./vim.vim);
     };
   };
   neovim-config = {
     programs.neovim = {
       enable = true;
       plugins = with pkgs.vimPlugins; [ gruvbox vim-commentary vim-fugitive vim-lastplace vim-vinegar vim-nix ];
-      extraConfig = (builtins.readFile ./common.vim);
+      extraConfig = (builtins.readFile ./common.vim) + (builtins.readFile ./neovim.vim);
       coc = {
         enable = true;
       };
