@@ -11,6 +11,8 @@
         ag
         jq
         git
+        dust
+        ncdu
       ];
 
   };
