@@ -6,10 +6,6 @@ in
 
   nix.gc.options = "--delete-older-than 7d";
 
-  programs = {
-    vim.defaultEditor = true;
-  };
-
   home-manager.users.skolem = { ... }: {
     services.syncthing.enable = true;
   };
@@ -27,6 +23,7 @@ in
         defaultShell = pkgs.bash; # TODO: Disable zsh for now, until I discover how to prolerly set EDITOR and VISUAL variables...
         hostnameSymbol = "β"; 
       };
+      vim.package = "neovim";
     };
 
     desktop = {
