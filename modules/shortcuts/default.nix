@@ -32,7 +32,7 @@ in
         type = types.listOf (types.attrsOf types.str);
         default = [
           { cmd = "cd"; prefix = ""; }
-          { cmd = config.custom.programs.vim.bin.; prefix = "v"; }
+          { cmd = config.custom.programs.vim.bin; prefix = "v"; }
           { cmd = "ranger"; prefix = "r"; }
         ];
       };
