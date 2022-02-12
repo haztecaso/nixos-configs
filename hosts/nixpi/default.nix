@@ -6,20 +6,18 @@ in
 
   nix.gc.options = "--delete-older-than 3d";
 
-  networking = {
-    interfaces.eth0.useDHCP = true;
-  };
-
   programs = {
     vim.defaultEditor = true;
   };
 
   custom = {
-    base.hostname = "nixpi";
+    base = {
+      hostname = "nixpi";
+      eth = { interface = "eth0"; useDHCP = true; };
+    }
 
     programs = {
       tmux.color = "#aaee00";
-      shells.defaultShell = pkgs.bash; # TODO: Disable zsh for now, until I discover how to prolerly set EDITOR and VISUAL variables...
     };
 
     stateVersion = "21.11";

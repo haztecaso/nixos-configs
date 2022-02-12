@@ -1,9 +1,10 @@
 { lib, pkgs, config, ... }:
-# TODO: Allow per-user configs
 with lib;
 let
-  cfg = config.custom.programs.shells;
-  hostname = config.custom.base.hostname;
+  cfg              = config.custom.programs.shells;
+  hostname         = config.custom.base.hostname;
+  hostnameSymbol   = config.custom.base.hostnameSymbol;
+  shortcut_aliases = config.custom.shortcuts.aliases;
 in
 {
   options.custom.programs.shells = {
@@ -20,11 +21,7 @@ in
     };
     defaultShell = mkOption {
       type = types.package;
-      default = pkgs.zsh;
-    };
-    hostnameSymbol = mkOption {
-      type = types.str;
-      default = hostname;
+      default = pkgs.bash; # TODO: bashfor now, until I discover how to prolerly set EDITOR and VISUAL variables on zsh...
     };
   };
 
@@ -32,11 +29,11 @@ in
       conf = home-conf: {
         programs.bash = {
           enable = true;
-          shellAliases = cfg.aliases // config.custom.shortcuts.aliases;
+          shellAliases = cfg.aliases // shortcut_aliases;
           initExtra = ''
-            export PS1="\[\e[00;34m\][\u@${cfg.hostnameSymbol}:\w]\\$ \[\e[0m\]"
+            export PS1="\[\e[00;34m\][\u@${hostnameSymbol}:\w]\\$ \[\e[0m\]"
             if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" ]]; then
-              tmux attach-session -t ${config.custom.base.hostname} || tmux new-session -s ${config.custom.base.hostname}
+              tmux attach-session -t ${hostname} || tmux new-session -s ${hostname}
             fi
           '';
         };
@@ -55,10 +52,10 @@ in
             historySubstring.foundColor = "fg=blue";
             historySubstring.notFoundColor = "fg=red";
             tmux.autoStartRemote = true;
-            tmux.defaultSessionName = config.custom.base.hostname;
+            tmux.defaultSessionName = hostname;
             utility.safeOps = true;
           };
-          shellAliases = cfg.aliases // config.custom.shortcuts.aliases;
+          shellAliases = cfg.aliases // shortcut_aliases;
         };
       };
   in

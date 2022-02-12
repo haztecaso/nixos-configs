@@ -1,34 +1,37 @@
 { config, lib, pkgs, ... }:
 let
-  hostname = config.custom.base.hostname;
   keys = import ../../ssh-keys.nix;
   cfg = config.custom.base;
 in
 {
-  options.custom = {
-    stateVersion = lib.mkOption {
+  options.custom = with lib;{
+    stateVersion = mkOption {
       example = "21.11";
     };
     base = {
-      hostname = lib.mkOption {
-        type = lib.types.str;
+      hostname = mkOption {
+        type = types.str;
         example = "mycoolmachine";
       };
+      hostnameSymbol = mkOption {
+        type = types.str;
+        default = cfg.hostname;
+      };
       wlp = {
-        interface = lib.mkOption {
-          type = lib.types.str;
+        interface = mkOption {
+          type = types.str;
           default = "";
           example = "wlp1s0";
         };
-        useDHCP = lib.mkEnableOption "enable dhcp for the wifi interface";
+        useDHCP = mkEnableOption "enable dhcp for the wifi interface";
       };
       eth = {
-        interface = lib.mkOption {
-          type = lib.types.str;
+        interface = mkOption {
+          type = types.str;
           default = "";
           example = "enp1s0";
         };
-        useDHCP = lib.mkEnableOption "enable dhcp for the eth interface";
+        useDHCP = mkEnableOption "enable dhcp for the eth interface";
       };
     };
   };
@@ -71,7 +74,7 @@ in
    
       networking = {
         firewall.allowedTCPPorts = [ 22 ];
-        hostName = config.custom.base.hostname;
+        hostName = cfg.hostname;
       };
     
       environment.systemPackages = with pkgs; [
