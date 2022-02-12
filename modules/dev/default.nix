@@ -13,6 +13,9 @@
         git
         dust
         ncdu
+        python38
+        python38Packages.numpy
+        python38Packages.matplotlib
       ];
 
   };
