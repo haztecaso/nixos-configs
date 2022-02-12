@@ -42,7 +42,6 @@
         agenix.nixosModules.age
         home-manager.nixosModules.home-manager
       ];
-      extraArgs = { inherit utils inputs; };
     };
 
     hosts = {
