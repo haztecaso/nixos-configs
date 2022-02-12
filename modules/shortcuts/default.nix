@@ -12,6 +12,7 @@ let
     zipAttrsWith (n: v: fst v) (map (action: mkShortcut action paths) actions);
 
   cfg = config.custom.shortcuts;
+  vimpkg = if config.custom.programs.vim.package == "neovim" then "nvim" else "vim";
 in
   {
     options.custom.shortcuts = {
@@ -32,7 +33,7 @@ in
         type = types.listOf (types.attrsOf types.str);
         default = [
           { cmd = "cd"; prefix = ""; }
-          { cmd = "nvim"; prefix = "v"; }
+          { cmd = vimpkg; prefix = "v"; }
           { cmd = "ranger"; prefix = "r"; }
         ];
       };

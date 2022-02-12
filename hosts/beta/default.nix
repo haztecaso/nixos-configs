@@ -26,6 +26,13 @@ in
       vim.package = "neovim";
     };
 
+    shortcuts = {
+      sr = "~/src";
+      u  = "~/Nube/uni/Actuales";
+      mo = "~/Nube/money";
+      l  = "~/Nube/lecturas";
+    };
+
     desktop = {
       enable = true;
       bat = "BAT1";
