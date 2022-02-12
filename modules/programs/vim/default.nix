@@ -1,7 +1,7 @@
 { lib, pkgs, config, ... }:
 let
   cfg = config.custom.programs.vim;
-  plugins = (import ./plugins.nix) pkgs.vimPlugins;
+  plugins = (import ./plugins.nix) { vimPlugins = pkgs.vimPlugins; inherit pkgs; };
   vim-config = {
     programs.vim = {
       enable = true;
@@ -17,14 +17,7 @@ let
       extraConfig = (builtins.readFile ./common.vim) + (builtins.readFile ./neovim.vim);
       coc = {
         enable = true;
-        settings = {
-          languageserver = {
-            # nix = {
-            #   command = "${pkgs.rnix-lsp}/bin/rnix-lsp";
-            #   filetypes =  [ "nix" ];
-            # };
-          };
-        };
+        settings = (import ./coc.nix) { inherit pkgs; };
       };
       viAlias = true;
       vimAlias = true;

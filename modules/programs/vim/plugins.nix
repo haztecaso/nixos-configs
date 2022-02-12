@@ -1,6 +1,12 @@
-{ vimPlugins }: with vimPlugins; {
+{ vimPlugins, pkgs }: with vimPlugins; rec {
   vim = [
-    ack-vim
+    {
+      plugin = ack-vim;
+      config = ''
+        let g:ackprg = '${pkgs.ag}/bin/ag --vimgrep'
+        map <leader>f :Ack! 
+      '';
+     }
     gruvbox
     vim-commentary
     vim-easymotion
@@ -9,7 +15,7 @@
     vim-nix
     vim-vinegar
   ];
-  neovim = common ++ [
+  neovim = vim ++ [
     {
       plugin = vimtex;
       config = ''
@@ -51,9 +57,9 @@
     coc-texlab
     coc-html
     coc-css
-    coc-sh
-    coc-pyrigth
+    coc-pyright
     coc-tsserver
-    coc-tailwindcss
+    # coc-tailwindcss
+    # coc-sh
   ];
 }
