@@ -63,3 +63,17 @@ let g:netrw_banner = 0
 " Options for filetypes
 autocmd FileType markdown :setlocal wrap
 autocmd FileType nix :packadd vim-nix
+
+" functions
+
+" https://stackoverflow.com/a/8462159
+function! EnsureDirExists (dir)
+  if !isdirectory(a:dir)
+    if exists("*mkdir")
+      call mkdir(a:dir,'p')
+      echo "Created directory: " . a:dir
+    else
+      echo "Please create directory: " . a:dir
+    endif
+  endif
+endfunction

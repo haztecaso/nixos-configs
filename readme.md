@@ -2,7 +2,6 @@
 
 ## To do
 
-- Automatically create `~/.vim/swap`, `~/.vim/backup` and `~/.vim/undo` folders
 - Manage copy of ssh keys
 - Decide how to manage secrets:
   - [agenix](https://github.com/ryantm/agenix/)
