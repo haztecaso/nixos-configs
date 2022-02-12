@@ -2,7 +2,6 @@
 filetype plugin on
 filetype indent on
 set number
-set signcolumn=no
 set cursorline
 set textwidth=80
 set ruler
