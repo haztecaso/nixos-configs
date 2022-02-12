@@ -26,7 +26,7 @@ in
       vim.package = "neovim";
     };
 
-    shortcuts = {
+    shortcuts.paths = {
       sr = "~/src";
       u  = "~/Nube/uni/Actuales";
       mo = "~/Nube/money";
