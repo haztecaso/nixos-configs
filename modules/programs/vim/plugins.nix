@@ -1,12 +1,6 @@
 { vimPlugins, pkgs }: with vimPlugins; rec {
   vim = [
-    {
-      plugin = ack-vim;
-      config = ''
-        let g:ackprg = '${pkgs.ag}/bin/ag --vimgrep'
-        map <leader>f :Ack! 
-      '';
-     }
+    ack-vim
     gruvbox
     vim-commentary
     vim-easymotion
