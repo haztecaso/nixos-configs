@@ -8,6 +8,7 @@
     vim-lastplace
     vim-nix
     vim-vinegar
+    vim-endwise
   ];
   neovim = vim ++ [
     {
@@ -39,6 +40,19 @@
           \}
         set conceallevel=1
         let g:tex_conceal='abmg'
+      '';
+    }
+    {
+      plugin = vim-airline;
+      config = ''
+        let g:airline#extensions#tabline#enabled = 1
+        let g:airline_symbols_ascii = 1
+      '';
+    }
+    {
+      plugin = ctrlp;
+      config = ''
+        let g:ctrlp_show_hidden = 1
       '';
     }
     coc-nvim
