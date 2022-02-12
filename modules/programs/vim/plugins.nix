@@ -8,7 +8,7 @@
     vim-lastplace
     vim-nix
     vim-vinegar
-    vim-endwise
+    # vim-endwise #incompatible with coc
   ];
   neovim = vim ++ [
     {
