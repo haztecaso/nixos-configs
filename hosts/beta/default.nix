@@ -24,6 +24,7 @@ in
         defaultShell = pkgs.bash; # TODO: Disable zsh for now, until I discover how to prolerly set EDITOR and VISUAL variables...
       };
       vim.package = "neovim";
+      latex.enable = true;
     };
 
     shortcuts.paths = {
