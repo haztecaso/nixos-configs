@@ -12,7 +12,7 @@ in
       programs.texlive = {
         enable = true;
         extraPackages = tpkgs: {
-          inherit (tpkgs) scheme-medium adjustbox babel-german background
+          inherit (tpkgs) scheme-full adjustbox babel-german background
           biblatex bidi blindtext cleveref collectbox csquotes easylist enumitem
           environ everypage filehook fixme fontawesome5 footmisc footnotebackref
           framed fvextra hanging hyphenat imakeidx ifmtarg leftidx letltxmacro
