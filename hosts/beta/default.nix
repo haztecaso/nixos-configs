@@ -27,10 +27,17 @@ in
     };
 
     shortcuts.paths = {
+      D  = "~/Downloads";
+      cf = "~/.config";
+      d  = "~/Documents";
+      l  = "~/Nube/lecturas";
+      mm = "~/Music";
+      mo = "~/Nube/money";
+      n  = "/etc/nixos";
+      pp = "~/Pictures";
       sr = "~/src";
       u  = "~/Nube/uni/Actuales";
-      mo = "~/Nube/money";
-      l  = "~/Nube/lecturas";
+      vv = "~/Videos";
     };
 
     desktop = {
