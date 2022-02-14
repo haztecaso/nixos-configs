@@ -18,6 +18,7 @@
     "json"
   ];
   "diagnostic.checkCurrentLine" = true;
+  "texlab.path" = "${pkgs.texlab}/bin/texlab";
   languageserver = {
     # nix = {
     #   command = "${pkgs.rnix-lsp}/bin/rnix-lsp";
