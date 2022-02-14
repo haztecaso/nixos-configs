@@ -23,6 +23,7 @@ let
       vimAlias = true;
       vimdiffAlias = true;
     };
+    xdg.configFile."coc/ultisnips".source = ./snippets;
   };
   mkHomeConfig = conf: {
     home-manager.users = {
