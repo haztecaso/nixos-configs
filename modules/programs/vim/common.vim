@@ -77,8 +77,3 @@ function! EnsureDirExists (dir)
     endif
   endif
 endfunction
-
-" PLUGIN CONFIGS
-
-let g:ackprg = '${pkgs.ag}/bin/ag --vimgrep'
-map <leader>f :Ack! 

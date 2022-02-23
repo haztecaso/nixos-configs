@@ -1,6 +1,6 @@
 { vimPlugins, pkgs }: with vimPlugins; rec {
   vim = [
-    ack-vim
+    # ack-vim #TODO: include ack-vim with config in vim
     gruvbox
     vim-commentary
     vim-easymotion
@@ -11,6 +11,13 @@
     # vim-endwise #incompatible with coc
   ];
   neovim = vim ++ [
+    {
+      plugin = ack-vim;
+      config = ''
+        let g:ackprg = '${pkgs.ag}/bin/ag --vimgrep'
+        map <leader>f :Ack! 
+      '';
+    }
     {
       plugin = vimtex;
       config = ''
