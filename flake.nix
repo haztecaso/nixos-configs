@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/release-21.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-21.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,17 +25,20 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, utils, agenix, nixos-hardware, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, utils, agenix, nixos-hardware, nixpkgs-unstable, ... }:
   let
     flake_overlay = final: prev: {
       impo     = inputs.impo.packages.${final.system}.impo;
       jobo_bot = inputs.jobo_bot.packages.${final.system}.jobo_bot;
     };
+    overlay_unstable = final: prev: {
+      unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+    };
   in utils.lib.mkFlake
   {
     inherit self inputs;
 
-    sharedOverlays = [ flake_overlay self.overlay ];
+    sharedOverlays = [ flake_overlay overlay_unstable self.overlay ];
 
     hostDefaults = {
       modules = [
