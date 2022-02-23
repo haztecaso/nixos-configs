@@ -4,6 +4,7 @@ in
 {
   imports = [
     ./latex
+    ./ranger
     ./shells
     ./tmux
     ./vim

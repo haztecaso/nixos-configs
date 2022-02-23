@@ -81,7 +81,6 @@ in
         git
         htop
         killall
-        ranger
         rsync
         tree
         unzip
