@@ -14,7 +14,7 @@ in
     base = {
       hostname = "nixpi";
       eth = { interface = "eth0"; useDHCP = true; };
-    }
+    };
 
     programs = {
       tmux.color = "#aaee00";
