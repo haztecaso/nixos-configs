@@ -40,7 +40,7 @@ let
       scrot
       # soulseekqt
       sxiv
-      tdesktop
+      unstable.tdesktop
       tor-browser-bundle-bin
       transmission-gtk
       vlc
