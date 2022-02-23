@@ -2,7 +2,7 @@
 let
   cfg = config.custom.programs.ranger;
   includeDefault = file: builtins.readFile "${pkgs.ranger}/lib/python3.9/site-packages/ranger/config/${file}";
-  mkShortcutMaps = name: path map (a: "map "+a.prefix+name+" "+a.cmd+" "+path) cfg.actions;
+  mkShortcutMaps = name: path: map (a: "map "+a.prefix+name+" "+a.cmd+" "+path) cfg.actions;
   shortcuts = with lib; concatStringsSep "\n" (
     concatLists (
       attrValues (
@@ -49,7 +49,7 @@ in
           ''
             ${includeDefault "rc.conf"}
             # Commands defined by nix configuration
-            ${mkShortcuts cfg.shortcuts cfg.shortcutsCommands}
+            ${shortcuts}
       
             # Extra config defined by nix configuration
             ${cfg.extraOptions}
