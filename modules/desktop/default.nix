@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ contailwindcssfig, lib, pkgs, ... }:
 let
   home-config = {
     imports = [
@@ -25,9 +25,9 @@ let
       evince
       # filezilla
       firefox
-      # gimp
+      gimp
       hsetroot
-      # inkscape
+      inkscape
       # kdenlive
       libreoffice
       light
