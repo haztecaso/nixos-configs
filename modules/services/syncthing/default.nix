@@ -4,15 +4,14 @@ let
   cfg = config.custom.services.syncthing;
 in
 {
-  options.custom.services.syncthing = {
-    enable = lib.mkEnableOption "custom vaultwarden service";
+  options.custom.services.syncthing = with lib; {
+    enable = mkEnableOption "custom vaultwarden service";
   };
 
   config = lib.mkIf cfg.enable {
     services.syncthing = {
       enable = true;
     
-      extraOptions.gui.enabled = false;
       openDefaultPorts = true;
     
       devices = {
@@ -21,6 +20,11 @@ in
       };
     
       folders = {
+        uni-moodle = {
+          devices = [ "macbook" "realmi8" ];
+          id = "uni-moodle";
+          path = "/var/lib/syncthing/uni-moodle";
+        };
         nube = {
           devices = [ "macbook" "realmi8" ];
           id = "default";
