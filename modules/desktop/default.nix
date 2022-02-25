@@ -1,4 +1,4 @@
-{ contailwindcssfig, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 let
   home-config = {
     imports = [
