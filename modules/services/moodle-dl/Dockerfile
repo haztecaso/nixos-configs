@@ -1,4 +1,5 @@
-FROM python:3.8-alpine
-RUN apk add --no-cache ffmpeg
-RUN pip install moodle-dl
-RUN echo helo world
+FROM python:3
+RUN apt install git
+RUN git clone https://github.com/C0D3D3V/Moodle-Downloader-2 /md
+WORKDIR /md
+RUN pip install .
