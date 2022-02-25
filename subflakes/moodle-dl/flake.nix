@@ -1,10 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/release-21.11";
-    mach-nix = {
-      url = "mach-nix/3.4.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    mach-nix.url = "mach-nix/3.4.0";
   };
 
   outputs = {self, nixpkgs, mach-nix }:

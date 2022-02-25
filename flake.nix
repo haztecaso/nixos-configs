@@ -15,10 +15,7 @@
       url = "github:NixOS/nixos-hardware/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    moodle-dl = {
-      url = "./subflakes/moodle-dl";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    moodle-dl.url = "./subflakes/moodle-dl";
     impo = {
       url = "github:haztecaso/impo";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -43,7 +40,7 @@
     flake_overlay = final: prev: {
       impo      = inputs.impo.packages.${final.system}.impo;
       jobo_bot  = inputs.jobo_bot.packages.${final.system}.jobo_bot;
-      moodle-dl = inputs.moodle-dl.packages.${final.system}.moodle-dl;
+      moodle-dl = inputs.moodle-dl.defaultPackage.${final.system};
     };
     overlay_unstable = final: prev: {
       unstable = nixpkgs-unstable.legacyPackages.${prev.system};
