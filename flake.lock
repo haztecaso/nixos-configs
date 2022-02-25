@@ -170,11 +170,11 @@
       },
       "locked": {
         "narHash": "sha256-ipb1gSmM43JwqXOAm/ID/n2gyCpnZm0NuHGY+e+kCuY=",
-        "path": "/nix/store/2vim88wnq3h2xrpllb1s1s046gj94ca4-source/subflakes/moodle-dl",
+        "path": "/nix/store/vp9066kwsfxcqfpq8l9wwyfq9kcgkb61-source/subflakes/moodle-dl",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/2vim88wnq3h2xrpllb1s1s046gj94ca4-source/subflakes/moodle-dl",
+        "path": "/nix/store/vp9066kwsfxcqfpq8l9wwyfq9kcgkb61-source/subflakes/moodle-dl",
         "type": "path"
       }
     },
