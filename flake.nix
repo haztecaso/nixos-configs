@@ -15,6 +15,10 @@
       url = "github:NixOS/nixos-hardware/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    moodle-dl = {
+      url = "./subflakes/moodle-dl";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     impo = {
       url = "github:haztecaso/impo";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,11 +29,21 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, utils, agenix, nixos-hardware, nixpkgs-unstable, ... }:
+  outputs = inputs@{
+    self,
+    agenix,
+    home-manager,
+    nixos-hardware,
+    nixpkgs,
+    nixpkgs-unstable,
+    utils,
+    ...
+  }:
   let
     flake_overlay = final: prev: {
-      impo     = inputs.impo.packages.${final.system}.impo;
-      jobo_bot = inputs.jobo_bot.packages.${final.system}.jobo_bot;
+      impo      = inputs.impo.packages.${final.system}.impo;
+      jobo_bot  = inputs.jobo_bot.packages.${final.system}.jobo_bot;
+      moodle-dl = inputs.moodle-dl.packages.${final.system}.moodle-dl;
     };
     overlay_unstable = final: prev: {
       unstable = nixpkgs-unstable.legacyPackages.${prev.system};
