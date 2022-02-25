@@ -64,5 +64,6 @@ in
     };
   in {
     home-manager.users.skolem = { ... }: conf;
+    home-manager.users.root   = { ... }: conf;
   });
 }
