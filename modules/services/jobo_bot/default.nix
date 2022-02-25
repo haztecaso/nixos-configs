@@ -23,8 +23,7 @@ in
     services.cron = {
       enable = true;
       systemCronJobs = [
-        ''*/${i2s cfg.frequency} * * * *  root . /etc/profile; ${pkgs.jobo_bot}/bin/jobo_bot --conf ${config.age.secrets."jobo_bot.conf".path} ${if cfg.prod then "--prod"
-        else ""}''
+        ''*/${i2s cfg.frequency} * * * *  root . /etc/profile; ${pkgs.jobo_bot}/bin/jobo_bot --conf ${config.age.secrets."jobo_bot.conf".path} ${if cfg.prod then "--prod" else ""}''
       ];
     };
     age.secrets."jobo_bot.conf".file = ../../../secrets/jobo_bot.age;
