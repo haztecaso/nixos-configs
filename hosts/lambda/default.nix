@@ -16,6 +16,7 @@
     services = {
       vaultwarden.enable = true;
       syncthing.enable = true;
+      moodle-dl.enable = true;
       jobo_bot = {
         enable = true;
         frequency = 20;

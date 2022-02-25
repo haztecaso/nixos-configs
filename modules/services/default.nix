@@ -2,7 +2,8 @@
 {
   imports = [
     ./jobo_bot
-    ./vaultwarden
+    ./moodle-dl
     ./syncthing
+    ./vaultwarden
   ];
 }
