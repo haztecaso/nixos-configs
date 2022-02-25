@@ -1,5 +1,3 @@
-#TODO: Use HMAC
-# https://thumbor.readthedocs.io/en/latest/security.html
 { config, lib, pkgs, ... }: {
   options.custom.webserver.thumbor = {
     enable = lib.mkEnableOption "thumbor thumbnail service";
