@@ -76,6 +76,7 @@ in
       "super + XF86Audio{Raise,Lower}Volume" = pamixer_cmd "{-i,-d} 5";
       "super + alt + XF86Audio{Raise,Lower}Volume" = pamixer_cmd "{-i,-d} 1";
       "XF86AudioMute" = pamixer_cmd "-t";
+      "XF86AudioMicMute" = pamixer_cmd "--source 1 -t";
       "super + XF86AudioMute" = pamixer_cmd "--set-volume 0";
 
       # Screen brightness
