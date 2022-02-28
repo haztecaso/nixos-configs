@@ -17,7 +17,7 @@
       vaultwarden.enable = true;
       syncthing = {
          enable = true;
-         folders = [  "uni-moodle" "nube" "android-camara" ];
+         folders = [ "uni-moodle" "nube" "android-camara" ];
        };
       moodle-dl.enable = true;
       jobo_bot = {
