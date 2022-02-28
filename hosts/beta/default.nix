@@ -31,7 +31,7 @@ in
       l  = "~/Nube/lecturas";
       mm = "~/Music";
       mo = "~/Nube/money";
-      n  = "/etc/nixos";
+      n  = "~/nixos-configs";
       pp = "~/Pictures";
       sr = "~/src";
       u  = "~/Nube/uni/Actuales";
