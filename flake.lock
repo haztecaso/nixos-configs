@@ -169,13 +169,19 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "narHash": "sha256-ipb1gSmM43JwqXOAm/ID/n2gyCpnZm0NuHGY+e+kCuY=",
-        "path": "/nix/store/a8xzcsds7bd2nzxckxcn749z2557mj7n-source/subflakes/moodle-dl",
-        "type": "path"
+        "dir": "moodle-dl",
+        "lastModified": 1646038266,
+        "narHash": "sha256-AycVf1CojRqeQLWVM22BGLJTm7jQbdA1QS2wqcw1oNA=",
+        "owner": "haztecaso",
+        "repo": "flakes",
+        "rev": "a82e0a983bd10278eb73fb8b1e6420ab1ed6cca1",
+        "type": "github"
       },
       "original": {
-        "path": "/nix/store/a8xzcsds7bd2nzxckxcn749z2557mj7n-source/subflakes/moodle-dl",
-        "type": "path"
+        "dir": "moodle-dl",
+        "owner": "haztecaso",
+        "repo": "flakes",
+        "type": "github"
       }
     },
     "nixos-hardware": {
