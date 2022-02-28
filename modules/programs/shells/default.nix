@@ -21,7 +21,7 @@ in
     };
     defaultShell = mkOption {
       type = types.package;
-      default = pkgs.bash; # TODO: bashfor now, until I discover how to prolerly set EDITOR and VISUAL variables on zsh...
+      default = pkgs.bash; # TODO: bash for now, until I discover how to prolerly set EDITOR and VISUAL variables on zsh...
     };
   };
 
