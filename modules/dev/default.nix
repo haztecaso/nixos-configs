@@ -8,7 +8,7 @@ in
   options.custom.dev = with lib; {
     enable = mkEnableOption "Custom desktop environment (wm: xmonad)";
     pythonPackages = mkOption {
-      type = types.enum pythonPackageNames;
+      # type = types.enum pythonPackageNames; #TODO: fix
       default = [];
       description = "Set of python packages to install globally";
     };
