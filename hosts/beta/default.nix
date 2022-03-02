@@ -8,6 +8,7 @@ in
 
   home-manager.users.skolem = { ... }: {
     services.syncthing.enable = true;
+    home.packages = with pkgs; [ beancount fava ];
   };
 
   custom = {
@@ -19,23 +20,37 @@ in
     };
 
     programs = {
+      shells.aliases = {
+        ".." = "cd ..";
+        less = "less --quit-if-one-screen --ignore-case --status-column --LONG-PROMPT --RAW-CONTROL-CHARS --HILITE-UNREAD --tabs=4 --no-init --window=-4";
+        r = "ranger";
+        cp = "cp -i";
+        ytd = "youtube-dl";
+        python = "${pkgs.python38Packages.ipython}/bin/ipython";
+      };
       tmux.color = "#aaee00";
       vim.package = "neovim";
       latex.enable = true;
     };
 
-    shortcuts.paths = {
-      D  = "~/Downloads";
-      cf = "~/.config";
-      d  = "~/Documents";
-      l  = "~/Nube/lecturas";
-      mm = "~/Music";
-      mo = "~/Nube/money";
-      n  = "~/nixos-configs";
-      pp = "~/Pictures";
-      sr = "~/src";
-      u  = "~/Nube/uni/Actuales";
-      vv = "~/Videos";
+    shortcuts= {
+      paths = {
+        D  = "~/Downloads";
+        cf = "~/.config";
+        d  = "~/Documents";
+        l  = "~/Nube/lecturas";
+        mm = "~/Music";
+        mo = "~/Nube/money";
+        n  = "~/nixos-configs";
+        pp = "~/Pictures";
+        sr = "~/src";
+        u  = "~/Nube/uni/Actuales";
+        vv = "~/Videos";
+      };
+      uni = {
+        enabled = true;
+        asignaturas = [ "tpro" "gcomp" "afvc" "topo" ];
+      };
     };
 
     desktop = {
@@ -44,7 +59,14 @@ in
       fontSize = 8;
     };
 
-    dev.enable = true;
+    dev = {
+      enable = true;
+      pythonPackages = with pkgs.pythonPackages; [
+        numpy
+        matplotlib
+        ipython
+      ];
+    };
 
     stateVersion = "21.11";
   };
