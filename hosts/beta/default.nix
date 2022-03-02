@@ -48,7 +48,7 @@ in
         vv = "~/Videos";
       };
       uni = {
-        enabled = true;
+        enable = true;
         asignaturas = [ "tpro" "gcomp" "afvc" "topo" ];
       };
     };
@@ -61,10 +61,10 @@ in
 
     dev = {
       enable = true;
-      pythonPackages = with pkgs.pythonPackages; [
-        numpy
-        matplotlib
-        ipython
+      pythonPackages = [
+        "numpy"
+        "matplotlib"
+        "ipython"
       ];
     };
 
