@@ -22,6 +22,7 @@ in
           key_bindings = [
             { key = "K"; mods = "Control|Alt"; action = "IncreaseFontSize"; }
             { key = "J"; mods = "Control|Alt"; action = "DecreaseFontSize"; }
+            { key = "Return"; mods = "Control|Shift"; action = "SpawnNewInstance"; }
           ];
           
           cursor = { style = "Beam"; vi_mode_style = "Block"; };
