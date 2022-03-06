@@ -1,3 +1,7 @@
+# IDEAS
+# Use only nginx with image_filter module:
+# - https://charlesleifer.com/blog/nginx-a-caching-thumbnailing-reverse-proxying-image-server-/
+
 { config, lib, pkgs, ... }: {
   options.custom.webserver.thumbor = {
     enable = lib.mkEnableOption "thumbor thumbnail service";
@@ -10,28 +14,28 @@
       ports = [ "8001:80" ];
       volumes = [ "${config.age.secrets."thumbor".path}:/app/thumbor.conf" ];
     };
-    #TODO: Caching with nginx
-    # virtualisation.oci-containers.containers."thumbor-nginx-proxy-cache" = {
-    #   image = "minimalcompact/thumbor-nginx-proxy-cache:latest";
-    #   ports = [ "8001:80" ];
-    #   environment = {
-    #     PROXY_CACHE_SIZE = "2g";
-    #     PROXY_CACHE_MEMORY_SIZE = "500m";
-    #     PROXY_CACHE_INACTIVE = "300m";
-    #   };
-    #   volumes = [
-    #     "/var/run/docker.sock:/tmp/docker.sock:ro"
-    #     "/var/cache/thumbor:/var/cache/nginx"
-    #   ];
-    # };
     services = {
-      nginx.virtualHosts = {
-        thumbor = {
-          enableACME = true;
-          forceSSL = true;
-          serverName = "img.haztecaso.com";
-          locations."/" = {
-            proxyPass = "http://127.0.0.1:8001";
+      nginx = {
+        appendHttpConfig = ''
+          proxy_cache_path /tmp/thumbor-cache levels=1:2 keys_zone=thumbor_cache:16M inactive=30d max_size=1000M;
+        '';
+        virtualHosts = {
+          thumbor = {
+            enableACME = true;
+            forceSSL = true;
+            serverName = "img.haztecaso.com";
+            locations."/" = {
+              proxyPass = "http://127.0.0.1:8001";
+              extraConfig = ''
+                proxy_cache thumbor_cache;
+                proxy_cache_key $host$document_uri$is_args$args;
+                proxy_cache_lock on;
+                proxy_cache_valid 30d;
+                proxy_cache_use_stale error timeout updating;
+                proxy_http_version 1.1;
+                expires 30d;
+              '';
+            };
           };
         };
       };
