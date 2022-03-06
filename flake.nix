@@ -15,7 +15,10 @@
       url = "github:NixOS/nixos-hardware/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    moodle-dl.url = "github:haztecaso/flakes?dir=moodle-dl";
+    moodle-dl = {
+      url = "github:haztecaso/flakes?dir=moodle-dl";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     impo = {
       url = "github:haztecaso/impo";
       inputs.nixpkgs.follows = "nixpkgs";

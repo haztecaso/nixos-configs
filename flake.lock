@@ -166,7 +166,9 @@
     "moodle-dl": {
       "inputs": {
         "mach-nix": "mach-nix",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "dir": "moodle-dl",
@@ -233,25 +235,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1646331602,
-        "narHash": "sha256-cRuytTfel52z947yKfJcZU7zbQBgM16qqTf+oJkVwtg=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "ad267cc9cf3d5a6ae63940df31eb31382d6356e6",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_3": {
-      "locked": {
-        "lastModified": 1646416052,
-        "narHash": "sha256-bfV62gYQGYjb/Gvw6MdMuEvWCcC838mI1Dzi1efjqTA=",
+        "lastModified": 1646577136,
+        "narHash": "sha256-hEX/nvO8ReECp+1TXGaTzsSu6eUGc2nvoUu9oWUW/iM=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "c78fc23f108b9a3bea9bf8693d2943ee0269c804",
+        "rev": "c15df737862b39e51e2ca37b157122056116e138",
         "type": "github"
       },
       "original": {
@@ -285,7 +273,7 @@
         "jobo_bot": "jobo_bot",
         "moodle-dl": "moodle-dl",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "utils": "utils"
       }
