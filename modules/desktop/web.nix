@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  home.packages = with pkgs; [ buku keyutils ];
+  home.packages = with pkgs; [ buku keyutils chromium ];
   programs.qutebrowser = {
     enable = true;
     settings = {
