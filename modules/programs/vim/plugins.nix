@@ -55,6 +55,7 @@
     coc-css
     coc-pyright
     coc-tsserver
+    vim-snippets
     # coc-tailwindcss
     # coc-sh
   ];
