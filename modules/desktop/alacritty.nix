@@ -26,6 +26,8 @@ in
           ];
           
           cursor = { style = "Beam"; vi_mode_style = "Block"; };
+
+          mouse.hide_when_typing = true;
     
           colors = {
             primary = {
