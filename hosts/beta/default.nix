@@ -4,7 +4,7 @@ in
 {
   imports = [ ./hardware.nix ./monitors.nix ];
 
-  nix.gc.options = "--delete-older-than 7d";
+  nix.gc.options = "--delete-older-than 18d";
 
   home-manager.users.skolem = { ... }: {
     services.syncthing.enable = true;
