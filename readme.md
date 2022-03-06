@@ -2,6 +2,7 @@
 
 ## To do
 
+- ssh over tor: https://mdleom.com/blog/2020/03/16/tor-hidden-onion-nixos/
 - Manage copy of ssh keys
 - Decide how to manage secrets:
   - [agenix](https://github.com/ryantm/agenix/)
