@@ -63,7 +63,7 @@ in
       "super + shift + t" = "${pkgs.tdesktop}/bin/telegram-desktop";
       "{XF86LaunchA, Print}" = "${pkgs.flameshot}/bin/flameshot gui";
       "XF86LaunchB" = "${pkgs.alacritty}/bin/alacritty -e ssh skolem@haztecaso.com";
-      "XF86Eject" = "${pkgs.betterlockscreen}/bin/betterlockscreen -l dim";
+      "{XF86Eject, XF86Favorites}" = "${pkgs.betterlockscreen}/bin/betterlockscreen -l dim";
 
       # Media keys
       "XF86Audio{Prev,Next,Play}" = "${pkgs.playerctl}/bin/playerctl -p mpd {previous,next,play-pause}";
