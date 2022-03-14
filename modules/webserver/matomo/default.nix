@@ -11,6 +11,10 @@
           serverName = "matomo.haztecaso.com";
           forceSSL = true;
           enableACME = true;
+          extraConfig = ''
+            error_log syslog:server=unix:/dev/log debug;
+            access_log syslog:server=unix:/dev/log,tag=matomo;
+          '';
         };
       };
       mysql = {

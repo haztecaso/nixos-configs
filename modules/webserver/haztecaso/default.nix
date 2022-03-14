@@ -9,6 +9,10 @@
           enableACME = true;
           forceSSL = true;
           root = "/var/www/haztecaso.com";
+          extraConfig = ''
+            error_log syslog:server=unix:/dev/log debug;
+            access_log syslog:server=unix:/dev/log,tag=haztecaso;
+          '';
 
           # Radio archive
           locations."/radio/archivo/".extraConfig = ''

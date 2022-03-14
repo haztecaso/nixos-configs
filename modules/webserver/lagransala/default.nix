@@ -18,6 +18,10 @@ in
           forceSSL = true;
           # root = inputs.www-lagransala;
           root = "/var/www/lagransala.es";
+          extraConfig = ''
+            error_log syslog:server=unix:/dev/log debug;
+            access_log syslog:server=unix:/dev/log,tag=lagransala;
+          '';
         };
         "lagransala.org" = redirectConfig;
         "lagransala.com" = redirectConfig;

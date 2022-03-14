@@ -20,6 +20,13 @@
       - Can encrypt full .nix files
 - Fusionar con configs del portatil
 
+## Tips
+
+- nginx webserver logs are managed with journalctl. For example:
+  ```bash
+  journalctl -f --since today -u nginx
+  ```
+
 ## Hosts
 
 ### lambda

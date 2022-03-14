@@ -24,6 +24,10 @@
             enableACME = true;
             forceSSL = true;
             serverName = "img.haztecaso.com";
+            extraConfig = ''
+              error_log syslog:server=unix:/dev/log debug;
+              access_log syslog:server=unix:/dev/log,tag=thumbor;
+            '';
             locations."/" = {
               proxyPass = "http://127.0.0.1:8001";
               extraConfig = ''
