@@ -12,9 +12,13 @@ in
       default = [];
       description = "Set of python packages to install globally";
     };
+    direnv = {
+      enable = mkEnableOption "direnv support";
+    };
   };
 
-  config = lib.mkIf config.custom.dev.enable {
+  config = lib.mkMerge [
+    (lib.mkIf cfg.enable {
       environment.systemPackages = with pkgs; [
         wget
         axel
@@ -26,5 +30,23 @@ in
         ncdu
         python38Full
       ] ++ pythonPackages;
-  };
+    })
+    (lib.mkIf cfg.direnv.enable {
+      # nix-direnv flake support
+      nixpkgs.overlays = [
+        (self: super: { nix-direnv = super.nix-direnv.override { enableFlakes = true; }; } )
+      ];
+      environment.systemPackages = with pkgs; [ direnv nix-direnv ];
+      # nix options for derivations to persist garbage collection
+      nix.extraOptions = ''
+        keep-outputs = true
+        keep-derivations = true
+      '';
+      environment.pathsToLink = [ "/share/nix-direnv" ];
+      # shell hook
+      custom.programs.shells.initExtra = ''
+        eval "$(direnv hook bash)"
+      '';
+    })
+  ];
 }

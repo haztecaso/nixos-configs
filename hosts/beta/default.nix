@@ -66,9 +66,9 @@ in
         "matplotlib"
         "ipython"
       ];
+      direnv.enable = true;
     };
 
     stateVersion = "21.11";
   };
 }
-
