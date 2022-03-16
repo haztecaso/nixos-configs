@@ -33,6 +33,7 @@ in
 {
   imports = [
     ./latex
+    ./nnn
     ./ranger
     ./shells
     ./tmux
