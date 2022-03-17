@@ -1,13 +1,27 @@
-{ lib, pkgs, config, ... }:
+{ lib, pkgs, config, inputs, ... }:
 let
   cfg = config.custom.programs.nnn;
 in
 {
-  options.custom.programs.ranger = with lib; {
+  options.custom.programs.nnn = with lib; {
     enable = mkOption {
       type = types.bool;
       default = true;
-      description = "Enable custom ranger config with shortcuts";
+      description = "Enable custom nnn config with shortcuts";
+    };
+
+    bookmarks = mkOption {
+      type = with types; attrsOf str;
+      description = "Directory bookmarks.";
+      default = {
+          d = "~/Documents";
+          D = "~/Downloads";
+          p = "~/Pictures";
+          h = "~";
+          c = "~/.config";
+          m = "~/Music";
+          v = "~/Videos";
+      };
     };
   };
 
@@ -16,10 +30,29 @@ in
       programs.nnn = {
         enable = true;
         package = pkgs.nnn.override ({ withNerdIcons = true; });
-        bookmarks = config.custom.shortcuts.paths;
-      }
+        extraPackages = with pkgs; [ tabbed sxiv ];
+        plugins = {
+          src = "${inputs.nnn}/plugins";
+          mappings = {
+            P = "preview-tabbed";
+            f = "finder";
+            p = "preview-tui";
+            v = "imgview";
+          };
+        };
+        bookmarks = cfg.bookmarks;
+      };
     };
   in {
+    custom.programs.shells = {
+      initExtra = [ ''
+        export NNN_OPTS="aR"
+      '' ];
+      aliases = {
+        r  = "nnn";
+        nn = "nnn";
+      };
+    };
     home-manager.users.skolem = { ... }: conf;
     home-manager.users.root   = { ... }: conf;
   });

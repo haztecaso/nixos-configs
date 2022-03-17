@@ -23,10 +23,23 @@ in
       shells.aliases = {
         ".." = "cd ..";
         less = "less --quit-if-one-screen --ignore-case --status-column --LONG-PROMPT --RAW-CONTROL-CHARS --HILITE-UNREAD --tabs=4 --no-init --window=-4";
-        r = "ranger";
         cp = "cp -i";
         ytd = "youtube-dl";
         python = "${pkgs.python38Packages.ipython}/bin/ipython";
+      };
+      ranger.enable = false;
+      nnn.bookmarks = {
+        D = "~/Downloads";
+        c = "~/.config";
+        d = "~/Documents";
+        h = "~";
+        l = "~/Nube/lecturas";
+        m = "~/Music";
+        n = "~/nixos-configs";
+        p = "~/Pictures";
+        s = "~/src";
+        u = "~/Nube/uni/Actuales";
+        v = "~/Videos";
       };
       tmux.color = "#aaee00";
       vim.package = "neovim";
