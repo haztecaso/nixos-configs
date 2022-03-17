@@ -27,6 +27,10 @@
       url = "github:haztecaso/jobo_bot";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nnn = {
+      url = "github:jarun/nnn";
+      flake = false;
+    };
   };
 
   outputs = inputs@{
@@ -55,6 +59,7 @@
     sharedOverlays = [ flake_overlay overlay_unstable self.overlay ];
 
     hostDefaults = {
+      extraArgs = { inherit inputs; };
       modules = [
         ./modules
         agenix.nixosModules.age

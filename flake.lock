@@ -249,6 +249,22 @@
         "type": "github"
       }
     },
+    "nnn": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1647155270,
+        "narHash": "sha256-QKsGR6XR5mnqEPaNYdPfnJ8q4MWablTick7AEnR3f4Q=",
+        "owner": "jarun",
+        "repo": "nnn",
+        "rev": "d38841d5f327f9ae4db6ca40a286c400b422b102",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jarun",
+        "repo": "nnn",
+        "type": "github"
+      }
+    },
     "pypi-deps-db": {
       "flake": false,
       "locked": {
@@ -275,6 +291,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "nnn": "nnn",
         "utils": "utils"
       }
     },
