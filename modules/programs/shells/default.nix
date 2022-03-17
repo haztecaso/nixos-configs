@@ -24,9 +24,9 @@ in
       default = pkgs.bash; # TODO: bash for now, until I discover how to prolerly set EDITOR and VISUAL variables on zsh...
     };
     initExtra = mkOption {
-      type = types.str;
-      default = "";
-      description = "Extra lines for init file";
+      type = types.listOf types.str;
+      default = [];
+      description = "List of extra lines for init file";
     };
   };
 
@@ -40,7 +40,7 @@ in
             if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" ]]; then
               tmux attach-session -t ${hostname} || tmux new-session -s ${hostname}
             fi
-            ${cfg.initExtra}
+            ${lib.concatStrings cfg.initExtra}
           '';
         };
 
