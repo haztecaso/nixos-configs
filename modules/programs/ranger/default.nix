@@ -63,6 +63,12 @@ in
       };
     };
   in {
+    custom.programs.shells = {
+      aliases = {
+        r  = "ranger";
+        nn = "ranger";
+      };
+    };
     home-manager.users.skolem = { ... }: conf;
     home-manager.users.root   = { ... }: conf;
   });
