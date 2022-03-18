@@ -34,6 +34,7 @@ in
   imports = [
     ./latex
     ./nnn
+    ./irssi
     ./ranger
     ./shells
     ./tmux
