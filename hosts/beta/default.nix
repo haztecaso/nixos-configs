@@ -44,6 +44,7 @@ in
       tmux.color = "#aaee00";
       vim.package = "neovim";
       latex.enable = true;
+      irssi.enable = true;
     };
 
     shortcuts= {
