@@ -54,8 +54,9 @@ in
     keybindings = {
       "super + shift + alt + r" = "${pkgs.gksu}/bin/gksu \"${pkgs.systemd}/bin/systemctl restart user.slice\"";
       # Launchers
-      "super + Return" = "${term_launcher}/bin/term_launcher";
-      "super + alt + Return" = "${pkgs.alacritty}/bin/alacritty";
+      "super + Return" = "${pkgs.alacritty}/bin/alacritty";
+      "super + alt + Return" = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.tmux}/bin/tmux new-session -A -s 0";
+      "super + shift + Return" = "${term_launcher}/bin/term_launcher";
       "super + e" = "emacs"; #TODO: include package (calling emacsWithPackages)
       "super + p" = "bwmenu"; #TODO: include package
       "super + {space,s}" = "${pkgs.rofi}/bin/rofi -show {run,ssh}";
