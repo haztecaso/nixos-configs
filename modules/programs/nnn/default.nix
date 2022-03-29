@@ -46,7 +46,7 @@ in
   in {
     custom.programs.shells = {
       initExtra = [ ''
-        export NNN_OPTS="aR"
+        export NNN_OPTS="aRe"
       '' ];
       aliases = {
         r  = "nnn";
