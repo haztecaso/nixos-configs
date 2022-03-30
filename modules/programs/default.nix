@@ -32,11 +32,14 @@ let
 in
 {
   imports = [
-    ./latex
-    ./nnn
+    # ./git
     ./irssi
+    ./latex
+    ./music
+    ./nnn
     ./ranger
     ./shells
+    # ./ssh
     ./tmux
     ./vim
   ];
