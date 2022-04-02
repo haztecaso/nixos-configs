@@ -25,6 +25,13 @@
         cp = "cp -i";
         agenix = "nix run github:ryantm/agenix --";
       };
+      ranger.enable = false;
+      nnn.bookmarks = {
+        c = "~/.config";
+        h = "~";
+        n = "~/nixos-configs";
+      };
+
       tmux.color = "#aaee00";
     };
 
