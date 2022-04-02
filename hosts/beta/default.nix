@@ -43,6 +43,7 @@ in
       };
       tmux.color = "#aaee00";
       vim.package = "neovim";
+      music.enable = true;
       latex.enable = true;
       irssi.enable = true;
     };
