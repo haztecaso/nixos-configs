@@ -4,20 +4,25 @@ let
 in
 {
   options.custom.programs.music = with lib; {
-    enable = mkEnableOption "Enable music programs (mpd, mpc and ncmpcpp)";
+    enable = mkEnableOption "Enable various music programs";
     dir = mkOption {
-      type = types.str;
-      default = "~/Music/Library/";
+      type = types.path;
+      default = /home/skolem/Music/Library;
       description = "Mpd music directory";
     };
     playlistDir = mkOption {
-      type = types.str;
-      default = cfg.dir ++ "Playlists";
+      type = types.path;
+      default = cfg.dir + "/Playlists";
       description = "Mpd music directory";
     };
-    mpd_db = mkOption {
-      type = types.str;
-      default = cfg.dir ++ "mpd.db";
+    mpdDbFile = mkOption {
+      type = types.path;
+      default = cfg.dir + "/mpd.db";
+      description = "Mpd database path";
+    };
+    mpdDataDir = mkOption {
+      type = types.path;
+      default = cfg.dir + "/.mpd";
       description = "Mpd database path";
     };
   };
@@ -28,13 +33,13 @@ in
         enable = true;
         musicDirectory = cfg.dir;
         playlistDirectory = cfg.playlistDir;
-        dataDir = "~/.local/share/mpd/";
-        dbFile = cfg.mpd_db;
+        dataDir = cfg.mpdDataDir;
+        dbFile = builtins.toString cfg.mpdDbFile;
         extraConfig = ''
           audio_output {
-          type "pulse"
-          name "Pulseaudio"
-          server "127.0.0.1"
+            type "pulse"
+            name "Pulseaudio"
+            server "127.0.0.1"
           }
         '';
       };
@@ -48,6 +53,7 @@ in
           centered_cursor = true;
           user_interface = "alternative";
         };
+        mpdMusicDir = cfg.dir;
         bindings = [
           { key = "Q"; command = "quit"; }
           { key = "q"; command = "dummy"; }
