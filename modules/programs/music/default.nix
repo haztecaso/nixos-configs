@@ -10,7 +10,7 @@ in
       default = "~/Music/Library/";
       description = "Mpd music directory";
     };
-    playlistDir = {
+    playlistDir = mkOption {
       type = types.str;
       default = cfg.dir ++ "Playlists";
       description = "Mpd music directory";
