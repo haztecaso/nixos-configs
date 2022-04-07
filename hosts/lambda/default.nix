@@ -3,6 +3,11 @@
 
   nix.gc.options = "--delete-older-than 3d";
 
+  services.calibre-web = {
+    enable = true;
+    openFirewall = true;
+  };
+
   custom = {
     base = {
       hostname = "lambda";
@@ -14,6 +19,7 @@
         h  = "~";
         cf = "~/.config";
         n  = "~/nixos-configs";
+        w  = "/var/www/";
       };
     };
 
@@ -29,6 +35,7 @@
         c = "~/.config";
         h = "~";
         n = "~/nixos-configs";
+        w  = "/var/www/";
       };
 
       tmux.color = "#aaee00";
