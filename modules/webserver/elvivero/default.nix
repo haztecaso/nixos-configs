@@ -1,4 +1,8 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, ... }:
+let
+  root = "/var/www/elvivero.es";
+in
+{
   options.custom.webserver.elvivero = {
     enable = lib.mkEnableOption "elvivero.es web server";
   };
@@ -13,7 +17,7 @@
         "elvivero.es" = {
           useACMEHost = "elvivero.es";
           forceSSL = true;
-          root = "/var/www/elvivero.es";
+          root = root;
           extraConfig = ''
             expires 1d;
             error_page 404 /404.html;
@@ -29,5 +33,8 @@
       };
     };
     age.secrets."cloudflare".file = ../../../secrets/cloudflare.age;
+    custom.shortcuts.paths = {
+        we = root;
+    };
   };
 }

@@ -34,5 +34,9 @@
       recommendedProxySettings = true;
       recommendedTlsSettings = true;
     };
+
+    custom.shortcuts.paths = {
+        w  = "/var/www/";
+    };
   };
 }

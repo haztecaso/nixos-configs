@@ -1,4 +1,8 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, ... }:
+let
+  root = "/var/www/haztecaso.com";
+in
+{
   options.custom.webserver.haztecaso = {
     enable = lib.mkEnableOption "haztecaso.com web server";
   };
@@ -8,7 +12,7 @@
         "haztecaso.com" = {
           enableACME = true;
           forceSSL = true;
-          root = "/var/www/haztecaso.com";
+          root = root;
           extraConfig = ''
             error_log syslog:server=unix:/dev/log debug;
             access_log syslog:server=unix:/dev/log,tag=haztecaso;
@@ -16,7 +20,7 @@
 
           # Radio archive
           locations."/radio/archivo/".extraConfig = ''
-            alias /var/www/haztecaso.com/radio/archivo/;
+            alias ${root}/radio/archivo/;
             autoindex on;
             add_before_body /autoindex/before-radio.txt;
             add_after_body /autoindex/after-radio.txt;
@@ -28,6 +32,9 @@
           locations."/".return = "301 https://haztecaso.com$request_uri";
         };
       };
+    };
+    custom.shortcuts.paths = {
+        wh = root;
     };
   };
 }

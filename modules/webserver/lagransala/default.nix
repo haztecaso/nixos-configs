@@ -5,6 +5,7 @@ let
     forceSSL = true;
     locations."/".return = "301 https://lagransala.es$request_uri";
   };
+  root = "/var/www/lagransala.es";
 in
 {
   options.custom.webserver.lagransala = {
@@ -17,7 +18,7 @@ in
           enableACME = true;
           forceSSL = true;
           # root = inputs.www-lagransala;
-          root = "/var/www/lagransala.es";
+          root = root;
           extraConfig = ''
             error_log syslog:server=unix:/dev/log debug;
             access_log syslog:server=unix:/dev/log,tag=lagransala;
@@ -26,6 +27,9 @@ in
         "lagransala.org" = redirectConfig;
         "lagransala.com" = redirectConfig;
       };
+    };
+    custom.shortcuts.paths = {
+        wl = root;
     };
   };
 }

@@ -19,7 +19,6 @@
         h  = "~";
         cf = "~/.config";
         n  = "~/nixos-configs";
-        w  = "/var/www/";
       };
     };
 
@@ -58,7 +57,7 @@
     webserver = {
       enable = true;
       haztecaso.enable = true;
-      lagransala.enable = false;
+      lagransala.enable = false; #TODO: setup dns
       elvivero.enable = true;
       matomo.enable = true;
       thumbor.enable = true;
