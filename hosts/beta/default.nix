@@ -30,6 +30,7 @@ in
       ranger.enable = false;
       nnn.bookmarks = {
         D = "~/Downloads";
+        N = "~/Nube";
         c = "~/.config";
         d = "~/Documents";
         h = "~";
@@ -51,6 +52,7 @@ in
     shortcuts= {
       paths = {
         D  = "~/Downloads";
+        N  = "~/Nube";
         cf = "~/.config";
         d  = "~/Documents";
         l  = "~/Nube/lecturas";
