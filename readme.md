@@ -22,6 +22,11 @@
 
 ## Tips
 
+- nix flake update single input:
+```bash
+nix flake lock --update-input nixpkgs
+```
+
 - nginx webserver logs are managed with journalctl. For example:
   ```bash
   journalctl -f --since today -u nginx
