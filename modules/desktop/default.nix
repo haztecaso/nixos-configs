@@ -36,6 +36,7 @@ let
       networkmanager-vpnc
       pamixer
       pavucontrol
+      blueman
       # scantailor-advanced
       scrot
       # soulseekqt
@@ -97,6 +98,7 @@ let
       network-manager-applet.enable = true;
       pasystray.enable = true;
       blueman-applet.enable = true;
+
 
 
       flameshot = {
