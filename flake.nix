@@ -35,9 +35,6 @@
 
   outputs = inputs@{
     self,
-    agenix,
-    home-manager,
-    nixos-hardware,
     nixpkgs,
     nixpkgs-unstable,
     utils,
@@ -45,35 +42,37 @@
   }:
   let
     flake_overlay = final: prev: {
-      impo      = inputs.impo.packages.${final.system}.impo;
       jobo_bot  = inputs.jobo_bot.packages.${final.system}.jobo_bot;
       moodle-dl = inputs.moodle-dl.defaultPackage.${final.system};
     };
     overlay_unstable = final: prev: {
       unstable = nixpkgs-unstable.legacyPackages.${prev.system};
     };
-  in utils.lib.mkFlake
-  {
+  in utils.lib.mkFlake {
     inherit self inputs;
 
-    sharedOverlays = [ flake_overlay overlay_unstable self.overlay ];
+    sharedOverlays = [
+      flake_overlay
+      overlay_unstable
+      self.overlay
+      inputs.impo.overlay
+    ];
 
     hostDefaults = {
       extraArgs = { inherit inputs; };
       modules = [
         ./modules
-        agenix.nixosModules.age
-        home-manager.nixosModules.home-manager
+        inputs.agenix.nixosModule
+        inputs.home-manager.nixosModule
       ];
     };
 
     hosts = {
       lambda.modules = [ ./hosts/lambda ];
-      beta.modules = [ ./hosts/beta nixos-hardware.nixosModules.lenovo-thinkpad-x270 ];
-      nixpi = {
-        system = "aarch64-linux";
-        modules = [ ./hosts/nixpi ];
-      };
+      beta.modules = [
+        ./hosts/beta
+        inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x270
+      ];
     };
 
     overlay = import ./overlay;
