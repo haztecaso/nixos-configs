@@ -42,7 +42,6 @@
   }:
   let
     flake_overlay = final: prev: {
-      jobo_bot  = inputs.jobo_bot.packages.${final.system}.jobo_bot;
       moodle-dl = inputs.moodle-dl.defaultPackage.${final.system};
     };
     overlay_unstable = final: prev: {
@@ -56,6 +55,7 @@
       overlay_unstable
       self.overlay
       inputs.impo.overlay
+      inputs.jobo_bot.overlay
     ];
 
     hostDefaults = {
