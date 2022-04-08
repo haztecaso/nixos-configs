@@ -30,7 +30,7 @@
     nnn = { url = "github:jarun/nnn"; flake = false; };
   };
 
-  outputs = inputs@{ self, nixpkgs, utils, ...  }: utils.lib.mkFlake {
+  outputs = inputs@{ self, ...  }: inputs.utils.lib.mkFlake {
     inherit self inputs;
 
     sharedOverlays = [
