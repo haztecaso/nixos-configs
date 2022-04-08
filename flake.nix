@@ -1,7 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/release-21.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-21.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,35 +27,18 @@
       url = "github:haztecaso/jobo_bot";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nnn = {
-      url = "github:jarun/nnn";
-      flake = false;
-    };
+    nnn = { url = "github:jarun/nnn"; flake = false; };
   };
 
-  outputs = inputs@{
-    self,
-    nixpkgs,
-    nixpkgs-unstable,
-    utils,
-    ...
-  }:
-  let
-    flake_overlay = final: prev: {
-      moodle-dl = inputs.moodle-dl.defaultPackage.${final.system};
-    };
-    overlay_unstable = final: prev: {
-      unstable = nixpkgs-unstable.legacyPackages.${prev.system};
-    };
-  in utils.lib.mkFlake {
+  outputs = inputs@{ self, nixpkgs, utils, ...  }: utils.lib.mkFlake {
     inherit self inputs;
 
     sharedOverlays = [
-      flake_overlay
-      overlay_unstable
-      self.overlay
       inputs.impo.overlay
       inputs.jobo_bot.overlay
+      inputs.moodle-dl.overlay
+      (final: prev: { unstable = inputs.unstable.legacyPackages.${prev.system}; })
+      self.overlay
     ];
 
     hostDefaults = {
