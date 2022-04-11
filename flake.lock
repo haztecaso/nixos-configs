@@ -140,11 +140,11 @@
       },
       "locked": {
         "dir": "moodle-dl",
-        "lastModified": 1649379221,
-        "narHash": "sha256-dEkfaEUX+3FCoTkucoal02vbujXgY2UEEAAlk04Vh/0=",
+        "lastModified": 1649716747,
+        "narHash": "sha256-qX34fM7yZ8SdVgHGsEqJR/9m65yvi0FqlDsHXAg7Gc8=",
         "owner": "haztecaso",
         "repo": "flakes",
-        "rev": "fa9b6736b22b4a6894268672f777e7e5a85667e8",
+        "rev": "4bd7c3170319134f7c55bca3acd4da4ad5a40803",
         "type": "github"
       },
       "original": {

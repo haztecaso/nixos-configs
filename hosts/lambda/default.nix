@@ -41,7 +41,6 @@
          enable = true;
          folders = [ "uni-moodle" "nube" "android-camara" ];
        };
-      moodle-dl.enable = true;
     };
 
     webserver = {
@@ -59,13 +58,20 @@
 
   age.secrets = {
     "jobo_bot.conf".file = ../../secrets/jobo_bot.age;
+    "moodle-dl.conf".file = ../../secrets/moodle-dl.age;
   };
 
   services = {
+    moodle-dl = {
+      enable     = true;
+      configFile = config.age.secrets."moodle-dl.conf".path;
+      folder     = "/var/lib/syncthing/uni-moodle/";
+     };
+
     jobo_bot = {
-      enable = true;
-      frequency = 20;
-      prod = true;
+      enable     = true;
+      frequency  = 20;
+      prod       = true;
       configFile = config.age.secrets."jobo_bot.conf".path;
     };
   };
