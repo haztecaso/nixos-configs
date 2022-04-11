@@ -56,6 +56,7 @@
       elvivero.enable = true;
       matomo.enable = true;
       thumbor.enable = true;
+      code.enable = true;
     };
 
     stateVersion = "21.11";

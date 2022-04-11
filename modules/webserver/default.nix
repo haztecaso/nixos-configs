@@ -1,8 +1,9 @@
 { config, lib, pkgs, ... }:
 {
   imports = [
-    ./haztecaso
+    ./code
     ./elvivero
+    ./haztecaso
     ./lagransala
     ./matomo
     ./thumbor
