@@ -39,6 +39,8 @@
       beta.modules = [ ./hosts/beta inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x270 ];
     };
 
+    nixosModule = import ./modules;
+
     overlay = import ./overlay;
 
   };
