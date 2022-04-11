@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 let
-  keys = import ../../ssh-keys.nix;
+  keys = import ../ssh-keys.nix;
   cfg = config.custom.base;
 in
 {

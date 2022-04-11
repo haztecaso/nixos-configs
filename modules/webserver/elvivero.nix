@@ -32,7 +32,7 @@ in
         };
       };
     };
-    age.secrets."cloudflare".file = ../../../secrets/cloudflare.age;
+    age.secrets."cloudflare".file = ../../secrets/cloudflare.age;
     custom.shortcuts.paths = {
         we = root;
     };

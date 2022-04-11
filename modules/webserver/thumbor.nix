@@ -7,7 +7,7 @@
     enable = lib.mkEnableOption "thumbor thumbnail service";
   };
   config = lib.mkIf config.custom.webserver.thumbor.enable {
-    age.secrets."thumbor".file = ../../../secrets/thumbor.age;
+    age.secrets."thumbor".file = ../../secrets/thumbor.age;
     virtualisation.docker.enable = true;
     virtualisation.oci-containers.containers."thumbor" = {
       image = "minimalcompact/thumbor:latest";
