@@ -3,17 +3,17 @@ let
   home-config = {
 
   };
-  cfg = config.custom.desktop.polybar;
+  cfg = config.desktop.polybar;
   base = config.base;
   wifi = lib.stringLength base.wlp.interface != 0;
   eth  = lib.stringLength base.eth.interface != 0;
 in
 {
-  options.custom.desktop.polybar = {
+  options.desktop.polybar = {
     mpd = lib.mkEnableOption "polybar mpd module";
   };
 
-  config = lib.mkIf config.custom.desktop.enable {
+  config = lib.mkIf config.desktop.enable {
     home-manager.users.skolem = { ... }: {
       services.polybar = {
         enable = true;
@@ -110,7 +110,7 @@ in
           
           [module/custom-bat]
           type = custom/script
-          exec = battery_level ${config.custom.desktop.bat}
+          exec = battery_level ${config.desktop.bat}
           interval = 10
           label =  %output%%
           
@@ -118,7 +118,7 @@ in
           type = internal/battery
           full-at = 99
           adapter = ADP1
-          battery = ${config.custom.desktop.bat}
+          battery = ${config.desktop.bat}
           poll-interval = 2
           format-charging = <animation-charging>  <label-charging>
           label-charging = %percentage%%

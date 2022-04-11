@@ -153,7 +153,7 @@ let
   };
 in
 {
-  options.custom.desktop = with lib; {
+  options.desktop = with lib; {
     enable = mkEnableOption "Custom desktop environment (wm: xmonad)";
     bat = mkOption {
       type = types.str;
@@ -173,7 +173,7 @@ in
     ./monitors.nix
  ];
 
-  config = lib.mkIf config.custom.desktop.enable {
+  config = lib.mkIf config.desktop.enable {
     services = {
       xserver = {
         enable = true;

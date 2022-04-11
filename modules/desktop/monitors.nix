@@ -1,19 +1,20 @@
 { config, pkgs, lib,  ... }:
 let
-  cfg = config.custom.desktop.monitors;
+  cfg = config.desktop.monitors;
 in
   {
-  options.custom.desktop.monitors = with lib; {
+  options.desktop.monitors = with lib; {
     profiles = mkOption {
       type = lib.types.attrs;
       description = "Autorandr profiles specification (see home-manager module).";
+      default = {};
     };
      defaultTarget = mkOption {
       type = lib.types.str;
       default = "";
     };
   };
-  config = lib.mkIf config.custom.desktop.enable {
+  config = lib.mkIf config.desktop.enable {
     services.autorandr = {
       enable = true;
       defaultTarget = cfg.defaultTarget;

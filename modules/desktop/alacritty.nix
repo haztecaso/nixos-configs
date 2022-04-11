@@ -3,7 +3,7 @@ let
   font_family = "Liberation mono";
 in
 {
-  config = lib.mkIf config.custom.desktop.enable {
+  config = lib.mkIf config.desktop.enable {
     home-manager.users.skolem = { ... }: {
       programs.alacritty = {
         enable = true;
@@ -12,7 +12,7 @@ in
           scrolling = { multiplier = 3; history = 10000; };
     
           font = {
-            size = config.custom.desktop.fontSize;
+            size = config.desktop.fontSize;
             normal      = { family = font_family; style = "Regular"; };
             bold        = { family = font_family; style = "Bold"; };
             italic      = { family = font_family; style = "Italic"; };

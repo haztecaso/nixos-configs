@@ -44,6 +44,12 @@ in
     };
   };
 
+  desktop = {
+    enable = true;
+    bat = "BAT1";
+    fontSize = 8;
+  };
+
   custom = {
     programs = {
       shells.aliases = {
@@ -77,11 +83,6 @@ in
     };
 
 
-    desktop = {
-      enable = true;
-      bat = "BAT1";
-      fontSize = 8;
-    };
 
     dev = {
       enable = true;
