@@ -4,7 +4,7 @@ let
 
   };
   cfg = config.custom.desktop.polybar;
-  base = config.custom.base;
+  base = config.base;
   wifi = lib.stringLength base.wlp.interface != 0;
   eth  = lib.stringLength base.eth.interface != 0;
 in

@@ -44,16 +44,16 @@
        };
     };
 
-    webserver = {
-      enable = true;
-      haztecaso.enable = true;
-      lagransala.enable = false; # Expired domain!
-      elvivero.enable = true;
-      matomo.enable = true;
-      thumbor.enable = true;
-      code.enable = true;
-    };
 
+  };
+
+  webserver = {
+    enable = true;
+    haztecaso.enable = true;
+    elvivero.enable = true;
+    matomo.enable = true;
+    thumbor.enable = true;
+    code.enable = true;
   };
 
   age.secrets = {
