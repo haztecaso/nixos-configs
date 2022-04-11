@@ -17,8 +17,7 @@ in
       image = "codercom/code-server:latest";
       ports = [ "8002:8080" ];
       volumes = [
-        "${cfg.folder}/.config:/home/coder/.config"
-        "${cfg.folder}/project:/home/coder/project"
+        "${cfg.folder}/:/root/"
       ];
       user = "0:0";
       environment = { DOCKER_USER="root"; };
@@ -32,6 +31,11 @@ in
             serverName = "code.haztecaso.com";
             locations."/" = {
               proxyPass = "http://127.0.0.1:8002";
+              extraConfig = ''
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection upgrade;
+                proxy_set_header Accept-Encoding gzip;
+              '';
             };
           };
         };
