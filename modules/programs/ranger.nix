@@ -6,7 +6,7 @@ let
   shortcuts = with lib; concatStringsSep "\n" (
     concatLists (
       attrValues (
-        mapAttrs mkShortcutMaps config.custom.shortcuts.paths
+        mapAttrs mkShortcutMaps config.shortcuts.paths
         )
       )
     );

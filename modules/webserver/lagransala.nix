@@ -28,7 +28,7 @@ in
         "lagransala.com" = redirectConfig;
       };
     };
-    custom.shortcuts.paths = {
+    shortcuts.paths = {
         wl = root;
     };
   };

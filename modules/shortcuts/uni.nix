@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 with lib;
 let
-  cfg = config.custom.shortcuts.uni;
+  cfg = config.shortcuts.uni;
 in
   {
-    options.custom.shortcuts.uni = with lib; {
+    options.shortcuts.uni = with lib; {
       enable = mkEnableOption "Uni shortcuts";
       path = mkOption {
         type = types.str;

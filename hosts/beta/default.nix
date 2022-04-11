@@ -23,6 +23,27 @@ in
     stateVersion = "21.11";
   };
 
+  shortcuts = {
+    paths = {
+      D  = "~/Downloads";
+      N  = "~/Nube";
+      cf = "~/.config";
+      d  = "~/Documents";
+      l  = "~/Nube/lecturas";
+      mm = "~/Music";
+      mo = "~/Nube/money";
+      n  = "~/nixos-configs";
+      pp = "~/Pictures";
+      sr = "~/src";
+      u  = "~/Nube/uni/Actuales";
+      vv = "~/Videos";
+    };
+    uni = {
+      enable = true;
+      asignaturas = [ "tpro" "gcomp" "afvc" "topo" ];
+    };
+  };
+
   custom = {
     programs = {
       shells.aliases = {
@@ -55,26 +76,6 @@ in
       irssi.enable = true;
     };
 
-    shortcuts= {
-      paths = {
-        D  = "~/Downloads";
-        N  = "~/Nube";
-        cf = "~/.config";
-        d  = "~/Documents";
-        l  = "~/Nube/lecturas";
-        mm = "~/Music";
-        mo = "~/Nube/money";
-        n  = "~/nixos-configs";
-        pp = "~/Pictures";
-        sr = "~/src";
-        u  = "~/Nube/uni/Actuales";
-        vv = "~/Videos";
-      };
-      uni = {
-        enable = true;
-        asignaturas = [ "tpro" "gcomp" "afvc" "topo" ];
-      };
-    };
 
     desktop = {
       enable = true;

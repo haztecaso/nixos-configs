@@ -9,14 +9,15 @@
     stateVersion = "21.11";
   };
 
-  custom = {
-    shortcuts = {
-      paths = {
-        h  = "~";
-        cf = "~/.config";
-        n  = "~/nixos-configs";
-      };
+  shortcuts = {
+    paths = {
+      h  = "~";
+      cf = "~/.config";
+      n  = "~/nixos-configs";
     };
+  };
+
+  custom = {
 
     programs = {
       shells.aliases = {
@@ -35,10 +36,6 @@
 
       tmux.color = "#aaee00";
     };
-
-    services = {
-    };
-
 
   };
 

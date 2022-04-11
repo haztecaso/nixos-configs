@@ -36,7 +36,7 @@
       recommendedTlsSettings = true;
     };
 
-    custom.shortcuts.paths = {
+    shortcuts.paths = {
         w  = "/var/www/";
     };
   };

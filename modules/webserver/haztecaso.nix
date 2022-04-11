@@ -32,7 +32,7 @@ in
         };
       };
     };
-    custom.shortcuts.paths = {
+    shortcuts.paths = {
         wh = root;
     };
   };

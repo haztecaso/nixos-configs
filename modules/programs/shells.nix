@@ -4,7 +4,7 @@ let
   cfg              = config.custom.programs.shells;
   hostname         = config.base.hostname;
   hostnameSymbol   = config.base.hostnameSymbol;
-  shortcut_aliases = config.custom.shortcuts.aliases;
+  shortcut_aliases = config.shortcuts.aliases;
 in
 {
   options.custom.programs.shells = {

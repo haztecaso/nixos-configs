@@ -11,12 +11,12 @@ let
   mkShortcuts = paths: actions:
     zipAttrsWith (n: v: fst v) (map (action: mkShortcut action paths) actions);
 
-  cfg = config.custom.shortcuts;
+  cfg = config.shortcuts;
 in
   {
   imports = [ ./uni.nix ];
 
-  options.custom.shortcuts = {
+  options.shortcuts = {
     paths = mkOption {
       type = types.attrsOf types.str;
       default = {
