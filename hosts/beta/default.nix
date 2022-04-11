@@ -12,7 +12,7 @@ in
   };
   
   environment.systemPackages = with pkgs; [
-      yt-dlp
+      unstable.yt-dlp
   ];
 
   custom = {
@@ -28,7 +28,8 @@ in
         ".." = "cd ..";
         less = "less --quit-if-one-screen --ignore-case --status-column --LONG-PROMPT --RAW-CONTROL-CHARS --HILITE-UNREAD --tabs=4 --no-init --window=-4";
         cp = "cp -i";
-        ytd = "yt-dlp";
+        ytdl = "yt-dlp";
+        youtube-dl = "yt-dlp";
         python = "${pkgs.python38Packages.ipython}/bin/ipython";
       };
       ranger.enable = false;
