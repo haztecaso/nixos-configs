@@ -9,7 +9,7 @@
       hostnameSymbol = "λ"; 
     };
 
-    shortcuts= {
+    shortcuts = {
       paths = {
         h  = "~";
         cf = "~/.config";
@@ -47,7 +47,7 @@
     webserver = {
       enable = true;
       haztecaso.enable = true;
-      lagransala.enable = false; #TODO: setup dns
+      lagransala.enable = false; # Expired domain!
       elvivero.enable = true;
       matomo.enable = true;
       thumbor.enable = true;
@@ -55,6 +55,10 @@
     };
 
     stateVersion = "21.11";
+  };
+
+  age.secrets = {
+    "jobo_bot.conf".file = ../../secrets/jobo_bot.age;
   };
 
   services = {
@@ -65,10 +69,6 @@
       configFile = config.age.secrets."jobo_bot.conf".path;
     };
   };
-  age.secrets."jobo_bot.conf".file = ../../secrets/jobo_bot.age;
 
-  # services = {
-  #   netdata.enable = true;
-  # };
 
 }

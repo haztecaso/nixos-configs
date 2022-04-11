@@ -98,11 +98,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1649707505,
-        "narHash": "sha256-sZa6QvzpI37ajU9GDNdzd7tBZ1vNlNHYdAvfCOmkq+M=",
+        "lastModified": 1649709578,
+        "narHash": "sha256-V8hHDMt+2WYlt6a6y2EJ7po/v2kE6SiLWc7W8N6zrSQ=",
         "owner": "haztecaso",
         "repo": "jobo_bot",
-        "rev": "2101cdbd379d090c9f752673974937d800899204",
+        "rev": "3dec144d1498fb77eabd22bc3e73c0e3babf931e",
         "type": "github"
       },
       "original": {
