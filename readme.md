@@ -28,9 +28,9 @@ nix flake lock --update-input nixpkgs
 ```
 
 - nginx webserver logs are managed with journalctl. For example:
-  ```bash
-  journalctl -f --since today -u nginx
-  ```
+```bash
+journalctl -f --since today -u nginx
+```
 
 ## Hosts
 
@@ -42,30 +42,22 @@ VPS for services and web hosting.
 
 - [bitwarden server (vaultwarden)](https://bw.haztecaso.com)
 - [matomo analytics](https://matomo.haztecaso.com)
+- [thumbor image thumbnailer](https://img.haztecaso.com)
+- [vscode web](https://code.haztecaso.com)
 
 #### Webs
 
 - [haztecaso.com](https://haztecaso.com)
-- [lagransala.es](https://lagransala.es)
+- [elvivero.es](https://elvivero.es)
 
 Future:
 
-- elvivero.es: nodejs
 - zulmarecchini.com: indexhibit -> nodejs
-- lagransala.es
 - twozeroeightthree.com: jekyll
 
-### nixpi
+### beta
 
-rpi 3 for services. Not exposed to the internet.
-
-Currently running:
-
-- [jobo_bot](https://github.com/haztecaso/jobo_bot)
-
-Future:
-
-- [moodle-dl](https://github.com/C0D3D3V/Moodle-Downloader-2)
+Thinkpad x270. Personal machine.
 
 ### galois
 
