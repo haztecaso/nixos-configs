@@ -37,11 +37,6 @@
     };
 
     services = {
-      vaultwarden.enable = true;
-      syncthing = {
-         enable = true;
-         folders = [ "uni-moodle" "nube" "android-camara" ];
-       };
     };
 
 
@@ -62,6 +57,11 @@
   };
 
   services = {
+    syncthing = {
+       enable    = true;
+       folders   = [ "uni-moodle" "nube" "android-camara" ];
+     };
+
     moodle-dl = {
       enable     = true;
       configFile = config.age.secrets."moodle-dl.conf".path;
@@ -74,6 +74,8 @@
       prod       = true;
       configFile = config.age.secrets."jobo_bot.conf".path;
     };
+
+    vaultwarden.enable = true;
   };
 
 
