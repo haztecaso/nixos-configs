@@ -2,8 +2,8 @@
 with lib;
 let
   cfg              = config.custom.programs.shells;
-  hostname         = config.custom.base.hostname;
-  hostnameSymbol   = config.custom.base.hostnameSymbol;
+  hostname         = config.base.hostname;
+  hostnameSymbol   = config.base.hostnameSymbol;
   shortcut_aliases = config.custom.shortcuts.aliases;
 in
 {

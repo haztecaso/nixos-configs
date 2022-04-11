@@ -3,12 +3,13 @@
 
   nix.gc.options = "--delete-older-than 3d";
 
-  custom = {
-    base = {
-      hostname = "lambda";
-      hostnameSymbol = "λ"; 
-    };
+  base = {
+    hostname = "lambda";
+    hostnameSymbol = "λ"; 
+    stateVersion = "21.11";
+  };
 
+  custom = {
     shortcuts = {
       paths = {
         h  = "~";
@@ -53,7 +54,6 @@
       code.enable = true;
     };
 
-    stateVersion = "21.11";
   };
 
   age.secrets = {

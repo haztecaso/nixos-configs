@@ -1,38 +1,36 @@
 { config, lib, pkgs, ... }:
 let
   keys = import ../ssh-keys.nix;
-  cfg = config.custom.base;
-in
+    cfg = config.base;
+  in
 {
-  options.custom = with lib;{
+  options.base = with lib;{
     stateVersion = mkOption {
       example = "21.11";
     };
-    base = {
-      hostname = mkOption {
+    hostname = mkOption {
+      type = types.str;
+      example = "mycoolmachine";
+    };
+    hostnameSymbol = mkOption {
+      type = types.str;
+      default = cfg.hostname;
+    };
+    wlp = {
+      interface = mkOption {
         type = types.str;
-        example = "mycoolmachine";
+        default = "";
+        example = "wlp1s0";
       };
-      hostnameSymbol = mkOption {
+      useDHCP = mkEnableOption "enable dhcp for the wifi interface";
+    };
+    eth = {
+      interface = mkOption {
         type = types.str;
-        default = cfg.hostname;
+        default = "";
+        example = "enp1s0";
       };
-      wlp = {
-        interface = mkOption {
-          type = types.str;
-          default = "";
-          example = "wlp1s0";
-        };
-        useDHCP = mkEnableOption "enable dhcp for the wifi interface";
-      };
-      eth = {
-        interface = mkOption {
-          type = types.str;
-          default = "";
-          example = "enp1s0";
-        };
-        useDHCP = mkEnableOption "enable dhcp for the eth interface";
-      };
+      useDHCP = mkEnableOption "enable dhcp for the eth interface";
     };
   };
 
@@ -104,14 +102,14 @@ in
     
       home-manager.users = {
         skolem = { ... }: {
-          home.stateVersion = config.custom.stateVersion;
+          home.stateVersion = config.base.stateVersion;
         };
         root = { ... }: {
-          home.stateVersion = config.custom.stateVersion;
+          home.stateVersion = config.base.stateVersion;
         };
       };
     
-      system.stateVersion = config.custom.stateVersion;
+      system.stateVersion = config.base.stateVersion;
     }
 
     (lib.mkIf cfg.wlp.useDHCP {

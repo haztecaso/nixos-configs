@@ -15,14 +15,15 @@ in
       unstable.yt-dlp
   ];
 
-  custom = {
-    base = {
-      hostname = "beta";
-      hostnameSymbol = "β"; 
-      wlp = { interface = "wlp3s0"; useDHCP = true; };
-      eth.interface = "enp0s31f6";
-    };
+  base = {
+    hostname = "beta";
+    hostnameSymbol = "β"; 
+    wlp = { interface = "wlp3s0"; useDHCP = true; };
+    eth.interface = "enp0s31f6";
+    stateVersion = "21.11";
+  };
 
+  custom = {
     programs = {
       shells.aliases = {
         ".." = "cd ..";
@@ -91,6 +92,5 @@ in
       direnv.enable = true;
     };
 
-    stateVersion = "21.11";
   };
 }
