@@ -62,4 +62,8 @@
     stateVersion = "21.11";
   };
 
+  # services = {
+  #   netdata.enable = true;
+  # };
+
 }
