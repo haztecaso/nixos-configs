@@ -3,10 +3,10 @@
 # - https://charlesleifer.com/blog/nginx-a-caching-thumbnailing-reverse-proxying-image-server-/
 
 { config, lib, pkgs, ... }: {
-  options.custom.webserver.thumbor = {
+  options.webserver.thumbor = {
     enable = lib.mkEnableOption "thumbor thumbnail service";
   };
-  config = lib.mkIf config.custom.webserver.thumbor.enable {
+  config = lib.mkIf config.webserver.thumbor.enable {
     age.secrets."thumbor".file = ../../secrets/thumbor.age;
     virtualisation.docker.enable = true;
     virtualisation.oci-containers.containers."thumbor" = {

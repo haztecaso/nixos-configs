@@ -9,11 +9,11 @@
     ./thumbor.nix
   ];
 
-  options.custom.webserver = {
+  options.webserver = {
     enable = lib.mkEnableOption "web server";
   };
 
-  config = lib.mkIf config.custom.webserver.enable {
+  config = lib.mkIf config.webserver.enable {
     security = {
       acme = {
         acceptTerms = true;

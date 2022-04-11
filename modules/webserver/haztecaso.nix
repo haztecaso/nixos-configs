@@ -3,10 +3,10 @@ let
   root = "/var/www/haztecaso.com";
 in
 {
-  options.custom.webserver.haztecaso = {
+  options.webserver.haztecaso = {
     enable = lib.mkEnableOption "haztecaso.com web server";
   };
-  config = lib.mkIf config.custom.webserver.haztecaso.enable {
+  config = lib.mkIf config.webserver.haztecaso.enable {
     services = {
       nginx.virtualHosts = {
         "haztecaso.com" = {

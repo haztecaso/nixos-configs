@@ -1,17 +1,17 @@
 
 { config, lib, pkgs, ... }:
 let
-  cfg = config.custom.webserver.code;
+  cfg = config.webserver.code;
 in
 {
-  options.custom.webserver.code = with lib; {
+  options.webserver.code = with lib; {
     enable = mkEnableOption "code-server service";
     folder = mkOption {
       type = types.str;
       default = "/var/lib/code";
     };
   };
-  config = lib.mkIf config.custom.webserver.thumbor.enable {
+  config = lib.mkIf config.webserver.thumbor.enable {
     virtualisation.docker.enable = true;
     virtualisation.oci-containers.containers."code-server" = {
       image = "codercom/code-server:latest";

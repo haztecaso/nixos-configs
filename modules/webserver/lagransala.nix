@@ -8,10 +8,10 @@ let
   root = "/var/www/lagransala.es";
 in
 {
-  options.custom.webserver.lagransala = {
+  options.webserver.lagransala = {
     enable = lib.mkEnableOption "lagransala.es web server";
   };
-  config = lib.mkIf config.custom.webserver.lagransala.enable {
+  config = lib.mkIf config.webserver.lagransala.enable {
     services = {
       nginx.virtualHosts = {
         "lagransala.es" = {

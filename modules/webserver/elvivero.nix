@@ -3,10 +3,10 @@ let
   root = "/var/www/elvivero.es";
 in
 {
-  options.custom.webserver.elvivero = {
+  options.webserver.elvivero = {
     enable = lib.mkEnableOption "elvivero.es web server";
   };
-  config = lib.mkIf config.custom.webserver.haztecaso.enable {
+  config = lib.mkIf config.webserver.haztecaso.enable {
     security.acme.certs."elvivero.es" = {
       dnsProvider = "cloudflare";
       credentialsFile = config.age.secrets."cloudflare".path;
