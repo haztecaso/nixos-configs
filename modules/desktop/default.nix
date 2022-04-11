@@ -50,6 +50,7 @@ let
       xfce.thunar
       xorg.xev
       xorg.xmodmap
+      yt-dlp
     ];
 
     home.keyboard = {
