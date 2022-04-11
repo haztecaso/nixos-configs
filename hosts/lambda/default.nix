@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ config, pkgs, ... }: {
   imports = [ ./hardware.nix ];
 
   nix.gc.options = "--delete-older-than 3d";
@@ -42,11 +42,6 @@
          folders = [ "uni-moodle" "nube" "android-camara" ];
        };
       moodle-dl.enable = true;
-      jobo_bot = {
-        enable = true;
-        frequency = 20;
-        prod = true;
-      };
     };
 
     webserver = {
@@ -61,6 +56,16 @@
 
     stateVersion = "21.11";
   };
+
+  services = {
+    jobo_bot = {
+      enable = true;
+      frequency = 20;
+      prod = true;
+      configFile = config.age.secrets."jobo_bot.conf".path;
+    };
+  };
+  age.secrets."jobo_bot.conf".file = ../../secrets/jobo_bot.age;
 
   # services = {
   #   netdata.enable = true;

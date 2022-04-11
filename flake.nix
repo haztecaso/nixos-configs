@@ -27,6 +27,7 @@
       extraArgs = { inherit inputs; };
       modules = [
         ./modules
+        inputs.jobo_bot.nixosModule
         inputs.agenix.nixosModule
         inputs.home-manager.nixosModule
       ];
