@@ -3,11 +3,6 @@
 
   nix.gc.options = "--delete-older-than 3d";
 
-  services.calibre-web = {
-    enable = true;
-    openFirewall = true;
-  };
-
   custom = {
     base = {
       hostname = "lambda";
