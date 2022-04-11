@@ -18,7 +18,7 @@ in
       };
     };
     config = lib.mkIf cfg.enable {
-      custom.programs.shells.aliases = lib.genAttrs cfg.asignaturas (
+      programs.shells.aliases = lib.genAttrs cfg.asignaturas (
         a: "cd ${cfg.path}${a}"
       );
     };

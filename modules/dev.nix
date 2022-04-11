@@ -44,7 +44,7 @@ in
       '';
       environment.pathsToLink = [ "/share/nix-direnv" ];
       # shell hook
-      custom.programs.shells.initExtra = [''
+      programs.shells.initExtra = [''
         eval "$(direnv hook bash)"
       ''];
     })

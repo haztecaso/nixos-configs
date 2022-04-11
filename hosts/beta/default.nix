@@ -50,16 +50,19 @@ in
     fontSize = 8;
   };
 
+  programs = {
+    shells.aliases = {
+      ".." = "cd ..";
+      less = "less --quit-if-one-screen --ignore-case --status-column --LONG-PROMPT --RAW-CONTROL-CHARS --HILITE-UNREAD --tabs=4 --no-init --window=-4";
+      cp = "cp -i";
+      ytdl = "yt-dlp";
+      youtube-dl = "yt-dlp";
+      python = "${pkgs.python38Packages.ipython}/bin/ipython";
+      };
+  };
+
   custom = {
     programs = {
-      shells.aliases = {
-        ".." = "cd ..";
-        less = "less --quit-if-one-screen --ignore-case --status-column --LONG-PROMPT --RAW-CONTROL-CHARS --HILITE-UNREAD --tabs=4 --no-init --window=-4";
-        cp = "cp -i";
-        ytdl = "yt-dlp";
-        youtube-dl = "yt-dlp";
-        python = "${pkgs.python38Packages.ipython}/bin/ipython";
-      };
       ranger.enable = false;
       nnn.bookmarks = {
         D = "~/Downloads";
@@ -81,8 +84,6 @@ in
       latex.enable = true;
       irssi.enable = true;
     };
-
-
 
     dev = {
       enable = true;

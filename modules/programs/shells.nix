@@ -1,13 +1,13 @@
 { lib, pkgs, config, ... }:
 with lib;
 let
-  cfg              = config.custom.programs.shells;
+  cfg              = config.programs.shells;
   hostname         = config.base.hostname;
   hostnameSymbol   = config.base.hostnameSymbol;
   shortcut_aliases = config.shortcuts.aliases;
 in
 {
-  options.custom.programs.shells = {
+  options.programs.shells = {
     aliases = mkOption {
       type = types.attrsOf types.str;
       default = {

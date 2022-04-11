@@ -63,7 +63,7 @@ in
       };
     };
   in {
-    custom.programs.shells = {
+    programs.shells = {
       aliases = {
         r  = "ranger";
         nn = "ranger";

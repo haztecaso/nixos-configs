@@ -17,15 +17,17 @@
     };
   };
 
-  custom = {
+  programs = {
+    shells.aliases = {
+      ".." = "cd ..";
+      less = "less --quit-if-one-screen --ignore-case --status-column --LONG-PROMPT --RAW-CONTROL-CHARS --HILITE-UNREAD --tabs=4 --no-init --window=-4";
+      cp = "cp -i";
+      agenix = "nix run github:ryantm/agenix --";
+    };
+  };
 
+  custom = {
     programs = {
-      shells.aliases = {
-        ".." = "cd ..";
-        less = "less --quit-if-one-screen --ignore-case --status-column --LONG-PROMPT --RAW-CONTROL-CHARS --HILITE-UNREAD --tabs=4 --no-init --window=-4";
-        cp = "cp -i";
-        agenix = "nix run github:ryantm/agenix --";
-      };
       ranger.enable = false;
       nnn.bookmarks = {
         c = "~/.config";
@@ -33,7 +35,6 @@
         n = "~/nixos-configs";
         w  = "/var/www/";
       };
-
       tmux.color = "#aaee00";
     };
 

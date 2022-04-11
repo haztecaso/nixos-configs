@@ -44,7 +44,7 @@ in
       };
     };
   in {
-    custom.programs.shells = {
+    programs.shells = {
       initExtra = [ ''
         export NNN_OPTS="aRe"
       '' ];

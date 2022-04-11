@@ -48,7 +48,7 @@ in
       };
     };
   in {
-    custom.programs.shells = {
+    programs.shells = {
       aliases = {
         irc  = "irssi";
       };
