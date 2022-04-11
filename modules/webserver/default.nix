@@ -1,12 +1,12 @@
 { config, lib, pkgs, ... }:
 {
   imports = [
-    ./code
-    ./elvivero
-    ./haztecaso
-    ./lagransala
-    ./matomo
-    ./thumbor
+    ./code.nix
+    ./elvivero.nix
+    ./haztecaso.nix
+    ./lagransala.nix
+    ./matomo.nix
+    ./thumbor.nix
   ];
 
   options.custom.webserver = {

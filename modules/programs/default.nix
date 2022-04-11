@@ -33,13 +33,13 @@ in
 {
   imports = [
     # ./git
-    ./irssi
-    ./latex
-    ./music
-    ./nnn
-    ./ranger
-    ./shells
     # ./ssh
+    ./irssi.nix
+    ./latex.nix
+    ./music.nix
+    ./nnn.nix
+    ./ranger.nix
+    ./shells.nix
     ./tmux
     ./vim
   ];

@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
-    ./syncthing
-    ./vaultwarden
+    ./syncthing.nix
+    ./vaultwarden.nix
   ];
 }

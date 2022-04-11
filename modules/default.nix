@@ -1,8 +1,8 @@
 { ... }: {
   imports = [
-    ./base
+    ./base.nix
     ./desktop
-    ./dev
+    ./dev.nix
     ./programs
     ./services
     ./shortcuts
