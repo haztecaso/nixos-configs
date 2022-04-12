@@ -244,7 +244,9 @@
         "nixpkgs": "nixpkgs_2",
         "nnn": "nnn",
         "unstable": "unstable",
-        "utils": "utils"
+        "utils": "utils",
+        "web-elvivero": "web-elvivero",
+        "web-elvivero-frutas": "web-elvivero-frutas"
       }
     },
     "unstable": {
@@ -278,6 +280,52 @@
       "original": {
         "owner": "gytis-ivaskevicius",
         "repo": "flake-utils-plus",
+        "type": "github"
+      }
+    },
+    "web-elvivero": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "utils": [
+          "utils"
+        ]
+      },
+      "locked": {
+        "lastModified": 1649762577,
+        "narHash": "sha256-3vig5dOgFJJCbyMPlhH/TMd4BgUZjZrtbWy7Ivp2KhA=",
+        "owner": "elvivero",
+        "repo": "elvivero.es",
+        "rev": "bd5e770428fea8b6a50b9674a749123dc4de62a4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "elvivero",
+        "repo": "elvivero.es",
+        "type": "github"
+      }
+    },
+    "web-elvivero-frutas": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "utils": [
+          "utils"
+        ]
+      },
+      "locked": {
+        "lastModified": 1649765275,
+        "narHash": "sha256-37B22gAcmqppvG1cV03gqIBZAnXE6y82rj+vtNXz5io=",
+        "owner": "elvivero",
+        "repo": "frutas",
+        "rev": "996bb19d23a7a8b97513fb32af5f032ad7ed2816",
+        "type": "github"
+      },
+      "original": {
+        "owner": "elvivero",
+        "repo": "frutas",
         "type": "github"
       }
     }
