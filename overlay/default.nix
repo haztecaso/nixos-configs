@@ -1,9 +1,15 @@
-final: prev: {
-  deploy = prev.callPackage ./deploy.nix {};
-
+final: prev:
+let
+  battery_level =
+in {
   autofirma = prev.callPackage ./autofirma.nix {};
 
-  battery_level = prev.callPackage ./battery_level.nix {};
+  battery_level = prev.callPackage ({ pkgs, ... }: pkgs.writeScriptBin "battery_level" ''
+    #!${pkgs.runtimeShell}
+    now=$(cat /sys/class/power_supply/$1/charge_now)
+    full=$(cat /sys/class/power_supply/$1/charge_full_design)
+    echo "scale=0 ; 100 * $now / $full" | ${pkgs.bc}/bin/bc
+  '') {};
 
   bitwarden-rofi = prev.callPackage (import (builtins.fetchGit {
     url = "https://github.com/haztecaso/bitwarden-rofi";
