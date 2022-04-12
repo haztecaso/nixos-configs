@@ -13,7 +13,6 @@ in
 
   environment.systemPackages = with pkgs; [
       unstable.yt-dlp
-      tailscale
   ];
 
   base = {
@@ -63,12 +62,9 @@ in
   };
 
   services = {
-    tailscale.enable = true;
+    custom.tailscale.enable = true;
   };
 
-  networking.firewall.allowedUDPPorts = [
-    41641 # tailscale
-  ];
 
   custom = {
     programs = {
