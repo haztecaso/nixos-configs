@@ -13,6 +13,7 @@ in
 
   environment.systemPackages = with pkgs; [
       unstable.yt-dlp
+      tailscale
   ];
 
   base = {
@@ -60,6 +61,14 @@ in
       python = "${pkgs.python38Packages.ipython}/bin/ipython";
       };
   };
+
+  services = {
+    tailscale.enable = true;
+  };
+
+  networking.firewall.allowedUDPPorts = [
+    41641 # tailscale
+  ];
 
   custom = {
     programs = {
