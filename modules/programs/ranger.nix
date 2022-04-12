@@ -50,7 +50,7 @@ in
             ${includeDefault "rc.conf"}
             # Commands defined by nix configuration
             ${shortcuts}
-      
+
             # Extra config defined by nix configuration
             ${cfg.extraOptions}
           '';

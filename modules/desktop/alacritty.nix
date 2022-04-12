@@ -10,7 +10,7 @@ in
         settings = {
           window.padding = { x = 6; y = 6; };
           scrolling = { multiplier = 3; history = 10000; };
-    
+
           font = {
             size = config.desktop.fontSize;
             normal      = { family = font_family; style = "Regular"; };
@@ -18,17 +18,17 @@ in
             italic      = { family = font_family; style = "Italic"; };
             bold_italic = { family = font_family; style = "Bold Italic"; };
           };
-    
+
           key_bindings = [
             { key = "K"; mods = "Control|Alt"; action = "IncreaseFontSize"; }
             { key = "J"; mods = "Control|Alt"; action = "DecreaseFontSize"; }
             { key = "Return"; mods = "Control|Shift"; action = "SpawnNewInstance"; }
           ];
-          
+
           cursor = { style = "Beam"; vi_mode_style = "Block"; };
 
           mouse.hide_when_typing = true;
-    
+
           colors = {
             primary = {
               background = "#1d2021";
@@ -57,7 +57,7 @@ in
           };
         };
       };
-    
+
       home.sessionVariables.TERMINAL = "alacritty";
     };
   };

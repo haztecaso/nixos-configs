@@ -49,7 +49,7 @@ let
         ];
         gc.automatic = true;
       };
-    
+
       users = {
         mutableUsers = true;
         users = {
@@ -65,21 +65,21 @@ let
           };
         };
       };
-    
+
       age.secrets."users/skolem".file = ../secrets/users/skolem.age;
       age.secrets."users/root".file = ../secrets/users/root.age;
-    
+
       console.keyMap = "es";
-    
+
       boot.cleanTmpDir = true;
-    
+
       time.timeZone = "Europe/Madrid";
-   
+
       networking = {
         firewall.allowedTCPPorts = [ 22 ];
         hostName = cfg.hostname;
       };
-    
+
       environment.systemPackages = with pkgs; [
         git
         htop
@@ -89,17 +89,16 @@ let
         unzip
         zip
       ];
-    
+
       services = {
         openssh = {
           enable = true;
           passwordAuthentication = false;
         };
       };
-    
-    
+
       home-manager.useGlobalPkgs = true;
-    
+
       home-manager.users = {
         skolem = { ... }: {
           home.stateVersion = config.base.stateVersion;
@@ -108,7 +107,7 @@ let
           home.stateVersion = config.base.stateVersion;
         };
       };
-    
+
       system.stateVersion = config.base.stateVersion;
     }
 

@@ -5,7 +5,7 @@
 
   base = {
     hostname = "lambda";
-    hostnameSymbol = "λ"; 
+    hostnameSymbol = "λ";
     stateVersion = "21.11";
   };
 

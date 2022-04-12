@@ -32,8 +32,6 @@ in
         };
       };
     };
-    shortcuts.paths = {
-        wh = root;
-    };
+    shortcuts.paths.wh = root;
   };
 }

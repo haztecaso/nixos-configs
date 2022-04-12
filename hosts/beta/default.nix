@@ -10,14 +10,14 @@ in
     services.syncthing.enable = true;
     home.packages = with pkgs; [ beancount fava ];
   };
-  
+
   environment.systemPackages = with pkgs; [
       unstable.yt-dlp
   ];
 
   base = {
     hostname = "beta";
-    hostnameSymbol = "β"; 
+    hostnameSymbol = "β";
     wlp = { interface = "wlp3s0"; useDHCP = true; };
     eth.interface = "enp0s31f6";
     stateVersion = "21.11";

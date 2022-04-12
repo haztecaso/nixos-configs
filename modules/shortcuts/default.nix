@@ -6,7 +6,7 @@ let
   mkShortcut = action:
     mapAttrs' (short: path:
       nameValuePair "${action.prefix}${short}" "${action.cmd} ${path}"
-    ); 
+    );
 
   mkShortcuts = paths: actions:
     zipAttrsWith (n: v: fst v) (map (action: mkShortcut action paths) actions);

@@ -1,5 +1,5 @@
 { stdenv, lib, fetchurl, dpkg, makeWrapper, jre8 }:
-let 
+let
   pname = "configuradorfnmt";
   version = "1.0.1";
   install_cmd = file: "install -Dvm644 ./usr/${file} $out/${file}";

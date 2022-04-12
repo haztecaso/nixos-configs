@@ -15,7 +15,7 @@
       plugin = ack-vim;
       config = ''
         let g:ackprg = '${pkgs.ag}/bin/ag --vimgrep'
-        map <leader>f :Ack! 
+        map <leader>f :Ack!
       '';
     }
     {

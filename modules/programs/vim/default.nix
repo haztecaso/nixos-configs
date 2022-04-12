@@ -5,7 +5,7 @@ let
   vim-config = {
     programs.vim = {
       enable = true;
-      plugins = plugins.vim; 
+      plugins = plugins.vim;
       extraConfig = (builtins.readFile ./common.vim) + (builtins.readFile ./vim.vim);
     };
   };
@@ -13,7 +13,7 @@ let
     programs.neovim = {
       enable = true;
       withNodeJs = true;
-      plugins = plugins.neovim; 
+      plugins = plugins.neovim;
       extraConfig = (builtins.readFile ./common.vim) + (builtins.readFile ./neovim.vim);
       coc = {
         enable = true;

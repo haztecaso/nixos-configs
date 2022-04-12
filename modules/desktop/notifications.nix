@@ -9,7 +9,7 @@ let
     ARTIST=$(${pkgs.mpc_cli}/bin/mpc current -f '%artist%')
     TITLE=$(${pkgs.mpc_cli}/bin/mpc current -f '%title%')
     FILENAME=$(${pkgs.mpc_cli}/bin/mpc current -f '%file%')
-    
+
     ${pkgs.ffmpeg}/bin/ffmpeg -i "$MUSIC_DIR$FILENAME" "$COVER" -y &> /dev/null
     STATUS=$? # Get the status of the previous command
     if [ "$STATUS" -eq 0 ]; then

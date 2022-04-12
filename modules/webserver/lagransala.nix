@@ -28,8 +28,6 @@ in
         "lagransala.com" = redirectConfig;
       };
     };
-    shortcuts.paths = {
-        wl = root;
-    };
+    shortcuts.paths.wl = root;
   };
 }

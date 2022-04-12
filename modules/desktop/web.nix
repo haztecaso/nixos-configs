@@ -20,9 +20,9 @@
       wi = "https://it.wikipedia.org/w/index.php?search={}";
       nixpkg = "https://search.nixos.org/packages?query={}";
       wikiloc = "https://es.wikiloc.com/wikiloc/map.do?q={}";
-	  maps = "https://www.google.com/maps/search/{}";
-	  dockerhub = "https://hub.docker.com/search?q={}&type=image";
-	  "hub.docker" = "https://hub.docker.com/search?q={}&type=image";
+      maps = "https://www.google.com/maps/search/{}";
+      dockerhub = "https://hub.docker.com/search?q={}&type=image";
+      "hub.docker" = "https://hub.docker.com/search?q={}&type=image";
     };
     keyBindings = {
       normal = {
@@ -53,60 +53,60 @@
     '';
 
     "qutebrowser/greasemonkey/yt-adskipper.js".text = ''
-		// ==UserScript==
-		// @name               No more youtube ads! - UPDATED
-		// @name:zh-CN         隐藏youtube google广告
-		// @namespace          Grenade Vault
-		// @version            1.1.7
-		// @description        Automatically Skips all youtube ads! with no waiting time.
-		// @description        Stop Stealing my code yes please
-		// @description:zh-CN  BF5 : This skips all adds instantly. Youtube.com
-		// @author             高梨フブキ
-		// @match              *://www.youtube.com/*
-		// ==/UserScript==
+      // ==UserScript==
+      // @name               No more youtube ads! - UPDATED
+      // @name:zh-CN         隐藏youtube google广告
+      // @namespace          Grenade Vault
+      // @version            1.1.7
+      // @description        Automatically Skips all youtube ads! with no waiting time.
+      // @description        Stop Stealing my code yes please
+      // @description:zh-CN  BF5 : This skips all adds instantly. Youtube.com
+      // @author             高梨フブキ
+      // @match              *://www.youtube.com/*
+      // ==/UserScript==
 
-		(function() {
-			'use strict';
-			var closeAd=function (){
-				var css = '.video-ads .ad-container .adDisplay,#player-ads,.ytp-ad-module,.ytp-ad-image-overlay{ display: none!important; }',
-					head = document.head || document.getElementsByTagName('head')[0],
-					style = document.createElement('style');
+      (function() {
+          'use strict';
+          var closeAd=function (){
+              var css = '.video-ads .ad-container .adDisplay,#player-ads,.ytp-ad-module,.ytp-ad-image-overlay{ display: none!important; }',
+                  head = document.head || document.getElementsByTagName('head')[0],
+                  style = document.createElement('style');
 
-				style.type = 'text/css';
-				if (style.styleSheet){
-					style.styleSheet.cssText = css;
-				} else {
-					style.appendChild(document.createTextNode(css));
-				}
+              style.type = 'text/css';
+              if (style.styleSheet){
+                  style.styleSheet.cssText = css;
+              } else {
+                  style.appendChild(document.createTextNode(css));
+              }
 
-				head.appendChild(style);
-			};
-			var skipInt;
-			var log=function(msg){
-			   // unsafeWindow.console.log (msg);
-			};
-			var skipAd=function(){
-				//ytp-ad-preview-text
-				//ytp-ad-skip-button
-				var skipbtn=document.querySelector(".ytp-ad-skip-button.ytp-button")||document.querySelector(".videoAdUiSkipButton ");
-				//var skipbtn=document.querySelector(".ytp-ad-skip-button ")||document.querySelector(".videoAdUiSkipButton ");
-				if(skipbtn){
-				   skipbtn=document.querySelector(".ytp-ad-skip-button.ytp-button")||document.querySelector(".videoAdUiSkipButton ");
-				   log("skip");
-				   skipbtn.click();
-				   if(skipInt) {clearTimeout(skipInt);}
-				   skipInt=setTimeout(skipAd,488);
-				 }else{
-					  log("checking...");
-					  if(skipInt) {clearTimeout(skipInt);}
-					  skipInt=setTimeout(skipAd,488);
-				 }
-			};
+              head.appendChild(style);
+          };
+          var skipInt;
+          var log=function(msg){
+              // unsafeWindow.console.log (msg);
+          };
+          var skipAd=function(){
+              //ytp-ad-preview-text
+              //ytp-ad-skip-button
+              var skipbtn=document.querySelector(".ytp-ad-skip-button.ytp-button")||document.querySelector(".videoAdUiSkipButton ");
+              //var skipbtn=document.querySelector(".ytp-ad-skip-button ")||document.querySelector(".videoAdUiSkipButton ");
+              if(skipbtn){
+                  skipbtn=document.querySelector(".ytp-ad-skip-button.ytp-button")||document.querySelector(".videoAdUiSkipButton ");
+                  log("skip");
+                  skipbtn.click();
+                  if(skipInt) {clearTimeout(skipInt);}
+                  skipInt=setTimeout(skipAd,488);
+              }else{
+                  log("checking...");
+                  if(skipInt) {clearTimeout(skipInt);}
+                  skipInt=setTimeout(skipAd,488);
+              }
+          };
 
-			closeAd();
-			skipAd();
+          closeAd();
+          skipAd();
 
-		})();
+      })();
     '';
   };
 }
