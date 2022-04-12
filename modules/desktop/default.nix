@@ -11,9 +11,6 @@ let
     home.packages = with pkgs; [
       battery_level
       bitwarden-rofi
-      dmenu_mpd
-      dmenu_run_history
-      message
 
       anki
       # audacity
