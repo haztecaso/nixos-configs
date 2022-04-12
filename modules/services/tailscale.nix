@@ -18,7 +18,7 @@ in
         "100.75.165.118" = localNames "beta";
         "100.70.238.47"  = localNames "realme8";
         "100.84.161.27"  = localNames "galois";
-        "100.93.219.95"  = localNames "raspi-music";
+        "100.93.219.95"  = (localNames "raspi-music") ++ ["semuta.mooo.com"];
       };
     };
   };
