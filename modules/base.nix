@@ -55,8 +55,6 @@ let
         gc.automatic = true;
       };
 
-      documentation.nixos.includeAllModules = true;
-
       users = {
         mutableUsers = true;
         users = {
