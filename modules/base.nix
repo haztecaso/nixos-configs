@@ -7,20 +7,24 @@ let
   options.base = with lib;{
     stateVersion = mkOption {
       example = "21.11";
+      description = "stateVersion for nixos and home-manager configs";
     };
     hostname = mkOption {
       type = types.str;
       example = "mycoolmachine";
+      description = "hostname of the machine";
     };
     hostnameSymbol = mkOption {
       type = types.str;
       default = cfg.hostname;
+      description = "hostname symbol of the machine. For shells and other programs.";
     };
     wlp = {
       interface = mkOption {
         type = types.str;
         default = "";
         example = "wlp1s0";
+        description = "wifi interface";
       };
       useDHCP = mkEnableOption "enable dhcp for the wifi interface";
     };
@@ -29,6 +33,7 @@ let
         type = types.str;
         default = "";
         example = "enp1s0";
+        description = "ethernet interface";
       };
       useDHCP = mkEnableOption "enable dhcp for the eth interface";
     };
@@ -49,6 +54,8 @@ let
         ];
         gc.automatic = true;
       };
+
+      documentation.nixos.includeAllModules = true;
 
       users = {
         mutableUsers = true;

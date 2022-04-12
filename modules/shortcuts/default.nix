@@ -37,10 +37,12 @@ in
         { cmd = config.custom.programs.vim.bin; prefix = "v"; }
         { cmd = "ranger"; prefix = "r"; }
       ];
+      description = "Actions of shortcuts.";
     };
     aliases = mkOption {
       readOnly = true;
       default = mkShortcuts cfg.paths cfg.actions;
+      description = "Aliases generated from shortcuts.";
     };
   };
   }

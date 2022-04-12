@@ -8,10 +8,12 @@ in
     customConfig = mkOption {
       type = types.bool;
       default = true;
+      description = "Use custom config.";
     };
     color = mkOption {
       type = types.str;
       default = "#00ee00";
+      description = "Color of tmux statusbar.";
     };
   };
 

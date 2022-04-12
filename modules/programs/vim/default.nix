@@ -48,10 +48,12 @@ in
     package = mkOption {
       type = types.enum [ "vim" "neovim" ];
       default = "vim";
+      description = "Choose between vim (minimal config) or nvim (with more plugins and nvim-coc).";
     };
     bin = mkOption {
       readOnly = true;
       default = if cfg.package == "neovim" then "nvim" else "vim";
+      description = "The program name.";
     };
   };
 

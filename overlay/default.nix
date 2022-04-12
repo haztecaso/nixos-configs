@@ -1,7 +1,4 @@
-final: prev:
-let
-  battery_level =
-in {
+final: prev: {
   autofirma = prev.callPackage ./autofirma.nix {};
 
   battery_level = prev.callPackage ({ pkgs, ... }: pkgs.writeScriptBin "battery_level" ''

@@ -27,6 +27,7 @@ in
         { prefix = "m"; cmd = "shell mv -v %s";}
         { prefix = "Y"; cmd = "shell cp -tv %s";}
       ];
+      description = "Actions for shortcuts.";
     };
     extraOptions = mkOption {
       type = types.str;

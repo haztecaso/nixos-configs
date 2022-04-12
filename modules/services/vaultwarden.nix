@@ -8,6 +8,7 @@ in
     signupsAllowed = mkOption {
       type = types.bool;
       default = false;
+      description = "Allow new users to sign-up.";
     };
   };
 

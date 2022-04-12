@@ -2,6 +2,7 @@
 { config, lib, pkgs, ... }:
 let
   cfg = config.webserver.code;
+  root = "/root/";
 in
 {
   options.webserver.code = with lib; {
@@ -9,6 +10,7 @@ in
     folder = mkOption {
       type = types.str;
       default = "/var/lib/code";
+      description = "Data folder of code-server (docker volume binded to ${root}).";
     };
   };
   config = lib.mkIf config.webserver.thumbor.enable {
@@ -17,7 +19,7 @@ in
       image = "codercom/code-server:latest";
       ports = [ "8002:8080" ];
       volumes = [
-        "${cfg.folder}/:/root/"
+        "${cfg.folder}/:${root}"
       ];
       user = "0:0";
       environment = { DOCKER_USER="root"; };

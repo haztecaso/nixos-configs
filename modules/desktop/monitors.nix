@@ -11,6 +11,7 @@ in
     };
      defaultTarget = mkOption {
       type = lib.types.str;
+      description = "Default profile.";
       default = "";
     };
   };

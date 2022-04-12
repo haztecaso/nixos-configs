@@ -10,6 +10,7 @@ in
   options.programs.shells = {
     aliases = mkOption {
       type = types.attrsOf types.str;
+      description = "Shell aliases.";
       default = {
         ".." = "cd ..";
         less = "less --quit-if-one-screen --ignore-case --status-column --LONG-PROMPT --RAW-CONTROL-CHARS --HILITE-UNREAD --tabs=4 --no-init --window=-4";
@@ -19,6 +20,7 @@ in
     };
     defaultShell = mkOption {
       type = types.package;
+      description = "Default shell. For now only bash is working as intended.";
       default = pkgs.bash; # TODO: bash for now, until I discover how to prolerly set EDITOR and VISUAL variables on zsh...
     };
     initExtra = mkOption {
