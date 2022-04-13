@@ -39,8 +39,9 @@
     };
 
     hosts = {
-      lambda.modules = [ ./hosts/lambda ];
       beta.modules = [ ./hosts/beta inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x270 ];
+      galois.modules = [ ./hosts/galois ];
+      lambda.modules = [ ./hosts/lambda ];
     };
 
     nixosModule = import ./modules;
