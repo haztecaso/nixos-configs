@@ -23,10 +23,26 @@
       ];
       kernelModules = [ ];
     };
-    loader.grub = {
-      efiInstallAsRemovable = true;
-      efiSupport = true;
+    loader = {
+      grub = {
+        enable                = true;
+        copyKernels           = true;
+        devices               = [ "nodev" ];
+        splashImage           = null;
+        efiInstallAsRemovable = true;
+        efiSupport = true;
+        extraEntries = ''
+          menuentry "Reboot" {
+            reboot
+          }
+          menuentry "Poweroff" {
+            halt
+          }
+        '';
+      };
+      timeout = 1;
     };
+    cleanTmpDir = true;
     kernelModules = [ "kvm-intel" "wl" ];
     kernelParams = [
       "hid_apple.fnmode=1"

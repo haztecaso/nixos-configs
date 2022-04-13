@@ -62,11 +62,24 @@ in
       youtube-dl = "yt-dlp";
       python = "${pkgs.python38Packages.ipython}/bin/ipython";
       };
+      adb.enable = true;
   };
 
   services = {
     custom.tailscale.enable = true;
+    logind.extraConfig = "HandlePowerKey=suspend";
+    upower.enable = true;
+    avahi.enable = true;
+    avahi.nssmdns = true;
   };
+
+  virtualisation = {
+    virtualbox.host.enable = true;
+    # virtualbox.host.enableExtensionPack = true;
+    docker.enable = true;
+  }
+  users.extraGroups.vboxusers.members = [ "skolem" ];
+  users.users.skolem.extraGroups = [ "docker" "adbusers" ];
 
 
   custom = {
