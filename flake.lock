@@ -293,11 +293,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1649762577,
-        "narHash": "sha256-3vig5dOgFJJCbyMPlhH/TMd4BgUZjZrtbWy7Ivp2KhA=",
+        "lastModified": 1649853808,
+        "narHash": "sha256-xr+Dm3l+MwLhCNGa0RLW0qIgTqjdALeRmoBz4h6Ybqw=",
         "owner": "elvivero",
         "repo": "elvivero.es",
-        "rev": "bd5e770428fea8b6a50b9674a749123dc4de62a4",
+        "rev": "8d8e3481d7f0941d6976b08aeef82da4ccf6c22f",
         "type": "github"
       },
       "original": {
