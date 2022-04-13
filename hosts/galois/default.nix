@@ -77,7 +77,8 @@ in
     virtualbox.host.enable = true;
     # virtualbox.host.enableExtensionPack = true;
     docker.enable = true;
-  }
+  };
+
   users.extraGroups.vboxusers.members = [ "skolem" ];
   users.users.skolem.extraGroups = [ "docker" "adbusers" ];
 

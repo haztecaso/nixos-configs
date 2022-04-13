@@ -91,17 +91,10 @@ let
       ];
     };
 
-    security = {
-      pam.services.gdm.enableGnomeKeyring = true;
-    };
-
     services = {
       network-manager-applet.enable = true;
       pasystray.enable = true;
       blueman-applet.enable = true;
-      gnome.gnome-keyring.enable = true;
-      printing.enable = true;
-      printing.drivers = [ pkgs.hplip ];
 
       flameshot = {
         enable = true;
@@ -201,7 +194,7 @@ in
     sound.enable = true; # Enable sound.
 
     hardware = {
-      pulseaudio {
+      pulseaudio = {
         enable = true;
         extraConfig = "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1"; # Needed by mpd to be able to use Pulseaudio
       };
@@ -212,6 +205,16 @@ in
     programs = {
       light.enable = true;
       # adb.enable = true;
+    };
+
+    services = {
+      gnome.gnome-keyring.enable = true;
+      printing.enable = true;
+      printing.drivers = [ pkgs.hplip ];
+    };
+    
+    security = {
+      pam.services.gdm.enableGnomeKeyring = true;
     };
 
     users.users.skolem = {
