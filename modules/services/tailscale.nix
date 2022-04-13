@@ -1,11 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   cfg = config.services.custom.tailscale;
-  localNames =  name: [
-    name
-    "${name}.lan"
-    "${name}.local"
-  ];
+  localNames = name: [ name "${name}.lan" "${name}.local" ];
 in
 {
   options.services.custom.tailscale = with lib; {
