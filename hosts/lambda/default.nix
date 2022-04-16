@@ -36,6 +36,7 @@
         w  = "/var/www/";
       };
       tmux.color = "#aaee00";
+      vim.package = pkgs.neovimBase;
     };
 
   };
