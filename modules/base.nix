@@ -1,8 +1,8 @@
 { config, lib, pkgs, ... }:
 let
   keys = import ../ssh-keys.nix;
-    cfg = config.base;
-  in
+  cfg = config.base;
+in
 {
   options.base = with lib;{
     stateVersion = mkOption {

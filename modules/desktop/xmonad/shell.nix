@@ -12,7 +12,7 @@ let
     haskellPackages.haskell-language-server
   ];
 in
-  pkgs.stdenv.mkDerivation {
-    name = "xmonad-env";
-    nativeBuildInputs = nixPackages;
-  }
+pkgs.stdenv.mkDerivation {
+  name = "xmonad-env";
+  nativeBuildInputs = nixPackages;
+}

@@ -30,7 +30,7 @@
     fsType = "vfat";
   };
 
-  swapDevices = [ { device = "/dev/disk/by-uuid/48eab118-2d67-41da-846a-d9c6c49a37b7"; } ];
+  swapDevices = [{ device = "/dev/disk/by-uuid/48eab118-2d67-41da-846a-d9c6c49a37b7"; }];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

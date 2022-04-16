@@ -2,14 +2,14 @@
 let
   cfg = config.custom.programs.ranger;
   includeDefault = file: builtins.readFile "${pkgs.ranger}/lib/python3.9/site-packages/ranger/config/${file}";
-  mkShortcutMaps = name: path: map (a: "map "+a.prefix+name+" "+a.cmd+" "+path) cfg.actions;
+  mkShortcutMaps = name: path: map (a: "map " + a.prefix + name + " " + a.cmd + " " + path) cfg.actions;
   shortcuts = with lib; concatStringsSep "\n" (
     concatLists (
       attrValues (
         mapAttrs mkShortcutMaps config.shortcuts.paths
-        )
       )
-    );
+    )
+  );
 
 in
 {
@@ -22,10 +22,10 @@ in
     actions = mkOption {
       type = types.listOf (types.attrsOf types.str);
       default = [
-        { prefix = "g"; cmd = "cd";}
-        { prefix = "t"; cmd = "tab_new";}
-        { prefix = "m"; cmd = "shell mv -v %s";}
-        { prefix = "Y"; cmd = "shell cp -tv %s";}
+        { prefix = "g"; cmd = "cd"; }
+        { prefix = "t"; cmd = "tab_new"; }
+        { prefix = "m"; cmd = "shell mv -v %s"; }
+        { prefix = "Y"; cmd = "shell cp -tv %s"; }
       ];
       description = "Actions for shortcuts.";
     };
@@ -41,36 +41,39 @@ in
     };
   };
 
-  config = lib.mkIf cfg.enable (let
-    conf = {
-      home.packages = [ pkgs.ranger ];
-      home.sessionVariables."RANGER_LOAD_DEFAULT_RC" = "FALSE";
-      xdg.configFile = {
-        "ranger/rc.conf".text =
-          ''
-            ${includeDefault "rc.conf"}
-            # Commands defined by nix configuration
-            ${shortcuts}
+  config = lib.mkIf cfg.enable (
+    let
+      conf = {
+        home.packages = [ pkgs.ranger ];
+        home.sessionVariables."RANGER_LOAD_DEFAULT_RC" = "FALSE";
+        xdg.configFile = {
+          "ranger/rc.conf".text =
+            ''
+              ${includeDefault "rc.conf"}
+              # Commands defined by nix configuration
+              ${shortcuts}
 
-            # Extra config defined by nix configuration
-            ${cfg.extraOptions}
-          '';
-        "ranger/rifle.conf".text =
-          ''
-            ${includeDefault "rifle.conf"}
-            # Extra config defined by nix configuration
-            ${cfg.extraRifle}
-          '';
+              # Extra config defined by nix configuration
+              ${cfg.extraOptions}
+            '';
+          "ranger/rifle.conf".text =
+            ''
+              ${includeDefault "rifle.conf"}
+              # Extra config defined by nix configuration
+              ${cfg.extraRifle}
+            '';
+        };
       };
-    };
-  in {
-    programs.shells = {
-      aliases = {
-        r  = "ranger";
-        nn = "ranger";
+    in
+    {
+      programs.shells = {
+        aliases = {
+          r = "ranger";
+          nn = "ranger";
+        };
       };
-    };
-    home-manager.users.skolem = { ... }: conf;
-    home-manager.users.root   = { ... }: conf;
-  });
+      home-manager.users.skolem = { ... }: conf;
+      home-manager.users.root = { ... }: conf;
+    }
+  );
 }

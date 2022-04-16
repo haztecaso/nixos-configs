@@ -4,7 +4,7 @@ let
   mkHomeConfig = conf: {
     home-manager.users = {
       skolem = { ... }: conf;
-      root   = { ... }: conf;
+      root = { ... }: conf;
     };
   };
 in
@@ -33,8 +33,8 @@ in
     }))
     (lib.mkIf (cfg.defaultEditor) (mkHomeConfig {
       home.sessionVariables = {
-          EDITOR = "nvim";
-          VISUAL = "nvim";
+        EDITOR = "nvim";
+        VISUAL = "nvim";
       };
     }))
   ];

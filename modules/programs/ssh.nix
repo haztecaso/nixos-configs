@@ -10,15 +10,16 @@ in
     };
   };
 
-  config.home-manager.users = let
+  config.home-manager.users =
+    let
       config = {
         programs.ssh = {
           enable = true;
-          matchBlocks = {
-          };
+          matchBlocks = { };
         };
       };
-    in lib.mkIf cfg.enable {
+    in
+    lib.mkIf cfg.enable {
       skolem = { ... }: config;
       root = { ... }: config;
     };

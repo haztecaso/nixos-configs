@@ -25,10 +25,10 @@
     };
     loader = {
       grub = {
-        enable                = true;
-        copyKernels           = true;
-        devices               = [ "nodev" ];
-        splashImage           = null;
+        enable = true;
+        copyKernels = true;
+        devices = [ "nodev" ];
+        splashImage = null;
         efiInstallAsRemovable = true;
         efiSupport = true;
         extraEntries = ''

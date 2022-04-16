@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }:
 with lib;
 let
-  cfg              = config.programs.shells;
-  hostname         = config.base.hostname;
-  hostnameSymbol   = config.base.hostnameSymbol;
+  cfg = config.programs.shells;
+  hostname = config.base.hostname;
+  hostnameSymbol = config.base.hostnameSymbol;
   shortcut_aliases = config.shortcuts.aliases;
 in
 {
@@ -25,12 +25,13 @@ in
     };
     initExtra = mkOption {
       type = types.listOf types.str;
-      default = [];
+      default = [ ];
       description = "List of extra lines for init file";
     };
   };
 
-  config = let
+  config =
+    let
       conf = home-conf: {
         programs.bash = {
           enable = true;
@@ -64,16 +65,16 @@ in
           shellAliases = cfg.aliases // shortcut_aliases;
         };
       };
-  in
-  {
-    environment.pathsToLink = [ "/share/zsh" ];
-    home-manager.users = {
-      skolem = { config, ... }: conf config;
-      root = { config, ... }: conf config;
+    in
+    {
+      environment.pathsToLink = [ "/share/zsh" ];
+      home-manager.users = {
+        skolem = { config, ... }: conf config;
+        root = { config, ... }: conf config;
+      };
+      users.users = {
+        skolem.shell = cfg.defaultShell;
+        root.shell = cfg.defaultShell;
+      };
     };
-    users.users = {
-      skolem.shell = cfg.defaultShell;
-      root.shell   = cfg.defaultShell;
-    };
-  };
 }

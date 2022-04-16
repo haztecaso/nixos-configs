@@ -17,7 +17,8 @@ in
     };
   };
 
-  config.home-manager.users = let
+  config.home-manager.users =
+    let
       config = {
         programs.tmux = {
           enable = true;
@@ -28,7 +29,8 @@ in
           '';
         };
       };
-    in {
+    in
+    {
       skolem = { ... }: config;
       root = { ... }: config;
     };

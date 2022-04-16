@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: let
+{ config, pkgs, ... }:
+let
   keys = import ../../ssh-keys.nix;
 in
 {
@@ -28,17 +29,17 @@ in
 
   shortcuts = {
     paths = {
-      D  = "~/Downloads";
-      N  = "~/Sync";
+      D = "~/Downloads";
+      N = "~/Sync";
       cf = "~/.config";
-      d  = "~/Documents";
-      l  = "~/Nube/lecturas";
+      d = "~/Documents";
+      l = "~/Nube/lecturas";
       mm = "~/Music";
       mo = "~/Nube/money";
-      n  = "~/etc/nixos";
+      n = "~/etc/nixos";
       pp = "~/Pictures";
       sr = "~/src";
-      u  = "~/Sync/uni/Actuales";
+      u = "~/Sync/uni/Actuales";
       vv = "~/Videos";
     };
     uni = {
@@ -61,8 +62,8 @@ in
       ytdl = "yt-dlp";
       youtube-dl = "yt-dlp";
       python = "${pkgs.python38Packages.ipython}/bin/ipython";
-      };
-      adb.enable = true;
+    };
+    adb.enable = true;
   };
 
   services = {
