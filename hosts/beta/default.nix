@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: let
+{ config, pkgs, ... }:
+let
   keys = import ../../ssh-keys.nix;
 in
 {
@@ -12,7 +13,7 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-      unstable.yt-dlp
+    unstable.yt-dlp
   ];
 
   base = {
@@ -25,17 +26,17 @@ in
 
   shortcuts = {
     paths = {
-      D  = "~/Downloads";
-      N  = "~/Nube";
+      D = "~/Downloads";
+      N = "~/Nube";
       cf = "~/.config";
-      d  = "~/Documents";
-      l  = "~/Nube/lecturas";
+      d = "~/Documents";
+      l = "~/Nube/lecturas";
       mm = "~/Music";
       mo = "~/Nube/money";
-      n  = "~/nixos-configs";
+      n = "~/nixos-configs";
       pp = "~/Pictures";
       sr = "~/src";
-      u  = "~/Nube/uni/Actuales";
+      u = "~/Nube/uni/Actuales";
       vv = "~/Videos";
     };
     uni = {
@@ -58,7 +59,7 @@ in
       ytdl = "yt-dlp";
       youtube-dl = "yt-dlp";
       python = "${pkgs.python38Packages.ipython}/bin/ipython";
-      };
+    };
   };
 
   services = {

@@ -11,9 +11,9 @@
 
   shortcuts = {
     paths = {
-      h  = "~";
+      h = "~";
       cf = "~/.config";
-      n  = "~/nixos-configs";
+      n = "~/nixos-configs";
     };
   };
 
@@ -33,16 +33,16 @@
         c = "~/.config";
         h = "~";
         n = "~/nixos-configs";
-        w  = "/var/www/";
+        w = "/var/www/";
       };
       tmux.color = "#aaee00";
       vim.package = pkgs.mkNeovim {
-          completion.enable = true;
-          snippets.enable = true;
-          plugins = {
-              latex = false;
-              nvim-which-key = false;
-          };
+        completion.enable = true;
+        snippets.enable = true;
+        plugins = {
+          latex = false;
+          nvim-which-key = false;
+        };
       };
     };
 
@@ -65,7 +65,7 @@
   services = {
     custom = {
       syncthing = {
-        enable  = true;
+        enable = true;
         folders = [ "uni-moodle" "nube" "android-camara" ];
       };
 
@@ -74,15 +74,15 @@
     };
 
     moodle-dl = {
-      enable     = true;
+      enable = true;
       configFile = config.age.secrets."moodle-dl.conf".path;
-      folder     = "/var/lib/syncthing/uni-moodle/";
-     };
+      folder = "/var/lib/syncthing/uni-moodle/";
+    };
 
     jobo_bot = {
-      enable     = true;
-      frequency  = 20;
-      prod       = true;
+      enable = true;
+      frequency = 20;
+      prod = true;
       configFile = config.age.secrets."jobo_bot.conf".path;
     };
 
