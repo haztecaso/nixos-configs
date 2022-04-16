@@ -36,7 +36,14 @@
         w  = "/var/www/";
       };
       tmux.color = "#aaee00";
-      vim.package = pkgs.neovimBase;
+      vim.package = pkgs.mkNeovim {
+          completion.enable = true;
+          snippets.enable = true;
+          plugins = {
+              latex = false;
+              nvim-which-key = false;
+          };
+      };
     };
 
   };
