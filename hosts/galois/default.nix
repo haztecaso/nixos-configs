@@ -2,40 +2,43 @@
   keys = import ../../ssh-keys.nix;
 in
 {
-  imports = [ ./hardware.nix ./monitors.nix ];
+  imports = [
+    ./hardware.nix
+    # ./monitors.nix
+  ];
 
   nix.gc.options = "--delete-older-than 18d";
 
   home-manager.users.skolem = { ... }: {
     services.syncthing.enable = true;
-    home.packages = with pkgs; [ beancount fava ];
+    home.packages = with pkgs; [
+      beancount
+      fava
+      unstable.yt-dlp
+    ];
   };
 
-  environment.systemPackages = with pkgs; [
-      unstable.yt-dlp
-  ];
-
   base = {
-    hostname = "beta";
-    hostnameSymbol = "β";
-    wlp = { interface = "wlp3s0"; useDHCP = true; };
-    eth.interface = "enp0s31f6";
+    hostname = "galois";
+    hostnameSymbol = "G";
+    wlp = { interface = "wlp2s0"; useDHCP = true; };
+    eth.interface = "enp1s0f0";
     stateVersion = "21.11";
   };
 
   shortcuts = {
     paths = {
       D  = "~/Downloads";
-      N  = "~/Nube";
+      N  = "~/Sync";
       cf = "~/.config";
       d  = "~/Documents";
       l  = "~/Nube/lecturas";
       mm = "~/Music";
       mo = "~/Nube/money";
-      n  = "~/nixos-configs";
+      n  = "~/etc/nixos";
       pp = "~/Pictures";
       sr = "~/src";
-      u  = "~/Nube/uni/Actuales";
+      u  = "~/Sync/uni/Actuales";
       vv = "~/Videos";
     };
     uni = {
@@ -46,7 +49,7 @@ in
 
   desktop = {
     enable = true;
-    bat = "BAT1";
+    bat = "BAT0";
     fontSize = 8;
   };
 
@@ -59,11 +62,25 @@ in
       youtube-dl = "yt-dlp";
       python = "${pkgs.python38Packages.ipython}/bin/ipython";
       };
+      adb.enable = true;
   };
 
   services = {
     custom.tailscale.enable = true;
+    logind.extraConfig = "HandlePowerKey=suspend";
+    upower.enable = true;
+    avahi.enable = true;
+    avahi.nssmdns = true;
   };
+
+  virtualisation = {
+    virtualbox.host.enable = true;
+    # virtualbox.host.enableExtensionPack = true;
+    docker.enable = true;
+  };
+
+  users.extraGroups.vboxusers.members = [ "skolem" ];
+  users.users.skolem.extraGroups = [ "docker" "adbusers" ];
 
 
   custom = {
@@ -84,7 +101,7 @@ in
         v = "~/Videos";
       };
       tmux.color = "#aaee00";
-      vim.package = pkgs.neovimFull;
+      vim.package = "neovim";
       music.enable = true;
       latex.enable = true;
       irssi.enable = true;

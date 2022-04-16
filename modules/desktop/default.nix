@@ -96,8 +96,6 @@ let
       pasystray.enable = true;
       blueman-applet.enable = true;
 
-
-
       flameshot = {
         enable = true;
         settings.General = {
@@ -196,7 +194,10 @@ in
     sound.enable = true; # Enable sound.
 
     hardware = {
-      pulseaudio.enable = true;
+      pulseaudio = {
+        enable = true;
+        extraConfig = "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1"; # Needed by mpd to be able to use Pulseaudio
+      };
       bluetooth.enable  = true;
       opengl.enable     = true;
     };
@@ -204,6 +205,16 @@ in
     programs = {
       light.enable = true;
       # adb.enable = true;
+    };
+
+    services = {
+      gnome.gnome-keyring.enable = true;
+      printing.enable = true;
+      printing.drivers = [ pkgs.hplip ];
+    };
+    
+    security = {
+      pam.services.gdm.enableGnomeKeyring = true;
     };
 
     users.users.skolem = {

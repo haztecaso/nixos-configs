@@ -61,7 +61,16 @@ Thinkpad x270. Personal machine.
 
 ### galois
 
-Macbook Pro mid 2012. Personal machine. **Not included yet.**
+Macbook Pro mid 2012. Personal machine.
+
+#### Migration todos
+
+- retroarchWithCores
+- music: beets config
+- mail module
+- pandoc-templates
+- emacs
+- money
 
 ## References
 

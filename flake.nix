@@ -6,6 +6,7 @@
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
     nixos-hardware = { url = "github:NixOS/nixos-hardware/master"; inputs.nixpkgs.follows = "nixpkgs"; };
     agenix = { url = "github:ryantm/agenix"; inputs.nixpkgs.follows = "nixpkgs"; };
+    neovim-flake = { url = "github:haztecaso/neovim-flake"; inputs.nixpkgs.follows = "nixpkgs"; };
     impo = { url = "github:haztecaso/impo"; inputs.nixpkgs.follows = "nixpkgs"; };
     jobo_bot = { url = "github:haztecaso/jobo_bot"; inputs.nixpkgs.follows = "nixpkgs"; };
     moodle-dl = { url = "github:haztecaso/flakes?dir=moodle-dl"; inputs.nixpkgs.follows = "nixpkgs"; };
@@ -18,6 +19,7 @@
     inherit self inputs;
 
     sharedOverlays = [
+      inputs.neovim-flake.overlay
       inputs.impo.overlay
       inputs.jobo_bot.overlay
       inputs.moodle-dl.overlay
@@ -39,8 +41,9 @@
     };
 
     hosts = {
-      lambda.modules = [ ./hosts/lambda ];
       beta.modules = [ ./hosts/beta inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x270 ];
+      galois.modules = [ ./hosts/galois ];
+      lambda.modules = [ ./hosts/lambda ];
     };
 
     nixosModule = import ./modules;
