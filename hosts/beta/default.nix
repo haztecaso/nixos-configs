@@ -84,7 +84,7 @@ in
         v = "~/Videos";
       };
       tmux.color = "#aaee00";
-      vim.package = "neovim";
+      vim.package = pkgs.neovimFull;
       music.enable = true;
       latex.enable = true;
       irssi.enable = true;
