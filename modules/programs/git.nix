@@ -10,15 +10,17 @@ in
     };
   };
 
-  config.home-manager.users = let
+  config.home-manager.users =
+    let
       config = {
         programs.git = {
           enable = true;
           userEmail = "adrianlattes@disroot.org";
-          userName  = "haztecaso";
+          userName = "haztecaso";
         };
       };
-    in lib.mkIf cfg.enable {
+    in
+    lib.mkIf cfg.enable {
       skolem = { ... }: config;
     };
 

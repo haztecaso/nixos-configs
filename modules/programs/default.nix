@@ -6,8 +6,8 @@ let
       associations.added = {
         "x-scheme-handler/magnet" = "transmission-gtk.desktop";
         "x-scheme-handler/tg" = "telegramdesktop.desktop";
-        "application/pdf"="org.pwmt.zathura.desktop";
-        "audio/flac"="mpv.desktop";
+        "application/pdf" = "org.pwmt.zathura.desktop";
+        "audio/flac" = "mpv.desktop";
       };
       defaultApplications = {
         "x-scheme-handler/magnet" = "transmission-gtk.desktop";
@@ -44,5 +44,5 @@ in
     ./vim
   ];
   home-manager.users.skolem = { ... }: home-config;
-  home-manager.users.root   = { ... }: home-config;
+  home-manager.users.root = { ... }: home-config;
 }

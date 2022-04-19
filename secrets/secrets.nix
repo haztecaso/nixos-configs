@@ -7,5 +7,5 @@ with keys; {
   "cloudflare.age".publicKeys = [ skolem host_lambda ];
   "thumbor.age".publicKeys = [ skolem host_lambda ];
   "users/skolem.age".publicKeys = hosts ++ [ skolem ];
-  "users/root.age".publicKeys   = hosts ++ [ skolem ];
+  "users/root.age".publicKeys = hosts ++ [ skolem ];
 }

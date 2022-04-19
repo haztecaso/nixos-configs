@@ -13,16 +13,16 @@ let
 
   cfg = config.shortcuts;
 in
-  {
+{
   imports = [ ./uni.nix ];
 
   options.shortcuts = {
     paths = mkOption {
       type = types.attrsOf types.str;
       default = {
-        n  = "/etc/nixos";
-        d  = "~/Documents";
-        D  = "~/Downloads";
+        n = "/etc/nixos";
+        d = "~/Documents";
+        D = "~/Downloads";
         mm = "~/Music";
         pp = "~/Pictures";
         vv = "~/Videos";
@@ -45,4 +45,4 @@ in
       description = "Aliases generated from shortcuts.";
     };
   };
-  }
+}

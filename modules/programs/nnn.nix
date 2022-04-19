@@ -14,46 +14,51 @@ in
       type = with types; attrsOf str;
       description = "Directory bookmarks.";
       default = {
-          d = "~/Documents";
-          D = "~/Downloads";
-          p = "~/Pictures";
-          h = "~";
-          c = "~/.config";
-          m = "~/Music";
-          v = "~/Videos";
+        d = "~/Documents";
+        D = "~/Downloads";
+        p = "~/Pictures";
+        h = "~";
+        c = "~/.config";
+        m = "~/Music";
+        v = "~/Videos";
       };
     };
   };
 
-  config = lib.mkIf cfg.enable (let
-    conf = {
-      programs.nnn = {
-        enable = true;
-        package = pkgs.nnn.override ({ withNerdIcons = true; });
-        extraPackages = with pkgs; [ tabbed sxiv ];
-        plugins = {
-          src = "${inputs.nnn}/plugins";
-          mappings = {
-            P = "preview-tabbed";
-            f = "finder";
-            p = "preview-tui";
-            v = "imgview";
+  config = lib.mkIf cfg.enable (
+    let
+      conf = {
+        programs.nnn = {
+          enable = true;
+          package = pkgs.nnn.override ({ withNerdIcons = true; });
+          extraPackages = with pkgs; [ tabbed sxiv ];
+          plugins = {
+            src = "${inputs.nnn}/plugins";
+            mappings = {
+              P = "preview-tabbed";
+              f = "finder";
+              p = "preview-tui";
+              v = "imgview";
+            };
           };
+          bookmarks = cfg.bookmarks;
         };
-        bookmarks = cfg.bookmarks;
       };
-    };
-  in {
-    programs.shells = {
-      initExtra = [ ''
-        export NNN_OPTS="aRe"
-      '' ];
-      aliases = {
-        r  = "nnn";
-        nn = "nnn";
+    in
+    {
+      programs.shells = {
+        initExtra = [
+          ''
+            export NNN_OPTS="aRe"
+          ''
+        ];
+        aliases = {
+          r = "nnn";
+          nn = "nnn";
+        };
       };
-    };
-    home-manager.users.skolem = { ... }: conf;
-    home-manager.users.root   = { ... }: conf;
-  });
+      home-manager.users.skolem = { ... }: conf;
+      home-manager.users.root = { ... }: conf;
+    }
+  );
 }

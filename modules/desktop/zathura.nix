@@ -16,12 +16,12 @@
       recolor-keephue = true;
     };
     extraConfig = ''
-        map i recolor
-        map p print
-        map b toggle_statusbar
-        map f toggle_fullscreen
-        map Down navigate next
-        map Up navigate prev
+      map i recolor
+      map p print
+      map b toggle_statusbar
+      map f toggle_fullscreen
+      map Down navigate next
+      map Up navigate prev
     '';
   };
 }

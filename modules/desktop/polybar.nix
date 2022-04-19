@@ -1,12 +1,10 @@
 { config, lib, pkgs, ... }:
 let
-  home-config = {
-
-  };
+  home-config = { };
   cfg = config.desktop.polybar;
   base = config.base;
   wifi = lib.stringLength base.wlp.interface != 0;
-  eth  = lib.stringLength base.eth.interface != 0;
+  eth = lib.stringLength base.eth.interface != 0;
 in
 {
   options.desktop.polybar = {

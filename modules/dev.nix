@@ -9,7 +9,7 @@ in
     enable = mkEnableOption "Custom desktop environment (wm: xmonad)";
     pythonPackages = mkOption {
       # type = types.enum pythonPackageNames; #TODO: fix
-      default = [];
+      default = [ ];
       description = "Set of python packages to install globally";
     };
     direnv = {
@@ -34,7 +34,7 @@ in
     (lib.mkIf cfg.direnv.enable {
       # nix-direnv flake support
       nixpkgs.overlays = [
-        (self: super: { nix-direnv = super.nix-direnv.override { enableFlakes = true; }; } )
+        (self: super: { nix-direnv = super.nix-direnv.override { enableFlakes = true; }; })
       ];
       environment.systemPackages = with pkgs; [ direnv nix-direnv ];
       # nix options for derivations to persist garbage collection
@@ -44,9 +44,11 @@ in
       '';
       environment.pathsToLink = [ "/share/nix-direnv" ];
       # shell hook
-      programs.shells.initExtra = [''
-        eval "$(direnv hook bash)"
-      ''];
+      programs.shells.initExtra = [
+        ''
+          eval "$(direnv hook bash)"
+        ''
+      ];
     })
   ];
 }

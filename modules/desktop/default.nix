@@ -76,7 +76,7 @@ let
       };
       theme = {
         package = pkgs.arc-theme;
-        name ="Arc-Dark";
+        name = "Arc-Dark";
       };
       gtk3.bookmarks = [
         "file:///home/skolem/Sync"
@@ -162,11 +162,11 @@ in
     };
   };
 
- imports = [
+  imports = [
     ./alacritty.nix
     ./polybar.nix
     ./monitors.nix
- ];
+  ];
 
   config = lib.mkIf config.desktop.enable {
     services = {
@@ -198,8 +198,8 @@ in
         enable = true;
         extraConfig = "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1"; # Needed by mpd to be able to use Pulseaudio
       };
-      bluetooth.enable  = true;
-      opengl.enable     = true;
+      bluetooth.enable = true;
+      opengl.enable = true;
     };
 
     programs = {
@@ -212,7 +212,7 @@ in
       printing.enable = true;
       printing.drivers = [ pkgs.hplip ];
     };
-    
+
     security = {
       pam.services.gdm.enableGnomeKeyring = true;
     };

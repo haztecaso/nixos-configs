@@ -1,15 +1,15 @@
-{ config, pkgs, lib,  ... }:
+{ config, pkgs, lib, ... }:
 let
   cfg = config.desktop.monitors;
 in
-  {
+{
   options.desktop.monitors = with lib; {
     profiles = mkOption {
       type = lib.types.attrs;
       description = "Autorandr profiles specification (see home-manager module).";
-      default = {};
+      default = { };
     };
-     defaultTarget = mkOption {
+    defaultTarget = mkOption {
       type = lib.types.str;
       description = "Default profile.";
       default = "";

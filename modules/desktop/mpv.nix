@@ -10,13 +10,13 @@
     enable = true;
     scripts = with pkgs.mpvScripts; [ mpris thumbnail youtube-quality ];
     config = {
-      geometry       = "50%x50%";
+      geometry = "50%x50%";
       autofit-larger = "85%x85%";
-      keep-open      = "yes";
-      osc            = "no";
-      ontop          = "no";
-      slang          = "es,en,it,pt";
-      alang          = "es,en,it,pt";
+      keep-open = "yes";
+      osc = "no";
+      ontop = "no";
+      slang = "es,en,it,pt";
+      alang = "es,en,it,pt";
       "save-position-on-quit" = "";
     };
     bindings = {
