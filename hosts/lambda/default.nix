@@ -37,15 +37,14 @@
       };
       tmux.color = "#aaee00";
       vim.package = pkgs.mkNeovim {
-          completion.enable = true;
-          snippets.enable = true;
-          plugins = {
-              latex = false;
-              nvim-which-key = false;
-          };
+        completion.enable = true;
+        snippets.enable = true;
+        plugins = {
+          latex = false;
+          nvim-which-key = false;
+        };
       };
     };
-
   };
 
   webserver = {
@@ -68,7 +67,6 @@
         enable  = true;
         folders = [ "uni-moodle" "nube" "android-camara" ];
       };
-
       tailscale.enable = true;
       vaultwarden.enable = true;
     };
