@@ -54,6 +54,7 @@
     matomo.enable = true;
     thumbor.enable = true;
     code.enable = true;
+    gitea.enable = true;
   };
 
   age.secrets = {
@@ -83,8 +84,6 @@
       prod = true;
       configFile = config.age.secrets."jobo_bot.conf".path;
     };
-
   };
-
 
 }
