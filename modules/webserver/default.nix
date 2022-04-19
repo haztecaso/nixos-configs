@@ -3,6 +3,7 @@
   imports = [
     ./code.nix
     ./elvivero.nix
+    ./gitea.nix
     ./haztecaso.nix
     ./lagransala.nix
     ./matomo.nix

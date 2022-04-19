@@ -10,7 +10,7 @@ in
       type = types.attrsOf (types.listOf types.str);
       description = "Tailscale /etc/hosts entries.";
       default = {
-        "100.84.40.96" = (localNames "lambda") ++ [ "gitea.lambda" ];
+        "100.84.40.96" = localNames "lambda";
         "100.75.165.118" = localNames "beta";
         "100.70.238.47" = localNames "realme8";
         "100.84.161.27" = localNames "galois";
