@@ -86,4 +86,11 @@
     };
   };
 
+  mailserver = {
+    enable = true;
+    fqdn = "mail.haztecaso.com";
+    domains = [ "haztecaso.com" ];
+    # certificateScheme = 3;
+  };
+
 }
