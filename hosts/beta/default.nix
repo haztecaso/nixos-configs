@@ -10,6 +10,8 @@ in
   home-manager.users.skolem = { ... }: {
     services.syncthing.enable = true;
     home.packages = with pkgs; [ beancount fava ];
+    programs.gpg.enable = true;
+    services.gpg-agent.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
@@ -60,12 +62,10 @@ in
       youtube-dl = "yt-dlp";
       python = "${pkgs.python38Packages.ipython}/bin/ipython";
     };
-    gpg.enable = true;
   };
 
   services = {
     custom.tailscale.enable = true;
-    gpg-agent.enable = true;
   };
 
 
