@@ -44,6 +44,7 @@ VPS for services and web hosting.
 - [matomo analytics](https://matomo.haztecaso.com)
 - [thumbor image thumbnailer](https://img.haztecaso.com)
 - [vscode web](https://code.haztecaso.com)
+- [gitea](https://git.haztecaso.com)
 
 #### Webs
 
