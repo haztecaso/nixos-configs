@@ -60,10 +60,12 @@ in
       youtube-dl = "yt-dlp";
       python = "${pkgs.python38Packages.ipython}/bin/ipython";
     };
+    gpg.enable = true;
   };
 
   services = {
     custom.tailscale.enable = true;
+    gpg-agent.enable = true;
   };
 
 
