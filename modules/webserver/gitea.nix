@@ -25,10 +25,11 @@
             ENABLED = true;
             MAILER_TYPE = "sendmail";
             FROM = "gitea@haztecaso.com";
-            SENDMAIL_PATH = "${pkgs.system-sendmail}/bin/sendmail";
+            SENDMAIL_PATH = "${pkgs.postfix}/bin/sendmail";
           };
           other = {
             SHOW_FOOTER_VERSION = false;
+            SHOW_FOOTER_TEMPLATE_LOAD_TIME = false;
           };
         };
       };
