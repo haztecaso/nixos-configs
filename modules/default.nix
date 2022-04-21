@@ -30,13 +30,14 @@
       less = "less --quit-if-one-screen --ignore-case --status-column --LONG-PROMPT --RAW-CONTROL-CHARS --HILITE-UNREAD --tabs=4 --no-init --window=-4";
       cp = "cp -i";
     };
-     custom.nnn.bookmarks = {
-       D = "~/Downloads";
-       c = "~/.config";
-       h = "~";
-       d = "~/Documents";
-       n = "~/nixos-configs";
-     };
+  };
+
+  custom.programs.nnn.bookmarks = {
+    D = "~/Downloads";
+    c = "~/.config";
+    h = "~";
+    d = "~/Documents";
+    n = "~/nixos-configs";
   };
 
   services.custom.tailscale.hosts = let

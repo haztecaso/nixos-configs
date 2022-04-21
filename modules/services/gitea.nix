@@ -2,7 +2,7 @@
   cfg = config.services.custom.gitea;
 in
 {
-  options.webserver.gitea = with lib; {
+  options.services.custom.gitea = with lib; {
     enable = mkEnableOption "Enable gitea code hosting.";
     port = mkOption {
       type = types.port;

@@ -54,7 +54,7 @@
       };
       tailscale.enable = true;
       vaultwarden.enable = true;
-      code = {
+      code-server = {
         enable = true;
         port = 8002;
         serverName = "code.haztecaso.com";
