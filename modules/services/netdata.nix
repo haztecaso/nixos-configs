@@ -15,16 +15,16 @@ in
     };
   };
   config = lib.mkIf cfg.enable {
-    netdata = {
-      enable = true;
-      config.web."default port" = cfg.port;
-    };
+    services = {
+      netdata = {
+        enable = true;
+        config.web."default port" = cfg.port;
+      };
 
-    nginx.virtualHosts.netdata = {
-      serverName = cfg.serverName;
-      locations."/".proxyPass = "http://127.0.0.1:${cfg.port}";
+      nginx.virtualHosts.netdata = {
+        serverName = cfg.serverName;
+        locations."/".proxyPass = "http://127.0.0.1:${toString cfg.port}";
+      };
     };
-
-    base.tailscale.hostnames = [ "netdata.lambda" ];
   };
 }
