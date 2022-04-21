@@ -1,8 +1,9 @@
 { ... }:
 {
   imports = [
+    ./netdata.nix
     ./syncthing.nix
-    ./vaultwarden.nix
     ./tailscale.nix
+    ./vaultwarden.nix
   ];
 }
