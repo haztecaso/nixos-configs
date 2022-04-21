@@ -87,11 +87,14 @@
 
     netdata = {
       enable = true;
+      config = {
+		web = {
+			"default port" = 8004;
+		};
+      };
     };
 
-    nginx.virtualHosts.netdata= {
-      enableACME = true;
-      forceSSL = true;
+    nginx.virtualHosts.netdata = {
       serverName = "netdata.lambda.lan";
       locations."/".proxyPass = "http://127.0.0.1:8004";
     };
