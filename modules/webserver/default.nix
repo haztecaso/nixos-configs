@@ -1,17 +1,15 @@
 { config, lib, pkgs, ... }:
 {
   imports = [
-    ./code.nix
     ./elvivero.nix
-    ./gitea.nix
     ./haztecaso.nix
     ./lagransala.nix
     ./matomo.nix
     ./thumbor.nix
   ];
 
-  options.webserver = {
-    enable = lib.mkEnableOption "web server";
+  options.webserver = with lib; {
+    enable = mkEnableOption "web server";
   };
 
   config = lib.mkIf config.webserver.enable {
@@ -37,8 +35,6 @@
       recommendedTlsSettings = true;
     };
 
-    shortcuts.paths = {
-        w  = "/var/www/";
-    };
+    shortcuts.paths.w  = "/var/www/";
   };
 }

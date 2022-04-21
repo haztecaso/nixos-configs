@@ -1,18 +1,29 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, ... }: let
+  cfg = config.services.custom.gitea;
+in
+{
   options.webserver.gitea = with lib; {
     enable = mkEnableOption "Enable gitea code hosting.";
+    port = mkOption {
+      type = types.port;
+      description = "Gitea internal listen port.";
+    };
+    serverName = mkOption {
+      type = types.str;
+      description = "Gitea nginx server name.";
+    };
   };
-  config = lib.mkIf config.webserver.gitea.enable {
+  config = lib.mkIf cfg.enable {
     services = {
       gitea = {
         enable = true;
-        domain = "git.haztecaso.com";
+        domain = cfg.serverName;
         appName = "Gitea";
         cookieSecure = true;
         disableRegistration = true;
         httpAddress = "127.0.0.1";
-        httpPort = 8003;
-        rootUrl = "https://git.haztecaso.com/";
+        httpPort = cfg.port;
+        rootUrl = "https://${cfg.serverName}/";
         dump.enable = true;
         settings = {
           security = {
@@ -36,8 +47,8 @@
       nginx.virtualHosts.gitea = {
         enableACME = true;
         forceSSL = true;
-        serverName = "git.haztecaso.com";
-        locations."/".proxyPass = "http://127.0.0.1:8003";
+        serverName = cfg.serverName;
+        locations."/".proxyPass = "http://127.0.0.1:${toString cfg.port}";
       };
     };
     mailserver.loginAccounts."gitea@haztecaso.com" = {

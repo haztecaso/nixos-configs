@@ -39,8 +39,6 @@
     elvivero.enable = true;
     matomo.enable = true;
     thumbor.enable = true;
-    code.enable = true;
-    gitea.enable = true;
   };
 
   age.secrets = {
@@ -56,6 +54,16 @@
       };
       tailscale.enable = true;
       vaultwarden.enable = true;
+      code = {
+        enable = true;
+        port = 8002;
+        serverName = "code.haztecaso.com";
+      };
+      gitea = {
+        enable = true;
+        port = 8003;
+        serverName = "git.haztecaso.com";
+      };
       netdata = {
         enable = true;
         port = 8004;
