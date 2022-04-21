@@ -84,6 +84,17 @@
       prod = true;
       configFile = config.age.secrets."jobo_bot.conf".path;
     };
+
+    netdata = {
+      enable = true;
+    };
+
+    nginx.virtualHosts.netdata= {
+      enableACME = true;
+      forceSSL = true;
+      serverName = "netdata.lambda.lan";
+      locations."/".proxyPass = "http://127.0.0.1:8004";
+    };
   };
 
   mailserver = {
