@@ -12,6 +12,9 @@ in
     home.packages = with pkgs; [ beancount fava ];
     programs.gpg.enable = true;
     services.gpg-agent.enable = true;
+    programs.kitty = {
+      enable = true;
+    };
   };
 
   environment.systemPackages = with pkgs; [
@@ -62,6 +65,7 @@ in
       youtube-dl = "yt-dlp";
       python = "${pkgs.python38Packages.ipython}/bin/ipython";
     };
+    steam.enable = true;
   };
 
   services = {
@@ -95,11 +99,7 @@ in
 
     dev = {
       enable = true;
-      pythonPackages = [
-        "numpy"
-        "matplotlib"
-        "ipython"
-      ];
+      pythonPackages = [ "numpy" "matplotlib" "ipython" ];
       direnv.enable = true;
     };
 
