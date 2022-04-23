@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 let
   cfg = config.services.custom.tailscale;
-  localNames = name: [ name "${name}.lan" "${name}.local" ];
 in
 {
   options.services.custom.tailscale = with lib; {
@@ -9,13 +8,8 @@ in
     hosts = mkOption {
       type = types.attrsOf (types.listOf types.str);
       description = "Tailscale /etc/hosts entries.";
-      default = {
-        "100.84.40.96" = localNames "lambda";
-        "100.75.165.118" = localNames "beta";
-        "100.70.238.47" = localNames "realme8";
-        "100.84.161.27" = localNames "galois";
-        "100.93.219.95" = (localNames "raspi-music") ++ [ "semuta.mooo.com" ];
-      };
+      default = {};
+      example = { "100.0.0.1" = [ "hostname" "hostname.lan" ]; };
     };
   };
 

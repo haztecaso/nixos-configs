@@ -9,19 +9,8 @@
     stateVersion = "21.11";
   };
 
-  shortcuts = {
-    paths = {
-      h = "~";
-      cf = "~/.config";
-      n = "~/nixos-configs";
-    };
-  };
-
   programs = {
     shells.aliases = {
-      ".." = "cd ..";
-      less = "less --quit-if-one-screen --ignore-case --status-column --LONG-PROMPT --RAW-CONTROL-CHARS --HILITE-UNREAD --tabs=4 --no-init --window=-4";
-      cp = "cp -i";
       agenix = "nix run github:ryantm/agenix --";
     };
   };
@@ -30,9 +19,6 @@
     programs = {
       ranger.enable = false;
       nnn.bookmarks = {
-        c = "~/.config";
-        h = "~";
-        n = "~/nixos-configs";
         w = "/var/www/";
       };
       tmux.color = "#aaee00";
@@ -53,8 +39,6 @@
     elvivero.enable = true;
     matomo.enable = true;
     thumbor.enable = true;
-    code.enable = true;
-    gitea.enable = true;
   };
 
   age.secrets = {
@@ -70,6 +54,21 @@
       };
       tailscale.enable = true;
       vaultwarden.enable = true;
+      code-server = {
+        enable = true;
+        port = 8002;
+        serverName = "code.haztecaso.com";
+      };
+      gitea = {
+        enable = true;
+        port = 8003;
+        serverName = "git.haztecaso.com";
+      };
+      netdata = {
+        enable = true;
+        port = 8004;
+        serverName = "netdata.lambda.lan";
+      };
     };
 
     moodle-dl = {
@@ -84,6 +83,22 @@
       prod = true;
       configFile = config.age.secrets."jobo_bot.conf".path;
     };
+
+    # headscale = {
+    #   enable = true;
+    #   port = 8004;
+    #   settings = {
+    #     tls_cert_path = "${config.security.acme.certs."headscale.haztecaso.com".directory}/certfile";
+    #     tls_key_path = "${config.security.acme.certs."headscale.haztecaso.com".directory}/keyfile";
+    #   };
+    # };
+
+    # nginx.virtualHosts.headscale = {
+    #   enableACME = true;
+    #   forceSSL = true;
+    #   serverName = "headscale.haztecaso.com";
+    #   locations."/".proxyPass = "http://127.0.0.1:8004";
+    # };
   };
 
   mailserver = {

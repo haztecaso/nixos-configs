@@ -1,8 +1,11 @@
 { ... }:
 {
   imports = [
+    ./code.nix
+    ./gitea.nix
+    ./netdata.nix
     ./syncthing.nix
-    ./vaultwarden.nix
     ./tailscale.nix
+    ./vaultwarden.nix
   ];
 }
