@@ -8,7 +8,7 @@ in
     hosts = mkOption {
       type = types.attrsOf (types.listOf types.str);
       description = "Tailscale /etc/hosts entries.";
-      default = {};
+      default = { };
       example = { "100.0.0.1" = [ "hostname" "hostname.lan" ]; };
     };
   };
@@ -20,5 +20,13 @@ in
       firewall.allowedUDPPorts = [ 41641 ];
       hosts = cfg.hosts;
     };
+    custom.programs.ssh.extraConfig = with lib;
+      let
+        mkConfig = ip: hostnames: ''
+          Host ${concatStrings (intersperse " " hostnames)}
+              Hostname ${ip}
+        '';
+      in
+      concatStrings (intersperse "\n" (mapAttrsToList mkConfig cfg.hosts));
   };
 }
