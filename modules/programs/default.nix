@@ -32,14 +32,14 @@ let
 in
 {
   imports = [
-    # ./git
-    # ./ssh
+    # ./git.nix
     ./irssi.nix
     ./latex.nix
     ./music.nix
     ./nnn.nix
     ./ranger.nix
     ./shells.nix
+    ./ssh.nix
     ./tmux
     ./vim
   ];

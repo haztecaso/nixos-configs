@@ -72,6 +72,7 @@ in
     upower.enable = true;
     avahi.enable = true;
     avahi.nssmdns = true;
+    mosh.enable = true;
   };
 
   virtualisation = {
@@ -106,6 +107,7 @@ in
       music.enable = true;
       latex.enable = true;
       irssi.enable = true;
+      ssh.enable = true;
     };
 
     dev = {

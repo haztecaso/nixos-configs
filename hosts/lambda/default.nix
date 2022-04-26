@@ -13,6 +13,7 @@
     shells.aliases = {
       agenix = "nix run github:ryantm/agenix --";
     };
+    ssh.enable = true;
   };
 
   custom = {
@@ -83,6 +84,8 @@
       prod = true;
       configFile = config.age.secrets."jobo_bot.conf".path;
     };
+
+    mosh.enable = true;
 
     # headscale = {
     #   enable = true;
