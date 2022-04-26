@@ -13,6 +13,7 @@
     shells.aliases = {
       agenix = "nix run github:ryantm/agenix --";
     };
+    ssh.enable = true;
   };
 
   custom = {

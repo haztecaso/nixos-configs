@@ -106,6 +106,7 @@ in
       music.enable = true;
       latex.enable = true;
       irssi.enable = true;
+      ssh.enable = true;
     };
 
     dev = {

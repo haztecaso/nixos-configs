@@ -60,7 +60,9 @@ in
 
   custom = {
     programs = {
-      ranger.enable = false;
+      irssi.enable = true;
+      latex.enable = true;
+      music.enable = true;
       nnn.bookmarks = {
         N = "~/Nube";
         l = "~/Nube/lecturas";
@@ -71,11 +73,10 @@ in
         u = "~/Nube/uni/Actuales";
         v = "~/Videos";
       };
+      ranger.enable = false;
+      ssh.enable = true;
       tmux.color = "#aaee00";
       vim.package = pkgs.neovimFull;
-      music.enable = true;
-      latex.enable = true;
-      irssi.enable = true;
     };
 
     dev = {
@@ -83,6 +84,6 @@ in
       pythonPackages = [ "numpy" "matplotlib" "ipython" ];
       direnv.enable = true;
     };
-
   };
+
 }
