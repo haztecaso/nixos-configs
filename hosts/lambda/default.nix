@@ -85,6 +85,8 @@
       configFile = config.age.secrets."jobo_bot.conf".path;
     };
 
+    mosh.enable = true;
+
     # headscale = {
     #   enable = true;
     #   port = 8004;

@@ -72,6 +72,7 @@ in
     upower.enable = true;
     avahi.enable = true;
     avahi.nssmdns = true;
+    mosh.enable = true;
   };
 
   virtualisation = {
