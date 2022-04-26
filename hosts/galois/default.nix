@@ -64,6 +64,7 @@ in
       python = "${pkgs.python38Packages.ipython}/bin/ipython";
     };
     adb.enable = true;
+    mosh.enable = true;
   };
 
   services = {
@@ -72,7 +73,6 @@ in
     upower.enable = true;
     avahi.enable = true;
     avahi.nssmdns = true;
-    mosh.enable = true;
   };
 
   virtualisation = {

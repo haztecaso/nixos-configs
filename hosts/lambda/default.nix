@@ -13,7 +13,7 @@
     shells.aliases = {
       agenix = "nix run github:ryantm/agenix --";
     };
-    ssh.enable = true;
+    mosh.enable = true;
   };
 
   custom = {
@@ -22,6 +22,7 @@
       nnn.bookmarks = {
         w = "/var/www/";
       };
+      ssh.enable = true;
       tmux.color = "#aaee00";
       vim.package = pkgs.mkNeovim {
         completion.enable = true;
