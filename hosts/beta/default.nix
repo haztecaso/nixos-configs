@@ -54,6 +54,7 @@ in
       python = "${pkgs.python38Packages.ipython}/bin/ipython";
     };
     steam.enable = true;
+    mosh.enable = true;
   };
 
   services.custom.tailscale.enable = true;
