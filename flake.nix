@@ -39,6 +39,7 @@
         inputs.jobo_bot.nixosModule
         inputs.moodle-dl.nixosModule
         inputs.snm.nixosModule
+        "${inputs.unstable}/nixos/modules/services/networking/headscale.nix"
       ];
     };
 
