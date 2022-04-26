@@ -40,13 +40,15 @@
     n = "~/nixos-configs";
   };
 
-  services.custom.tailscale.hosts = let
-    localNames = name: [ name "${name}.lan" "${name}.local" ];
-  in {
-    "100.84.40.96" = (localNames "lambda") ++ (localNames "netdata.lambda");
-    "100.75.165.118" = localNames "beta";
-    "100.70.238.47" = localNames "realme8";
-    "100.84.161.27" = localNames "galois";
-    "100.93.219.95" = (localNames "raspi-music") ++ [ "semuta.mooo.com" ];
-  };
+  services.custom.tailscale.hosts =
+    let
+      localNames = name: [ name "${name}.lan" "${name}.local" ];
+    in
+    {
+      "100.84.40.96" = (localNames "lambda") ++ (localNames "netdata.lambda");
+      "100.75.165.118" = localNames "beta";
+      "100.70.238.47" = localNames "realme8";
+      "100.84.161.27" = localNames "galois";
+      "100.93.219.95" = (localNames "raspi-music") ++ [ "semuta.mooo.com" ];
+    };
 }
