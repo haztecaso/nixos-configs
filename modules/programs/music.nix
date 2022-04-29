@@ -30,6 +30,7 @@ in
   config = lib.mkIf cfg.enable (
     let
       conf = {
+        home.packages = [ pkgs.mpc_cli ];
         services.mpd = {
           enable = true;
           musicDirectory = cfg.dir;
