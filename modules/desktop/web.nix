@@ -6,23 +6,25 @@
     settings = {
       content = {
         headers.user_agent = "Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0";
+        autoplay = false;
+        pdfjs = true;
       };
     };
     searchEngines = {
       DEFAULT = "https://start.duckduckgo.com/?kae=d&kak=-1&kal=-1&kao=-1&kaq=-1&kp=-2&kz=1&kav=1&kn=-1&kk=-1&k1=-1&kaj=m&kay=b&kax=-1&kap=-1&kau=-1&ks=n&kw=w&ko=d&kg=g&k5=1&kt=v&km=l&q={}";
+      a = "https://www.amazon.es/s?k={}";
       g = "https://duckduckgo.com/?q=g!%20{}";
       h = "https://hoogle.haskell.org/?hoogle={}";
-      w = "https://en.wikipedia.org/w/index.php?search={}";
       yt = "https://www.youtube.com/results?search_query={}";
       aw = "https://wiki.archlinux.org/index.php?search={}";
-      nw = "https://nixos.wiki/index.php?search={}";
+      w = "https://en.wikipedia.org/w/index.php?search={}";
       we = "https://es.wikipedia.org/w/index.php?search={}";
       wi = "https://it.wikipedia.org/w/index.php?search={}";
+      nix = "https://search.nixos.org/packages?query={}";
       nixpkg = "https://search.nixos.org/packages?query={}";
       wikiloc = "https://es.wikiloc.com/wikiloc/map.do?q={}";
-      maps = "https://www.google.com/maps/search/{}";
+      map = "https://www.google.com/maps/search/{}";
       dockerhub = "https://hub.docker.com/search?q={}&type=image";
-      "hub.docker" = "https://hub.docker.com/search?q={}&type=image";
     };
     keyBindings = {
       normal = {
