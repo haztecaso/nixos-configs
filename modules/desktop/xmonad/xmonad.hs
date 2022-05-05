@@ -9,6 +9,7 @@ import           XMonad.Hooks.DynamicLog
 import           XMonad.Hooks.EwmhDesktops
 import           XMonad.Hooks.InsertPosition
 import           XMonad.Hooks.ManageDocks
+import           XMonad.Hooks.ManageHelpers
 import           XMonad.Hooks.SetWMName
 import           XMonad.Layout.DecorationMadness
 import           XMonad.Layout.Drawer
@@ -64,15 +65,15 @@ myKeys conf = mkKeymap conf $
     ("M-S-j", windows W.swapDown >> warpToWindowCenter), -- Swap the focused window with the next window
     ("M-S-k", windows W.swapUp >> warpToWindowCenter), -- Swap the focused window with the previous window
     -- Layouts
-    ("M-x", sendMessage NextLayout), -- Rotate through the available layout algorithms
-    ("M-t", sendMessage $ JumpToLayout "tiled"),
-    ("M-M1-t", sendMessage $ JumpToLayout "threecol"),
+    ("M-t",      sendMessage $ JumpToLayout "tiled"),
+    ("M-M1-t",   sendMessage $ JumpToLayout "threecol"),
     ("M-M1-S-t", sendMessage $ JumpToLayout "threecolmid"),
-    ("M-y", sendMessage $ JumpToLayout "twopane"),
-    ("M-S-y", sendMessage $ JumpToLayout "twopanebottom"),
-    ("M-b", sendMessage $ JumpToLayout "bottom"),
-    ("M-g", sendMessage $ JumpToLayout "grid"),
-    ("M-f", sendMessage $ JumpToLayout "full"),
+    ("M-y",      sendMessage $ JumpToLayout "twopane"),
+    ("M-S-y",    sendMessage $ JumpToLayout "twopanebottom"),
+    ("M-b",      sendMessage $ JumpToLayout "bottom"),
+    ("M-g",      sendMessage $ JumpToLayout "grid"),
+    ("M-f",      sendMessage $ JumpToLayout "full"),
+    ("M-x", sendMessage NextLayout), -- Rotate through the available layout algorithms
     ("M-h", sendMessage Shrink), -- Shrink the master area
     ("M-l", sendMessage Expand), -- Expand the master area
     ("M-,", sendMessage (IncMasterN 1)), -- Increment the number of windows in the master area
@@ -95,13 +96,10 @@ toggleFloat w =
     ( \s ->
         if M.member w (W.floating s)
           then W.sink w s
-          else W.float w (W.RationalRect (1 / 3) (1 / 4) (1 / 2) (4 / 5)) s
+          else W.float w centerRect s
     )
 
-centreFloat win = do
-  (_, W.RationalRect x y w h) <- floatLocation win
-  windows $ W.float win (W.RationalRect ((1 - w) / 2) ((1 - h) / 2) w h)
-  return ()
+centerRect = W.RationalRect (1 / 10) (1 / 10) (4 / 5) (4 / 5)
 
 warpToWindowCenter = warpToWindow 0.5 0.5
 
@@ -133,12 +131,11 @@ toggleSpacing = toggleScreenSpacingEnabled >> toggleWindowSpacingEnabled
 -- Window rules
 myManageHook =
   composeAll
-    [ resource =? "desktop_window" --> doIgnore,
+    [
+      resource =? "desktop_window" --> doIgnore,
       resource =? "kdesktop" --> doIgnore,
-      -- , className =? "mpv"             --> doFloat
-      className =? "GParted" --> doFloat,
-      className =? "Calendar" <&&> className =? "Thunderbird" --> doFloat,
-      className =? "mpvWorkspace9" --> doShift "9"
+      className =? "GParted" --> doRectFloat centerRect,
+      className =? "mpvWorkspace9" --> doCenterFloat
     ]
     <+> insertPosition End Newer
 
