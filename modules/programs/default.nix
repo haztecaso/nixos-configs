@@ -15,6 +15,9 @@ let
         "audio/flac" = "mpv.desktop";
         "x-scheme-handler/http" = "org.qutebrowser.qutebrowser.desktop";
         "x-scheme-handler/https" = "org.qutebrowser.qutebrowser.desktop";
+        "x-scheme-handler/chrome" = "org.qutebrowser.qutebrowser.desktop";
+        "application/x-extension-htm" = "org.qutebrowser.qutebrowser.desktop";
+        "application/x-extension-html" = "org.qutebrowser.qutebrowser.desktop";
         "text/html" = "org.qutebrowser.qutebrowser.desktop";
         "image/gif" = "sxiv.desktop";
         "image/jpeg" = "sxiv.desktop";
