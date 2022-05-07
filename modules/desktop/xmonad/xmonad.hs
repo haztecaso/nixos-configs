@@ -99,7 +99,9 @@ toggleFloat w =
           else W.float w centerRect s
     )
 
-centerRect = W.RationalRect (1 / 10) (1 / 10) (4 / 5) (4 / 5)
+centerRect = W.RationalRect (px) (py) (1-2*px) (1-2*py)
+  where px = 0.04
+        py = px*9/16
 
 warpToWindowCenter = warpToWindow 0.5 0.5
 
