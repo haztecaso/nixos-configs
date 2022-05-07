@@ -7,10 +7,20 @@ in
     enable = lib.mkEnableOption "haztecaso.com web server";
   };
   config = lib.mkIf config.webserver.haztecaso.enable {
+    security.acme.certs."haztecaso.com" = {
+      dnsProvider = "cloudflare";
+      credentialsFile = config.age.secrets."cloudflare".path;
+      group = "nginx";
+      extraDomainNames = [ "*.haztecaso.com" ];
+    };
     services = {
       nginx.virtualHosts = {
+        "*.haztecaso.com" = {
+          useACMEHost = "haztecaso.com";
+          locations."/".return = "https://haztecaso.com";
+        };
         "haztecaso.com" = {
-          enableACME = true;
+          useACMEHost = "haztecaso.com";
           forceSSL = true;
           root = root;
           extraConfig = ''
