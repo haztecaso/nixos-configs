@@ -1,4 +1,3 @@
-
 { config, lib, pkgs, ... }:
 let
   cfg = config.services.custom.code-server;
@@ -21,7 +20,7 @@ in
         description = "Gitea nginx server name.";
       };
     };
-    config = lib.mkIf config.webserver.thumbor.enable {
+    config = lib.mkIf cfg.enable {
       virtualisation.docker.enable = true;
       virtualisation.oci-containers.containers."code-server" = {
         image = "codercom/code-server:latest";
