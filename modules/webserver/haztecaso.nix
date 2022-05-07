@@ -16,8 +16,10 @@ in
     services = {
       nginx.virtualHosts = {
         "*.haztecaso.com" = {
+          serverName = "*.haztecaso.com";
+          forceSSL = true;
           useACMEHost = "haztecaso.com";
-          locations."/".return = "https://haztecaso.com";
+          locations."/".return = "404";
         };
         "haztecaso.com" = {
           useACMEHost = "haztecaso.com";
