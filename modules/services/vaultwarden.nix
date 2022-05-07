@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 let
-  cfg = config.services.custom.vaultwarden;
+  cfg = config.custom.services.vaultwarden;
 in
 {
-  options.services.custom.vaultwarden = with lib; {
-    enable = mkEnableOption "custom vaultwarden service";
+  options.custom.services.vaultwarden = with lib; {
+    enable = mkEnableOption "Enable custom vaultwarden service.";
     signupsAllowed = mkOption {
       type = types.bool;
       default = false;

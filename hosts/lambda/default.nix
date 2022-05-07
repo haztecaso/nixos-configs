@@ -9,10 +9,11 @@
     stateVersion = "21.11";
   };
 
+  environment.systemPackages = with pkgs; [
+    agenix
+  ];
+
   programs = {
-    shells.aliases = {
-      agenix = "nix run github:ryantm/agenix --";
-    };
     mosh.enable = true;
   };
 
@@ -33,6 +34,17 @@
         };
       };
     };
+    services = {
+        syncthing = {
+          enable = true;
+          folders = [ "uni-moodle" "nube" "android-camara" ];
+        };
+        tailscale.enable = true;
+        vaultwarden.enable = true;
+        code-server.enable = false;
+        gitea.enable = true;
+        netdata.enable = true;
+    };
   };
 
   webserver = {
@@ -48,31 +60,8 @@
     "moodle-dl.conf".file = ../../secrets/moodle-dl.age;
   };
 
-  services = {
-    custom = {
-      syncthing = {
-        enable = true;
-        folders = [ "uni-moodle" "nube" "android-camara" ];
-      };
-      tailscale.enable = true;
-      vaultwarden.enable = true;
-      code-server = {
-        enable = true;
-        port = 8002;
-        serverName = "code.haztecaso.com";
-      };
-      gitea = {
-        enable = true;
-        port = 8003;
-        serverName = "git.haztecaso.com";
-      };
-      netdata = {
-        enable = true;
-        port = 8004;
-        serverName = "netdata.lambda.lan";
-      };
-    };
 
+  services = {
     moodle-dl = {
       enable = true;
       configFile = config.age.secrets."moodle-dl.conf".path;
@@ -85,6 +74,47 @@
       prod = true;
       configFile = config.age.secrets."jobo_bot.conf".path;
     };
+
+    # radicale =
+    #   let
+    #     htpasswd = pkgs.writeText "radicale.users" (concatStrings
+    #       (flip mapAttrsToList config.mailserver.loginAccounts (mail: user:
+    #         mail + ":" + user.hashedPassword + "\n"
+    #       ))
+    #     );
+    #   in
+    #   {
+    #     enable = true;
+    #     config = ''
+    #       [auth]
+    #       type = htpasswd
+    #       htpasswd_filename = ${htpasswd}
+    #       htpasswd_encryption = bcrypt
+    #     '';
+    #   };
+    
+      # nginx.virtualHosts."dav.haztecaso.com" = {
+      # };
+
+    # roundcube = {
+    #   enable = false;
+    #   hostName = "mail.haztecaso.com";
+    #   extraConfig = ''
+    #     # starttls needed for authentication, so the fqdn required to match the certificate
+    #     $config['smtp_server'] = "tls://${config.mailserver.fqdn}";
+    #     $config['smtp_user'] = "%u";
+    #     $config['smtp_pass'] = "%p";
+    #   '';
+    #   package = pkgs.roundcube.withPlugins (p: with p; [ persistent_login ]);
+    #   plugins = [
+    #     "archive"
+    #     "hide_blockquote"
+    #     "newmail_notifier"
+    #     "show_additional_headers"
+    #     "zipdownload"
+    #     "persistent_login"
+    #   ];
+    # };
 
     # headscale = {
     #   enable = true;
@@ -109,5 +139,6 @@
     domains = [ "haztecaso.com" ];
     # certificateScheme = 3;
   };
+
 
 }

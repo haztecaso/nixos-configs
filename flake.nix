@@ -20,6 +20,7 @@
     inherit self inputs;
 
     sharedOverlays = [
+      inputs.agenix.overlay
       inputs.neovim-flake.overlay
       inputs.impo.overlay
       inputs.jobo_bot.overlay

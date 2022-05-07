@@ -40,7 +40,7 @@
     n = "~/nixos-configs";
   };
 
-  services.custom.tailscale.hosts =
+  custom.services.tailscale.hosts =
     let
       localNames = name: [ name "${name}.lan" "${name}.local" ];
     in

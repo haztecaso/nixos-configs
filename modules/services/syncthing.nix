@@ -1,7 +1,7 @@
 #TODO: Mejorar este modulo para que se pueda usar desde varios hosts
 { config, lib, pkgs, ... }:
 let
-  cfg = config.services.custom.syncthing;
+  cfg = config.custom.services.syncthing;
   devices = {
     macbook.id = "JE3TRVV-CSMT42I-YUPYLOR-PXKMXSR-GKN3APW-SAHMJRM-JVCX66N-4BBRWQJ";
     realmi8.id = "GGY5ZY5-Y4732SG-2YWHMXT-MZMWT4B-NOVGTUL-RA6ZOIS-7LJNVRB-3M3SEA3";
@@ -26,7 +26,7 @@ let
   };
 in
 {
-  options.services.custom.syncthing = with lib; {
+  options.custom.services.syncthing = with lib; {
     enable = mkEnableOption "custom syncthing service";
     folders = mkOption {
       type = types.listOf (types.enum (builtins.attrNames folders));

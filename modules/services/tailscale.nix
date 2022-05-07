@@ -1,9 +1,9 @@
 { config, lib, pkgs, ... }:
 let
-  cfg = config.services.custom.tailscale;
+  cfg = config.custom.services.tailscale;
 in
 {
-  options.services.custom.tailscale = with lib; {
+  options.custom.services.tailscale = with lib; {
     enable = mkEnableOption "Tailscale service and package.";
     hosts = mkOption {
       type = types.attrsOf (types.listOf types.str);
