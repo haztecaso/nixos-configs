@@ -16,6 +16,7 @@ in
   };
 
   config = with lib; mkMerge [
+
       # code server config
       (mkIf cfg.code-server.enable (let
         root = "/root/";
