@@ -28,7 +28,10 @@ in
           extraConfig = ''
             error_log syslog:server=unix:/dev/log debug;
             access_log syslog:server=unix:/dev/log,tag=haztecaso;
+            add_header Access-Control-Allow-Origin "radio.haztecaso.com";
           '';
+
+          locations."/stream".proxyPass = "http://raspi-music:8000";
 
           # Radio archive
           locations."/radio/archivo/".extraConfig = ''
