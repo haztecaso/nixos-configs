@@ -11,6 +11,7 @@
     impo = { url = "github:haztecaso/impo"; inputs.nixpkgs.follows = "nixpkgs"; };
     jobo_bot = { url = "github:haztecaso/jobo_bot"; inputs.nixpkgs.follows = "nixpkgs"; };
     moodle-dl = { url = "github:haztecaso/flakes?dir=moodle-dl"; inputs.nixpkgs.follows = "nixpkgs"; };
+    mpdws = { url = "github:haztecaso/mpdws"; inputs = { nixpkgs.follows = "nixpkgs"; utils.follows = "utils"; }; };
     web-elvivero = { url = "github:elvivero/elvivero.es"; inputs = { nixpkgs.follows = "nixpkgs"; utils.follows = "utils"; }; };
     web-elvivero-frutas = { url = "github:elvivero/frutas"; inputs = { nixpkgs.follows = "nixpkgs"; utils.follows = "utils"; }; };
     nnn = { url = "github:jarun/nnn"; flake = false; };
@@ -25,6 +26,7 @@
       inputs.impo.overlay
       inputs.jobo_bot.overlay
       inputs.moodle-dl.overlay
+      inputs.mpdws.overlay
       inputs.web-elvivero-frutas.overlay
       inputs.web-elvivero.overlay
       (final: prev: { unstable = inputs.unstable.legacyPackages.${prev.system}; })
@@ -39,6 +41,7 @@
         inputs.home-manager.nixosModule
         inputs.jobo_bot.nixosModule
         inputs.moodle-dl.nixosModule
+        inputs.mpdws.nixosModule
         inputs.snm.nixosModule
         "${inputs.unstable}/nixos/modules/services/networking/headscale.nix"
       ];

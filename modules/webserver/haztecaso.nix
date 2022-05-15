@@ -31,7 +31,21 @@ in
             add_header Access-Control-Allow-Origin "radio.haztecaso.com";
           '';
 
+          locations."/".extraConfig = ''
+            if ($request_uri ~ ^/(.*)\.html) {
+              return 302 /$1;
+            }
+            try_files $uri $uri.html $uri/ =404;
+          '';
+
           locations."/stream".proxyPass = "http://raspi-music:8000";
+          locations."/mpdws" = {
+            proxyPass = "http://localhost:8005";
+            extraConfig = ''
+              proxy_set_header Upgrade $http_upgrade;
+              proxy_set_header Connection "upgrade";
+            '';
+          };
 
           # Radio archive
           locations."/radio/archivo/".extraConfig = ''
@@ -45,6 +59,12 @@ in
           enableACME = true;
           locations."/".return = "301 https://haztecaso.com$request_uri";
         };
+      };
+      mpdws = {
+        enable = true;
+        port = 8005;
+        host = "0.0.0.0";
+        mpdHost = "raspi-music";
       };
     };
     shortcuts.paths.wh = root;

@@ -185,6 +185,29 @@
         "type": "github"
       }
     },
+    "mpdws": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "utils": [
+          "utils"
+        ]
+      },
+      "locked": {
+        "lastModified": 1652379300,
+        "narHash": "sha256-5nnAi5Zp0pAzTKtfwwK8lGUCIxOt86K4wQhlhaBz0kk=",
+        "owner": "haztecaso",
+        "repo": "mpdws",
+        "rev": "9ba8b63613c94f463f082dddc16ba3542359fdca",
+        "type": "github"
+      },
+      "original": {
+        "owner": "haztecaso",
+        "repo": "mpdws",
+        "type": "github"
+      }
+    },
     "naersk": {
       "inputs": {
         "nixpkgs": [
@@ -410,6 +433,7 @@
         "impo": "impo",
         "jobo_bot": "jobo_bot",
         "moodle-dl": "moodle-dl",
+        "mpdws": "mpdws",
         "neovim-flake": "neovim-flake",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
