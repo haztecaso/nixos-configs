@@ -6,6 +6,7 @@
     ./lagransala.nix
     ./matomo.nix
     ./thumbor.nix
+    ./zulmarecchini.nix
   ];
 
   options.webserver = with lib; {
