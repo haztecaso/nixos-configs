@@ -29,6 +29,12 @@ in
             error_log syslog:server=unix:/dev/log debug;
             access_log syslog:server=unix:/dev/log,tag=zulmarecchini;
           '';
+          locations."/".extraConfig = ''
+            if ($request_uri ~ ^/(.*)index\.html) {
+              return 302 /$1;
+            }
+            try_files $uri $uri.html $uri/ =404;
+          '';
         };
         "www.zulmarecchini.com" = {
           enableACME = true;
