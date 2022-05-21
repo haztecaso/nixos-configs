@@ -17,11 +17,7 @@ in
         "elvivero.es" = {
           useACMEHost = "elvivero.es";
           forceSSL = true;
-          # root = root;
-          root = "${pkgs.elvivero-web}/www/";
-          locations."/frutas/".extraConfig = ''
-            alias ${pkgs.elvivero-frutas-web}/www/;
-          '';
+          root = root;
           extraConfig = ''
             expires 1d;
             error_page 404 /404.html;
