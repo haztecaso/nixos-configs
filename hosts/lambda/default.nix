@@ -53,6 +53,7 @@
     elvivero.enable = true;
     matomo.enable = true;
     thumbor.enable = true;
+    zulmarecchini.enable = true;
   };
 
   age.secrets = {
