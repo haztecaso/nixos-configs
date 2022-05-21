@@ -63,7 +63,6 @@ in
             httpAddress = "127.0.0.1";
             httpPort = port;
             rootUrl = "https://${serverName}/";
-            dump.enable = true;
             settings = {
               security = {
                 LOGIN_REMEMBER_DAYS = 14;
