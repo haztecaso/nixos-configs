@@ -28,13 +28,16 @@
       };
     };
 
-    services.nginx = {
-      enable = true;
-      enableReload = true;
-      recommendedGzipSettings = true;
-      recommendedOptimisation = true;
-      recommendedProxySettings = true;
-      recommendedTlsSettings = true;
+    services = {
+      nginx = {
+        enable = true;
+        enableReload = true;
+        recommendedGzipSettings = true;
+        recommendedOptimisation = true;
+        recommendedProxySettings = true;
+        recommendedTlsSettings = true;
+      };
+      mysql.package = pkgs.mariadb;
     };
 
     shortcuts.paths.w  = "/var/www/";
