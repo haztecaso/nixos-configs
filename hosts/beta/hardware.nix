@@ -13,9 +13,15 @@
     kernelModules = [ "wl" ];
     extraModulePackages = [ ];
 
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
-
+    loader = {
+      systemd-boot = {
+        enable = true;
+        consoleMode = "max";
+        editor = false;
+      };
+      timeout = 1;
+      efi.canTouchEfiVariables = true;
+    };
   };
 
 
