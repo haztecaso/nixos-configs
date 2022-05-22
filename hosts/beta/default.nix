@@ -57,7 +57,7 @@ in
     mosh.enable = true;
   };
 
-  services.custom.tailscale.enable = true;
+  services.safeeyes.enable = true;
 
   custom = {
     programs = {
@@ -78,6 +78,10 @@ in
       ssh.enable = true;
       tmux.color = "#aaee00";
       vim.package = pkgs.neovimFull;
+    };
+
+    services = {
+      tailscale.enable = true;
     };
 
     dev = {
