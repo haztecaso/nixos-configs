@@ -17,6 +17,7 @@ in
           enable = true;
           userEmail = "adrianlattes@disroot.org";
           userName = "haztecaso";
+          lfs.enable = true;
         };
       };
     in
