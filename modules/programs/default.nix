@@ -35,7 +35,7 @@ let
 in
 {
   imports = [
-    # ./git.nix
+    ./git.nix
     ./irssi.nix
     ./latex.nix
     ./music.nix
