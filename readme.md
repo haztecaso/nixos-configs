@@ -2,9 +2,9 @@
 
 ## To do
 
-- ssh over tor: https://mdleom.com/blog/2020/03/16/tor-hidden-onion-nixos/
+- reemplazar thumbor por imgproxy
 - Manage copy of ssh keys
-- Decide how to manage secrets:
+- Improve secrets management.
   - [agenix](https://github.com/ryantm/agenix/)
     - Drawbacks
       - Only works for system configs, not home (Problem could be avoided by converting
@@ -18,7 +18,10 @@
       - Plain files decrypted on machine
     - Benefits
       - Can encrypt full .nix files
-- Fusionar con configs del portatil
+
+### Ideas random
+
+- ssh over tor: https://mdleom.com/blog/2020/03/16/tor-hidden-onion-nixos/
 
 ## Tips
 
@@ -50,10 +53,10 @@ VPS for services and web hosting.
 
 - [haztecaso.com](https://haztecaso.com)
 - [elvivero.es](https://elvivero.es)
+- [zulmarecchini.com](https://zulmarecchini.com)
 
 Future:
 
-- zulmarecchini.com: indexhibit -> nodejs
 - twozeroeightthree.com: jekyll
 
 ### beta
@@ -70,8 +73,6 @@ Macbook Pro mid 2012. Personal machine.
 - music: beets config
 - mail module
 - pandoc-templates
-- emacs
-- money
 
 ## References
 
