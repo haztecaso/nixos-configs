@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 {
   imports = [
+    ./colchonreview.nix
     ./elvivero.nix
     ./haztecaso.nix
     ./lagransala.nix
