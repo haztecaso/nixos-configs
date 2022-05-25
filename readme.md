@@ -2,6 +2,7 @@
 
 ## To do
 
+- instalar statping
 - reemplazar thumbor por imgproxy
 - Manage copy of ssh keys
 - Improve secrets management.
