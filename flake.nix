@@ -53,5 +53,13 @@
 
     overlay = import ./overlay;
 
+    outputsBuilder = channels: {
+      packages = let
+        docs = import ./docs { pkgs = channels.nixpkgs; };
+      in {
+        docs-manpages = docs.manPages;
+        docs-html = docs.manual.html;
+      };
+    };
   };
 }

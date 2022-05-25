@@ -7,16 +7,24 @@ final: prev: {
       now=$(cat /sys/class/power_supply/$1/charge_now)
       full=$(cat /sys/class/power_supply/$1/charge_full_design)
       echo "scale=0 ; 100 * $now / $full" | ${pkgs.bc}/bin/bc
-    '')
-    { };
+    '') { };
 
   bitwarden-rofi = prev.callPackage
     (import (builtins.fetchGit {
       url = "https://github.com/haztecaso/bitwarden-rofi";
       ref = "main";
       rev = "b252037ca6fd3dff4d92a2f8068f91a7049749c9";
-    }))
-    { };
+    })) { };
 
   configuradorfmnt = prev.callPackage ./configuradorfmnt.nix { };
+
+  nmd = prev.callPackage
+    (import pkgs.fetchFromGitLab {
+      name = "nmd";
+      owner = "rycee";
+      repo = "nmd";
+      rev = "9e7a20e6ee3f6751f699f79c0b299390f81f7bcd";
+      sha256 = "1s49gjn1wapcjn0q4gabi8jwp8k5f18354a9c1vji0hfqsaknxzj";
+    }) {};
+
 }
