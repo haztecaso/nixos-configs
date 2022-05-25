@@ -68,7 +68,6 @@ in
   };
 
   services = {
-    custom.tailscale.enable = true;
     logind.extraConfig = "HandlePowerKey=suspend";
     upower.enable = true;
     avahi.enable = true;
@@ -108,6 +107,10 @@ in
       latex.enable = true;
       irssi.enable = true;
       ssh.enable = true;
+    };
+
+    services = {
+      tailscale.enable = true;
     };
 
     dev = {
