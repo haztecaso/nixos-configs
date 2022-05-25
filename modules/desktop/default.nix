@@ -142,9 +142,7 @@ let
         terminal = "${pkgs.alacritty}/bin/alacritty";
         pass.enable = true;
         theme = "gruvbox-dark-hard";
-        extraConfig = {
-          "ssh-client" = "mosh";
-        };
+        # extraConfig = { "ssh-client" = "mosh"; };
       };
     };
 
