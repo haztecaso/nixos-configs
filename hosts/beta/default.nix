@@ -68,7 +68,6 @@ in
         N = "~/Nube";
         l = "~/Nube/lecturas";
         m = "~/Music";
-        n = "~/nixos-configs";
         p = "~/Pictures";
         s = "~/src";
         u = "~/Nube/uni/Actuales";

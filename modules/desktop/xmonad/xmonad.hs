@@ -100,7 +100,7 @@ toggleFloat w =
     )
 
 centerRect = W.RationalRect d d d' d'
-  where d  = 0.05
+  where d  = 0.04
         d' = 1-2*d
 
 warpToWindowCenter = warpToWindow 0.5 0.5

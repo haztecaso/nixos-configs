@@ -16,7 +16,7 @@
       d = "~/Documents";
       h = "~";
       mm = "~/Music";
-      n = "~/nixos-configs";
+      n = "~/etc/nixos";
       pp = "~/Pictures";
       sr = "~/src";
       vv = "~/Videos";
@@ -37,7 +37,7 @@
     c = "~/.config";
     h = "~";
     d = "~/Documents";
-    n = "~/nixos-configs";
+    n = "~/etc/nixos";
   };
 
   custom.services.tailscale.hosts =
