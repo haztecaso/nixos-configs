@@ -26,9 +26,10 @@ in
         ag
         jq
         git
-        dust
+        du-dust
         ncdu
         python38Full
+        filezilla
       ] ++ pythonPackages;
     })
     (lib.mkIf cfg.direnv.enable {
