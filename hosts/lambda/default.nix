@@ -62,7 +62,6 @@
     "moodle-dl.conf".file = ../../secrets/moodle-dl.age;
   };
 
-
   services = {
     moodle-dl = {
       enable = true;
