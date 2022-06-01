@@ -19,7 +19,15 @@ in
 
   environment.systemPackages = with pkgs; [
     unstable.yt-dlp
+    virt-manager
   ];
+
+  virtualisation = {
+    docker.enable = true;
+    libvirtd.enable = true;
+  };
+
+  users.users.skolem.extraGroups = [ "libvirtd" ];
 
   base = {
     hostname = "beta";
@@ -55,6 +63,7 @@ in
     };
     steam.enable = true;
     mosh.enable = true;
+    dconf.enable = true;
   };
 
   services.safeeyes.enable = true;
