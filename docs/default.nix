@@ -1,12 +1,13 @@
-{ pkgs }: let
+{ pkgs }:
+let
   modulesDocs = pkgs.nmd.buildModulesDocs {
     moduleRootPaths = [ ./.. ];
-    modules = [ ../modules ];
+    modules = [ ../modules/dev.nix ];
     mkModuleUrl = path: "https://github.com/haztecaso/nixos-configs/blob/master/${path}#blob-path";
     channelName = "nixos-configs";
     docBook.id = "nixos-configs-options";
   };
-  docs = nmd.buildDocBookDocs {
+  docs = pkgs.nmd.buildDocBookDocs {
     pathName = "nixos-configs";
     modulesDocs = [ modulesDocs ];
     documentsDirectory = ./.;
