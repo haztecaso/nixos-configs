@@ -17,7 +17,10 @@ in
     environment.systemPackages = [ pkgs.tailscale ];
     services.tailscale.enable = true;
     networking = {
-      firewall.allowedUDPPorts = [ 41641 ];
+      firewall = {
+        allowedUDPPorts = [ 41641 ];
+        checkReversePath = "loose";
+      };
       hosts = cfg.hosts;
     };
     custom.programs.ssh.extraConfig = with lib;

@@ -34,7 +34,7 @@ in
     hostnameSymbol = "β";
     wlp = { interface = "wlp3s0"; useDHCP = true; };
     eth.interface = "enp0s31f6";
-    stateVersion = "21.11";
+    stateVersion = "22.05";
   };
 
   shortcuts = {
@@ -61,7 +61,7 @@ in
       youtube-dl = "yt-dlp";
       python = "${pkgs.python38Packages.ipython}/bin/ipython";
     };
-    steam.enable = true;
+    # steam.enable = true;
     mosh.enable = true;
     dconf.enable = true;
   };
@@ -94,7 +94,7 @@ in
 
     dev = {
       enable = true;
-      pythonPackages = [ "numpy" "matplotlib" "ipython" ];
+      # pythonPackages = [ "numpy" "matplotlib" "ipython" ];
       direnv.enable = true;
     };
   };

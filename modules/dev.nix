@@ -23,7 +23,7 @@ in
         wget
         axel
         python38
-        ag
+        silver-searcher
         jq
         git
         du-dust

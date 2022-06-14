@@ -52,7 +52,7 @@ in
   services.sxhkd = {
     enable = true;
     keybindings = {
-      "super + shift + alt + r" = "${pkgs.gksu}/bin/gksu \"${pkgs.systemd}/bin/systemctl restart user.slice\"";
+      # "super + shift + alt + r" = "${pkgs.gksu}/bin/gksu \"${pkgs.systemd}/bin/systemctl restart user.slice\""; #TODO: find replacement for gksu
       # Launchers
       "super + Return" = "${pkgs.alacritty}/bin/alacritty";
       "super + alt + Return" = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.tmux}/bin/tmux new-session -A -s 0";

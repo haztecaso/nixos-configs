@@ -1,8 +1,8 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/release-21.11";
+    nixpkgs.url = "github:nixos/nixpkgs/release-22.05";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager = { url = "github:nix-community/home-manager/release-21.11"; inputs.nixpkgs.follows = "nixpkgs"; };
+    home-manager = { url = "github:nix-community/home-manager/release-22.05"; inputs.nixpkgs.follows = "nixpkgs"; };
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
     snm = { url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-21.11"; inputs.nixpkgs.follows = "nixpkgs"; };
     nixos-hardware = { url = "github:NixOS/nixos-hardware/master"; inputs.nixpkgs.follows = "nixpkgs"; };
@@ -39,7 +39,6 @@
         inputs.moodle-dl.nixosModule
         inputs.mpdws.nixosModule
         inputs.snm.nixosModule
-        "${inputs.unstable}/nixos/modules/services/networking/headscale.nix"
       ];
     };
 
