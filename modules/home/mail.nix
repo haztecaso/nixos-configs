@@ -24,30 +24,32 @@ in {
     };
   };
   config = lib.mkIf cfg.enable {
-    mbsync.enable = true; # Download mails with imap
-    msmtp.enable = true;  # Send mails
+    programs = {
+      mbsync.enable = true; # Download mails with imap
+      msmtp.enable = true;  # Send mails
 
-    # CLI mail client
-    alot = {
-      enable = true;
-      settings = {
-        auto_remove_unread = true;
-        initial_command = "search tag:inbox AND NOT tag:killed AND NOT tag:spam";
-        prefer_plaintext = true;
-      };
-      # tags = { flagged.normal = "light red"; };
-      bindings = {
-        global = {
-          q = "bclose";
-          Q = "exit";
-          r = "refresh";
-          "/" = "prompt 'search '";
+      # CLI mail client
+      alot = {
+        enable = true;
+        settings = {
+          auto_remove_unread = true;
+          initial_command = "search tag:inbox AND NOT tag:killed AND NOT tag:spam";
+          prefer_plaintext = true;
         };
-        search = {
-          s = "";
-          S = "toggletags spam";
-          u = "toggletags unread";
-          K = "toggletags killed";
+        # tags = { flagged.normal = "light red"; };
+        bindings = {
+          global = {
+            q = "bclose";
+            Q = "exit";
+            r = "refresh";
+            "/" = "prompt 'search '";
+          };
+          search = {
+            s = "";
+            S = "toggletags spam";
+            u = "toggletags unread";
+            K = "toggletags killed";
+          };
         };
       };
     };
