@@ -8,6 +8,12 @@ in
   nix.gc.options = "--delete-older-than 18d";
 
   home-manager.users.skolem = { ... }: {
+    imports = [ ../../modules/home ];
+
+    custom = {
+        mail.enable = true;
+    };
+
     services.syncthing.enable = true;
     home.packages = with pkgs; [ beancount fava ];
     programs.gpg.enable = true;
