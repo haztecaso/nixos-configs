@@ -8,7 +8,6 @@ in
   nix.gc.options = "--delete-older-than 18d";
 
   home-manager.users.skolem = { ... }: {
-    imports = [ ../../modules/home ];
 
     custom = {
         mail.enable = true;

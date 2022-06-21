@@ -1,4 +1,4 @@
-{ ... }: {
+{ config, ... }: {
   imports = [
     ./base.nix
     ./desktop
@@ -8,6 +8,11 @@
     ./shortcuts
     ./webserver
   ];
+
+  home-manager = {
+    extraSpecialArgs = { nixosConfig = config; };
+    sharedModules = [ ./home ];
+  };
 
   shortcuts = {
     paths = {
