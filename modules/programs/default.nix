@@ -37,14 +37,9 @@ in
   imports = [
     ./git.nix
     ./irssi.nix
-    ./latex.nix
-    ./music.nix
     ./nnn.nix
     ./ranger.nix
     ./shells.nix
-    ./ssh.nix
-    ./tmux
-    ./vim
   ];
   home-manager.users.skolem = { ... }: home-config;
   home-manager.users.root = { ... }: home-config;

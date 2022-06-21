@@ -20,6 +20,7 @@ in
         tmux.color = "#aaee00";
         vim.package = pkgs.neovimFull;
       };
+      ssh.enable = true;
     };
 
     services.syncthing.enable = true;
@@ -95,7 +96,6 @@ in
         v = "~/Videos";
       };
       ranger.enable = false;
-      ssh.enable = true;
     };
 
     services = {
