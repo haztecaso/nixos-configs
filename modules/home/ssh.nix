@@ -1,7 +1,12 @@
 #TODO: improve module
-{ lib, pkgs, config, ... }:
+{ lib, pkgs, config, nixosConfig, ... }:
 let
   cfg = config.custom.programs.ssh;
+  tailscaleConfig = nixosConfig.custom.services.tailscale;
+  mkConfig = with lib; ip: hostnames: ''
+    Host ${concatStrings (intersperse " " hostnames)}
+        Hostname ${ip}
+  '';
   defaultConfig = ''
     Host github.com
         User git
@@ -38,14 +43,17 @@ in
     };
   };
 
-  config = {
-    programs.ssh = {
-      enable = true;
-      extraConfig = ''
-        ${if cfg.enableDefaultConfig then defaultConfig else ""}
-        ${cfg.extraConfig}
-      '';
-    };
-  };
-
+  config = lib.mkMerge [
+    (lib.mkIf cfg.enable {
+      custom.programs.ssh.extraConfig = with lib;
+        concatStrings (intersperse "\n" (mapAttrsToList mkConfig tailscaleConfig.hosts));
+      programs.ssh = {
+        enable = true;
+        extraConfig = ''
+          ${if cfg.enableDefaultConfig then defaultConfig else ""}
+          ${cfg.extraConfig}
+        '';
+      };
+    })
+  ];
 }

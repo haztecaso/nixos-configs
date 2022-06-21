@@ -18,9 +18,9 @@ in
           dir = /home/skolem/Music/Library;
         };
         tmux.color = "#aaee00";
+        ssh.enable = true;
         vim.package = pkgs.neovimFull;
       };
-      ssh.enable = true;
     };
 
     services.syncthing.enable = true;

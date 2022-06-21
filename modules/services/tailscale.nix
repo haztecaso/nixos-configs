@@ -23,13 +23,5 @@ in
       };
       hosts = cfg.hosts;
     };
-    custom.programs.ssh.extraConfig = with lib;
-      let
-        mkConfig = ip: hostnames: ''
-          Host ${concatStrings (intersperse " " hostnames)}
-              Hostname ${ip}
-        '';
-      in
-      concatStrings (intersperse "\n" (mapAttrsToList mkConfig cfg.hosts));
   };
 }
