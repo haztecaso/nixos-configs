@@ -7,12 +7,8 @@
     ./services
     ./shortcuts
     ./webserver
+    ./home
   ];
-
-  home-manager = {
-    extraSpecialArgs = { nixosConfig = config; };
-    sharedModules = [ ./home ];
-  };
 
   shortcuts = {
     paths = {
