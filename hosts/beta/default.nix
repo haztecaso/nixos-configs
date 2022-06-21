@@ -10,7 +10,14 @@ in
   home-manager.users.skolem = { ... }: {
 
     custom = {
-        mail.enable = true;
+      mail.enable = true;
+      programs = {
+        latex.enable = true;
+        music = {
+          enable = true;
+          dir = /home/skolem/Music/Library;
+        };
+      };
     };
 
     services.syncthing.enable = true;
@@ -76,8 +83,6 @@ in
   custom = {
     programs = {
       irssi.enable = true;
-      latex.enable = true;
-      music.enable = true;
       nnn.bookmarks = {
         N = "~/Nube";
         l = "~/Nube/lecturas";

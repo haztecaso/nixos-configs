@@ -8,7 +8,11 @@
 
   programs.mpv = {
     enable = true;
-    scripts = with pkgs.mpvScripts; [ mpris thumbnail youtube-quality ];
+    scripts = with pkgs.mpvScripts; [
+        mpris
+        thumbnail
+        # youtube-quality
+    ];
     config = {
       geometry = "50%x50%";
       autofit-larger = "85%x85%";
