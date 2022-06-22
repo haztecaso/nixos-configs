@@ -4,31 +4,26 @@ let
 in
 {
   options.custom.monitors = with lib; {
+    enable = mkOption {
+      type = types.bool;
+      default = true;
+      description = "Wether to enable monitor support with autorandr.";
+    };
     profiles = mkOption {
-      type = lib.types.attrs;
+      type = types.attrs;
       description = "Autorandr profiles specification (see home-manager module).";
       default = { };
     };
     defaultTarget = mkOption {
-      type = lib.types.str;
+      type = types.str;
       description = "Default profile.";
       default = "";
     };
   };
-  config = lib.mkIf config.custom.enable {
+  config = lib.mkIf cfg.enable {
     services.autorandr = {
       enable = true;
       defaultTarget = cfg.defaultTarget;
-    };
-    home-manager.users.skolem = { ... }: {
-      programs.autorandr = {
-        enable = true;
-        hooks.postswitch = {
-          "polybar-restart" = "systemctl --user restart polybar";
-          "hsetroot" = "${pkgs.hsetroot}/bin/hsetroot";
-        };
-        profiles = cfg.profiles;
-      };
     };
   };
 }

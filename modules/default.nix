@@ -3,11 +3,12 @@
     ./base.nix
     ./desktop
     ./dev.nix
+    ./home
+    ./monitors.nix
     ./programs
     ./services
     ./shortcuts
     ./webserver
-    ./home
   ];
 
   shortcuts = {

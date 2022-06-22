@@ -10,6 +10,7 @@
         ./ssh.nix
         ./tmux.nix
         ./vim.nix
+        ./monitors.nix
       ];
       xdg.mimeApps = {
         enable = true;

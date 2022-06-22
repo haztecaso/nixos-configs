@@ -166,7 +166,6 @@ in
   imports = [
     ./alacritty.nix
     ./polybar.nix
-    ./monitors.nix
   ];
 
   config = lib.mkIf config.desktop.enable {
