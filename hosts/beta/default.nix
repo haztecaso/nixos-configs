@@ -20,16 +20,12 @@ in
         tmux.color = "#aaee00";
         ssh.enable = true;
         vim.package = pkgs.neovimFull;
+        money.enable = true;
       };
     };
 
     services.syncthing.enable = true;
-    home.packages = with pkgs; [ beancount fava ];
-    programs.gpg.enable = true;
-    services.gpg-agent.enable = true;
-    programs.kitty = {
-      enable = true;
-    };
+    programs.kitty = { enable = true; };
   };
 
   environment.systemPackages = with pkgs; [

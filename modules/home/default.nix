@@ -19,7 +19,12 @@ in
           ./tmux.nix
           ./vim.nix
           ./monitors.nix
+          ./money.nix
         ];
+        programs = {
+          gpg.enable = true;
+          gpg-agent.enable = true;
+        };
         xdg.mimeApps = {
           enable = true;
           associations.added = {
