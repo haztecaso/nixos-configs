@@ -101,17 +101,6 @@ in
         };
       };
 
-      home-manager.useGlobalPkgs = true;
-
-      home-manager.users = {
-        skolem = { ... }: {
-          home.stateVersion = config.base.stateVersion;
-        };
-        root = { ... }: {
-          home.stateVersion = config.base.stateVersion;
-        };
-      };
-
       system.stateVersion = config.base.stateVersion;
     }
 

@@ -1,7 +1,8 @@
-{ config, ... }:
+{ config, nixosConfig, ... }:
 {
   home-manager = {
     extraSpecialArgs = { nixosConfig = config; };
+    useGlobalPkgs = true;
     sharedModules = [{
       imports = [
         ./latex.nix
@@ -12,6 +13,7 @@
         ./vim.nix
         ./monitors.nix
       ];
+      home.stateVersion = nixosConfig.base.stateVersion;
       xdg.mimeApps = {
         enable = true;
         associations.added = {
