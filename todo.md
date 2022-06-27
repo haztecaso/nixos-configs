@@ -1,6 +1,5 @@
 ## To do
 
-- Migración a modules/home
 - instalar statping
 - reemplazar thumbor por imgproxy
 - Manage copy of ssh keys
@@ -19,6 +18,11 @@
     - Benefits
       - Can encrypt full .nix files
 
+### Migración a modules/home
+
+- modules/desktop
+- modules/dev -> package groups
+- modules/kitty
 
 #### Finish migration from old config
 
