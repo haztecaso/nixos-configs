@@ -3,15 +3,37 @@
 
   nix.gc.options = "--delete-older-than 3d";
 
+  home-manager.users = let
+    vim = pkgs.mkNeovim {
+      completion.enable = true;
+      snippets.enable = true;
+      plugins = {
+        latex = false;
+        nvim-which-key = false;
+      };
+    };
+  in {
+    root = { ... }: {
+      custom.programs = {
+        tmux.color = "#aaee00";
+        vim.package = vim;
+      };
+    };
+    skolem = { ... }: {
+      custom.programs = {
+        tmux.color = "#aaee00";
+        vim.package = vim;
+      };
+    };
+  };
+
   base = {
     hostname = "lambda";
     hostnameSymbol = "λ";
     stateVersion = "21.11";
   };
 
-  environment.systemPackages = with pkgs; [
-    agenix
-  ];
+  environment.systemPackages = with pkgs; [ agenix ];
 
   programs = {
     mosh.enable = true;
@@ -22,16 +44,6 @@
       ranger.enable = false;
       nnn.bookmarks = {
         w = "/var/www/";
-      };
-      ssh.enable = true;
-      tmux.color = "#aaee00";
-      vim.package = pkgs.mkNeovim {
-        completion.enable = true;
-        snippets.enable = true;
-        plugins = {
-          latex = false;
-          nvim-which-key = false;
-        };
       };
     };
     services = {
