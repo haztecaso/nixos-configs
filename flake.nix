@@ -4,7 +4,7 @@
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = { url = "github:nix-community/home-manager/release-22.05"; inputs.nixpkgs.follows = "nixpkgs"; };
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
-    snm = { url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-21.11"; inputs.nixpkgs.follows = "nixpkgs"; };
+    snm = { url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-22.05"; inputs = { nixpkgs.follows = "unstable"; nixpkgs-22_05.follows = "nixpkgs"; }; };
     nixos-hardware = { url = "github:NixOS/nixos-hardware/master"; inputs.nixpkgs.follows = "nixpkgs"; };
     agenix = { url = "github:ryantm/agenix"; inputs.nixpkgs.follows = "nixpkgs"; };
     neovim-flake = { url = "github:haztecaso/neovim-flake"; inputs.nixpkgs.follows = "nixpkgs"; };
