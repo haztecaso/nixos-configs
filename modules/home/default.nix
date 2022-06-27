@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 let
   stateVersionModule = { nixosConfig, ... }: {
     home.stateVersion = nixosConfig.base.stateVersion;
@@ -60,4 +60,10 @@ in
       }
     ];
   };
+
+  # Create users for home-manager configs
+  users.users =
+    lib.mapAttrs (_: _: { isNormalUser = true; })
+      (lib.filterAttrs (name: _: name != "root")
+        config.home-manager.users);
 }

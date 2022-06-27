@@ -7,6 +7,7 @@ in
 
   nix.gc.options = "--delete-older-than 18d";
 
+
   home-manager.users = {
     root = { ... }: {
       custom.programs = {
@@ -14,9 +15,20 @@ in
         vim.package = pkgs.neovimFull;
       };
     };
+    curro = { ... }: {
+      custom = {
+        programs = {
+          tmux.color = "#aa00ee";
+          vim.package = pkgs.neovimFull;
+        };
+      };
+    };
     skolem = { ... }: {
       custom = {
-        mail.enable = true;
+        mail = {
+          enable = true;
+          #TODO: accounts configs
+        };
         programs = {
           latex.enable = true;
           music = {
@@ -44,7 +56,10 @@ in
     libvirtd.enable = true;
   };
 
-  users.users.skolem.extraGroups = [ "libvirtd" ];
+  users.users = {
+    skolem.extraGroups = [ "libvirtd" ];
+    curro.extraGroups = [ "wheel" ];
+  };
 
   base = {
     hostname = "beta";
