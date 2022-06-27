@@ -27,6 +27,20 @@ let
     notmuch.enable = true;
     astroid.enable = true;
   };
+  makeAccountFilter = account : ''
+    query = folder:/${account.name}/
+    tags = +${account.name}
+    message = account ${account.name}
+  '';
+  accountFilters = map makeAccountFilter (lib.attrValues config.accounts.email.accounts);
+  fromFilter = tag: addresses : ''
+    query = ${lib.concatStringsSep "\\\n  OR " (map (a: "from:"+a) addresses)}
+    tags = +${tag}
+    message = from ${tag}
+  '';
+  fromFilters = lib.attrValues (lib.mapAttrs (name: value: fromFilter name value) cfg.filters);
+  makeFilterConfig = index: filter: "[Filter.${toString index}]\n${filter}";
+  filters = lib.concatImapStrings makeFilterConfig (accountFilters ++ fromFilters);
 in {
   options.custom.mail = with lib; {
     enable = mkEnableOption "mail";
@@ -43,6 +57,7 @@ in {
     };
     filters = mkOption {
       type = types.attrsOf (types.listOf types.str);
+      default = {};
       example = {
         family = [ "mum@gmail.com" "dad@gmail.com" ];
         spam = [ "spam@gmail.com" ];
@@ -51,7 +66,9 @@ in {
   };
   config = lib.mkIf cfg.enable {
     accounts.email.accounts = lib.mapAttrs mkConfig cfg.accounts;
+
     home.packages = with pkgs; [ pass ];
+
     programs = {
       mbsync.enable = true; # Download mails with imap
       msmtp.enable = true;  # Send mails
@@ -69,13 +86,12 @@ in {
       afew = {
         enable = true;
         extraConfig =
-          # ${filters}
           ''
             [SpamFilter]
             [KillThreadsFilter]
             [ListMailsFilter]
             [ArchiveSentMailsFilter]
-            [InboxFilter]
+            ${filters}[InboxFilter]
           '';
         };
 
@@ -103,17 +119,16 @@ in {
           };
         };
       };
-
-      # mailcap for alot
-      home.file.".mailcap".text = ''
-        text/plain; cat %s
-        text/html; ${pkgs.w3m}/bin/w3m -dump -o document_charset=%{charset} '%s'; nametemplate=%s.html; copiousoutput
-        video/mp4; ${pkgs.mpv}/bin/mpv %s
-        application/pdf; zathura %s
-        application/pdf:pdf; zathura %s
-        image/*; sxiv %s
-      '';
-
     };
+
+    # mailcap for alot
+    home.file.".mailcap".text = ''
+      text/plain; cat %s
+      text/html; ${pkgs.w3m}/bin/w3m -dump -o document_charset=%{charset} '%s'; nametemplate=%s.html; copiousoutput
+      video/mp4; ${pkgs.mpv}/bin/mpv %s
+      application/pdf; zathura %s
+      application/pdf:pdf; zathura %s
+      image/*; sxiv %s
+    '';
   };
 }
