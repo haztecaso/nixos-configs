@@ -18,7 +18,7 @@
     security = {
       acme = {
         acceptTerms = true;
-        email = "adrianlattes@disroot.org";
+        defaults.email = "adrianlattes@disroot.org";
       };
     };
 

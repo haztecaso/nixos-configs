@@ -48,8 +48,8 @@ in
           };
 
           # Radio archive
-          locations."/radio/archivo/".extraConfig = ''
-            alias ${root}/radio/archivo/;
+          locations."/radio-old/archivo/".extraConfig = ''
+            alias ${root}/radio-old/archivo/;
             autoindex on;
             add_before_body /autoindex/before-radio.txt;
             add_after_body /autoindex/after-radio.txt;
