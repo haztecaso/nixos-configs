@@ -7,25 +7,31 @@ in
 
   nix.gc.options = "--delete-older-than 18d";
 
-  home-manager.users.skolem = { ... }: {
-
-    custom = {
-      mail.enable = true;
-      programs = {
-        latex.enable = true;
-        music = {
-          enable = true;
-          dir = /home/skolem/Music/Library;
-        };
-        tmux.color = "#aaee00";
-        ssh.enable = true;
+  home-manager.users = {
+    root = { ... }: {
+      custom.programs = {
+        tmux.color = "#eeaa00";
         vim.package = pkgs.neovimFull;
-        money.enable = true;
       };
     };
-
-    services.syncthing.enable = true;
-    programs.kitty = { enable = true; };
+    skolem = { ... }: {
+      custom = {
+        mail.enable = true;
+        programs = {
+          latex.enable = true;
+          music = {
+            enable = true;
+            dir = /home/skolem/Music/Library;
+          };
+          tmux.color = "#aaee00";
+          vim.package = pkgs.neovimFull;
+          money.enable = true;
+        };
+      };
+     
+      services.syncthing.enable = true;
+      programs.kitty.enable = true;
+    };
   };
 
   environment.systemPackages = with pkgs; [
