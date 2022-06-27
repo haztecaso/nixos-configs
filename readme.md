@@ -1,41 +1,5 @@
 # Nix configs
 
-## To do
-
-- instalar statping
-- reemplazar thumbor por imgproxy
-- Manage copy of ssh keys
-- Improve secrets management.
-  - [agenix](https://github.com/ryantm/agenix/)
-    - Drawbacks
-      - Only works for system configs, not home (Problem could be avoided by converting
-        everything into system modules?)
-    - Benefits
-      - Uses ssh keys
-      - Files decrypted on tmpfs
-  - [git-crypt](https://www.agwa.name/projects/git-crypt)
-    - Drawbacks
-      - Need to use gpg or custom key
-      - Plain files decrypted on machine
-    - Benefits
-      - Can encrypt full .nix files
-
-### Ideas random
-
-- ssh over tor: https://mdleom.com/blog/2020/03/16/tor-hidden-onion-nixos/
-
-## Tips
-
-- nix flake update single input:
-```bash
-nix flake lock --update-input nixpkgs
-```
-
-- nginx webserver logs are managed with journalctl. For example:
-```bash
-journalctl -f --since today -u nginx
-```
-
 ## Hosts
 
 ### lambda
@@ -68,12 +32,19 @@ Thinkpad x270. Personal machine.
 
 Macbook Pro mid 2012. Personal machine.
 
-#### Migration todos
 
-- retroarchWithCores
-- music: beets config
-- mail module
-- pandoc-templates
+## Tips
+
+- nix flake update single input:
+```bash
+nix flake lock --update-input nixpkgs
+```
+
+- nginx webserver logs are managed with journalctl. For example:
+```bash
+journalctl -f --since today -u nginx
+```
+
 
 ## References
 
