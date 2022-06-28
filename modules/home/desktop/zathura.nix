@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 {
   config = lib.mkIf config.custom.desktop.enable {
     programs.zathura = {

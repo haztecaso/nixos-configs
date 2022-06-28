@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 {
   config = lib.mkIf config.custom.desktop.enable {
     home.packages = with pkgs; [ buku keyutils chromium ];

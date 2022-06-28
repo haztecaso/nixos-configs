@@ -2,7 +2,7 @@
 #       - autocrop
 #       - autosub
 #       - equalizer
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 {
   config = lib.mkIf config.custom.desktop.enable {
     nixpkgs.config.allowUnfree = true;

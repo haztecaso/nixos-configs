@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 let
   term_launcher = pkgs.writeScriptBin "term_launcher" ''
     #!${pkgs.runtimeShell}
