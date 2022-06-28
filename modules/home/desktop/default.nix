@@ -3,6 +3,9 @@ let
   cfg = config.custom.desktop;
 in
 {
+  imports = [
+      ./alacritty.nix
+  ];
   options.custom.desktop = with lib; {
     enable = mkEnableOption "Wether to enable desktop configs for user.";
     fontSize = mkOption {
@@ -12,9 +15,6 @@ in
     };
   };
   config = lib.mkIf cfg.enable {
-    imports = [
-        ./alacritty.nix
-    ];
     home = {
       packages = with pkgs; [
         battery_level

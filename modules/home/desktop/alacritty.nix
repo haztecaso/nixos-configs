@@ -1,5 +1,15 @@
 { config, pkgs, lib, ... }:
+let
+  cfg = config.custom.desktop.alacritty;
+in
 {
+  options.custom.desktop.alacritty = with lib; {
+    fontFamily = mkOption {
+      type = types.str;
+      default = "Liberation mono";
+      description = "Alacritty font name.";
+    };
+  };
   home.sessionVariables.TERMINAL = "alacritty";
   programs.alacritty = {
     enable = true;
@@ -9,10 +19,10 @@
 
       font = {
         size = config.custom.desktop.fontSize;
-        normal = { family = font_family; style = "Regular"; };
-        bold = { family = font_family; style = "Bold"; };
-        italic = { family = font_family; style = "Italic"; };
-        bold_italic = { family = font_family; style = "Bold Italic"; };
+        normal = { family = cfg.font_family; style = "Regular"; };
+        bold = { family = cfg.font_family; style = "Bold"; };
+        italic = { family = cfg.font_family; style = "Italic"; };
+        bold_italic = { family = cfg.font_family; style = "Bold Italic"; };
       };
 
       key_bindings = [
