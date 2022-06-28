@@ -25,9 +25,16 @@ in
     };
     skolem = { ... }: {
       custom = {
-        mail = {
+        #TODO: mail, accounts and filters configs
+        # mail = {
+        #   enable = false;
+        #   accounts = {};
+        #   filters = {};
+        # };
+        desktop = {
           enable = true;
-          #TODO: accounts configs
+          fontSize = 8;
+          # bat = "BAT1";
         };
         programs = {
           latex.enable = true;
@@ -81,12 +88,6 @@ in
     };
   };
 
-  desktop = {
-    enable = true;
-    bat = "BAT1";
-    fontSize = 8;
-  };
-
   programs = {
     shells.aliases = {
       ytdl = "yt-dlp";
@@ -101,6 +102,7 @@ in
   services.safeeyes.enable = true;
 
   custom = {
+    desktop.enable = true;
     programs = {
       irssi.enable = true;
       nnn.bookmarks = {
