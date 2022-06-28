@@ -61,7 +61,9 @@ in
         "super + e" = "emacs"; #TODO: include package (calling emacsWithPackages)
         "super + p" = "bwmenu"; #TODO: include package
         "super + {space,s}" = "${pkgs.rofi}/bin/rofi -show {run,ssh}";
-        "super + {_,shift + ,alt + }w" = "{${pkgs.qutebrowser}/bin/qutebrowser,${pkgs.firefox}/bin/firefox,tor-browser}";
+        "super + w" = "${pkgs.qutebrowser}/bin/qutebrowser";
+        "super + shift + w" = "${pkgs.qutebrowser}/bin/qutebrowser --target private-window";
+        "super + alt + w" = "${pkgs.firefox}/bin/firefox";
         "super + shift + t" = "${pkgs.tdesktop}/bin/telegram-desktop";
         "super + {XF86LaunchA, Print}" = "${pkgs.flameshot}/bin/flameshot gui";
         "XF86LaunchB" = "${pkgs.alacritty}/bin/alacritty -e ssh skolem@haztecaso.com";
