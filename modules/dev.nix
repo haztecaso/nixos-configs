@@ -6,7 +6,7 @@ let
 in
 {
   options.custom.dev = with lib; {
-    enable = mkEnableOption "Custom desktop environment (wm: xmonad)";
+    enable = mkEnableOption "Enable dev module";
     pythonPackages = mkOption {
       # type = types.enum pythonPackageNames; #TODO: fix
       default = [ ];
