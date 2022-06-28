@@ -176,10 +176,14 @@ in
         xkbOptions = "caps:escape";
         displayManager = {
           lightdm.enable = true;
-          autoLogin.enable = true;
-          autoLogin.user = "skolem";
+          autoLogin = {
+            enable = false;
+            user = "skolem";
+          };
         };
-        desktopManager.xfce.enable = true;
+        desktopManager = {
+          xfce.enable = true;
+        };
         windowManager.xmonad = {
           enable = true;
           enableContribAndExtras = true;

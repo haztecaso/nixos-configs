@@ -37,6 +37,8 @@ in
       };
       useDHCP = mkEnableOption "enable dhcp for the eth interface";
     };
+    sound = mkEnableOption "Wether to enable sound support (with pulseaudio).";
+    printing = mkEnableOption "Wether to enable printing support (installing drivers).";
   };
 
   config = lib.mkMerge [
@@ -110,6 +112,25 @@ in
 
     (lib.mkIf cfg.eth.useDHCP {
       networking.interfaces.${cfg.eth.interface}.useDHCP = true;
+    })
+
+    (lib.mkIf cfg.sound {
+      sound.enable = true; # Enable sound.
+      
+      hardware = {
+        pulseaudio = {
+          enable = true;
+          extraConfig = "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1"; # Needed by mpd to be able to use Pulseaudio
+        };
+        bluetooth.enable = true;
+        opengl.enable = true;
+      };
+    })
+    (lib.mkIf cfg.printing {
+      services.printing = {
+        enable = true;
+        drivers = [ pkgs.hplip ];
+      };
     })
   ];
 }

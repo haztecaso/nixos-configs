@@ -1,7 +1,7 @@
 { config, ... }: {
   imports = [
     ./base.nix
-    ./desktop
+    ./desktop.nix
     ./dev.nix
     ./home
     ./monitors.nix
