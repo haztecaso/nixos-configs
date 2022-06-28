@@ -71,6 +71,7 @@ in
   base = {
     hostname = "beta";
     hostnameSymbol = "β";
+    bat = "BAT1";
     wlp = { interface = "wlp3s0"; useDHCP = true; };
     eth.interface = "enp0s31f6";
     stateVersion = "22.05";

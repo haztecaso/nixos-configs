@@ -19,6 +19,11 @@ in
       default = cfg.hostname;
       description = "hostname symbol of the machine. For shells and other programs.";
     };
+    bat = mkOption {
+      type = types.str;
+      example = "BAT0";
+      description = "Battery device name";
+    };
     wlp = {
       interface = mkOption {
         type = types.str;
