@@ -73,6 +73,11 @@ in
       initExtra = ''
         ${pkgs.batsignal}/bin/batsignal -b -w 14 -c 6 -d 3
       '';
+      windowManager.xmonad = {
+        enable = true;
+        enableContribAndExtras = true;
+        config = ./xmonad/xmonad.hs;
+      };
     };
 
     xresources.extraConfig = builtins.readFile ./.Xresources;
