@@ -7,6 +7,10 @@ in
       ./alacritty.nix
       ./polybar.nix
       ./keybindings.nix
+      ./mpv.nix
+      ./notifications.nix
+      ./web.nix
+      ./zathura.nix
   ];
   options.custom.desktop = with lib; {
     enable = mkEnableOption "Wether to enable desktop configs for user.";

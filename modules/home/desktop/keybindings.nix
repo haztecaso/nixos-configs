@@ -49,46 +49,48 @@ let
   '';
 in
 {
-  services.sxhkd = {
-    enable = true;
-    keybindings = {
-      # "super + shift + alt + r" = "${pkgs.gksu}/bin/gksu \"${pkgs.systemd}/bin/systemctl restart user.slice\""; #TODO: find replacement for gksu
-      # Launchers
-      "super + Return" = "${pkgs.alacritty}/bin/alacritty";
-      "super + alt + Return" = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.tmux}/bin/tmux new-session -A -s 0";
-      "super + shift + Return" = "${term_launcher}/bin/term_launcher";
-      "super + e" = "emacs"; #TODO: include package (calling emacsWithPackages)
-      "super + p" = "bwmenu"; #TODO: include package
-      "super + {space,s}" = "${pkgs.rofi}/bin/rofi -show {run,ssh}";
-      "super + {_,shift + ,alt + }w" = "{${pkgs.qutebrowser}/bin/qutebrowser,${pkgs.firefox}/bin/firefox,tor-browser}";
-      "super + shift + t" = "${pkgs.tdesktop}/bin/telegram-desktop";
-      "super + {XF86LaunchA, Print}" = "${pkgs.flameshot}/bin/flameshot gui";
-      "XF86LaunchB" = "${pkgs.alacritty}/bin/alacritty -e ssh skolem@haztecaso.com";
-      "{XF86Eject, XF86Favorites}" = "${pkgs.betterlockscreen}/bin/betterlockscreen -l dim";
-
-      # Media keys
-      "XF86Audio{Prev,Next,Play}" = "${pkgs.playerctl}/bin/playerctl -p mpd {previous,next,play-pause}";
-      "super + alt + XF86Audio{Prev,Next,Play}" = "${pkgs.playerctl}/bin/playerctl {previous,next,play-pause}";
-      "super + XF86Audio{Prev,Next}" = "${pkgs.playerctl}/bin/playerctl -p mpd position 2{-,+}";
-      "super + XF86AudioPlay" = "${mpd_random}/bin/mpd_random";
-
-      # Volume
-      "XF86Audio{Raise,Lower}Volume" = pamixer_cmd "{-i,-d} 10";
-      "super + XF86Audio{Raise,Lower}Volume" = pamixer_cmd "{-i,-d} 5";
-      "super + alt + XF86Audio{Raise,Lower}Volume" = pamixer_cmd "{-i,-d} 1";
-      "XF86AudioMute" = pamixer_cmd "-t";
-      "XF86AudioMicMute" = pamixer_cmd "--source 1 -t";
-      "super + XF86AudioMute" = pamixer_cmd "--set-volume 0";
-
-      # Screen brightness
-      "XF86MonBrightness{Up,Down}" = light_cmd "{-A,-U} 5";
-      "super + alt + XF86MonBrightness{Up,Down}" = light_cmd "{-A,-U} 1";
-      "super + XF86MonBrightness{Up,Down}" = light_cmd "-S {100,0}";
-
-      # Keyboard brightness
-      "XF86KbdBrightness{Up,Down}" = light_kbd_cmd "{-A,-U} 5";
-      "super + alt + XF86KbdBrightness{Up,Down}" = light_kbd_cmd "{-A,-U} 1";
-      "super + XF86KbdBrightness{Up,Down}" = light_kbd_cmd "-S {100,0}";
+  config = lib.mkIf config.custom.desktop.enable {
+    services.sxhkd = {
+      enable = true;
+      keybindings = {
+        # "super + shift + alt + r" = "${pkgs.gksu}/bin/gksu \"${pkgs.systemd}/bin/systemctl restart user.slice\""; #TODO: find replacement for gksu
+        # Launchers
+        "super + Return" = "${pkgs.alacritty}/bin/alacritty";
+        "super + alt + Return" = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.tmux}/bin/tmux new-session -A -s 0";
+        "super + shift + Return" = "${term_launcher}/bin/term_launcher";
+        "super + e" = "emacs"; #TODO: include package (calling emacsWithPackages)
+        "super + p" = "bwmenu"; #TODO: include package
+        "super + {space,s}" = "${pkgs.rofi}/bin/rofi -show {run,ssh}";
+        "super + {_,shift + ,alt + }w" = "{${pkgs.qutebrowser}/bin/qutebrowser,${pkgs.firefox}/bin/firefox,tor-browser}";
+        "super + shift + t" = "${pkgs.tdesktop}/bin/telegram-desktop";
+        "super + {XF86LaunchA, Print}" = "${pkgs.flameshot}/bin/flameshot gui";
+        "XF86LaunchB" = "${pkgs.alacritty}/bin/alacritty -e ssh skolem@haztecaso.com";
+        "{XF86Eject, XF86Favorites}" = "${pkgs.betterlockscreen}/bin/betterlockscreen -l dim";
+ 
+        # Media keys
+        "XF86Audio{Prev,Next,Play}" = "${pkgs.playerctl}/bin/playerctl -p mpd {previous,next,play-pause}";
+        "super + alt + XF86Audio{Prev,Next,Play}" = "${pkgs.playerctl}/bin/playerctl {previous,next,play-pause}";
+        "super + XF86Audio{Prev,Next}" = "${pkgs.playerctl}/bin/playerctl -p mpd position 2{-,+}";
+        "super + XF86AudioPlay" = "${mpd_random}/bin/mpd_random";
+ 
+        # Volume
+        "XF86Audio{Raise,Lower}Volume" = pamixer_cmd "{-i,-d} 10";
+        "super + XF86Audio{Raise,Lower}Volume" = pamixer_cmd "{-i,-d} 5";
+        "super + alt + XF86Audio{Raise,Lower}Volume" = pamixer_cmd "{-i,-d} 1";
+        "XF86AudioMute" = pamixer_cmd "-t";
+        "XF86AudioMicMute" = pamixer_cmd "--source 1 -t";
+        "super + XF86AudioMute" = pamixer_cmd "--set-volume 0";
+ 
+        # Screen brightness
+        "XF86MonBrightness{Up,Down}" = light_cmd "{-A,-U} 5";
+        "super + alt + XF86MonBrightness{Up,Down}" = light_cmd "{-A,-U} 1";
+        "super + XF86MonBrightness{Up,Down}" = light_cmd "-S {100,0}";
+ 
+        # Keyboard brightness
+        "XF86KbdBrightness{Up,Down}" = light_kbd_cmd "{-A,-U} 5";
+        "super + alt + XF86KbdBrightness{Up,Down}" = light_kbd_cmd "{-A,-U} 1";
+        "super + XF86KbdBrightness{Up,Down}" = light_kbd_cmd "-S {100,0}";
+      };
     };
   };
 }
