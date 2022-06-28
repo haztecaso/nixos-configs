@@ -7,7 +7,7 @@ let
   eth = lib.stringLength base.eth.interface != 0;
 in
 {
-  options.desktop.polybar = {
+  options.custom.desktop.polybar = {
     mpd = lib.mkEnableOption "polybar mpd module";
   };
 
