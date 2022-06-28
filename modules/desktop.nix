@@ -30,7 +30,7 @@ in
       gnome.gnome-keyring.enable = true;
 
     };
-    custom.base = {
+    base = {
       sound = true;
       printing = true;
     };
