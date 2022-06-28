@@ -46,6 +46,7 @@ in {
     enable = mkEnableOption "mail";
     accounts = mkOption {
       type = types.attrsOf (types.attrsOf (types.either types.str types.bool));
+      default = {};
       example = {
         gmail = {
           primary = true;
