@@ -39,6 +39,10 @@ in
       light.enable = true;
     };
     networking.networkmanager.enable = true;
+    hardware = {
+      bluetooth.enable = true;
+      opengl.enable = true;
+    };
     fonts = {
       enableDefaultFonts = true;
       fonts = with pkgs; [
