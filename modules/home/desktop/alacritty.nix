@@ -19,10 +19,10 @@ in
 
       font = {
         size = config.custom.desktop.fontSize;
-        normal = { family = cfg.font_family; style = "Regular"; };
-        bold = { family = cfg.font_family; style = "Bold"; };
-        italic = { family = cfg.font_family; style = "Italic"; };
-        bold_italic = { family = cfg.font_family; style = "Bold Italic"; };
+        normal = { family = cfg.fontFamily; style = "Regular"; };
+        bold = { family = cfg.fontFamily; style = "Bold"; };
+        italic = { family = cfg.fontFamily; style = "Italic"; };
+        bold_italic = { family = cfg.fontFamily; style = "Bold Italic"; };
       };
 
       key_bindings = [
