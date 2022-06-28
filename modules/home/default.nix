@@ -12,14 +12,15 @@ in
       stateVersionModule
       {
         imports = [
+          ./desktop
           ./latex.nix
           ./mail.nix
+          ./money.nix
+          ./monitors.nix
           ./music.nix
           ./ssh.nix
           ./tmux.nix
           ./vim.nix
-          ./monitors.nix
-          ./money.nix
         ];
         programs = {
           gpg.enable = true;

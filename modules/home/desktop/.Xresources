@@ -1,0 +1,58 @@
+!--------------------------------------------------------!
+! GRUVBOX THEME 										 !
+! Author: morhetz <morhetz@gmail.com>					 !
+! Source: https://github.com/morhetz/gruvbox-generalized !
+!--------------------------------------------------------!
+! hard contrast:   #1d2021 / medium contrast: #282828 / soft contrast:   #32302f
+#define bg #1d2021
+#define fg #ebdbb2
+! Black + DarkGrey
+#define c0 #1d2021
+#define c8 #928374
+! DarkRed + Red
+#define c1  #cc241d
+#define c9  #fb4934
+! DarkGreen + Green
+#define c2  #98971a
+#define c10 #b8bb26
+! DarkYellow + Yellow
+#define c3  #d79921
+#define c11 #fabd2f
+! DarkBlue + Blue
+#define c4  #458588
+#define c12 #83a598
+! DarkMagenta + Magenta
+#define c5  #b16286
+#define c13 #d3869b
+! DarkCyan + Cyan
+#define c6  #689d6a
+#define c14 #8ec07c
+! LightGrey + White
+#define c7  #a89984
+#define c15 #ebdbb2
+
+! Colors
+*background: bg
+*foreground: fg
+*color0:  c0
+*color1:  c1
+*color2:  c2
+*color3:  c3
+*color4:  c4
+*color5:  c5
+*color7:  c6
+*color6:  c7
+*color8:  c8
+*color9:  c9
+*color10: c10
+*color11: c11
+*color12: c12
+*color13: c13
+*color14: c14
+*color15: c15
+
+!-------------!
+! SXIV CONFIG !
+!-------------!
+Sxiv.background: bg
+Sxiv.foreground: #909090
