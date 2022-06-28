@@ -76,7 +76,7 @@
 
   services = {
     moodle-dl = {
-      enable = true;
+      # enable = true;
       configFile = config.age.secrets."moodle-dl.conf".path;
       folder = "/var/lib/syncthing/uni-moodle/";
     };
