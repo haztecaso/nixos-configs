@@ -5,6 +5,7 @@ in
 {
   imports = [
       ./alacritty.nix
+      ./polybar.nix
   ];
   options.custom.desktop = with lib; {
     enable = mkEnableOption "Wether to enable desktop configs for user.";
