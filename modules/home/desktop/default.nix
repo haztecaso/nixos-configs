@@ -4,9 +4,17 @@ let
 in
 {
   options.custom.desktop = with lib; {
-      enable = mkEnableOption "Wether to enable desktop configs for user.";
+    enable = mkEnableOption "Wether to enable desktop configs for user.";
+    fontSize = mkOption {
+      type = types.int;
+      default = 10;
+      description = "Base desktop font size";
+    };
   };
   config = lib.mkIf cfg.enable {
+    imports = [
+        ./alacritty.nix
+    ];
     home = {
       packages = with pkgs; [
         battery_level
