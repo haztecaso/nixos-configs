@@ -23,7 +23,7 @@ in
     lfs = mkEnableOption "Wether to enable lfs support.";
   };
 
-  config = lib.mkMerge [
+  config = lib.mkMerge ([
       (lib.mkIf cfg.enable {
         home.packages = with pkgs; [ git-crypt ];
           programs.git = {
@@ -36,6 +36,6 @@ in
   ] ++ lib.mapAttrsToList (name: conf:
     lib.mkIf (name == config.home.username) {
       custom.programs.git = lib.mkDefault conf;
-    }) defaults;
+    }) defaults);
 
 }
