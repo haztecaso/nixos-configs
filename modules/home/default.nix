@@ -13,6 +13,7 @@ in
       {
         imports = [
           ./desktop
+          ./git.nix
           ./latex.nix
           ./mail.nix
           ./money.nix

@@ -17,6 +17,10 @@ in
     };
     curro = { ... }: {
       custom = {
+        desktop = {
+          enable = true;
+          fontSize = 8;
+        };
         programs = {
           tmux.color = "#aa00ee";
           vim.package = pkgs.neovimFull;
@@ -34,7 +38,6 @@ in
         desktop = {
           enable = true;
           fontSize = 8;
-          # bat = "BAT1";
         };
         programs = {
           latex.enable = true;
