@@ -15,6 +15,21 @@ in
         vim.package = pkgs.neovimFull;
       };
     };
+    jam = { ... }: {
+      home.packages = with pkgs; [
+        puredata
+        audacity
+        vlc
+      ];
+      custom = {
+        desktop = {
+          enable = true;
+          fontSize = 9;
+          theme = "light";
+          polybar.enable = false;
+        };
+      };
+    };
     curro = { ... }: {
       custom = {
         desktop = {
@@ -98,7 +113,7 @@ in
       youtube-dl = "yt-dlp";
       python = "${pkgs.python38Packages.ipython}/bin/ipython";
     };
-    # steam.enable = true;
+    steam.enable = true;
     mosh.enable = true;
     dconf.enable = true;
   };

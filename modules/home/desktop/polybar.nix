@@ -1,14 +1,18 @@
 { nixosConfig, config, lib, pkgs, ... }:
 let
-  home-config = { };
   cfg = config.custom.desktop.polybar;
   base = nixosConfig.base;
   wifi = lib.stringLength base.wlp.interface != 0;
   eth = lib.stringLength base.eth.interface != 0;
 in
 {
-  options.custom.desktop.polybar = {
-    mpd = lib.mkEnableOption "polybar mpd module";
+  options.custom.desktop.polybar = with lib; {
+    enable = mkOption {
+      type = types.bool;
+      default = true;
+      description = "Wether to enable polybar";
+    };
+    mpd = mkEnableOption "polybar mpd module";
   };
 
   config = lib.mkIf config.custom.desktop.enable {
