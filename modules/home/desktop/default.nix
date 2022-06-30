@@ -19,6 +19,11 @@ in
       default = 10;
       description = "Base desktop font size";
     };
+    theme = mkOption {
+      type = types.enum [ "dark" "light" ];
+      description = "Color theme."; #TODO: extend action of this option
+      default = "dark";
+    };
   };
   config = lib.mkIf cfg.enable {
     home = {
@@ -77,27 +82,42 @@ in
 
     xresources.extraConfig = builtins.readFile ./.Xresources;
 
-    gtk = {
-      enable = true;
-      iconTheme = {
-        package = pkgs.papirus-icon-theme;
-        name = "Papirus";
-      };
-      theme = {
-        package = pkgs.arc-theme;
-        name = "Arc-Dark";
-      };
-      # TODO: mix with shortcuts module
-      gtk3.bookmarks = let home = config.home.homeDirectory; in [
-        "file://${home}/Nube"
-        "file://${home}/Documents"
-        "file://${home}/Music"
-        "file://${home}/Pictures"
-        "file://${home}/Videos"
-        "file://${home}/Downloads"
-        "file://${home}/src"
-      ];
-    };
+    gtk = lib.mkMerge [
+      {
+        # TODO: mix with shortcuts module
+        gtk3.bookmarks = let home = config.home.homeDirectory; in [
+          "file://${home}/Nube"
+          "file://${home}/Documents"
+          "file://${home}/Music"
+          "file://${home}/Pictures"
+          "file://${home}/Videos"
+          "file://${home}/Downloads"
+          "file://${home}/src"
+        ];
+      }
+      (lib.mkIf (cfg.theme == "dark") {
+        enable = true;
+        iconTheme = {
+          package = pkgs.papirus-icon-theme;
+          name = "Papirus";
+        };
+        theme = {
+          package = pkgs.arc-theme;
+          name = "Arc-Dark";
+        };
+      })
+      (lib.mkIf (cfg.theme == "light") {
+        enable = true;
+        iconTheme = {
+          package = pkgs.elementary-xfce-icon-theme;
+          name = "elementary";
+        };
+        theme = {
+          package = pkgs.greybird;
+          name = "greybird";
+        };
+      })
+  ];
 
     services = {
       network-manager-applet.enable = true;
