@@ -15,8 +15,8 @@ stdenv.mkDerivation rec {
     desktopName = "AutoFirma";
     exec = "AutoFirma %u";
     icon = "AutoFirma";
-    mimeType = "x-scheme-handler/afirma;";
-    categories = "Office;";
+    # mimeType = "x-scheme-handler/afirma;";
+    categories = [ "Office" ];
   };
 
   buildInputs = [ bash jre8 ];

@@ -17,8 +17,8 @@ in
     };
     jam = { ... }: {
       home.packages = with pkgs; [
-        puredata
         audacity
+        puredata
         vlc
       ];
       custom = {
@@ -31,6 +31,7 @@ in
       };
     };
     curro = { ... }: {
+      home.packages = with pkgs; [ autofirma ];
       custom = {
         desktop = {
           enable = true;
@@ -43,6 +44,7 @@ in
       };
     };
     skolem = { ... }: {
+      home.packages = with pkgs; [ autofirma ];
       custom = {
         #TODO: mail, accounts and filters configs
         # mail = {
