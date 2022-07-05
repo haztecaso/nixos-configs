@@ -31,7 +31,7 @@ in
         battery_level
         battery_level
         bitwarden-rofi
-       
+        arandr
         anki
         # audacity
         betterlockscreen
