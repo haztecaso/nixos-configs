@@ -30,19 +30,6 @@ in
         };
       };
     };
-    curro = { ... }: {
-      home.packages = with pkgs; [ autofirma ];
-      custom = {
-        desktop = {
-          enable = true;
-          fontSize = 8;
-        };
-        programs = {
-          tmux.color = "#aa00ee";
-          vim.package = pkgs.neovimFull;
-        };
-      };
-    };
     skolem = { ... }: {
       home.packages = with pkgs; [ autofirma ];
       custom = {
