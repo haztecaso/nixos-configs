@@ -5,34 +5,10 @@
     ./dev.nix
     ./home
     ./monitors.nix
-    ./programs
     ./services
     ./shortcuts
     ./webserver
   ];
-
-  shortcuts = {
-    paths = {
-      D = "~/Downloads";
-      cf = "~/.config";
-      d = "~/Documents";
-      h = "~";
-      mm = "~/Music";
-      n = "/etc/nixos";
-      pp = "~/Pictures";
-      sr = "~/src";
-      vv = "~/Videos";
-    };
-    uni.asignaturas = [ "tpro" "gcomp" "afvc" "topo" ];
-  };
-
-  programs = {
-    shells.aliases = {
-      ".." = "cd ..";
-      less = "less --quit-if-one-screen --ignore-case --status-column --LONG-PROMPT --RAW-CONTROL-CHARS --HILITE-UNREAD --tabs=4 --no-init --window=-4";
-      cp = "cp -i";
-    };
-  };
 
   custom.services.tailscale.hosts =
     let

@@ -37,7 +37,7 @@ in
     };
   };
 
-  config = lib.mkIf cfg.Enable {
+  config = lib.mkIf cfg.enable {
     home = {
       packages = [ pkgs.ranger ];
       sessionVariables."RANGER_LOAD_DEFAULT_RC" = "FALSE";

@@ -25,6 +25,8 @@ in
           ./music.nix
           ./nnn.nix
           ./ranger.nix
+          ./shell.nix
+          ./shortcuts
           ./ssh.nix
           ./tmux.nix
           ./vim.nix

@@ -7,7 +7,6 @@ in
 
   nix.gc.options = "--delete-older-than 18d";
 
-
   home-manager.users = {
     root = { ... }: {
       custom.programs = {
@@ -42,6 +41,24 @@ in
         desktop = {
           enable = true;
           fontSize = 8;
+        };
+        shell.aliases = {
+          ytdl = "yt-dlp";
+          youtube-dl = "yt-dlp";
+          python = "${pkgs.python38Packages.ipython}/bin/ipython";
+        };
+        shortcuts = {
+          paths = {
+            N = "~/Nube";
+            l = "~/Nube/lecturas";
+            mo = "~/Nube/money";
+            sr = "~/src";
+            u = "~/Nube/uni/Actuales";
+          };
+          uni = {
+            enable = true;
+            path = "~/Nube/uni/Actuales/";
+          };
         };
         programs = {
           irssi.enable = true;
@@ -93,30 +110,16 @@ in
     stateVersion = "22.05";
   };
 
-  shortcuts = {
-    paths = {
-      N = "~/Nube";
-      l = "~/Nube/lecturas";
-      mo = "~/Nube/money";
-      u = "~/Nube/uni/Actuales";
-    };
-    uni = {
-      enable = true;
-    };
-  };
 
   programs = {
-    shells.aliases = {
-      ytdl = "yt-dlp";
-      youtube-dl = "yt-dlp";
-      python = "${pkgs.python38Packages.ipython}/bin/ipython";
-    };
     steam.enable = true;
     mosh.enable = true;
     dconf.enable = true;
   };
 
-  services.safeeyes.enable = true;
+  services = {
+    safeeyes.enable = true;
+  };
 
   custom = {
     desktop.enable = true;

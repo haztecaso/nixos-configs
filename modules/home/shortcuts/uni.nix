@@ -1,14 +1,14 @@
 { config, lib, pkgs, ... }:
 with lib;
 let
-  cfg = config.shortcuts.uni;
+  cfg = config.custom.shortcuts.uni;
 in
 {
-  options.shortcuts.uni = with lib; {
+  options.custom.shortcuts.uni = with lib; {
     enable = mkEnableOption "Uni shortcuts";
     path = mkOption {
       type = types.str;
-      default = "~/Nube/uni/Actuales/";
+      example = "~/Nube/uni/Actuales/";
       description = "Carpeta de asignaturas actuales";
     };
     asignaturas = mkOption {
@@ -18,7 +18,7 @@ in
     };
   };
   config = lib.mkIf cfg.enable {
-    programs.shells.aliases = lib.genAttrs cfg.asignaturas (
+    shell.aliases = lib.genAttrs cfg.asignaturas (
       a: "cd ${cfg.path}${a}"
     );
   };
