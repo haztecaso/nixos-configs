@@ -14,11 +14,7 @@ let
 in
 {
   options.custom.programs.ranger = with lib; {
-    enable = mkOption {
-      type = types.bool;
-      default = true;
-      description = "Enable custom ranger config with shortcuts";
-    };
+    enable = mkEnableOption "Enable custom ranger config with shortcuts";
     actions = mkOption {
       type = types.listOf (types.attrsOf types.str);
       default = [
@@ -41,39 +37,33 @@ in
     };
   };
 
-  config = lib.mkIf cfg.enable (
-    let
-      conf = {
-        home.packages = [ pkgs.ranger ];
-        home.sessionVariables."RANGER_LOAD_DEFAULT_RC" = "FALSE";
-        xdg.configFile = {
-          "ranger/rc.conf".text =
-            ''
-              ${includeDefault "rc.conf"}
-              # Commands defined by nix configuration
-              ${shortcuts}
+  config = lib.mkIf cfg.Enable {
+    home = {
+      packages = [ pkgs.ranger ];
+      sessionVariables."RANGER_LOAD_DEFAULT_RC" = "FALSE";
+    };
+    xdg.configFile = {
+      "ranger/rc.conf".text =
+        ''
+          ${includeDefault "rc.conf"}
+          # Commands defined by nix configuration
+          ${shortcuts}
 
-              # Extra config defined by nix configuration
-              ${cfg.extraOptions}
-            '';
-          "ranger/rifle.conf".text =
-            ''
-              ${includeDefault "rifle.conf"}
-              # Extra config defined by nix configuration
-              ${cfg.extraRifle}
-            '';
-        };
-      };
-    in
-    {
-      programs.shells = {
-        aliases = {
-          r = "ranger";
-          nn = "ranger";
-        };
-      };
-      home-manager.users.skolem = { ... }: conf;
-      home-manager.users.root = { ... }: conf;
-    }
-  );
+          # Extra config defined by nix configuration
+          ${cfg.extraOptions}
+        '';
+      "ranger/rifle.conf".text =
+        ''
+          ${includeDefault "rifle.conf"}
+          # Extra config defined by nix configuration
+          ${cfg.extraRifle}
+        '';
+    };
+    # programs.shells = {
+    #   aliases = {
+    #     r = "ranger";
+    #     nn = "ranger";
+    #   };
+    # };
+  };
 }

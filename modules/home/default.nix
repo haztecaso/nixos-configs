@@ -24,6 +24,7 @@ in
           ./monitors.nix
           ./music.nix
           ./nnn.nix
+          ./ranger.nix
           ./ssh.nix
           ./tmux.nix
           ./vim.nix

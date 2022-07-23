@@ -120,9 +120,6 @@ in
 
   custom = {
     desktop.enable = true;
-    programs = {
-      ranger.enable = false;
-    };
 
     services = {
       tailscale.enable = true;

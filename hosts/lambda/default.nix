@@ -41,19 +41,16 @@
   };
 
   custom = {
-    programs = {
-      ranger.enable = false;
-    };
     services = {
-        syncthing = {
-          enable = true;
-          folders = [ "uni-moodle" "nube" "android-camara" ];
-        };
-        tailscale.enable = true;
-        vaultwarden.enable = true;
-        code-server.enable = false;
-        gitea.enable = true;
-        netdata.enable = true;
+      syncthing = {
+        enable = true;
+        folders = [ "uni-moodle" "nube" "android-camara" ];
+      };
+      tailscale.enable = true;
+      vaultwarden.enable = true;
+      code-server.enable = false;
+      gitea.enable = true;
+      netdata.enable = true;
     };
   };
 
