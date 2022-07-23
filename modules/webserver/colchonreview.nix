@@ -78,6 +78,8 @@ in
     };
     users.groups.${name} = {};
     age.secrets."cloudflare".file = ../../secrets/cloudflare.age;
-    shortcuts.paths.wc = root;
+    home-manager.sharedModules = [{
+      custom.shortcuts.paths.wc = root;
+    }];
   };
 }

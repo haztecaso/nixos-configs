@@ -42,6 +42,8 @@ in
         };
       };
     };
-    shortcuts.paths.wz = root;
+    home-manager.sharedModules = [{
+      custom.shortcuts.paths.wz = root;
+    }];
   };
 }

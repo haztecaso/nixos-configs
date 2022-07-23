@@ -40,6 +40,8 @@
       mysql.package = pkgs.mariadb;
     };
 
-    shortcuts.paths.w  = "/var/www/";
+    home-manager.sharedModules = [{
+      custom.shortcuts.paths.w = "/var/www/";
+    }];
   };
 }

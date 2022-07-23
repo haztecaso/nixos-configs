@@ -6,7 +6,6 @@
     ./home
     ./monitors.nix
     ./services
-    ./shortcuts
     ./webserver
   ];
 

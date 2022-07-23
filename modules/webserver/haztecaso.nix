@@ -67,6 +67,8 @@ in
         mpdHost = "raspi-music";
       };
     };
-    shortcuts.paths.wh = root;
+    home-manager.sharedModules = [{
+      custom.shortcuts.paths.wh = root;
+    }];
   };
 }

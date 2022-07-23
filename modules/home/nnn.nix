@@ -42,17 +42,14 @@ in
           };
           bookmarks = cfg.bookmarks;
         };
-      # shells = {
-      #   initExtra = [
-      #     ''
-      #       export NNN_OPTS="aRe"
-      #     ''
-      #   ];
-      #   aliases = {
-      #     r = "nnn";
-      #     nn = "nnn";
-      #   };
-      # };
+    };
+    custom.shell = {
+      initExtra = [
+        ''
+          export NNN_OPTS="aRe"
+        ''
+      ];
+      aliases.r = "nnn";
     };
   };
 }

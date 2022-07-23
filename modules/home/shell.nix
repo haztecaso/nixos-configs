@@ -50,7 +50,7 @@ in
         enableSyntaxHighlighting = true;
         autocd = true;
         dotDir = ".config/zsh";
-        history.path = "${home-conf.xdg.dataHome}/zsh/zsh_history";
+        history.path = "${config.xdg.dataHome}/zsh/zsh_history";
         prezto = {
           enable = true;
           editor.keymap = "vi";

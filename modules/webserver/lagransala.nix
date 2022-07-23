@@ -28,6 +28,8 @@ in
         "lagransala.com" = redirectConfig;
       };
     };
-    shortcuts.paths.wl = root;
+    home-manager.sharedModules = [{
+      custom.shortcuts.paths.wl = root;
+    }];
   };
 }

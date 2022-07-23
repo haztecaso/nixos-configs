@@ -33,6 +33,8 @@ in
       };
     };
     age.secrets."cloudflare".file = ../../secrets/cloudflare.age;
-    shortcuts.paths.we = root;
+    home-manager.sharedModules = [{
+      custom.shortcuts.paths.we = root;
+    }];
   };
 }

@@ -59,11 +59,6 @@ in
           ${cfg.extraRifle}
         '';
     };
-    # programs.shells = {
-    #   aliases = {
-    #     r = "ranger";
-    #     nn = "ranger";
-    #   };
-    # };
+    custom.shell.aliases.r = "ranger";
   };
 }

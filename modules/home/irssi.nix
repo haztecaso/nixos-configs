@@ -46,11 +46,7 @@ in
             # };
           };
         };
-        # shells = {
-        #   aliases = {
-        #     irc = "irssi";
-        #   };
-        # };
       };
+      custom.shell.aliases.irc = "irssi";
     };
   }
