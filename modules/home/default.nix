@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, inputs, ... }:
 let
   stateVersionModule = { nixosConfig, ... }: {
     home.stateVersion = nixosConfig.base.stateVersion;
@@ -6,7 +6,10 @@ let
 in
 {
   home-manager = {
-    extraSpecialArgs = { nixosConfig = config; };
+    extraSpecialArgs = {
+      inherit inputs;
+      nixosConfig = config;
+    };
     useGlobalPkgs = true;
     sharedModules = [
       stateVersionModule

@@ -34,14 +34,6 @@
     };
   };
 
-  custom.programs.nnn.bookmarks = {
-    D = "~/Downloads";
-    c = "~/.config";
-    h = "~";
-    d = "~/Documents";
-    n = "/etc/nixos";
-  };
-
   custom.services.tailscale.hosts =
     let
       localNames = name: [ name "${name}.lan" "${name}.local" ];
