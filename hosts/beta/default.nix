@@ -44,14 +44,15 @@ in
           fontSize = 8;
         };
         programs = {
+          irssi.enable = true;
           latex.enable = true;
+          money.enable = true;
           music = {
             enable = true;
             dir = /home/skolem/Music/Library;
           };
           tmux.color = "#aaee00";
           vim.package = pkgs.neovimFull;
-          money.enable = true;
         };
       };
      
@@ -112,7 +113,6 @@ in
   custom = {
     desktop.enable = true;
     programs = {
-      irssi.enable = true;
       nnn.bookmarks = {
         N = "~/Nube";
         l = "~/Nube/lecturas";

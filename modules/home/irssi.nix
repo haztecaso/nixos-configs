@@ -2,20 +2,19 @@
 let
   cfg = config.custom.programs.irssi;
 in
-{
-  options.custom.programs.irssi = with lib; {
-    enable = mkEnableOption "Enable irssi irc client.";
-    nick = mkOption {
-      type = types.str;
-      default = "tarski";
-      description = "irc nick";
+  {
+    options.custom.programs.irssi = with lib; {
+      enable = mkEnableOption "Enable irssi irc client.";
+      nick = mkOption {
+        type = types.str;
+        default = "tarski";
+        description = "irc nick";
+      };
     };
-  };
 
-  config = lib.mkIf cfg.enable (
-    let
-      conf = {
-        programs.irssi = {
+    config = lib.mkIf cfg.enable {
+      programs = {
+        irssi = {
           enable = true;
           networks = {
             liberachat = {
@@ -47,16 +46,11 @@ in
             # };
           };
         };
-      };
-    in
-    {
-      programs.shells = {
-        aliases = {
-          irc = "irssi";
+        shells = {
+          aliases = {
+            irc = "irssi";
+          };
         };
       };
-      home-manager.users.skolem = { ... }: conf;
-      home-manager.users.root = { ... }: conf;
-    }
-  );
-}
+    };
+  }

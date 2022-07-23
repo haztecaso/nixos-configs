@@ -22,6 +22,7 @@ in
           ./ssh.nix
           ./tmux.nix
           ./vim.nix
+          ./irssi.nix
         ];
         programs = {
           gpg.enable = true;
