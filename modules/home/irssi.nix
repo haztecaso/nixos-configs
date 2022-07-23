@@ -46,11 +46,11 @@ in
             # };
           };
         };
-        shells = {
-          aliases = {
-            irc = "irssi";
-          };
-        };
+        # shells = {
+        #   aliases = {
+        #     irc = "irssi";
+        #   };
+        # };
       };
     };
   }

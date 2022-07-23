@@ -73,7 +73,6 @@ in
 
   users.users = {
     skolem.extraGroups = [ "libvirtd" ];
-    curro.extraGroups = [ "wheel" ];
   };
 
   base = {
