@@ -23,6 +23,7 @@
       custom.programs = {
         tmux.color = "#aaee00";
         vim.package = vim;
+        nnn.bookmarks = { w = "/var/www/"; };
       };
     };
   };
@@ -42,9 +43,6 @@
   custom = {
     programs = {
       ranger.enable = false;
-      nnn.bookmarks = {
-        w = "/var/www/";
-      };
     };
     services = {
         syncthing = {

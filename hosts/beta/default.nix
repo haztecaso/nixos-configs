@@ -51,6 +51,15 @@ in
             enable = true;
             dir = /home/skolem/Music/Library;
           };
+          nnn.bookmarks = {
+            N = "~/Nube";
+            l = "~/Nube/lecturas";
+            m = "~/Music";
+            p = "~/Pictures";
+            s = "~/src";
+            u = "~/Nube/uni/Actuales";
+            v = "~/Videos";
+          };
           tmux.color = "#aaee00";
           vim.package = pkgs.neovimFull;
         };
@@ -112,15 +121,6 @@ in
   custom = {
     desktop.enable = true;
     programs = {
-      nnn.bookmarks = {
-        N = "~/Nube";
-        l = "~/Nube/lecturas";
-        m = "~/Music";
-        p = "~/Pictures";
-        s = "~/src";
-        u = "~/Nube/uni/Actuales";
-        v = "~/Videos";
-      };
       ranger.enable = false;
     };
 

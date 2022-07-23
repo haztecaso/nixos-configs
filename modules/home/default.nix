@@ -14,15 +14,16 @@ in
         imports = [
           ./desktop
           ./git.nix
+          ./irssi.nix
           ./latex.nix
           ./mail.nix
           ./money.nix
           ./monitors.nix
           ./music.nix
+          ./nnn.nix
           ./ssh.nix
           ./tmux.nix
           ./vim.nix
-          ./irssi.nix
         ];
         programs = {
           gpg.enable = true;
