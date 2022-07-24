@@ -48,7 +48,7 @@
   services.nfs.server = {
     enable = true;
     exports = ''
-      /mnt/raid *(insecure)
+      /mnt/raid *(insecure,no_subtree_check)
     '';
     hostName = "nas";
   };
