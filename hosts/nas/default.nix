@@ -42,4 +42,17 @@
         tailscale.enable = true;
     };
   };
+
+  # Network shares
+
+  services.nfs.server = {
+    enable = true;
+    exports = ''
+      /mnt/raid *(insecure)
+    '';
+    hostName = "nas";
+  };
+
+  networking.firewall.allowedTCPPorts = [ 2049 ];
+
 }
