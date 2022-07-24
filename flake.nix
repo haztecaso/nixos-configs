@@ -4,6 +4,7 @@
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = { url = "github:nix-community/home-manager/release-22.05"; inputs.nixpkgs.follows = "nixpkgs"; };
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
+    deploy-rs.url = "github:serokell/deploy-rs";
     snm = { url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-22.05"; inputs = { nixpkgs.follows = "unstable"; nixpkgs-22_05.follows = "nixpkgs"; }; };
     nixos-hardware = { url = "github:NixOS/nixos-hardware/master"; inputs.nixpkgs.follows = "nixpkgs"; };
     agenix = { url = "github:ryantm/agenix"; inputs.nixpkgs.follows = "nixpkgs"; };
@@ -25,6 +26,7 @@
       inputs.jobo_bot.overlay
       inputs.moodle-dl.overlay
       inputs.mpdws.overlay
+      inputs.deploy-rs.overlay
       (final: prev: { unstable = inputs.unstable.legacyPackages.${prev.system}; })
       self.overlays.default
     ];
@@ -48,6 +50,19 @@
       lambda.modules = [ ./hosts/lambda ];
       nas.modules = [ ./hosts/nas ];
     };
+
+    deploy = let
+      activate = inputs.deploy-rs.lib.x86_64-linux.activate.nixos;
+      hosts = self.nixosConfigurations;
+    in {
+      user = "root";
+      nodes = {
+        nas = { hostname = "nas"; profiles.system.path = activate hosts.nas; };
+        lambda = { hostname = "lambda"; profiles.system.path = activate hosts.lambda; };
+      };
+    };
+
+    checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) inputs.deploy-rs.lib;
 
     nixosModules.default = import ./modules;
 

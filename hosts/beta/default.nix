@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 let
   keys = import ../../ssh-keys.nix;
 in
@@ -43,9 +43,10 @@ in
           fontSize = 8;
         };
         shell.aliases = {
-          ytdl = "yt-dlp";
-          youtube-dl = "yt-dlp";
+          deploy = "deploy -k";
           python = "${pkgs.python38Packages.ipython}/bin/ipython";
+          youtube-dl = "yt-dlp";
+          ytdl = "yt-dlp";
         };
         shortcuts = {
           paths = {
@@ -88,6 +89,7 @@ in
   };
 
   environment.systemPackages = with pkgs; [
+    deploy-rs.deploy-rs
     unstable.yt-dlp
     virt-manager
   ];
