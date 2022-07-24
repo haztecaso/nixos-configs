@@ -26,7 +26,7 @@
       inputs.moodle-dl.overlay
       inputs.mpdws.overlay
       (final: prev: { unstable = inputs.unstable.legacyPackages.${prev.system}; })
-      self.overlay
+      self.overlays.default
     ];
 
     hostDefaults = {
@@ -44,13 +44,13 @@
 
     hosts = {
       beta.modules = [ ./hosts/beta inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x270 ];
-      galois.modules = [ ./hosts/galois ];
+      # galois.modules = [ ./hosts/galois ];
       lambda.modules = [ ./hosts/lambda ];
     };
 
-    nixosModule = import ./modules;
+    nixosModules.default = import ./modules;
 
-    overlay = import ./overlay;
+    overlays.default = import ./overlay;
 
     outputsBuilder = channels: {
       packages = let
