@@ -45,10 +45,18 @@
 
   # Network shares
 
+  fileSystems = {
+    "/export/raid" = {
+      device = "/mnt/raid";
+      options = [ "bind" ];
+    };
+  };
+
   services.nfs.server = {
     enable = true;
     exports = ''
-      /mnt/raid *(insecure,no_subtree_check)
+      /export *(rw,fsid=0,no_subtree_check)
+      /export/raid *(rw,insecure,nohide,no_subtree_check)
     '';
     hostName = "nas";
   };
