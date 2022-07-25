@@ -55,8 +55,8 @@
   services.nfs.server = {
     enable = true;
     exports = ''
-      /export *(rw,fsid=0,no_subtree_check)
-      /export/raid *(rw,insecure,nohide,no_subtree_check)
+      /export      100.75.165.118(rw,fsid=0,no_subtree_check)
+      /export/raid 100.75.165.118(rw,insecure,nohide,no_subtree_check)
     '';
     hostName = "nas";
   };
