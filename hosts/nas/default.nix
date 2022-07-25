@@ -52,14 +52,12 @@
     };
   };
 
+  services.rpcbind.enable = true;
   services.nfs.server = {
     enable = true;
-    # lockdPort = 4001;
-    # mountdPort = 4002;
-    # statdPort = 4000;
     exports = ''
-      /export      100.75.165.118(rw,fsid=0,no_subtree_check)
-      /export/raid 100.75.165.118(rw,insecure,nohide,no_subtree_check)
+      /export      *(rw,fsid=0,no_subtree_check)
+      /export/raid *(rw,insecure,nohide,no_subtree_check)
     '';
     hostName = "nas";
   };
