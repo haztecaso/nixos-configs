@@ -142,7 +142,6 @@ in
     device = "nas:/raid";
     fsType = "nfs";
     options = [
-      "nfsvers=4.2"
       "noauto"
       "x-systemd.automount"
       "x-systemd.idle-timeout=300"
