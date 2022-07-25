@@ -77,8 +77,8 @@ in
         };
       };
 
-      age.secrets."users/skolem".file = ../secrets/users/skolem.age;
-      age.secrets."users/root".file = ../secrets/users/root.age;
+      # age.secrets."users/skolem".file = ../secrets/users/skolem.age;
+      # age.secrets."users/root".file = ../secrets/users/root.age;
 
       console.keyMap = "es";
 
