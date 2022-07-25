@@ -120,7 +120,7 @@ in
   };
 
   services = {
-    safeeyes.enable = true;
+    safeeyes.enable = false;
   };
 
   custom = {
@@ -135,6 +135,18 @@ in
       # pythonPackages = [ "numpy" "matplotlib" "ipython" ];
       direnv.enable = true;
     };
+  };
+
+  services.rpcbind.enable = true;
+  fileSystems."/mnt/nas" = {
+    device = "nas:/raid";
+    fsType = "nfs";
+    options = [
+      "nfsvers=4.2"
+      "noauto"
+      "x-systemd.automount"
+      "x-systemd.idle-timeout=300"
+    ];
   };
 
 }

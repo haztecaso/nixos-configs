@@ -54,6 +54,9 @@
 
   services.nfs.server = {
     enable = true;
+    lockdPort = 4001;
+    mountdPort = 4002;
+    statdPort = 4000;
     exports = ''
       /export      100.75.165.118(rw,fsid=0,no_subtree_check)
       /export/raid 100.75.165.118(rw,insecure,nohide,no_subtree_check)
@@ -61,6 +64,9 @@
     hostName = "nas";
   };
 
-  networking.firewall.allowedTCPPorts = [ 2049 ];
+  networking.firewall = {
+    allowedTCPPorts = [ 111 2049 4000 4001 4002 20048 ];
+    allowedUDPPorts = [ 111 2049 4000 4001 4002 20048 ];
+  };
 
 }
