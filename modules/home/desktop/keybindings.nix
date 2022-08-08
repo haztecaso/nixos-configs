@@ -1,3 +1,5 @@
+# TODO: Este módulo instala muchos paquetes. Estaría bien que solo se activaran
+# los comandos de las aplicaciones que están instaladas.
 { config, lib, pkgs, ... }:
 let
   term_launcher = pkgs.writeScriptBin "term_launcher" ''
@@ -11,27 +13,28 @@ let
     fi
   '';
 
-  dunstify_cmd = "${pkgs.dunst}/bin/dunstify -r 1001 -t 800";
+  dunstify_cmd1 = "${pkgs.dunst}/bin/dunstify -r 1001 -t 800";
+  dunstify_cmd2 = "${pkgs.dunst}/bin/dunstify -r 1002";
 
   notify_vol = pkgs.writeScriptBin "notify_vol" ''
     #!${pkgs.runtimeShell}
     VOL=$(${pkgs.pamixer}/bin/pamixer --get-volume-human)
     if echo $VOL | grep -q muted; then
-      ${dunstify_cmd} -h string:bgcolor:#550000 -h string:frcolor:#550000 Volume Muted
+      ${dunstify_cmd1} -h string:bgcolor:#550000 -h string:frcolor:#550000 Volume Muted
     else
-      ${dunstify_cmd} -h int:value:$VOL Volume
+      ${dunstify_cmd1} -h int:value:$VOL Volume
     fi
   '';
 
   notify_bri = pkgs.writeScriptBin "notify_bri" ''
     #!${pkgs.runtimeShell}
-    ${dunstify_cmd} -h string:hlcolor:#cccc22 -h int:value:$(${pkgs.light}/bin/light -G) "Screen brightness"
+    ${dunstify_cmd1} -h string:hlcolor:#cccc22 -h int:value:$(${pkgs.light}/bin/light -G) "Screen brightness"
   '';
 
   kbddev = "sysfs/leds/smc::kbd_backlight ";
   notify_kbd = pkgs.writeScriptBin "notify_kbd" ''
     #!${pkgs.runtimeShell}
-    ${dunstify_cmd} -h string:hlcolor:#aaaabb -h int:value:$(${pkgs.light}/bin/light -s ${kbddev} -G) "Keyboard brightness"
+    ${dunstify_cmd1} -h string:hlcolor:#aaaabb -h int:value:$(${pkgs.light}/bin/light -s ${kbddev} -G) "Keyboard brightness"
   '';
 
   pamixer_cmd = cmd: "${pkgs.pamixer}/bin/pamixer ${cmd} && ${notify_vol}/bin/notify_vol";
@@ -42,9 +45,17 @@ let
     #!${pkgs.runtimeShell}
     status=$(${pkgs.mpc_cli}/bin/mpc random | sed -n 's/^.*random: \([a-z]\+\).*$/\1/p')
     if [ "$status" == "on" ]; then
-      ${dunstify_cmd} -t 1200 -h string:bgcolor:#003300 Random ON
+      ${dunstify_cmd1} -h string:bgcolor:#003300 Random ON
     else
-      ${dunstify_cmd} -t 1200 -h string:bgcolor:#330000 Random OFF
+      ${dunstify_cmd1} -h string:bgcolor:#330000 Random OFF
+    fi
+  '';
+
+  run_if_present = pkgs.writeScriptBin "run_if_present" ''
+    if ! command -v $1 &> /dev/null; then
+      ${dunstify_cmd2} "binary \"$1\" not in path" "(run_if_present script)"
+    else
+      $1
     fi
   '';
 in
@@ -58,12 +69,13 @@ in
         "super + Return" = "${pkgs.alacritty}/bin/alacritty";
         "super + alt + Return" = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.tmux}/bin/tmux new-session -A -s 0";
         "super + shift + Return" = "${term_launcher}/bin/term_launcher";
-        "super + e" = "emacs"; #TODO: include package (calling emacsWithPackages)
-        "super + p" = "bwmenu"; #TODO: include package
+        "super + e" = "${run_if_present}/bin/run_if_present emacs";
+        "super + p" = "${run_if_present}/bin/run_if_present bwmenu";
         "super + {space,s}" = "${pkgs.rofi}/bin/rofi -show {run,ssh}";
         "super + w" = "${pkgs.qutebrowser}/bin/qutebrowser";
         "super + shift + w" = "${pkgs.qutebrowser}/bin/qutebrowser --target private-window";
         "super + alt + w" = "${pkgs.firefox}/bin/firefox";
+        "super + shift + b" = "${run_if_present}/bin/run_if_present bitwarden";
         "super + shift + t" = "${pkgs.tdesktop}/bin/telegram-desktop";
         "super + {XF86LaunchA, Print}" = "${pkgs.flameshot}/bin/flameshot gui";
         "XF86LaunchB" = "${pkgs.alacritty}/bin/alacritty -e ssh skolem@haztecaso.com";
