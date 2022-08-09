@@ -16,29 +16,6 @@ in
 
   config = with lib; mkMerge [
 
-      # code server config
-      (mkIf cfg.code-server.enable (let
-        root = "/root/";
-        port = "8002";
-      in {
-        virtualisation.docker.enable = true;
-        services = {
-          nginx.virtualHosts.code = {
-            enableACME = true;
-            forceSSL = true;
-            serverName = "code.haztecaso.com";
-            locations."/" = {
-              proxyPass = "http://127.0.0.1:${port}";
-              extraConfig = ''
-                  proxy_set_header Upgrade $http_upgrade;
-                  proxy_set_header Connection upgrade;
-                  proxy_set_header Accept-Encoding gzip;
-              '';
-            };
-          };
-        };
-      }))
-
       # gitea config
       (mkIf cfg.gitea.enable (let
         cfg = config.custom.services.gitea;
