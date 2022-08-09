@@ -22,13 +22,6 @@ in
         port = "8002";
       in {
         virtualisation.docker.enable = true;
-        virtualisation.oci-containers.containers."code-server" = {
-          image = "codercom/code-server:latest";
-          ports = [ "${port}:8080" ];
-          volumes = [ "/var/lib/code/:${root}" ];
-          user = "0:0";
-          environment.DOCKER_USER="root";
-        };
         services = {
           nginx.virtualHosts.code = {
             enableACME = true;
