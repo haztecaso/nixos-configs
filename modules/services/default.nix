@@ -10,7 +10,6 @@ in
   ];
 
   options.custom.services = with lib; {
-    code-server.enable = mkEnableOption "Enable vscode on the web.";
     gitea.enable = mkEnableOption "Enable gitea code hosting.";
     netdata.enable = mkEnableOption "Enable netdata web panel.";
   };
