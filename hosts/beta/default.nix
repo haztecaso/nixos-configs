@@ -30,7 +30,7 @@ in
       };
     };
     skolem = { ... }: {
-      home.packages = with pkgs; [ autofirma ];
+      home.packages = with pkgs; [ autofirma vscodium ];
       custom = {
         #TODO: mail, accounts and filters configs
         # mail = {
@@ -132,7 +132,7 @@ in
 
     dev = {
       enable = true;
-      # pythonPackages = [ "numpy" "matplotlib" "ipython" ];
+      pythonPackages = [ "poetry" ];
       direnv.enable = true;
     };
   };
