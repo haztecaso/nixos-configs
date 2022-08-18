@@ -19,5 +19,6 @@
       "100.70.238.47" = localNames "realme8";
       "100.84.161.27" = localNames "galois";
       "100.93.219.95" = (localNames "rpi") ++ (localNames "rpi-mpd") ++ (localNames "raspi-music") ++ [ "semuta.mooo.com" ];
+      "100.71.54.42" = localNames "nas";
     };
 }
