@@ -46,6 +46,7 @@
 
     hosts = {
       beta.modules = [ ./hosts/beta inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x270 ];
+      elbrus.modules = [ ./hosts/elbrus ];
       # galois.modules = [ ./hosts/galois ];
       lambda.modules = [ ./hosts/lambda ];
       nas.modules = [ ./hosts/nas ];
