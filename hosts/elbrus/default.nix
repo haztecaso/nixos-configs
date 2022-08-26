@@ -68,7 +68,7 @@ in
 
     dev = {
       enable = true;
-      # pythonPackages = [ "numpy" "matplotlib" "ipython" ];
+      pythonPackages = [ "poetry" ];
       direnv.enable = true;
     };
   };
