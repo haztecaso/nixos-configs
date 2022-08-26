@@ -2,7 +2,7 @@
 let
   cfg = config.custom.dev;
   pythonPackageNames = lib.attrNames pkgs.python38Packages;
-  pythonPackages = map (name: pkgs.python38Packages.${name}) cfg.pythonPackages;
+  pythonPackages = map (name: pkgs.python310Packages.${name}) cfg.pythonPackages;
 in
 {
   options.custom.dev = with lib; {
@@ -23,7 +23,7 @@ in
         python310Packages.poetry
         wget
         axel
-        python38
+        python310
         silver-searcher
         jq
         git
