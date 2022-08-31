@@ -64,7 +64,8 @@ in
   };
 
   services = {
-    safeeyes.enable = false;
+    safeeyes.enable  = true;
+    tailscale.enable = true;
   };
 
   custom = {
