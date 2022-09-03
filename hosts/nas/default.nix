@@ -52,7 +52,20 @@
     };
   };
 
-  services.rpcbind.enable = true;
+  services = {
+    nextcloud = {
+      enable = true;
+      package = pkgs.nextcloud24;
+      appstoreEnable = false;
+      hostName = "cloud.elvivero.es";
+      https = true;
+      datadir = "/mnt/raid/nextcloud";
+      config = {
+        defaultPhoneRegion = "ES";
+        extraTrustedDomains = ["nas"];
+      };
+    };
+  };
 
   networking.firewall = {
     allowedTCPPorts = [ 111 2049 4000 4001 4002 20048 ];
