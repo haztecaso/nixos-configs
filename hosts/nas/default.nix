@@ -62,9 +62,17 @@
     hostName = "nas";
   };
 
+  services.hydra = {
+    enable = true;
+    hydraURL = "http://nas:3000";
+    notificationSender = "hydra@localhost";
+    buildMachinesFiles = [];
+    useSubstitutes = true;
+  };
+
   networking.firewall = {
-    allowedTCPPorts = [ 111 2049 4000 4001 4002 20048 ];
-    allowedUDPPorts = [ 111 2049 4000 4001 4002 20048 ];
+    allowedTCPPorts = [ 111 2049 3000 4000 4001 4002 20048 ];
+    allowedUDPPorts = [ 111 2049 3000 4000 4001 4002 20048 ];
   };
 
 }
