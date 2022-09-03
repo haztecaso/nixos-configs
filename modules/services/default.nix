@@ -7,6 +7,7 @@ in
     ./syncthing.nix
     ./tailscale.nix
     ./vaultwarden.nix
+    ./autofs.nix
   ];
 
   options.custom.services = with lib; {
