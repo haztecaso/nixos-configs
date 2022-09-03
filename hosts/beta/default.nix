@@ -129,6 +129,7 @@ in
 
     services = {
       tailscale.enable = true;
+      autofs.enable = true;
     };
 
     dev = {
