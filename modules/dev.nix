@@ -31,6 +31,8 @@ in
         ncdu
         python38Full
         filezilla
+        bat
+        exa
       ] ++ pythonPackages;
     })
     (lib.mkIf cfg.direnv.enable {
