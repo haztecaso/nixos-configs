@@ -30,7 +30,7 @@ in
       };
     };
     skolem = { ... }: {
-      home.packages = with pkgs; [ autofirma ];
+      home.packages = with pkgs; [ autofirma vscodium ];
       custom = {
         #TODO: mail, accounts and filters configs
         # mail = {
@@ -92,6 +92,7 @@ in
     deploy-rs.deploy-rs
     unstable.yt-dlp
     virt-manager
+    docker-compose
   ];
 
   virtualisation = {
@@ -128,24 +129,16 @@ in
 
     services = {
       tailscale.enable = true;
+      autofs.enable = true;
     };
 
     dev = {
       enable = true;
-      # pythonPackages = [ "numpy" "matplotlib" "ipython" ];
+      pythonPackages = [ "poetry" ];
       direnv.enable = true;
     };
   };
 
   services.rpcbind.enable = true;
-  fileSystems."/mnt/nas" = {
-    device = "nas:/raid";
-    fsType = "nfs";
-    options = [
-      "noauto"
-      "x-systemd.automount"
-      "x-systemd.idle-timeout=300"
-    ];
-  };
 
 }

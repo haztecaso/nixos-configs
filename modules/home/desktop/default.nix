@@ -59,7 +59,7 @@ in
         # soulseekqt
         sxiv
         unstable.tdesktop
-        tor-browser-bundle-bin
+        # tor-browser-bundle-bin
         transmission-gtk
         vlc
         wmctrl

@@ -52,14 +52,19 @@
     };
   };
 
-  services.rpcbind.enable = true;
-  services.nfs.server = {
-    enable = true;
-    exports = ''
-      /export      *(rw,fsid=0,no_subtree_check)
-      /export/raid *(rw,insecure,nohide,no_subtree_check)
-    '';
-    hostName = "nas";
+  services = {
+    nextcloud = {
+      enable = true;
+      package = pkgs.nextcloud24;
+      appstoreEnable = false;
+      hostName = "cloud.elvivero.es";
+      https = true;
+      datadir = "/mnt/raid/nextcloud";
+      config = {
+        defaultPhoneRegion = "ES";
+        extraTrustedDomains = ["nas"];
+      };
+    };
   };
 
   services.hydra = {
