@@ -92,6 +92,7 @@ in
     deploy-rs.deploy-rs
     unstable.yt-dlp
     virt-manager
+    docker-compose
   ];
 
   virtualisation = {
@@ -138,14 +139,5 @@ in
   };
 
   services.rpcbind.enable = true;
-  fileSystems."/mnt/nas" = {
-    device = "nas:/raid";
-    fsType = "nfs";
-    options = [
-      "noauto"
-      "x-systemd.automount"
-      "x-systemd.idle-timeout=300"
-    ];
-  };
 
 }
