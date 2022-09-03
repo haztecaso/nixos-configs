@@ -62,6 +62,12 @@ in
         };
         shellAliases = cfg.aliases // shortcut_aliases;
       };
+      fzf = {
+        enable = true;
+        enableBashIntegration = true;
+        changeDirWidgetOptions = [ "--preview 'tree -C {} | head -200'"];
+        fileWidgetOptions = [ "--preview 'head -200 {}'" ];
+      };
     };
   };
 }
