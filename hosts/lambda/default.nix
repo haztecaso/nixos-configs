@@ -48,7 +48,6 @@
       };
       tailscale.enable = true;
       vaultwarden.enable = true;
-      code-server.enable = false;
       gitea.enable = true;
       netdata.enable = true;
     };
@@ -71,7 +70,7 @@
 
   services = {
     moodle-dl = {
-      # enable = true;
+      enable = true;
       configFile = config.age.secrets."moodle-dl.conf".path;
       folder = "/var/lib/syncthing/uni-moodle/";
     };
