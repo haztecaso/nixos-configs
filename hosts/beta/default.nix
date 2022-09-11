@@ -67,7 +67,7 @@ in
           money.enable = true;
           music = {
             enable = true;
-            dir = /home/skolem/Music/Library;
+            client.enable = true;
           };
           nnn.bookmarks = {
             N = "~/Nube";

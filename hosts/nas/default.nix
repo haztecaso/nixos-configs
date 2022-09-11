@@ -23,6 +23,10 @@
       custom.programs = {
         tmux.color = "#aaee00";
         vim.package = vim;
+        music.server = {
+          enable = true;
+          library = /mnt/raid/music/Library;
+        };
       };
     };
   };
@@ -58,18 +62,27 @@
       package = pkgs.nextcloud24;
       appstoreEnable = false;
       hostName = "cloud.elvivero.es";
-      https = true;
+      # https = true;
       datadir = "/mnt/raid/nextcloud";
       config = {
+        adminpassFile = "/mnt/raid/nextcloud-admin-pass";
         defaultPhoneRegion = "ES";
         extraTrustedDomains = ["nas"];
       };
     };
   };
 
+  services.hydra = {
+    enable = true;
+    hydraURL = "http://nas:3000";
+    notificationSender = "hydra@localhost";
+    buildMachinesFiles = [];
+    useSubstitutes = true;
+  };
+
   networking.firewall = {
-    allowedTCPPorts = [ 111 2049 4000 4001 4002 20048 ];
-    allowedUDPPorts = [ 111 2049 4000 4001 4002 20048 ];
+    allowedTCPPorts = [ 80 443 111 2049 3000 4000 8000 4001 4002 20048 ];
+    allowedUDPPorts = [ 80 443 111 2049 3000 4000 8000 4001 4002 20048 ];
   };
 
 }
