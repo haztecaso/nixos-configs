@@ -192,11 +192,11 @@
       },
       "locked": {
         "dir": "moodle-dl",
-        "lastModified": 1653350803,
-        "narHash": "sha256-jEulLhgqrndRcMersiBThwHpNLLrKma0esCo6Q3oJOk=",
+        "lastModified": 1662933402,
+        "narHash": "sha256-r8/vMeEi7SQRIkPgSm1Cp04EM5detzlEtzA10ox9SiQ=",
         "owner": "haztecaso",
         "repo": "flakes",
-        "rev": "61cef43ddb09199d993ef9f75dfe2c2b57c38af4",
+        "rev": "536afc731b7449cf0c3bde5a63440281e4bfc6f1",
         "type": "github"
       },
       "original": {
