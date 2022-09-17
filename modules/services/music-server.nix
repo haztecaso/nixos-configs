@@ -11,40 +11,56 @@ in
     };
     playlistDir = mkOption {
       type = types.path;
-      default = cfg.server.library + "/Playlists";
+      default = cfg.library + "/Playlists";
       description = "Mpd music directory";
     };
     mpdDbFile = mkOption {
       type = types.path;
-      default = cfg.server.library + "/mpd.db";
+      default = cfg.library + "/mpd.db";
       description = "Mpd database path";
     };
     mpdDataDir = mkOption {
       type = types.path;
-      default = cfg.server.library + "/.mpd";
+      default = cfg.library + "/.mpd";
       description = "Mpd database path";
     };
   };
 
   config = lib.mkIf cfg.enable {
+    users.extraGroups.users.members = [ "mpd" ];
     services = {
       mpd = {
         enable = true;
         dataDir = cfg.mpdDataDir;
         dbFile = cfg.mpdDbFile;
-        # dbFile = builtins.toString cfg.server.mpdDbFile;
         musicDirectory = cfg.library;
         playlistDirectory = cfg.playlistDir;
-        listenAddress = "nas";
+        network.listenAddress = "nas";
         extraConfig = ''
           audio_output {
-            type "httpd"
-            name "NAS"
-            encoder "lame"
-            server "0.0.0.0"
+            type "shout"
+            encoding "lame"
+            name "NAS music stream"
+            host "localhost"
             port "8000"
+            mount "/stream.mp3"
+            user "mpd"
+            password "mpd"
             bitrate "160"
+            format "44100:16:1"
           }
+        '';
+      };
+      icecast = {
+        enable = true;
+        hostname = "nas";
+        admin.password = "pass";
+        extraConf = ''
+          <mount type="normal">
+            <mount-name>/stream.mp3</mount-name>
+            <username>mpd</username>
+            <password>mpd</password>
+          </mount>
         '';
       };
     };
