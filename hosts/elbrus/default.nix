@@ -65,11 +65,15 @@ in
 
   services = {
     safeeyes.enable  = true;
-    tailscale.enable = true;
   };
 
   custom = {
     desktop.enable = true;
+
+    services = {
+      tailscale.enable = true;
+      autofs.enable = true;
+    };
 
     dev = {
       enable = true;
