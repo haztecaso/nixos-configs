@@ -38,7 +38,7 @@ in
             try_files $uri $uri.html $uri/ =404;
           '';
 
-          locations."/stream".proxyPass = "http://raspi-music:8000";
+          locations."/stream.mp3".proxyPass = "http://nas:8000/stream.mp3";
           locations."/mpdws" = {
             proxyPass = "http://localhost:8005";
             extraConfig = ''
@@ -64,7 +64,7 @@ in
         enable = true;
         port = 8005;
         host = "0.0.0.0";
-        mpdHost = "raspi-music";
+        mpdHost = "nas";
       };
     };
     home-manager.sharedModules = [{
