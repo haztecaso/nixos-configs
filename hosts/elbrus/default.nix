@@ -42,10 +42,17 @@ in
 
   environment.systemPackages = with pkgs; [
     docker-compose
+    sqlitebrowser
+    redis
+    scantailor-advanced
   ];
 
   virtualisation = {
     docker.enable = true;
+  };
+
+  users.users = {
+    skolem.extraGroups = [ "docker" ];
   };
 
   base = {
