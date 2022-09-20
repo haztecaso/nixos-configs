@@ -64,5 +64,9 @@ in
         '';
       };
     };
+    networking.firewall = {
+      allowedUDPPorts = [ 6600 ];
+      allowedTCPPorts = [ 6600 ];
+    };
   };
 }
