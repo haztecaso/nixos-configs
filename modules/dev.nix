@@ -36,7 +36,7 @@ in
         exa
       ] ++ pythonPackages;
     })
-    (lib.mkIf cfg.nodejs.enable {
+    (lib.mkIf cfg.nodejs {
       environment.systemPackages = with pkgs; [ nodejs yarn ];
     })
     (lib.mkIf cfg.direnv.enable {
