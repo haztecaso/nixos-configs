@@ -33,6 +33,7 @@ in
           nnn.bookmarks = {
             s = "~/src";
           };
+          latex.enable = true;
           tmux.color = "#aaee00";
           vim.package = pkgs.neovimFull;
         };
