@@ -1,7 +1,4 @@
 { config, pkgs, inputs, ... }:
-let
-  keys = import ../../ssh-keys.nix;
-in
 {
   imports = [ ./hardware.nix ./monitors.nix ];
 
@@ -11,7 +8,7 @@ in
     root = { ... }: {
       custom.programs = {
         tmux.color = "#eeaa00";
-        vim.package = pkgs.neovimFull;
+        vim.package = pkgs.neovimBase;
       };
     };
     skolem = { ... }: {
@@ -35,7 +32,7 @@ in
           };
           latex.enable = true;
           tmux.color = "#aaee00";
-          vim.package = pkgs.neovimFull;
+          vim.package = pkgs.neovimWebDev;
         };
       };
     };
@@ -85,6 +82,7 @@ in
 
     dev = {
       enable = true;
+      nodejs = true;
       pythonPackages = [ "poetry" ];
       direnv.enable = true;
     };
