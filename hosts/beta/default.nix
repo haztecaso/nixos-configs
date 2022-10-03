@@ -93,13 +93,17 @@ in
     unstable.yt-dlp
     virt-manager
     docker-compose
+    impo
+    gparted
   ];
 
   virtualisation = {
+    virtualbox.host.enable = true;
     docker.enable = true;
     libvirtd.enable = true;
   };
 
+  users.extraGroups.vboxusers.members = [ "skolem" ];
   users.users = {
     skolem.extraGroups = [ "libvirtd" ];
   };
@@ -122,6 +126,10 @@ in
 
   services = {
     safeeyes.enable = false;
+  };
+
+  networking.hosts = {
+    "100.71.54.42" = [ "cloud.elvivero.es" ];
   };
 
   custom = {
