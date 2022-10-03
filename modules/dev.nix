@@ -12,6 +12,7 @@ in
       default = [ ];
       description = "Set of python packages to install globally";
     };
+    nodejs = mkEnableOption "Enable nodejs dev packages and configs";
     direnv = {
       enable = mkEnableOption "direnv support";
     };
@@ -34,6 +35,9 @@ in
         bat
         exa
       ] ++ pythonPackages;
+    })
+    (lib.mkIf cfg.nodejs {
+      environment.systemPackages = with pkgs; [ nodejs yarn ];
     })
     (lib.mkIf cfg.direnv.enable {
       # nix-direnv flake support

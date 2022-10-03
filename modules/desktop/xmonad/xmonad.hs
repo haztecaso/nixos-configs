@@ -85,7 +85,7 @@ myKeys conf = mkKeymap conf $
     ("M-z", sendMessage ToggleStruts), -- Toggle the status bar gap
     ("M-S-z", spawn "polybar-msg cmd toggle") -- Toggle the status bar
   ]
-   ++ [("M-"  ++ ws, windows $ W.greedyView ws) | ws <- workspaces conf]
+   ++ [("M-"  ++ ws, windows $ W.view ws) | ws <- workspaces conf]
    ++ [("M-S-" ++ ws, windows $ W.shift ws) | ws <- workspaces conf]
 
 -- Windows

@@ -4,10 +4,11 @@ let
 in
 {
   imports = [
+    ./autofs.nix
+    ./music-server.nix
     ./syncthing.nix
     ./tailscale.nix
     ./vaultwarden.nix
-    ./autofs.nix
   ];
 
   options.custom.services = with lib; {

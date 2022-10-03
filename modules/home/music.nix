@@ -4,56 +4,22 @@ let
 in
 {
   options.custom.programs.music = with lib; {
-    enable = mkEnableOption "Enable various music programs";
-    dir = mkOption {
+    enable = mkEnableOption "Enable music setup (nas: mpd server, clients: consumers).";
+    library = mkOption {
       type = types.path;
-      # default = /home/skolem/Music/Library;
-      description = "Mpd music directory";
-    };
-    playlistDir = mkOption {
-      type = types.path;
-      default = cfg.dir + "/Playlists";
-      description = "Mpd music directory";
-    };
-    mpdDbFile = mkOption {
-      type = types.path;
-      default = cfg.dir + "/mpd.db";
-      description = "Mpd database path";
-    };
-    mpdDataDir = mkOption {
-      type = types.path;
-      default = cfg.dir + "/.mpd";
-      description = "Mpd database path";
+      description = "Music libary directory."; 
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = (lib.mkIf cfg.enable {
     home.packages = [ pkgs.mpc_cli ];
-    services.mpd = {
-      enable = true;
-      musicDirectory = cfg.dir;
-      playlistDirectory = cfg.playlistDir;
-      dataDir = cfg.mpdDataDir;
-      dbFile = builtins.toString cfg.mpdDbFile;
-      extraConfig = ''
-        audio_output {
-          type "pulse"
-          name "Pulseaudio"
-          server "127.0.0.1"
-        }
-      '';
-    };
-    services.mpdris2 = {
-      enable = true;
-      mpd.host = "127.0.0.1";
-    };
     programs.ncmpcpp = {
       enable = true;
       settings = {
+        mpd_host = "nas";
         centered_cursor = true;
         user_interface = "alternative";
       };
-      mpdMusicDir = cfg.dir;
       bindings = [
         { key = "Q"; command = "quit"; }
         { key = "q"; command = "dummy"; }
@@ -91,5 +57,12 @@ in
         { key = "P"; command = "show_playlist"; }
       ];
     };
-  };
+    services.mpdris2 = {
+      enable = true;
+      mpd.host = "nas";
+    };
+    programs.ncmpcpp = {
+      mpdMusicDir = cfg.library;
+    };
+  });
 }

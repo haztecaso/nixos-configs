@@ -1,7 +1,4 @@
 { config, pkgs, inputs, ... }:
-let
-  keys = import ../../ssh-keys.nix;
-in
 {
   imports = [ ./hardware.nix ./monitors.nix ];
 
@@ -11,7 +8,7 @@ in
     root = { ... }: {
       custom.programs = {
         tmux.color = "#eeaa00";
-        vim.package = pkgs.neovimFull;
+        vim.package = pkgs.neovimBase;
       };
     };
     skolem = { ... }: {
@@ -33,8 +30,9 @@ in
           nnn.bookmarks = {
             s = "~/src";
           };
+          latex.enable = true;
           tmux.color = "#aaee00";
-          vim.package = pkgs.neovimFull;
+          vim.package = pkgs.neovimWebDev;
         };
       };
     };
@@ -42,10 +40,17 @@ in
 
   environment.systemPackages = with pkgs; [
     docker-compose
+    sqlitebrowser
+    redis
+    scantailor-advanced
   ];
 
   virtualisation = {
     docker.enable = true;
+  };
+
+  users.users = {
+    skolem.extraGroups = [ "docker" ];
   };
 
   base = {
@@ -65,17 +70,25 @@ in
 
   services = {
     safeeyes.enable  = true;
-    tailscale.enable = true;
   };
 
   custom = {
     desktop.enable = true;
 
+    services = {
+      tailscale.enable = true;
+      autofs.enable = true;
+    };
+
     dev = {
       enable = true;
+      nodejs = true;
       pythonPackages = [ "poetry" ];
       direnv.enable = true;
     };
+  };
+  networking.firewall = {
+    allowedTCPPorts = [ 80 ];
   };
 
 }
