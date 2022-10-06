@@ -49,8 +49,8 @@
         // @version  1
         // @include https://cvmdp.ucm.es/moodle/*
         // ==/UserScript==
-        let btn = document.querySelector(".continuebutton > form > button");
-        if (btn){ btn.click(); }
+        let btn = document.querySelector("#page-wrapper > nav > ul.nav.navbar-nav.ml-auto > li.nav-item.d-flex.align-items-center > div > span > a");
+        if (btn && btn.innerText == "Log in"){ btn.click(); }
         btn = document.querySelector(".potentialidp > a.btn[title=\"Acceso con cuenta UCM\"]")
         if (btn){ btn.click(); }
       '';
