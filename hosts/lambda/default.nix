@@ -56,6 +56,7 @@
   webserver = {
     enable = true;
     colchonreview.enable = true;
+    claudiogabis.enable = true;
     elvivero.enable = true;
     haztecaso.enable = true;
     matomo.enable = true;

@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 {
   imports = [
+    ./claudiogabis.nix
     ./colchonreview.nix
     ./elvivero.nix
     ./haztecaso.nix
