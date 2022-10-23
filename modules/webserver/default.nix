@@ -39,6 +39,9 @@
         recommendedTlsSettings = true;
       };
       mysql.package = pkgs.mariadb;
+      phpfpm.phpOptions = ''
+        extension=${pkgs.phpExtensions.imagick}/lib/php/extensions/imagick.so
+      '';
     };
 
     home-manager.sharedModules = [{
