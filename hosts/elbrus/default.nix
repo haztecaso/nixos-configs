@@ -12,7 +12,7 @@
       };
     };
     skolem = { ... }: {
-      home.packages = with pkgs; [ autofirma ];
+      home.packages = with pkgs; [ autofirma thunderbird ];
       custom = {
         desktop = {
           enable = true;
@@ -50,7 +50,7 @@
   };
 
   users.users = {
-    skolem.extraGroups = [ "docker" ];
+    skolem.extraGroups = [ "docker" "adbusers" ];
   };
 
   base = {
@@ -69,7 +69,10 @@
   };
 
   services = {
-    safeeyes.enable  = true;
+    safeeyes.enable = true;
+    printing.drivers = [
+      (writeTextDir "share/cups/model/ricoh-mp-c2011-pdf.ppd" (builtins.readFile ./Ricoh-MP_C2011-PDF-Ricoh.ppd))
+    ];
   };
 
   custom = {
