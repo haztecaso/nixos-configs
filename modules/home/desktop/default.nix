@@ -33,14 +33,14 @@ in
         bitwarden-rofi
         arandr
         anki
-        # audacity
+        audacity
         betterlockscreen
         bitwarden
         # blender
         # discord
         dmenu
         evince
-        # filezilla
+        filezilla
         firefox
         gimp
         hsetroot
