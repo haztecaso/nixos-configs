@@ -67,6 +67,7 @@ in
         xfce.thunar
         xorg.xev
         xorg.xmodmap
+        okular
       ];
       keyboard = {
         layout = "es";
