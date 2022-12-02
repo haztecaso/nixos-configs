@@ -99,7 +99,7 @@ in
         tree
         unzip
         zip
-        ag
+        silver-searcher
       ];
 
       services = {
