@@ -99,6 +99,7 @@ in
         tree
         unzip
         zip
+        ag
       ];
 
       services = {
