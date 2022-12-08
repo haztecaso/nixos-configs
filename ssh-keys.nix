@@ -5,5 +5,5 @@ rec {
   host_galois = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIo1FjxBi1OAXAw4OlTFXgo/vCuEO6q9uzlhoAftqEqz";
   host_beta = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBX8Vnq006RRvvQgsSoQUDkp6RPtCxesbgbfIjgf9gwf";
 
-  hosts = [ host_nixpi host_lambda host_galois host_beta ];
+  hosts = [ host_lambda host_galois host_beta ];
 }
