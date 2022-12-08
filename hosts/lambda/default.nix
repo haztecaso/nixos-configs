@@ -87,7 +87,7 @@
 
     remadbot = {
       enable = true;
-      frequency = 20;
+      frequency = 15;
       prod = true;
       configFile = config.age.secrets."remadbot.conf".path;
     };
