@@ -413,6 +413,26 @@
         "type": "github"
       }
     },
+    "remadbot": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1670511824,
+        "narHash": "sha256-q/tmEkQJDIzZqBZZZFmj6PtQVv3rA5iy5VQJEime7Xo=",
+        "owner": "haztecaso",
+        "repo": "remadbot",
+        "rev": "b58649d85f68326ae57021ab3e8361688090fff8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "haztecaso",
+        "repo": "remadbot",
+        "type": "github"
+      }
+    },
     "rnix-lsp": {
       "inputs": {
         "naersk": "naersk",
@@ -452,6 +472,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
         "nnn": "nnn",
+        "remadbot": "remadbot",
         "snm": "snm",
         "unstable": "unstable",
         "utils": "utils_4"
