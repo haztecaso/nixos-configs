@@ -420,11 +420,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1670543550,
-        "narHash": "sha256-cSz5nqNeYZphdYtKqYQxgybQdD3UZZl2Vnvkn+OPb0I=",
+        "lastModified": 1670543706,
+        "narHash": "sha256-UIcxZ8c8hHWDsqH9VO2S7B+ztNvFSN+iu00XGLk2jeY=",
         "owner": "haztecaso",
         "repo": "remadbot",
-        "rev": "26188289317e146754313faf6314c7d16153144a",
+        "rev": "4fec90470220536b9837378e33f8ce5d2ed66775",
         "type": "github"
       },
       "original": {
