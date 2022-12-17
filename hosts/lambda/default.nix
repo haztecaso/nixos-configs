@@ -50,6 +50,7 @@
       vaultwarden.enable = true;
       gitea.enable = true;
       netdata.enable = true;
+      radicale.enable = true;
     };
   };
 
@@ -66,6 +67,7 @@
 
   age.secrets = {
     "jobo_bot.conf".file = ../../secrets/jobo_bot.age;
+    "remadbot.conf".file = ../../secrets/remadbot.age;
     "moodle-dl.conf".file = ../../secrets/moodle-dl.age;
   };
 
@@ -81,6 +83,13 @@
       frequency = 20;
       prod = true;
       configFile = config.age.secrets."jobo_bot.conf".path;
+    };
+
+    remadbot = {
+      enable = true;
+      frequency = 15;
+      prod = true;
+      configFile = config.age.secrets."remadbot.conf".path;
     };
 
     # radicale =

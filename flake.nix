@@ -11,7 +11,8 @@
     neovim-flake = { url = "github:haztecaso/neovim-flake"; inputs.nixpkgs.follows = "nixpkgs"; };
     impo = { url = "github:haztecaso/impo"; inputs.nixpkgs.follows = "nixpkgs"; };
     jobo_bot = { url = "github:haztecaso/jobo_bot"; inputs.nixpkgs.follows = "nixpkgs"; };
-    moodle-dl = { url = "github:haztecaso/flakes?dir=moodle-dl"; inputs.nixpkgs.follows = "nixpkgs"; }; # Deshabilitado para evitar problemas
+    remadbot = { url = "github:haztecaso/remadbot"; inputs.nixpkgs.follows = "nixpkgs"; };
+    moodle-dl = { url = "github:haztecaso/flakes?dir=moodle-dl"; inputs.nixpkgs.follows = "nixpkgs"; };
     mpdws = { url = "github:haztecaso/mpdws"; inputs = { nixpkgs.follows = "nixpkgs"; utils.follows = "utils"; }; };
     nnn = { url = "github:jarun/nnn"; flake = false; };
   };
@@ -24,7 +25,8 @@
       inputs.neovim-flake.overlay
       inputs.impo.overlay
       inputs.jobo_bot.overlay
-      # inputs.moodle-dl.overlay
+      inputs.remadbot.overlay
+      inputs.moodle-dl.overlay
       inputs.mpdws.overlay
       inputs.deploy-rs.overlay
       (final: prev: { unstable = inputs.unstable.legacyPackages.${prev.system}; })
@@ -38,7 +40,8 @@
         inputs.agenix.nixosModule
         inputs.home-manager.nixosModule
         inputs.jobo_bot.nixosModule
-        # inputs.moodle-dl.nixosModule
+        inputs.remadbot.nixosModule
+        inputs.moodle-dl.nixosModule
         inputs.mpdws.nixosModule
         inputs.snm.nixosModule
       ];
