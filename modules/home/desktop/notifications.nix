@@ -42,73 +42,77 @@ let
   '';
 in
 {
-  config = lib.mkIf config.custom.desktop.enable {
-    home.packages = [ pkgs.dunst mpdnotify ];
- 
-    services.dunst = {
-      enable = true;
-      settings = {
-        global = {
-          "dmenu" = "${pkgs.dmenu}/bin/dmenu";
-          "alignment" = "left";
-          "markup" = "yes";
-          "follow" = "none";
-          "font" = "Hack Nerd Font 10";
-          "width" = "340";
-          "height" = "170";
-          "offset" = "15x15";
-          "frame_width" = "1";
-          "origin" = "top-right";
-          "format" = "<b>%s</b>\\n%b";
-          "history_length" = "20";
-          "horizontal_padding" = "8";
-          "idle_threshold" = "240";
-          "ignore_newline" = "no";
-          "indicate_hidden" = "yes";
-          "line_height" = "2";
-          "monitor" = "0";
-          "padding" = "10";
-          "separator_color" = "frame";
-          "separator_height" = "4";
-          "show_age_threshold" = "60";
-          "show_indicators" = "yes";
-          "shrink" = "no";
-          "sort" = "yes";
-          "sticky_history" = "yes";
-          "word_wrap" = "yes";
-          "ellipsize" = "end";
-          "transparency" = "10";
-          "max_icon_size" = "150";
+  config = lib.mkMerge [
+    (lib.mkIf config.services.mpd.enable {
+      home.packages = [ mpdnotify ];
+      systemd.user = {
+        services.mpdnotifyd = {
+          Unit.Description = "mpdnotify: send notifications on mpd events";
+          Install.WantedBy = [ "multi-user.target" ];
+          Service = {
+            Type = "simple";
+            Restart = "always";
+            ExecStart = "${mpdnotifyd}/bin/mpdnotifyd";
+          };
         };
-        urgency_low = {
-          "background" = "#000000";
-          "foreground" = "#ffffff";
-          "timeout" = "1";
-        };
-        urgency_normal = {
-          "background" = "#222222";
-          "foreground" = "#ffffff";
-          "timeout" = "20";
-        };
-        urgency_critical = {
-          "background" = "#801515";
-          "foreground" = "#ffffff";
-          "timeout" = "0";
+        startServices = "sd-switch";
+      };
+    })
+    (lib.mkIf config.custom.desktop.enable {
+      home.packages = [ pkgs.dunst ];
+  
+      services.dunst = {
+        enable = true;
+        settings = {
+          global = {
+            "dmenu" = "${pkgs.dmenu}/bin/dmenu";
+            "alignment" = "left";
+            "markup" = "yes";
+            "follow" = "none";
+            "font" = "Hack Nerd Font 10";
+            "width" = "340";
+            "height" = "170";
+            "offset" = "15x15";
+            "frame_width" = "1";
+            "origin" = "top-right";
+            "format" = "<b>%s</b>\\n%b";
+            "history_length" = "20";
+            "horizontal_padding" = "8";
+            "idle_threshold" = "240";
+            "ignore_newline" = "no";
+            "indicate_hidden" = "yes";
+            "line_height" = "2";
+            "monitor" = "0";
+            "padding" = "10";
+            "separator_color" = "frame";
+            "separator_height" = "4";
+            "show_age_threshold" = "60";
+            "show_indicators" = "yes";
+            "shrink" = "no";
+            "sort" = "yes";
+            "sticky_history" = "yes";
+            "word_wrap" = "yes";
+            "ellipsize" = "end";
+            "transparency" = "10";
+            "max_icon_size" = "150";
+          };
+          urgency_low = {
+            "background" = "#000000";
+            "foreground" = "#ffffff";
+            "timeout" = "1";
+          };
+          urgency_normal = {
+            "background" = "#222222";
+            "foreground" = "#ffffff";
+            "timeout" = "20";
+          };
+          urgency_critical = {
+            "background" = "#801515";
+            "foreground" = "#ffffff";
+            "timeout" = "0";
+          };
         };
       };
-    };
- 
-    systemd.user = {
-      services.mpdnotifyd = {
-        Unit.Description = "mpdnotify: send notifications on mpd events";
-        Install.WantedBy = [ "multi-user.target" ];
-        Service = {
-          Type = "simple";
-          Restart = "always";
-          ExecStart = "${mpdnotifyd}/bin/mpdnotifyd";
-        };
-      };
-      startServices = "sd-switch";
-    };
-  };
+    })
+  ];
 }

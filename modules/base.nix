@@ -54,7 +54,7 @@ in
           experimental-features = nix-command flakes
           # trusted-substituters = https://lean4.cachix.org/
         '';
-        autoOptimiseStore = true;
+        settings.auto-optimise-store = true;
         # binaryCachePublicKeys = [ "lean4.cachix.org-1:mawtxSxcaiWE24xCXXgh3qnvlTkyU7evRRnGeAhD4Wk=" ];
         gc.automatic = true;
       };
