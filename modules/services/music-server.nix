@@ -63,10 +63,27 @@ in
           </mount>
         '';
       };
+      mopidy = {
+        enable = true;
+        extensionPackages = with pkgs; [ mopidy-iris ];
+        configuration = ''
+          [file]
+          enabled = true
+          media_dirs = /mnt/raid/music/Library/Artists/
+
+          [http]
+          enabled = true
+          hostname = 0.0.0.0
+
+          [iris]
+          enabled = true
+        '';
+      };
     };
     networking.firewall = {
-      allowedUDPPorts = [ 6600 ];
-      allowedTCPPorts = [ 6600 ];
+      allowedUDPPorts = [ 6600 6680 ];
+      allowedTCPPorts = [ 6600 6680 ];
     };
+    users.users.mopidy.extraGroups = [ "users" "audio" ];
   };
 }
