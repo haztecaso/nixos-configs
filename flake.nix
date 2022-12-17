@@ -1,8 +1,8 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/release-22.05";
+    nixpkgs.url = "github:nixos/nixpkgs/release-22.11";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager = { url = "github:nix-community/home-manager/release-22.05"; inputs.nixpkgs.follows = "nixpkgs"; };
+    home-manager = { url = "github:nix-community/home-manager/release-22.11"; inputs.nixpkgs.follows = "nixpkgs"; };
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
     deploy-rs.url = "github:serokell/deploy-rs";
     snm = { url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-22.05"; inputs = { nixpkgs.follows = "unstable"; nixpkgs-22_05.follows = "nixpkgs"; }; };
@@ -11,6 +11,7 @@
     neovim-flake = { url = "github:haztecaso/neovim-flake"; inputs.nixpkgs.follows = "nixpkgs"; };
     impo = { url = "github:haztecaso/impo"; inputs.nixpkgs.follows = "nixpkgs"; };
     jobo_bot = { url = "github:haztecaso/jobo_bot"; inputs.nixpkgs.follows = "nixpkgs"; };
+    remadbot = { url = "github:haztecaso/remadbot"; inputs.nixpkgs.follows = "nixpkgs"; };
     moodle-dl = { url = "github:haztecaso/flakes?dir=moodle-dl"; inputs.nixpkgs.follows = "nixpkgs"; };
     mpdws = { url = "github:haztecaso/mpdws"; inputs = { nixpkgs.follows = "nixpkgs"; utils.follows = "utils"; }; };
     nnn = { url = "github:jarun/nnn"; flake = false; };
@@ -24,6 +25,7 @@
       inputs.neovim-flake.overlay
       inputs.impo.overlay
       inputs.jobo_bot.overlay
+      inputs.remadbot.overlay
       inputs.moodle-dl.overlay
       inputs.mpdws.overlay
       inputs.deploy-rs.overlay
@@ -38,6 +40,7 @@
         inputs.agenix.nixosModule
         inputs.home-manager.nixosModule
         inputs.jobo_bot.nixosModule
+        inputs.remadbot.nixosModule
         inputs.moodle-dl.nixosModule
         inputs.mpdws.nixosModule
         inputs.snm.nixosModule

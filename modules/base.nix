@@ -72,7 +72,7 @@ in
             isNormalUser = true;
             extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
             # passwordFile = config.age.secrets."users/skolem".path;
-            openssh.authorizedKeys.keys = with keys; [ skolem termux ];
+            openssh.authorizedKeys.keys = with keys; [ skolem ];
           };
         };
       };
