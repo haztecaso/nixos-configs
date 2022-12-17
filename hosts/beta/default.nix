@@ -14,23 +14,13 @@ in
         vim.package = pkgs.neovimFull;
       };
     };
-    jam = { ... }: {
-      home.packages = with pkgs; [
-        audacity
-        puredata
-        vlc
-      ];
-      custom = {
-        desktop = {
-          enable = true;
-          fontSize = 9;
-          theme = "light";
-          polybar.enable = false;
-        };
-      };
-    };
     skolem = { ... }: {
-      home.packages = with pkgs; [ autofirma vscodium ];
+      home.packages = with pkgs; [
+        autofirma
+        vscodium
+        pdfarranger
+        thunderbird
+      ];
       custom = {
         #TODO: mail, accounts and filters configs
         # mail = {
@@ -65,10 +55,9 @@ in
           irssi.enable = true;
           latex.enable = true;
           money.enable = true;
-          music = {
-            enable = true;
-            client.enable = true;
-          };
+          # music = {
+          #   enable = true;
+          # };
           nnn.bookmarks = {
             N = "~/Nube";
             l = "~/Nube/lecturas";
@@ -114,12 +103,12 @@ in
     bat = "BAT1";
     wlp = { interface = "wlp3s0"; useDHCP = true; };
     eth.interface = "enp0s31f6";
-    stateVersion = "22.05";
+    stateVersion = "22.11";
   };
 
 
   programs = {
-    steam.enable = true;
+    # steam.enable = true; # Deshabilitado temporalmente
     mosh.enable = true;
     dconf.enable = true;
   };
