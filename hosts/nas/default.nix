@@ -34,7 +34,7 @@
   base = {
     hostname = "nas";
     hostnameSymbol = "ν";
-    stateVersion = "21.05";
+    stateVersion = "22.11";
     printing = true;
   };
 
