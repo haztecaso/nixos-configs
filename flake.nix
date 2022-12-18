@@ -6,7 +6,7 @@
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
     deploy-rs.url = "github:serokell/deploy-rs";
     snm = { url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-22.05"; inputs = { nixpkgs.follows = "unstable"; nixpkgs-22_05.follows = "nixpkgs"; }; };
-    nixos-hardware = { url = "github:NixOS/nixos-hardware/master"; inputs.nixpkgs.follows = "nixpkgs"; };
+    nixos-hardware = { url = "github:NixOS/nixos-hardware/master"; };
     agenix = { url = "github:ryantm/agenix"; inputs.nixpkgs.follows = "nixpkgs"; };
     neovim-flake = { url = "github:haztecaso/neovim-flake"; inputs.nixpkgs.follows = "nixpkgs"; };
     impo = { url = "github:haztecaso/impo"; inputs.nixpkgs.follows = "nixpkgs"; };
