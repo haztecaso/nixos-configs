@@ -9,7 +9,7 @@
     ${pkgs.moodle-dl}/bin/moodle-dl
   '';
 in {
-  options = with lib; {
+  options.custom.services.moodle-dl = with lib; {
     enable = mkEnableOption "Enable moodle downloader service";
     frequency = mkOption {
       type = types.int;
