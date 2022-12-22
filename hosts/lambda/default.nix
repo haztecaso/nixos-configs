@@ -31,7 +31,7 @@
   base = {
     hostname = "lambda";
     hostnameSymbol = "λ";
-    stateVersion = "21.11";
+    stateVersion = "22.11";
   };
 
   environment.systemPackages = with pkgs; [ agenix ];
@@ -42,15 +42,20 @@
 
   custom = {
     services = {
-      syncthing = {
-        enable = true;
-        folders = [ "uni-moodle" "nube" "android-camara" ];
+      gitea.enable = true;
+      moodle-dl = { 
+        enable = true; 
+        configFile = config.age.secrets."moodle-dl.conf".path; 
+        folder = "/var/lib/syncthing/uni-moodle/";
+      };
+      netdata.enable = true;
+      radicale.enable = true;
+      syncthing = { 
+        enable = true; 
+        folders = [ "uni-moodle" "nube" "android-camara" ]; 
       };
       tailscale.enable = true;
       vaultwarden.enable = true;
-      gitea.enable = true;
-      netdata.enable = true;
-      radicale.enable = true;
     };
   };
 
@@ -72,11 +77,6 @@
   };
 
   services = {
-    moodle-dl = {
-      enable = true;
-      configFile = config.age.secrets."moodle-dl.conf".path;
-      folder = "/var/lib/syncthing/uni-moodle/";
-    };
 
     jobo_bot = {
       enable = true;

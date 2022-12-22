@@ -1,5 +1,6 @@
 ## To do
 
+- mover proyectos github a instancia personal gitea
 - instalar statping
 - reemplazar thumbor por imgproxy
 - Manage copy of ssh keys

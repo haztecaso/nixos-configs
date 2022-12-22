@@ -5,6 +5,7 @@ in
 {
   imports = [
     ./autofs.nix
+    ./moodle-dl.nix
     ./music-server.nix
     ./syncthing.nix
     ./tailscale.nix
@@ -14,10 +15,34 @@ in
   options.custom.services = with lib; {
     gitea.enable = mkEnableOption "Enable gitea code hosting.";
     netdata.enable = mkEnableOption "Enable netdata web panel.";
+    radicale.enable = mkEnableOption "Enable radicale (Cal|Card)DAV server.";
   };
 
   config = with lib; mkMerge [
-
+      (mkIf cfg.gitea.enable (let
+        port = 8006;
+        serverName = "dav.haztecaso.com";
+      in {
+        services = {
+          radicale = {
+            enable = true;
+            settings = {
+              server.hosts = [ "localhost:${toString port}"];
+              auth = {
+                type = "htpasswd";
+                htpasswd_filename = "/var/lib/radicale/htpasswd";
+                htpasswd_encryption = "bcrypt";
+              };
+            };
+          };
+          nginx.virtualHosts.radicale = {
+            enableACME = true;
+            forceSSL = true;
+            serverName = serverName;
+            locations."/".proxyPass = "http://127.0.0.1:${toString port}";
+          };
+        };
+      }))
       # gitea config
       (mkIf cfg.gitea.enable (let
         cfg = config.custom.services.gitea;
@@ -29,12 +54,16 @@ in
             enable = true;
             domain = serverName;
             appName = "Gitea";
-            cookieSecure = true;
-            disableRegistration = true;
             httpAddress = "127.0.0.1";
             httpPort = port;
             rootUrl = "https://${serverName}/";
             settings = {
+              service = {
+                DISABLE_REGISTRATION = true;
+              };
+              session = {
+                COOKIE_SECURE = true;
+              };
               security = {
                 LOGIN_REMEMBER_DAYS = 14;
                 MIN_PASSWORD_LENGTH = 12;
