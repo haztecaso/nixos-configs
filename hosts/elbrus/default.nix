@@ -71,7 +71,7 @@
   services = {
     safeeyes.enable = true;
     printing.drivers = [
-      (writeTextDir "share/cups/model/ricoh-mp-c2011-pdf.ppd" (builtins.readFile ./Ricoh-MP_C2011-PDF-Ricoh.ppd))
+      (pkgs.writeTextDir "share/cups/model/ricoh-mp-c2011-pdf.ppd" (builtins.readFile ./Ricoh-MP_C2011-PDF-Ricoh.ppd))
     ];
   };
 
@@ -93,5 +93,6 @@
   networking.firewall = {
     allowedTCPPorts = [ 80 ];
   };
+
 
 }
