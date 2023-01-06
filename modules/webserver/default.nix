@@ -3,6 +3,7 @@
   imports = [
     ./claudiogabis.nix
     ./colchonreview.nix
+    ./drupaltest.nix
     ./elvivero.nix
     ./haztecaso.nix
     ./lagransala.nix
