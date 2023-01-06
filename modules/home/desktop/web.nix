@@ -16,7 +16,8 @@
         a = "https://www.amazon.es/s?k={}";
         g = "https://duckduckgo.com/?q=g!%20{}";
         h = "https://hoogle.haskell.org/?hoogle={}";
-        yt = "https://www.youtube.com/results?search_query={}";
+        yt = "https://yewtu.be/search?q={}";
+        ytt = "https://www.youtube.com/results?search_query={}";
         aw = "https://wiki.archlinux.org/index.php?search={}";
         w = "https://en.wikipedia.org/w/index.php?search={}";
         we = "https://es.wikipedia.org/w/index.php?search={}";
@@ -25,6 +26,7 @@
         nixpkg = "https://search.nixos.org/packages?query={}";
         wikiloc = "https://es.wikiloc.com/wikiloc/map.do?q={}";
         map = "https://www.google.com/maps/search/{}";
+        maps = "https://www.google.com/maps/search/{}";
         dockerhub = "https://hub.docker.com/search?q={}&type=image";
       };
       keyBindings = {
