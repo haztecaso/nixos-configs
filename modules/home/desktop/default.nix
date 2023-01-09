@@ -152,6 +152,7 @@ in
 
       redshift = {
         enable = true;
+        tray = true;
         latitude = "40.5249726";
         longitude = "-4.3764132";
         temperature = {
