@@ -234,11 +234,11 @@
         "utils": "utils_3"
       },
       "locked": {
-        "lastModified": 1672241022,
-        "narHash": "sha256-mgASjf9MIXIVF7b4MsfN4xUoL0wX2H+P5HoXJtaM1e0=",
+        "lastModified": 1674190419,
+        "narHash": "sha256-rwIHL3AdVHyxOTmhnIT1K8EpcL7tYI7H4LUQrL4ovXM=",
         "owner": "haztecaso",
         "repo": "neovim-flake",
-        "rev": "01ed2327044b78d14ade52f1c8ff117f208df0f9",
+        "rev": "3ef6be66c488828334078a51472f4d9c8d5f1f97",
         "type": "github"
       },
       "original": {
