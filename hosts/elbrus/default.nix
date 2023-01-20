@@ -12,7 +12,7 @@
       };
     };
     skolem = { ... }: {
-      home.packages = with pkgs; [ autofirma thunderbird ];
+      home.packages = with pkgs; [ autofirma thunderbird timewarrior ];
       custom = {
         desktop = {
           enable = true;
@@ -32,7 +32,7 @@
           };
           latex.enable = true;
           tmux.color = "#aaee00";
-          vim.package = pkgs.neovimWebDev;
+          vim.package = pkgs.neovimFull;
         };
       };
     };

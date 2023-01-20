@@ -8,6 +8,7 @@
     ./lagransala.nix
     ./matomo.nix
     ./thumbor.nix
+    ./wpleandro.nix
     ./zulmarecchini.nix
   ];
 
