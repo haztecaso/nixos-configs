@@ -90,6 +90,7 @@
       direnv.enable = true;
     };
   };
+  fonts.fonts = [ pkgs.google-fonts ];
   networking.firewall = {
     allowedTCPPorts = [ 80 ];
   };
