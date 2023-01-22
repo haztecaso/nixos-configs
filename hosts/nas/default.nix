@@ -53,6 +53,12 @@
     docker.enable = true;
   };
 
+  services.nix-serve = {
+    enable = true;
+    port = 5555;
+    openFirewall = true;
+  };
+
   custom.services = {
     syncthing = {
         enable = true;
