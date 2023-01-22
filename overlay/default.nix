@@ -16,6 +16,8 @@ final: prev: {
       rev = "b252037ca6fd3dff4d92a2f8068f91a7049749c9";
     })) { };
 
+  moodle-dl-new = prev.callPackage ./moodle-dl {};
+
   configuradorfmnt = prev.callPackage ./configuradorfmnt.nix { };
 
 }
