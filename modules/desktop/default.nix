@@ -46,7 +46,7 @@ in
     fonts = {
       enableDefaultFonts = true;
       fonts = with pkgs; [
-        # google-fonts
+        google-fonts
         dejavu_fonts
         noto-fonts
         noto-fonts-emoji
