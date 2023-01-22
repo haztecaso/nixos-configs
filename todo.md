@@ -18,19 +18,9 @@
       - Plain files decrypted on machine
     - Benefits
       - Can encrypt full .nix files
-
-### Migración a modules/home
-
-- modules/desktop
 - modules/dev -> package groups
-- modules/kitty
-
-#### Finish migration from old config
-
-- retroarchWithCores
-- music: beets config
-- mail module
-- pandoc-templates
+- lib: funciones para evitar repeticion de codigo
+  - certificados web
 
 ### Ideas random
 
