@@ -1,5 +1,8 @@
 { config, pkgs, ... }: {
-  imports = [ ./hardware.nix ];
+  imports = [
+    ./hardware.nix
+    ./web
+  ];
 
   nix.gc.options = "--delete-older-than 3d";
 
@@ -9,7 +12,6 @@
       snippets.enable = true;
       plugins = {
         latex = false;
-        nvim-which-key = false;
       };
     };
   in {
@@ -44,7 +46,7 @@
     services = {
       gitea.enable = true;
       moodle-dl = { 
-        enable = true; 
+        enable = false; 
         configFile = config.age.secrets."moodle-dl.conf".path; 
         folder = "/var/lib/syncthing/uni-moodle/";
       };
@@ -57,17 +59,6 @@
       tailscale.enable = true;
       vaultwarden.enable = true;
     };
-  };
-
-  webserver = {
-    enable = true;
-    colchonreview.enable = true;
-    claudiogabis.enable = true;
-    elvivero.enable = true;
-    haztecaso.enable = true;
-    matomo.enable = true;
-    thumbor.enable = true;
-    zulmarecchini.enable = true;
   };
 
   age.secrets = {
@@ -156,6 +147,7 @@
     domains = [ "haztecaso.com" ];
     # certificateScheme = 3;
   };
+  networking.firewall.allowedTCPPorts = [ 8888 ];
 
 
 }
