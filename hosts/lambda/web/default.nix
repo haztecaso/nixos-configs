@@ -18,7 +18,7 @@
     defaults.email = "adrianlattes@disroot.org";
   };
 
-  age.secrets."cloudflare".file = ../../secrets/cloudflare.age;
+  age.secrets."cloudflare".file = ../../../secrets/cloudflare.age;
 
   networking.firewall.allowedTCPPorts = [ 80 443 ];
 

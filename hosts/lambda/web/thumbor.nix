@@ -3,7 +3,7 @@
 # - https://charlesleifer.com/blog/nginx-a-caching-thumbnailing-reverse-proxying-image-server-/
 
 { config, lib, pkgs, ... }: {
-  age.secrets."thumbor".file = ../../secrets/thumbor.age;
+  age.secrets."thumbor".file = ../../../secrets/thumbor.age;
   virtualisation = {
     docker.enable = true;
     oci-containers.containers."thumbor" = {
