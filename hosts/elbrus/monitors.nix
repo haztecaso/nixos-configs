@@ -19,13 +19,12 @@ in
           };
         };
       };
-      onlybig = {
+      both = {
         fingerprint = {
           HDMI-2 = HDMI;
           eDP-1 = eDP;
         };
         config = {
-          eDP-1.enable = false;
           HDMI-2 = {
             enable = true;
             crtc = 0;
@@ -33,6 +32,14 @@ in
             position = "0x0";
             mode = "2560x1440";
             rate = "59.95";
+          };
+          eDP-1 = {
+            enable = true;
+            crtc = 1;
+            primary = false;
+            position = "2560x0";
+            mode = "1366x768";
+            rate = "59.99";
           };
         };
       };
