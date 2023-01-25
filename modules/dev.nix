@@ -34,6 +34,8 @@ in
         filezilla
         bat
         exa
+        fd
+        ripgrep
       ] ++ pythonPackages;
     })
     (lib.mkIf cfg.nodejs {
