@@ -63,6 +63,7 @@ in
 
       users = {
         mutableUsers = true;
+        defaultUserShell = pkgs.zsh;
         users = {
           root = {
             # passwordFile = config.age.secrets."users/root".path;
@@ -91,16 +92,20 @@ in
         hostName = cfg.hostname;
       };
 
-      environment.systemPackages = with pkgs; [
-        git
-        htop
-        killall
-        rsync
-        tree
-        unzip
-        zip
-        silver-searcher
-      ];
+      environment = {
+        systemPackages = with pkgs; [
+          git
+          htop
+          killall
+          rsync
+          tree
+          unzip
+          zip
+          silver-searcher
+          ripgrep
+        ];
+        shells = with pkgs; [ bashInteractive zsh fish ];
+      };
 
       services = {
         openssh = {
