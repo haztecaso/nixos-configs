@@ -18,18 +18,7 @@
           enable = true;
           fontSize = 9;
         };
-        shell.aliases = {
-          deploy = "deploy -k";
-        };
-        shortcuts = {
-          paths = {
-            sr = "~/src";
-          };
-        };
         programs = {
-          nnn.bookmarks = {
-            s = "~/src";
-          };
           latex.enable = true;
           tmux.color = "#aaee00";
           vim.package = pkgs.neovimFull;
