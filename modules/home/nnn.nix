@@ -44,12 +44,13 @@ in
         aliases.r = "nnn";
       };
       programs.nnn.bookmarks = with lib;{
-        d = mkDefault "~/Documents";
         D = mkDefault "~/Downloads";
-        p = mkDefault "~/Pictures";
-        h = mkDefault "~";
         c = mkDefault "~/.config";
+        d = mkDefault "~/Documents";
+        h = mkDefault "~";
         m = mkDefault "~/Music";
+        p = mkDefault "~/Pictures";
+        s = mkDefault "~/src";
         v = mkDefault "~/Videos";
       };
     };

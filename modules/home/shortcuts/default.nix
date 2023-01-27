@@ -37,12 +37,13 @@ in
     };
   };
   config.custom.shortcuts.paths = with lib;{
-    n  = mkDefault "/etc/nixos";
-    d  = mkDefault "~/Documents";
     D  = mkDefault "~/Downloads";
-    mm = mkDefault "~/Music";
-    pp = mkDefault "~/Pictures";
-    vv = mkDefault "~/Videos";
     cf = mkDefault "~/.config";
+    d  = mkDefault "~/Documents";
+    mm = mkDefault "~/Music";
+    n  = mkDefault "/etc/nixos";
+    pp = mkDefault "~/Pictures";
+    sr = mkDefault "~/src";
+    vv = mkDefault "~/Videos";
   };
 }
