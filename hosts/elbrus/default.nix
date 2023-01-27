@@ -16,7 +16,7 @@
       custom = {
         desktop = {
           enable = true;
-          fontSize = 8;
+          fontSize = 9;
         };
         shell.aliases = {
           deploy = "deploy -k";
