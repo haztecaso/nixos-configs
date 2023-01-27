@@ -19,15 +19,6 @@ in
   options.custom.shortcuts = {
     paths = mkOption {
       type = types.attrsOf types.str;
-      default = {
-        n = "/etc/nixos";
-        d = "~/Documents";
-        D = "~/Downloads";
-        mm = "~/Music";
-        pp = "~/Pictures";
-        vv = "~/Videos";
-        cf = "~/.config";
-      };
       description = "Shortcuts to folders.";
     };
     actions = mkOption {
@@ -45,13 +36,13 @@ in
       description = "Aliases generated from shortcuts.";
     };
   };
-  config.custom.shortcuts.paths = {
-    n = "/etc/nixos";
-    d = "~/Documents";
-    D = "~/Downloads";
-    mm = "~/Music";
-    pp = "~/Pictures";
-    vv = "~/Videos";
-    cf = "~/.config";
+  config.custom.shortcuts.paths = with lib;{
+    n  = mkDefault "/etc/nixos";
+    d  = mkDefault "~/Documents";
+    D  = mkDefault "~/Downloads";
+    mm = mkDefault "~/Music";
+    pp = mkDefault "~/Pictures";
+    vv = mkDefault "~/Videos";
+    cf = mkDefault "~/.config";
   };
 }
