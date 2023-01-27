@@ -1,12 +1,12 @@
 { lib, pkgs, config, ... }:
 let
   cfg = config.custom.programs.ranger;
-  includeDefault = file: builtins.readFile "${pkgs.ranger}/lib/python3.9/site-packages/ranger/config/${file}";
+  includeDefault = file: builtins.readFile "${pkgs.ranger}/lib/python3.10/site-packages/ranger/config/${file}";
   mkShortcutMaps = name: path: map (a: "map " + a.prefix + name + " " + a.cmd + " " + path) cfg.actions;
   shortcuts = with lib; concatStringsSep "\n" (
     concatLists (
       attrValues (
-        mapAttrs mkShortcutMaps config.shortcuts.paths
+        mapAttrs mkShortcutMaps config.custom.shortcuts.paths
       )
     )
   );

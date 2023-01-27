@@ -31,6 +31,9 @@ in
           ./tmux.nix
           ./vim.nix
         ];
+        custom = {
+          programs.ranger.enable = lib.mkDefault true;
+        };
         programs = {
           gpg.enable = true;
         };
