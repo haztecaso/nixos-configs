@@ -11,11 +11,6 @@ in
     aliases = mkOption {
       type = types.attrsOf types.str;
       description = "Shell aliases.";
-      default = {
-        ".." = "cd ..";
-        less = "less --quit-if-one-screen --ignore-case --status-column --LONG-PROMPT --RAW-CONTROL-CHARS --HILITE-UNREAD --tabs=4 --no-init --window=-4";
-        cp = "cp -i";
-      };
     };
     defaultShell = mkOption {
       type = types.package;
@@ -30,6 +25,13 @@ in
   };
 
   config = {
+    custom.shell = {
+      aliases = {
+        ".." = lib.mkDefault "cd ..";
+        less = lib.mkDefault "less --quit-if-one-screen --ignore-case --status-column --LONG-PROMPT --RAW-CONTROL-CHARS --HILITE-UNREAD --tabs=4 --no-init --window=-4";
+        cp = lib.mkDefault "cp -i";
+      };
+    };
     programs = {
       bash = {
         enable = true;

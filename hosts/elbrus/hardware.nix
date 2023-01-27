@@ -7,7 +7,7 @@
     initrd = {
       availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
       kernelModules = [ ];
-      luks.devices."root".device = "/dev/disk/by-uuid/941231a1-cfad-40c7-a2ea-0cbcba781ee2";
+      luks.devices."root".device = "/dev/disk/by-uuid/602e5c06-543a-458b-90d0-726efa5d127a";
     };
 
     kernelModules = [ "wl" ];
@@ -31,11 +31,11 @@
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/9B95-F0B7";
+    device = "/dev/disk/by-uuid/D90E-3637";
     fsType = "vfat";
   };
 
-  swapDevices = [{ device = "/dev/disk/by-uuid/632db255-52bf-4c8c-b4da-30b29bb25a7c"; }];
+	  swapDevices = [{ device = "/dev/disk/by-uuid/d892ca58-9b22-4684-a2ca-4cd6be11eb74"; }];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

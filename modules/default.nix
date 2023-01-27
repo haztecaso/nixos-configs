@@ -6,7 +6,6 @@
     ./home
     ./monitors.nix
     ./services
-    ./webserver
   ];
 
   custom.services.tailscale.hosts =
