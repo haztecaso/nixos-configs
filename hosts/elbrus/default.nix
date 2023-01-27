@@ -8,7 +8,6 @@
     root = { ... }: {
       custom.programs = {
         tmux.color = "#eeaa00";
-        vim.package = pkgs.neovimBase;
       };
     };
     skolem = { ... }: {
@@ -31,7 +30,6 @@
     docker-compose
     sqlitebrowser
     redis
-    scantailor-advanced
   ];
 
   virtualisation = {

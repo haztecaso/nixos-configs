@@ -16,7 +16,7 @@
         recolor-lightcolor = "#1c1c1c";
         recolor-keephue = true;
         highlight-active-color = "#ffffff";
-        highlight-transparency = 1;
+        highlight-transparency = 0;
       };
       extraConfig = ''
         map i recolor
