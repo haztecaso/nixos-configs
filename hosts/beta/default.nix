@@ -74,6 +74,9 @@ in
      
       services.syncthing.enable = true;
       programs.kitty.enable = true;
+      programs.rbw = {
+          enable = true;
+      };
     };
   };
 
@@ -84,6 +87,8 @@ in
     docker-compose
     impo
     gparted
+    lean3
+    darktable
   ];
 
   virtualisation = {
