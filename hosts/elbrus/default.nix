@@ -8,7 +8,6 @@
     root = { ... }: {
       custom.programs = {
         tmux.color = "#eeaa00";
-        vim.package = pkgs.neovimBase;
       };
     };
     skolem = { ... }: {
@@ -16,20 +15,9 @@
       custom = {
         desktop = {
           enable = true;
-          fontSize = 8;
-        };
-        shell.aliases = {
-          deploy = "deploy -k";
-        };
-        shortcuts = {
-          paths = {
-            sr = "~/src";
-          };
+          fontSize = 9;
         };
         programs = {
-          nnn.bookmarks = {
-            s = "~/src";
-          };
           latex.enable = true;
           tmux.color = "#aaee00";
           vim.package = pkgs.neovimFull;
@@ -42,7 +30,6 @@
     docker-compose
     sqlitebrowser
     redis
-    scantailor-advanced
   ];
 
   virtualisation = {

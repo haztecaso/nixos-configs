@@ -34,6 +34,8 @@ in
         filezilla
         bat
         exa
+        fd
+        ripgrep
       ] ++ pythonPackages;
     })
     (lib.mkIf cfg.nodejs {
@@ -51,15 +53,6 @@ in
         keep-derivations = true
       '';
       environment.pathsToLink = [ "/share/nix-direnv" ];
-
-      # shell hook
-      home-manager.sharedModules = [{
-        custom.shell.initExtra = [
-          ''
-            eval "$(direnv hook bash)"
-          ''
-        ];
-      }];
     })
   ];
 }

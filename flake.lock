@@ -195,14 +195,14 @@
         "nvim-which-key": "nvim-which-key",
         "rnix-lsp": "rnix-lsp",
         "telescope-repo": "telescope-repo",
-        "utils": "utils_2"
+        "vim-enuch": "vim-enuch"
       },
       "locked": {
-        "lastModified": 1674235022,
-        "narHash": "sha256-+Y2H3sHKh4Qd3QdB/OJEUG13tas/4O2AuvuQdeeGoz4=",
+        "lastModified": 1674658896,
+        "narHash": "sha256-Z/L3b697vYA3eCVqLfTbC/1UQyFBEbNtPmNsgH6xmzs=",
         "owner": "haztecaso",
         "repo": "neovim-flake",
-        "rev": "e3e8f3cb6a695f21a12468cb2a1dc9d54ee6f88b",
+        "rev": "5bd5c5aedda4d4889f4d9b9e08192c66251c47dd",
         "type": "github"
       },
       "original": {
@@ -298,11 +298,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1670543706,
-        "narHash": "sha256-UIcxZ8c8hHWDsqH9VO2S7B+ztNvFSN+iu00XGLk2jeY=",
+        "lastModified": 1674817078,
+        "narHash": "sha256-N7J4cywFH9rDp7NvCnGe1HN7jTg0lxrF+85h/uTcseo=",
         "owner": "haztecaso",
         "repo": "remadbot",
-        "rev": "4fec90470220536b9837378e33f8ce5d2ed66775",
+        "rev": "2d79e5a3bb519e8a2d43a23553087b89c3cfa465",
         "type": "github"
       },
       "original": {
@@ -472,6 +472,22 @@
       "original": {
         "owner": "gytis-ivaskevicius",
         "repo": "flake-utils-plus",
+        "type": "github"
+      }
+    },
+    "vim-enuch": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1665617668,
+        "narHash": "sha256-t7D6vkEmhVDKdxqvHQ6811FENu/qM6MkrLl8lGADxDs=",
+        "owner": "tpope",
+        "repo": "vim-eunuch",
+        "rev": "291ef1f8c8996ca7715df1032a35a27b12d7b5cf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tpope",
+        "repo": "vim-eunuch",
         "type": "github"
       }
     }

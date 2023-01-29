@@ -11,11 +11,6 @@ in
     aliases = mkOption {
       type = types.attrsOf types.str;
       description = "Shell aliases.";
-      default = {
-        ".." = "cd ..";
-        less = "less --quit-if-one-screen --ignore-case --status-column --LONG-PROMPT --RAW-CONTROL-CHARS --HILITE-UNREAD --tabs=4 --no-init --window=-4";
-        cp = "cp -i";
-      };
     };
     defaultShell = mkOption {
       type = types.package;
@@ -30,6 +25,13 @@ in
   };
 
   config = {
+    custom.shell = {
+      aliases = {
+        ".." = lib.mkDefault "cd ..";
+        less = lib.mkDefault "less --quit-if-one-screen --ignore-case --status-column --LONG-PROMPT --RAW-CONTROL-CHARS --HILITE-UNREAD --tabs=4 --no-init --window=-4";
+        cp = lib.mkDefault "cp -i";
+      };
+    };
     programs = {
       bash = {
         enable = true;
@@ -39,6 +41,9 @@ in
           if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" ]]; then
             tmux attach-session -t ${hostname} || tmux new-session -s ${hostname}
           fi
+          ${if nixosConfig.custom.dev.direnv.enable then "
+            eval \"$(direnv hook bash)\"
+          " else ""}
           ${lib.concatStrings cfg.initExtra}
         '';
       };
@@ -49,7 +54,12 @@ in
         enableSyntaxHighlighting = true;
         autocd = true;
         dotDir = ".config/zsh";
-        history.path = "${config.xdg.dataHome}/zsh/zsh_history";
+        history = {
+          save = 100000;
+          size = 100000;
+          path = "${config.xdg.dataHome}/zsh/zsh_history";
+        };
+        dirHashes = config.custom.shortcuts.paths;
         prezto = {
           enable = true;
           editor.keymap = "vi";
@@ -59,11 +69,21 @@ in
           tmux.defaultSessionName = hostname;
           utility.safeOps = true;
         };
+        oh-my-zsh = {
+          enable = true;
+          plugins = [ "git" "sudo" ];
+        };
         shellAliases = cfg.aliases // shortcut_aliases;
+        initExtra = ''
+          ${if nixosConfig.custom.dev.direnv.enable then "
+            eval \"$(direnv hook zsh)\"
+          " else ""}
+        '';
       };
       fzf = {
         enable = true;
         enableBashIntegration = true;
+        enableZshIntegration = true;
         changeDirWidgetOptions = [ "--preview 'tree -C {} | head -200'"];
         fileWidgetOptions = [ "--preview 'head -200 {}'" ];
       };

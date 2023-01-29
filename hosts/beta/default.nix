@@ -23,11 +23,7 @@ in
       ];
       custom = {
         #TODO: mail, accounts and filters configs
-        # mail = {
-        #   enable = false;
-        #   accounts = {};
-        #   filters = {};
-        # };
+        # mail = { enable = false; accounts = {}; filters = {}; };
         desktop = {
           enable = true;
           fontSize = 8;
@@ -43,7 +39,6 @@ in
             N = "~/Nube";
             l = "~/Nube/lecturas";
             mo = "~/Nube/money";
-            sr = "~/src";
             u = "~/Nube/uni/Actuales";
           };
           uni = {
@@ -55,17 +50,11 @@ in
           irssi.enable = true;
           latex.enable = true;
           money.enable = true;
-          # music = {
-          #   enable = true;
-          # };
+          # music.enable = true;
           nnn.bookmarks = {
             N = "~/Nube";
             l = "~/Nube/lecturas";
-            m = "~/Music";
-            p = "~/Pictures";
-            s = "~/src";
             u = "~/Nube/uni/Actuales";
-            v = "~/Videos";
           };
           tmux.color = "#aaee00";
           vim.package = pkgs.neovimFull;
@@ -74,6 +63,9 @@ in
      
       services.syncthing.enable = true;
       programs.kitty.enable = true;
+      programs.rbw = {
+          enable = true;
+      };
     };
   };
 
@@ -84,6 +76,8 @@ in
     docker-compose
     impo
     gparted
+    lean3
+    darktable
   ];
 
   virtualisation = {
