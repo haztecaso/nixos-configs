@@ -24,7 +24,7 @@ in
           ./monitors.nix
           ./music.nix
           ./nnn.nix
-          ./ranger.nix
+          ./ranger
           ./shell.nix
           ./shortcuts
           ./ssh.nix
