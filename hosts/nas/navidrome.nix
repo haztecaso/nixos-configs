@@ -10,6 +10,7 @@
           AuthWindowLength = "60s";
       };
   };
+  networking.firewall.allowedTCPPorts = [ 4747 ];
   users.users.navidrome = {
       isSystemUser = true;
       group = "navidrome";
