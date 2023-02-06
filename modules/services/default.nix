@@ -5,6 +5,7 @@ in
 {
   imports = [
     ./autofs.nix
+    ./fava.nix
     ./moodle-dl.nix
     ./music-server.nix
     ./syncthing.nix

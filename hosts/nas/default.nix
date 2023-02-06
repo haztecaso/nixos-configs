@@ -61,8 +61,15 @@
 
   custom.services = {
     syncthing = {
-        enable = true;
-        folders = [ "uni-moodle" "nube" "android-camara" ];
+      enable = true;
+      folders = [ "uni-moodle" "nube" "android-camara" ];
+    };
+    fava = {
+      enable = true;
+      hostname = "0.0.0.0";
+      port = 4000;
+      openPort = true;
+      beancountFile = "/var/lib/syncthing/nube/money/ledger.book";
     };
     tailscale.enable = true;
     music-server = {
@@ -72,8 +79,8 @@
   };
 
   networking.firewall = {
-    allowedTCPPorts = [ 80 631 443 111 2049 4000 8000 4001 4002 20048 ];
-    allowedUDPPorts = [ 80 631 443 111 2049 4000 8000 4001 4002 20048 ];
+    allowedTCPPorts = [ 80 631 443 111 2049 8000 4001 4002 20048 50000 ];
+    allowedUDPPorts = [ 80 631 443 111 2049 8000 4001 4002 20048 50000 ];
   };
 
 }
