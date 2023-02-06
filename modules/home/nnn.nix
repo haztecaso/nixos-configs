@@ -4,11 +4,7 @@ let
 in
 {
   options.custom.programs.nnn = with lib; {
-    enable = mkOption {
-      type = types.bool;
-      default = true;
-      description = "Enable custom nnn config with shortcuts";
-    };
+    enable = mkEnableOption  "Enable custom nnn config with shortcuts";
 
     bookmarks = mkOption {
       type = with types; attrsOf str;
@@ -21,7 +17,7 @@ in
       nnn = {
         enable = true;
         package = pkgs.nnn.override ({ withNerdIcons = true; });
-        extraPackages = with pkgs; [ tabbed sxiv ];
+        extraPackages = with pkgs; [ sxiv ];
         plugins = {
           src = "${inputs.nnn}/plugins";
           mappings = {
@@ -36,11 +32,7 @@ in
     };
     custom = {
       shell = {
-        initExtra = [
-          ''
-            export NNN_OPTS="aRe"
-          ''
-        ];
+        initExtra = [''export NNN_OPTS="aRe"''];
         aliases.r = "nnn";
       };
       programs.nnn.bookmarks = with lib;{

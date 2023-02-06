@@ -24,13 +24,16 @@ in
           ./monitors.nix
           ./music.nix
           ./nnn.nix
-          ./ranger.nix
+          ./ranger
           ./shell.nix
           ./shortcuts
           ./ssh.nix
           ./tmux.nix
           ./vim.nix
         ];
+        custom = {
+          programs.ranger.enable = lib.mkDefault true;
+        };
         programs = {
           gpg.enable = true;
         };
