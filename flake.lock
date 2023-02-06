@@ -195,7 +195,6 @@
         "nvim-which-key": "nvim-which-key",
         "rnix-lsp": "rnix-lsp",
         "telescope-repo": "telescope-repo",
-        "utils": "utils_2",
         "vim-enuch": "vim-enuch"
       },
       "locked": {
