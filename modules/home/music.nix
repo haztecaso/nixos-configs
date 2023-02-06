@@ -58,10 +58,10 @@ in
           { key = "P"; command = "show_playlist"; }
         ];
       };
-      services.mpdris2 = {
-        enable = true;
-        mpd.host = "nas";
-      };
+      # services.mpdris2 = {
+      #   enable = true;
+      #   mpd.host = "nas";
+      # };
       programs.ncmpcpp = {
         mpdMusicDir = cfg.library;
       };
