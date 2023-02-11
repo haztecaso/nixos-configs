@@ -33,7 +33,6 @@ in
           fontSize = 8;
         };
         shell.aliases = {
-          deploy = "deploy -k";
           python = "${pkgs.python38Packages.ipython}/bin/ipython";
           youtube-dl = "yt-dlp";
           ytdl = "yt-dlp";
@@ -74,7 +73,6 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    deploy-rs.deploy-rs
     unstable.yt-dlp
     virt-manager
     docker-compose
