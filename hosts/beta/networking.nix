@@ -14,12 +14,10 @@
         listenPort = 51820;
        
         # Path to the private key file.
-        privateKeyFile = "path to private key file";
+        privateKeyFile = "/etc/wireguard/privatekey";
         generatePrivateKeyFile = true;
        
         peers = [
-          # For a client configuration, one peer entry for the server will suffice.
-       
           {
             publicKey = "{server public key}";
             # Forward all the traffic via VPN.

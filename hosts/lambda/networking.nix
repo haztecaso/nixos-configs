@@ -15,7 +15,7 @@
       internalInterfaces = [ "wg0" ];
     };
 
-    networking.wireguard.interfaces = {
+    wireguard.interfaces = {
       # "wg0" is the network interface name. You can name the interface arbitrarily.
       wg0 = {
         # Determines the IP address and subnet of the server's end of the tunnel interface.
@@ -43,7 +43,7 @@
 
         peers = [
           {
-            publicKey = "{client public key}";
+            publicKey = "{client opublic key}";
             allowedIPs = [ "10.100.0.2/32" ];
           }
         ];
