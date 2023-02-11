@@ -15,11 +15,10 @@
        
         # Path to the private key file.
         privateKeyFile = "/etc/wireguard/privatekey";
-        generatePrivateKeyFile = true;
        
         peers = [
           {
-            publicKey = "{server public key}";
+            publicKey = "DMKv3Fn1gXvjPGWp4Ahls7ILi990e1VaMkb76b6KKyk=";
             # Forward all the traffic via VPN.
             allowedIPs = [ "0.0.0.0/0" ];
             # Or forward only particular subnets
