@@ -3,7 +3,11 @@ let
   keys = import ../../ssh-keys.nix;
 in
 {
-  imports = [ ./hardware.nix ./monitors.nix ];
+  imports = [ 
+    ./hardware.nix 
+    ./monitors.nix 
+    ./networking.nix 
+  ];
 
   nix.gc.options = "--delete-older-than 18d";
 
@@ -109,10 +113,6 @@ in
 
   services = {
     safeeyes.enable = false;
-  };
-
-  networking.hosts = {
-    "100.71.54.42" = [ "cloud.elvivero.es" ];
   };
 
   custom = {
