@@ -1,6 +1,7 @@
 { config, pkgs, ... }: {
   imports = [
     ./hardware.nix
+    ./networking.nix
     ./web
   ];
 
@@ -46,7 +47,7 @@
     services = {
       gitea.enable = true;
       moodle-dl = { 
-        enable = false; 
+        enable = true; 
         configFile = config.age.secrets."moodle-dl.conf".path; 
         folder = "/var/lib/syncthing/uni-moodle/";
       };
@@ -141,13 +142,11 @@
     # };
   };
 
-  mailserver = {
-    enable = true;
-    fqdn = "mail.haztecaso.com";
-    domains = [ "haztecaso.com" ];
-    # certificateScheme = 3;
-  };
-  networking.firewall.allowedTCPPorts = [ 8888 ];
-
-
+  # mailserver = {
+  #   enable = true;
+  #   fqdn = "mail.haztecaso.com";
+  #   domains = [ "haztecaso.com" ];
+  #   # certificateScheme = 3;
+  # };
 }
+
