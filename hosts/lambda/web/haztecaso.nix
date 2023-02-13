@@ -63,7 +63,7 @@ in
       "media.haztecaso.com" = {
         useACMEHost = "haztecaso.com";
         forceSSL = true;
-        locations."/".return = "301 https://music.haztecaso.com/";
+        locations."/".proxyPass = "http://nas:8096";
       };
       "music.haztecaso.com" = {
         useACMEHost = "haztecaso.com";
