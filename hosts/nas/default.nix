@@ -2,6 +2,7 @@
   imports = [ 
     ./hardware.nix 
     # ./hydra.nix
+    ./media.nix 
     # ./nextcloud.nix
     ./navidrome.nix
   ];
@@ -53,18 +54,12 @@
     docker.enable = true;
   };
 
-  services.nix-serve = {
-    enable = true;
-    port = 5555;
-    openFirewall = true;
-  };
-
   custom.services = {
     syncthing = {
       enable = true;
       folders = [ "uni-moodle" "nube" "android-camara" ];
     };
-    fava = {
+   fava = {
       enable = true;
       hostname = "0.0.0.0";
       port = 4000;
@@ -80,7 +75,7 @@
 
   networking.firewall = {
     allowedTCPPorts = [ 111 4001 5000 50000 ];
-    allowedUDPPorts = [ 111 4001 5000 50000 ];
+    allowedUDPPorts = [ 111 4001 50000 ];
   };
 
 }
