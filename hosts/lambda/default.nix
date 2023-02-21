@@ -5,6 +5,11 @@
     ./web
   ];
 
+  users.users = with config.base.ssh-keys; {
+    root.openssh.authorizedKeys.keys = [ skolem ];
+    skolem.openssh.authorizedKeys.keys = [ skolem termux skolem_elbrus ];
+  };
+
   nix.gc.options = "--delete-older-than 3d";
 
   home-manager.users = let

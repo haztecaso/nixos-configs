@@ -11,6 +11,11 @@ in
 
   nix.gc.options = "--delete-older-than 18d";
 
+  users.users.skolem = {
+    openssh.authorizedKeys.keys = with config.base.ssh-keys; [ termux skolem_elbrus ];
+    extraGroups = [ "libvirtd" ];
+  };
+
   home-manager.users = {
     root = { ... }: {
       custom.programs = {
@@ -89,9 +94,6 @@ in
   };
 
   users.extraGroups.vboxusers.members = [ "skolem" ];
-  users.users = {
-    skolem.extraGroups = [ "libvirtd" ];
-  };
 
   base = {
     hostname = "beta";
