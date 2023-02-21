@@ -13,8 +13,8 @@ in
     services = {
       xserver = {
         enable = true;
-        layout = "es";
-        xkbOptions = "caps:escape";
+        layout = "es,us";
+        xkbOptions = "caps:escape, grp:alt_space_toggle";
         desktopManager = {
           xfce.enable = true;
         };

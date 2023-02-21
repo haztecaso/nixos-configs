@@ -195,14 +195,15 @@
         "nvim-which-key": "nvim-which-key",
         "rnix-lsp": "rnix-lsp",
         "telescope-repo": "telescope-repo",
+        "utils": "utils_2",
         "vim-enuch": "vim-enuch"
       },
       "locked": {
-        "lastModified": 1674658896,
-        "narHash": "sha256-Z/L3b697vYA3eCVqLfTbC/1UQyFBEbNtPmNsgH6xmzs=",
+        "lastModified": 1676472358,
+        "narHash": "sha256-q1ZpuwxwQwWxosjTj+xjVgIxR7cXLI8T2DPcW1hogsk=",
         "owner": "haztecaso",
         "repo": "neovim-flake",
-        "rev": "5bd5c5aedda4d4889f4d9b9e08192c66251c47dd",
+        "rev": "9c5323d4b1bd633570ded94eb775da98b60af416",
         "type": "github"
       },
       "original": {

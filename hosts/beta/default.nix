@@ -3,9 +3,18 @@ let
   keys = import ../../ssh-keys.nix;
 in
 {
-  imports = [ ./hardware.nix ./monitors.nix ];
+  imports = [ 
+    ./hardware.nix 
+    ./monitors.nix 
+    ./networking.nix 
+  ];
 
   nix.gc.options = "--delete-older-than 18d";
+
+  users.users.skolem = {
+    openssh.authorizedKeys.keys = with config.base.ssh-keys; [ termux skolem_elbrus ];
+    extraGroups = [ "libvirtd" ];
+  };
 
   home-manager.users = {
     root = { ... }: {
@@ -29,7 +38,6 @@ in
           fontSize = 8;
         };
         shell.aliases = {
-          deploy = "deploy -k";
           python = "${pkgs.python38Packages.ipython}/bin/ipython";
           youtube-dl = "yt-dlp";
           ytdl = "yt-dlp";
@@ -70,7 +78,6 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    deploy-rs.deploy-rs
     unstable.yt-dlp
     virt-manager
     docker-compose
@@ -87,9 +94,6 @@ in
   };
 
   users.extraGroups.vboxusers.members = [ "skolem" ];
-  users.users = {
-    skolem.extraGroups = [ "libvirtd" ];
-  };
 
   base = {
     hostname = "beta";
@@ -109,10 +113,6 @@ in
 
   services = {
     safeeyes.enable = false;
-  };
-
-  networking.hosts = {
-    "100.71.54.42" = [ "cloud.elvivero.es" ];
   };
 
   custom = {

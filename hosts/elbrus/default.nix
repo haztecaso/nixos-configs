@@ -4,6 +4,11 @@
 
   nix.gc.options = "--delete-older-than 18d";
 
+  users.users.skolem = {
+    openssh.authorizedKeys.keys = with config.base.ssh-keys; [ skolem termux ];
+    extraGroups = [ "docker" "adbusers" ];
+  };
+
   home-manager.users = {
     root = { ... }: {
       custom.programs = {
@@ -34,10 +39,6 @@
 
   virtualisation = {
     docker.enable = true;
-  };
-
-  users.users = {
-    skolem.extraGroups = [ "docker" "adbusers" ];
   };
 
   base = {

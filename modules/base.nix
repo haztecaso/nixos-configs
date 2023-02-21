@@ -1,6 +1,5 @@
 { config, lib, pkgs, ... }:
 let
-  keys = import ../ssh-keys.nix;
   cfg = config.base;
 in
 {
@@ -44,6 +43,11 @@ in
     };
     sound = mkEnableOption "Wether to enable sound support (with pulseaudio).";
     printing = mkEnableOption "Wether to enable printing support (installing drivers).";
+    ssh-keys = mkOption {
+      type = types.attrsOf types.str;
+      description = "Public ssh keys";
+      readOnly = true;
+    };
   };
 
   config = lib.mkMerge [
@@ -59,6 +63,8 @@ in
         gc.automatic = true;
       };
 
+      base.ssh-keys = import ../ssh-keys.nix;
+
       nixpkgs.config.allowUnfree = true;
 
       users = {
@@ -67,13 +73,13 @@ in
         users = {
           root = {
             # passwordFile = config.age.secrets."users/root".path;
-            openssh.authorizedKeys.keys = [ keys.skolem ];
+            # openssh.authorizedKeys.keys = [ keys.skolem ];
           };
           skolem = {
             isNormalUser = true;
             extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
             # passwordFile = config.age.secrets."users/skolem".path;
-            openssh.authorizedKeys.keys = with keys; [ skolem ];
+            # openssh.authorizedKeys.keys = with keys; [ skolem ];
           };
         };
       };

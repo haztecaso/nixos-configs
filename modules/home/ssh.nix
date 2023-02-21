@@ -11,17 +11,6 @@ let
     Host github.com
         User git
         Hostname github.com
-        IdentityFile ~/.ssh/github
-
-    Host rpi rpi-mpd raspi-config semuta.mooo.com
-        User pi
-    
-    Host rpi-mpd
-        RemoteCommand ncmpcpp
-        RequestTTY yes
-    
-    Host lambda lambda.lan lambda.local
-        User root
   '';
 in
 {

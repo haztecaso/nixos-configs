@@ -9,6 +9,9 @@
 
   nix.gc.options = "--delete-older-than 60d";
 
+  users.users.skolem.openssh.authorizedKeys.keys = with config.base.ssh-keys; 
+    [ skolem termux skolem_elbrus ];
+
   base = {
     hostname = "nas";
     hostnameSymbol = "ν";

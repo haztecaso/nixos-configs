@@ -1,8 +1,14 @@
 { config, pkgs, ... }: {
   imports = [
     ./hardware.nix
+    # ./networking.nix
     ./web
   ];
+
+  users.users = with config.base.ssh-keys; {
+    root.openssh.authorizedKeys.keys = [ skolem ];
+    skolem.openssh.authorizedKeys.keys = [ skolem termux skolem_elbrus ];
+  };
 
   nix.gc.options = "--delete-older-than 3d";
 
@@ -45,11 +51,11 @@
   custom = {
     services = {
       gitea.enable = true;
-      moodle-dl = { 
-        enable = false; 
-        configFile = config.age.secrets."moodle-dl.conf".path; 
-        folder = "/var/lib/syncthing/uni-moodle/";
-      };
+      # moodle-dl = { 
+      #   enable = true; 
+      #   configFile = config.age.secrets."moodle-dl.conf".path; 
+      #   folder = "/var/lib/syncthing/uni-moodle/";
+      # };
       netdata.enable = true;
       radicale.enable = true;
       syncthing = { 
@@ -141,13 +147,11 @@
     # };
   };
 
-  mailserver = {
-    enable = true;
-    fqdn = "mail.haztecaso.com";
-    domains = [ "haztecaso.com" ];
-    # certificateScheme = 3;
-  };
-  networking.firewall.allowedTCPPorts = [ 8888 ];
-
-
+  # mailserver = {
+  #   enable = true;
+  #   fqdn = "mail.haztecaso.com";
+  #   domains = [ "haztecaso.com" ];
+  #   # certificateScheme = 3;
+  # };
 }
+
