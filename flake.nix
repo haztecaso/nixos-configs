@@ -19,7 +19,7 @@
     inherit self inputs;
 
     sharedOverlays = [
-      inputs.agenix.overlay
+      inputs.agenix.overlays.default
       inputs.neovim-flake.overlay
       inputs.impo.overlay
       inputs.jobo_bot.overlay
@@ -33,7 +33,7 @@
       extraArgs = { inherit inputs; };
       modules = [
         ./modules
-        inputs.agenix.nixosModule
+        inputs.agenix.nixosModules.default
         inputs.home-manager.nixosModule
         inputs.jobo_bot.nixosModule
         inputs.remadbot.nixosModule
@@ -45,7 +45,6 @@
     hosts = {
       beta.modules = [ ./hosts/beta inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x270 ];
       elbrus.modules = [ ./hosts/elbrus ];
-      # galois.modules = [ ./hosts/galois ];
       lambda.modules = [ ./hosts/lambda ];
       nas.modules = [ ./hosts/nas ];
     };
@@ -54,13 +53,13 @@
 
     overlays.default = import ./overlay;
 
-    outputsBuilder = channels: {
-      packages = let
-        docs = import ./docs { pkgs = channels.nixpkgs; };
-      in {
-        docs-manpages = docs.manPages;
-        docs-html = docs.manual.html;
-      };
-    };
+    # outputsBuilder = channels: {
+    #   packages = let
+    #     docs = import ./docs { pkgs = channels.nixpkgs; };
+    #   in {
+    #     docs-manpages = docs.manPages;
+    #     docs-html = docs.manual.html;
+    #   };
+    # };
   };
 }
