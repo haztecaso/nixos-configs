@@ -11,6 +11,7 @@
     ./thumbor.nix
     ./wpleandro.nix
     ./zulmarecchini.nix
+    ./vaultwarden.nix
   ];
 
   security.acme = {

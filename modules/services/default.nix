@@ -10,7 +10,6 @@ in
     ./music-server.nix
     ./syncthing.nix
     ./tailscale.nix
-    ./vaultwarden.nix
   ];
 
   options.custom.services = with lib; {
