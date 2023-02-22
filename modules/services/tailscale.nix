@@ -28,7 +28,7 @@ in
       localNames = name: [ name "${name}.lan" "${name}.local" ];
     in
     {
-      "100.84.40.96" = (localNames "lambda") ++ ("netdata.lambda");
+      "100.84.40.96" = (localNames "lambda") ++ (localNames "netdata.lambda");
       "100.109.49.55" = localNames "beta";
       "100.70.238.47" = (localNames "realme8") ++ (localNames "itinerante");
       "100.82.152.102" = localNames "beta-mac";
