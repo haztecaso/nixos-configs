@@ -63,7 +63,6 @@
         folders = [ "uni-moodle" "nube" "android-camara" ]; 
       };
       tailscale.enable = true;
-      vaultwarden.enable = true;
     };
   };
 
