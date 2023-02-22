@@ -7,11 +7,6 @@ let
     Host ${concatStrings (intersperse " " hostnames)}
         Hostname ${ip}
   '';
-  defaultConfig = ''
-    Host github.com
-        User git
-        Hostname github.com
-  '';
 in
 {
   options.custom.programs.ssh = with lib; {
@@ -25,11 +20,6 @@ in
       default = "";
       description = "Extra ssh configs.";
     };
-    enableDefaultConfig = mkOption {
-      type = types.bool;
-      default = true;
-      description = "Wether to enable common ssh configs.";
-    };
   };
 
   config = lib.mkMerge [
@@ -39,7 +29,6 @@ in
       programs.ssh = {
         enable = true;
         extraConfig = ''
-          ${if cfg.enableDefaultConfig then defaultConfig else ""}
           ${cfg.extraConfig}
         '';
       };
