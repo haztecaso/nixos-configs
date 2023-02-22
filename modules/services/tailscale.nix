@@ -23,5 +23,17 @@ in
       };
       hosts = cfg.hosts;
     };
+    custom.services.tailscale.hosts = 
+    let
+      localNames = name: [ name "${name}.lan" "${name}.local" ];
+    in
+    {
+      "100.84.40.96" = (localNames "lambda") ++ ("netdata.lambda");
+      "100.109.49.55" = localNames "beta";
+      "100.70.238.47" = (localNames "realme8") ++ (localNames "itinerante");
+      "100.82.152.102" = localNames "beta-mac";
+      "100.71.54.42" = localNames "nas";
+      "100.85.218.97" = localNames "elbrus";
+    };
   };
 }
