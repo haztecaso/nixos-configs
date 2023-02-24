@@ -82,7 +82,7 @@ in
     };
     networking.firewall = {
       allowedUDPPorts = [ 6600 6680 8000 ];
-      allowedTCPPorts = [ 6600 6680 ];
+      allowedTCPPorts = [ 6600 6680 8000 ];
     };
     users.users.mopidy.extraGroups = [ "users" "audio" ];
   };
