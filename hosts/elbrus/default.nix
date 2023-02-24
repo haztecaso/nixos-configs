@@ -57,7 +57,7 @@
   };
 
   services = {
-    safeeyes.enable = true;
+    # safeeyes.enable = true;
     printing.drivers = [
       (pkgs.writeTextDir "share/cups/model/ricoh-mp-c2011-pdf.ppd" (builtins.readFile ./Ricoh-MP_C2011-PDF-Ricoh.ppd))
     ];
