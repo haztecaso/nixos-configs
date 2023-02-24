@@ -83,7 +83,7 @@ in
     docker-compose
     impo
     gparted
-    lean3
+    unstable.lean3
     darktable
   ];
 
