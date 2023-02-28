@@ -34,7 +34,7 @@ in
         #   try_files $uri $uri.html $uri/ =404;
         # '';
 
-        # locations."/stream.mp3".proxyPass = "http://nas:8000/stream.mp3";
+        locations."/stream.mp3".proxyPass = "http://nas:8000/stream.mp3";
         # locations."/mpdws" = {
         #   proxyPass = "http://localhost:8005";
         #   extraConfig = ''
