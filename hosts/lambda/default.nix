@@ -2,6 +2,7 @@
   imports = [
     ./hardware.nix
     # ./networking.nix
+    ./borg-backup.nix
     ./web
   ];
 
