@@ -29,6 +29,7 @@ in
         vscodium
         pdfarranger
         thunderbird
+        zotero
       ];
       custom = {
         #TODO: mail, accounts and filters configs
