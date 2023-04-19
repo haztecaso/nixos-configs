@@ -35,6 +35,7 @@
     docker-compose
     sqlitebrowser
     redis
+    zotero
   ];
 
   virtualisation = {

@@ -4,6 +4,7 @@ import           Data.Monoid
 import           System.Exit
 import           XMonad                          hiding ((|||))
 import           XMonad.Actions.CycleWS
+import           XMonad.Actions.GridSelect
 import           XMonad.Actions.Warp
 import           XMonad.Hooks.DynamicLog
 import           XMonad.Hooks.EwmhDesktops
@@ -71,7 +72,7 @@ myKeys conf = mkKeymap conf $
     ("M-y",      sendMessage $ JumpToLayout "twopane"),
     ("M-S-y",    sendMessage $ JumpToLayout "twopanebottom"),
     ("M-b",      sendMessage $ JumpToLayout "bottom"),
-    ("M-g",      sendMessage $ JumpToLayout "grid"),
+    ("M-M1-g",      sendMessage $ JumpToLayout "grid"),
     ("M-f",      sendMessage $ JumpToLayout "full"),
     ("M-x", sendMessage NextLayout), -- Rotate through the available layout algorithms
     ("M-h", sendMessage Shrink), -- Shrink the master area
@@ -79,6 +80,8 @@ myKeys conf = mkKeymap conf $
     ("M-,", sendMessage (IncMasterN 1)), -- Increment the number of windows in the master area
     ("M-.", sendMessage (IncMasterN (-1))), -- Deincrement the number of windows in the master area
     ("M-ñ", toggleSpacing),
+    ("M-g", goToSelected def),
+    ("M-S-g", bringSelected def),
     ("M-+", incScreenWindowSpacing 2),
     ("M--", decScreenWindowSpacing 2),
     -- Status bar
