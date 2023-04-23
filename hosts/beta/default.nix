@@ -66,7 +66,28 @@ in
             u = "~/Nube/uni/Actuales";
           };
           tmux.color = "#aaee00";
-          vim.package = pkgs.neovimFull;
+          vim.package = pkgs.mkNeovim {
+            completion.enable = true;
+            snippets.enable   = true;
+            telescope.enable  = true;
+            lsp = {
+              enable    = true;
+              lightbulb = true;
+              languages = {
+                bash       = true;
+                css        = true;
+                docker     = true;
+                html       = true;
+                json       = true;
+                python     = true;
+                typescript = true;
+                yaml       = true;
+              };
+            };
+            plugins = {
+              tidal = true;
+            };
+          };
         };
       };
      
