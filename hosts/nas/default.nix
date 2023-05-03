@@ -47,6 +47,8 @@
 
   environment.systemPackages = with pkgs; [
     docker-compose
+    agenix
+    borgbackup
   ];
 
   programs = {
@@ -60,7 +62,7 @@
   custom.services = {
     syncthing = {
       enable = true;
-      folders = [ "uni-moodle" "nube" "android-camara" "vault" ];
+      folders = [ "uni-moodle" "nube" "android-camara" "vault" "zotero-storage" ];
     };
    fava = {
       enable = true;

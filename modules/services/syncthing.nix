@@ -20,9 +20,14 @@ let
       path = "/var/lib/syncthing/nube";
     };
     vault = {
-      devices = [ "beta" "elbrus" "macbook" "realmi8" ];
+      devices = [ "beta" "elbrus" "realmi8" ];
       id = "default";
       path = "/var/lib/syncthing/vault";
+    };
+    zotero-storage = {
+      devices = [ "beta" "elbrus" ];
+      id = "default";
+      path = "/var/lib/syncthing/zotero-storage";
     };
     android-camara = {
       devices = [ "macbook" "realmi8" ];
