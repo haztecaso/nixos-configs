@@ -17,6 +17,7 @@
     };
     skolem = { ... }: {
       home.packages = with pkgs; [ autofirma thunderbird timewarrior ];
+      services.syncthing.enable = true;
       custom = {
         desktop = {
           enable = true;
