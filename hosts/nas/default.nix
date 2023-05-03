@@ -60,7 +60,7 @@
   custom.services = {
     syncthing = {
       enable = true;
-      folders = [ "uni-moodle" "nube" "android-camara" ];
+      folders = [ "uni-moodle" "nube" "android-camara" "vault" ];
     };
    fava = {
       enable = true;
