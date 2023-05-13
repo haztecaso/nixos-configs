@@ -20,6 +20,8 @@ final: prev: {
 
   configuradorfmnt = prev.callPackage ./configuradorfmnt.nix { };
 
-  openai-whisper-cpp = prev.callPackage ./openai-whisper-cpp { };
+  openai-whisper-cpp = prev.callPackage ./openai-whisper-cpp {
+    inherit (prev.darwin.apple_sdk.frameworks) Accelerate CoreGraphics CoreVideo;
+  };
 
 }
