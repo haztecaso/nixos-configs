@@ -20,4 +20,6 @@ final: prev: {
 
   configuradorfmnt = prev.callPackage ./configuradorfmnt.nix { };
 
+  openai-whisper-cpp = prev.callPackage ./openai-whisper-cpp { };
+
 }
