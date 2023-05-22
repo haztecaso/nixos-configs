@@ -258,11 +258,11 @@
         "vim-enuch": "vim-enuch"
       },
       "locked": {
-        "lastModified": 1684771855,
-        "narHash": "sha256-HPD+sVETMkJEp1Y10d/tTQswMLEhRpNV2PxP35s1tuE=",
+        "lastModified": 1684776066,
+        "narHash": "sha256-8uljw3318omyFHjAnGpwss9n3XRB3wegyWuG96twjCs=",
         "owner": "haztecaso",
         "repo": "neovim-flake",
-        "rev": "3a278eb334be15db4d3f7b802fd47a2d6523974d",
+        "rev": "74c9744eebeb71080c8bee48079d59e4424eea25",
         "type": "github"
       },
       "original": {
