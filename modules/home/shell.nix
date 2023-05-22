@@ -73,6 +73,17 @@ in
           enable = true;
           plugins = [ "git" "sudo" ];
         };
+        plugins = [
+          {
+            name = "fzf-zsh-plugin";
+            file = "fzf-zsh-plugin.plugin.zsh";
+            src = builtins.fetchGit {
+              url = "https://github.com/unixorn/fzf-zsh-plugin";
+              ref = "main";
+              rev = "5be9ab11845bc3c797706cbba929e2bc9a807020";
+            };
+          }
+        ];
         shellAliases = cfg.aliases // shortcut_aliases;
         initExtra = ''
           ${if nixosConfig.custom.dev.direnv.enable then "

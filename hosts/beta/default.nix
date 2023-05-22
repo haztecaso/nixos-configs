@@ -13,7 +13,7 @@ in
 
   users.users.skolem = {
     openssh.authorizedKeys.keys = with config.base.ssh-keys; [ termux skolem_elbrus ];
-    extraGroups = [ "libvirtd" ];
+    extraGroups = [ "libvirtd" "jackaudio" ];
   };
 
   home-manager.users = {
@@ -107,7 +107,13 @@ in
     gparted
     unstable.lean3
     darktable
+    qjackctl
+    tidal
+    superdirt-start
+    mixxx
+    ffmpeg
   ];
+
 
   virtualisation = {
     virtualbox.host.enable = true;
@@ -132,6 +138,12 @@ in
     mosh.enable = true;
     dconf.enable = true;
   };
+
+  # boot.kernelModules = [ "snd-seq" "snd-rawmidi" ];
+  # hardware = {
+  #   pulseaudio.package = pkgs.pulseaudio.override { jackaudioSupport = true; };
+  # };
+  # services.jack.jackd.enable = true;
 
   services = {
     safeeyes.enable = false;

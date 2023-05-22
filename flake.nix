@@ -13,6 +13,7 @@
     remadbot = { url = "github:haztecaso/remadbot"; inputs.nixpkgs.follows = "nixpkgs"; };
     mpdws = { url = "github:haztecaso/mpdws"; inputs = { nixpkgs.follows = "nixpkgs"; utils.follows = "utils"; }; };
     nnn = { url = "github:jarun/nnn"; flake = false; };
+    tidal = { url = "github:mitchmindtree/tidalcycles.nix"; };
   };
 
   outputs = inputs@{ self, ... }: inputs.utils.lib.mkFlake {
@@ -25,6 +26,7 @@
       inputs.jobo_bot.overlay
       inputs.remadbot.overlay
       inputs.mpdws.overlay
+      inputs.tidal.overlays.default
       (final: prev: { unstable = inputs.unstable.legacyPackages.${prev.system}; })
       self.overlays.default
     ];
