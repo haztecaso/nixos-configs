@@ -76,7 +76,6 @@
     dev = {
       enable = true;
       nodejs = true;
-      pythonPackages = [ "poetry" ];
       direnv.enable = true;
     };
   };

@@ -21,7 +21,7 @@ in
   config = lib.mkMerge [
     (lib.mkIf cfg.enable {
       environment.systemPackages = with pkgs; [
-        python310Packages.poetry
+        python310Packages.poetry-core
         wget
         axel
         python310

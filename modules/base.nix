@@ -89,7 +89,7 @@ in
 
       console.keyMap = "es";
 
-      boot.cleanTmpDir = true;
+      boot.tmp.cleanOnBoot = true;
 
       time.timeZone = "Europe/Madrid";
 
@@ -113,10 +113,12 @@ in
         shells = with pkgs; [ bashInteractive zsh fish ];
       };
 
+      programs.zsh.enable = true;
+
       services = {
         openssh = {
           enable = true;
-          passwordAuthentication = false;
+          settings.PasswordAuthentication = false;
         };
       };
 

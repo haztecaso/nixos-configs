@@ -103,7 +103,7 @@ in
     unstable.yt-dlp
     virt-manager
     docker-compose
-    impo
+    # impo
     gparted
     unstable.lean3
     darktable
@@ -112,6 +112,9 @@ in
     superdirt-start
     mixxx
     ffmpeg
+    openai-whisper-cpp
+    # qgis
+    # python39Packages.pyqt5
   ];
 
 
@@ -129,7 +132,7 @@ in
     bat = "BAT1";
     wlp = { interface = "wlp3s0"; useDHCP = true; };
     eth.interface = "enp0s31f6";
-    stateVersion = "22.11";
+    stateVersion = "23.05";
   };
 
 
@@ -159,7 +162,6 @@ in
 
     dev = {
       enable = true;
-      pythonPackages = [ "poetry" ];
       direnv.enable = true;
     };
   };

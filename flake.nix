@@ -1,14 +1,14 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/release-22.11";
+    nixpkgs.url = "github:nixos/nixpkgs/release-23.05";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager = { url = "github:nix-community/home-manager/release-22.11"; inputs.nixpkgs.follows = "nixpkgs"; };
-    utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
+    home-manager = { url = "github:nix-community/home-manager/release-23.05"; inputs.nixpkgs.follows = "nixpkgs"; };
+    # utils.url = "github:gytis-ivaskevicius/flake-utils-plus/v1.3.1"; # waiting merge of pull request
+    utils.url = "github:ravensiris/flake-utils-plus/7a8d789d4d13e45d20e6826d7b2a1757d52f2e13";
     snm = { url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-22.05"; inputs = { nixpkgs.follows = "unstable"; nixpkgs-22_05.follows = "nixpkgs"; }; };
     nixos-hardware = { url = "github:NixOS/nixos-hardware/master"; };
-    agenix = { url = "github:ryantm/agenix"; inputs.nixpkgs.follows = "nixpkgs"; };
+    agenix = { url = "github:ryantm/agenix"; inputs.nixpkgs.follows = "nixpkgs"; inputs.home-manager.follows = "home-manager";};
     neovim-flake = { url = "github:haztecaso/neovim-flake"; inputs.nixpkgs.follows = "nixpkgs"; };
-    impo = { url = "github:haztecaso/impo"; inputs.nixpkgs.follows = "nixpkgs"; };
     jobo_bot = { url = "github:haztecaso/jobo_bot"; inputs.nixpkgs.follows = "nixpkgs"; };
     remadbot = { url = "github:haztecaso/remadbot"; inputs.nixpkgs.follows = "nixpkgs"; };
     mpdws = { url = "github:haztecaso/mpdws"; inputs = { nixpkgs.follows = "nixpkgs"; utils.follows = "utils"; }; };
@@ -19,10 +19,11 @@
   outputs = inputs@{ self, ... }: inputs.utils.lib.mkFlake {
     inherit self inputs;
 
+    channelsConfig.allowUnfree = true;
+
     sharedOverlays = [
       inputs.agenix.overlays.default
       inputs.neovim-flake.overlay
-      inputs.impo.overlay
       inputs.jobo_bot.overlay
       inputs.remadbot.overlay
       inputs.mpdws.overlay
