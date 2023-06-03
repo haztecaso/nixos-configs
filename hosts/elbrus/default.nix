@@ -49,7 +49,7 @@
     bat = "BAT1";
     wlp = { interface = "wlp4s0"; useDHCP = true; };
     eth.interface = "enp0s31f6";
-    stateVersion = "22.11";
+    stateVersion = "23.05";
   };
 
 
