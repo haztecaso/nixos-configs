@@ -113,7 +113,8 @@ in
     mixxx
     ffmpeg
     openai-whisper-cpp
-    # qgis
+    obsidian
+    qgis
     # python39Packages.pyqt5
   ];
 
@@ -137,7 +138,7 @@ in
 
 
   programs = {
-    # steam.enable = true; # Deshabilitado temporalmente
+    # steam.enable = true;
     mosh.enable = true;
     dconf.enable = true;
   };
