@@ -50,6 +50,11 @@ in
         noto-fonts
         noto-fonts-emoji
         font-awesome
+        source-code-pro
+        source-sans
+        source-serif
+        source-sans-pro
+        source-serif-pro
         (nerdfonts.override { fonts = [ "Hack" "LiberationMono" ]; })
       ];
     };
