@@ -37,6 +37,8 @@
     sqlitebrowser
     redis
     zotero
+    obsidian
+    qgis
   ];
 
   virtualisation = {
