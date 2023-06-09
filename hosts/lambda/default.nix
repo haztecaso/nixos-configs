@@ -30,7 +30,7 @@
   base = {
     hostname = "lambda";
     hostnameSymbol = "λ";
-    stateVersion = "22.11";
+    stateVersion = "23.05";
   };
 
   environment.systemPackages = with pkgs; [ agenix ];

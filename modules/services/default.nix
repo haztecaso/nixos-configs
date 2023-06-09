@@ -52,12 +52,14 @@ in
         services = {
           gitea = {
             enable = true;
-            domain = serverName;
             appName = "Gitea";
-            httpAddress = "127.0.0.1";
-            httpPort = port;
-            rootUrl = "https://${serverName}/";
             settings = {
+              server = {
+                DOMAIN = serverName;
+                HTTP_ADDR = "127.0.0.1";
+                HTTP_PORT = port;
+                ROOT_URL = "https://${serverName}/";
+              };
               service = {
                 DISABLE_REGISTRATION = true;
               };
