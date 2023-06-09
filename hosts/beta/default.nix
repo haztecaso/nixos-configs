@@ -3,10 +3,10 @@ let
   keys = import ../../ssh-keys.nix;
 in
 {
-  imports = [ 
-    ./hardware.nix 
-    ./monitors.nix 
-    ./networking.nix 
+  imports = [
+    ./hardware.nix
+    ./monitors.nix
+    ./networking.nix
   ];
 
   nix.gc.options = "--delete-older-than 18d";
@@ -20,7 +20,7 @@ in
     root = { ... }: {
       custom.programs = {
         tmux.color = "#eeaa00";
-        vim.package = pkgs.neovimFull;
+        vim.package = pkgs.neovimDefault;
       };
     };
     skolem = { ... }: {
@@ -66,35 +66,14 @@ in
             u = "~/Nube/uni/Actuales";
           };
           tmux.color = "#aaee00";
-          vim.package = pkgs.mkNeovim {
-            completion.enable = true;
-            snippets.enable   = true;
-            telescope.enable  = true;
-            lsp = {
-              enable    = true;
-              lightbulb = true;
-              languages = {
-                bash       = true;
-                css        = true;
-                docker     = true;
-                html       = true;
-                json       = true;
-                python     = true;
-                typescript = true;
-                yaml       = true;
-              };
-            };
-            plugins = {
-              tidal = true;
-            };
-          };
+          vim.package = pkgs.neovimDefault;
         };
       };
-     
+
       services.syncthing.enable = true;
       programs.kitty.enable = true;
       programs.rbw = {
-          enable = true;
+        enable = true;
       };
     };
   };

@@ -26,7 +26,7 @@
         programs = {
           latex.enable = true;
           tmux.color = "#aaee00";
-          vim.package = pkgs.neovimFull;
+          vim.package = pkgs.neovimDefault;
         };
       };
     };
