@@ -1,4 +1,5 @@
-{ config, lib, pkgs, ... }: let
+{ config, lib, pkgs, ... }:
+let
   cfg = config.custom.desktop;
 in
 {
@@ -7,17 +8,16 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    users.users = lib.mapAttrs (_: _: {
-      extraGroups = [ "audio" "video" "networkmanager" ];
-    }) config.home-manager.users;
+    users.users = lib.mapAttrs
+      (_: _: {
+        extraGroups = [ "audio" "video" "networkmanager" ];
+      })
+      config.home-manager.users;
     services = {
       xserver = {
         enable = true;
         layout = "es,us";
-        xkbOptions = "caps:escape, grp:alt_space_toggle";
-        desktopManager = {
-          xfce.enable = true;
-        };
+        xkbOptions = "caps:escape,grp:alt_space_toggle";
         windowManager.xmonad = {
           enable = true;
           enableContribAndExtras = true;
