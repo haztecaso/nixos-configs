@@ -23,6 +23,13 @@ in
           enableContribAndExtras = true;
           config = ./xmonad/xmonad.hs;
         };
+        displayManager = {
+          autoLogin.enable = true;
+          autoLogin.user = lib.mkDefault "skolem";
+          sessionCommands = ''
+            ${pkgs.xorg.xmodmap}/bin/xmodmap -e "keycode 135 = Super_L NoSymbol Super_L"
+          '';
+        };
       };
       dbus = {
         enable = true;
