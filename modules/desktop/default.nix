@@ -31,12 +31,12 @@ in
           '';
         };
       };
+      blueman.enable = true;
       dbus = {
         enable = true;
         packages = [ pkgs.dconf ];
       };
       gnome.gnome-keyring.enable = true;
-
     };
     base = {
       sound = true;
