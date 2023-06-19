@@ -2,7 +2,7 @@
   imports = [ 
     ./hardware.nix 
     # ./hydra.nix
-    ./media.nix 
+    # ./media.nix 
     # ./nextcloud.nix
     ./navidrome.nix
   ];
@@ -15,7 +15,7 @@
   base = {
     hostname = "nas";
     hostnameSymbol = "ν";
-    stateVersion = "22.11";
+    stateVersion = "23.05";
   };
 
   home-manager.users = let
@@ -49,6 +49,8 @@
     docker-compose
     agenix
     borgbackup
+    ffmpeg
+    openai-whisper-cpp
   ];
 
   programs = {
