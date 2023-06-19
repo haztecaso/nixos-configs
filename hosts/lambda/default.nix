@@ -13,25 +13,15 @@
 
   nix.gc.options = "--delete-older-than 3d";
 
-  home-manager.users = let
-    vim = pkgs.mkNeovim {
-      completion.enable = true;
-      snippets.enable = true;
-      plugins = {
-        latex = false;
-      };
-    };
-  in {
+  home-manager.users = {
     root = { ... }: {
       custom.programs = {
         tmux.color = "#aaee00";
-        vim.package = vim;
       };
     };
     skolem = { ... }: {
       custom.programs = {
         tmux.color = "#aaee00";
-        vim.package = vim;
         nnn.bookmarks = { w = "/var/www/"; };
       };
     };
@@ -40,7 +30,7 @@
   base = {
     hostname = "lambda";
     hostnameSymbol = "λ";
-    stateVersion = "22.11";
+    stateVersion = "23.05";
   };
 
   environment.systemPackages = with pkgs; [ agenix ];
@@ -59,9 +49,9 @@
       # };
       netdata.enable = true;
       radicale.enable = true;
-      syncthing = { 
-        enable = true; 
-        folders = [ "uni-moodle" "nube" "android-camara" "vault" "zotero-storage" ]; 
+      syncthing = {
+        enable = true;
+        folders = [ "uni-moodle" "nube" "android-camara" "vault" "zotero-storage" ];
       };
       tailscale.enable = true;
     };
@@ -106,9 +96,9 @@
     #       htpasswd_encryption = bcrypt
     #     '';
     #   };
-    
-      # nginx.virtualHosts."dav.haztecaso.com" = {
-      # };
+
+    # nginx.virtualHosts."dav.haztecaso.com" = {
+    # };
 
     # roundcube = {
     #   enable = false;

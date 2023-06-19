@@ -4,13 +4,13 @@ let
 in
 {
   imports = [
-      ./alacritty.nix
-      ./polybar.nix
-      ./keybindings.nix
-      ./mpv.nix
-      ./notifications.nix
-      ./web.nix
-      ./zathura.nix
+    ./alacritty.nix
+    ./polybar.nix
+    ./keybindings.nix
+    ./mpv.nix
+    ./notifications.nix
+    ./web.nix
+    ./zathura.nix
   ];
   options.custom.desktop = with lib; {
     enable = mkEnableOption "Wether to enable desktop configs for user.";
@@ -28,51 +28,51 @@ in
   config = lib.mkIf cfg.enable {
     home = {
       packages = with pkgs; [
-        battery_level
-        battery_level
-        bitwarden-rofi
-        arandr
-        anki
-        audacity
-        betterlockscreen
-        bitwarden
         # blender
         # discord
+        # kdenlive
+        # minecraft
+        # scantailor-advanced
+        # soulseekqt
+        # anki
+        arandr
+        audacity
+        battery_level
+        betterlockscreen
+        bitwarden
+        bitwarden-rofi
+        blueman
         dmenu
         evince
         filezilla
         firefox
         gimp
+        gparted
         hsetroot
         inkscape
-        # kdenlive
         libreoffice
         light
         lxappearance
-        # minecraft
         networkmanager-vpnc
+        okular
         pamixer
         pavucontrol
-        blueman
-        # scantailor-advanced
         scrot
-        # soulseekqt
         sxiv
-        unstable.tdesktop
-        # tor-browser-bundle-bin
         transmission-gtk
+        unstable.tdesktop
+        unstable.tor-browser-bundle-bin
         vlc
         wmctrl
         xarchiver
         xfce.thunar
         xorg.xev
         xorg.xmodmap
-        okular
       ];
-      keyboard = {
-        layout = "es";
-        options = [ "caps:escape" ];
-      };
+      # keyboard = {
+      #   layout = "es";
+      #   options = [ "caps:escape" ];
+      # };
     };
     xsession = {
       enable = true;
@@ -118,7 +118,7 @@ in
           name = "greybird";
         };
       })
-  ];
+    ];
 
     services = {
       network-manager-applet.enable = true;

@@ -1,15 +1,15 @@
 { config, pkgs, ... }: {
-  imports = [ 
-    ./hardware.nix 
+  imports = [
+    ./hardware.nix
     # ./hydra.nix
     # ./media.nix 
     # ./nextcloud.nix
-    ./navidrome.nix
+    # ./navidrome.nix
   ];
 
   nix.gc.options = "--delete-older-than 60d";
 
-  users.users.skolem.openssh.authorizedKeys.keys = with config.base.ssh-keys; 
+  users.users.skolem.openssh.authorizedKeys.keys = with config.base.ssh-keys;
     [ skolem termux skolem_elbrus skolem_mac skolem_lambda skolem_lambda ];
 
   base = {
@@ -18,25 +18,15 @@
     stateVersion = "23.05";
   };
 
-  home-manager.users = let
-    vim = pkgs.mkNeovim {
-      completion.enable = true;
-      snippets.enable = true;
-      plugins = {
-        latex = false;
-      };
-    };
-  in {
+  home-manager.users = {
     root = { ... }: {
       custom.programs = {
         tmux.color = "#aaee00";
-        vim.package = vim;
       };
     };
     skolem = { ... }: {
       custom.programs = {
         tmux.color = "#aaee00";
-        vim.package = vim;
         music = {
           enable = true;
           library = "/mnt/raid/music/Library";
@@ -66,7 +56,7 @@
       enable = true;
       folders = [ "uni-moodle" "nube" "android-camara" "vault" "zotero-storage" ];
     };
-   fava = {
+    fava = {
       enable = true;
       hostname = "0.0.0.0";
       port = 4000;
