@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 {
   config = lib.mkIf config.custom.desktop.enable {
-    home.packages = with pkgs; [ buku keyutils chromium ];
+    home.packages = with pkgs; [ buku keyutils chromium bitwarden-cli xdotool ];
     programs.qutebrowser = {
       enable = true;
       settings = {
@@ -28,6 +28,7 @@
         map = "https://www.google.com/maps/search/{}";
         maps = "https://www.google.com/maps/search/{}";
         dockerhub = "https://hub.docker.com/search?q={}&type=image";
+        gh = "https://github.com/search?q={}&type=repositories";
       };
       keyBindings = {
         normal = {
@@ -40,7 +41,8 @@
           xs = "config-cycle statusbar.show always never";
           xt = "config-cycle tabs.show always never";
           xx = "config-cycle tabs.show always never;; config-cycle statusbar.show always never";
-          ",p" = "spawn --userscript /home/skolem/.nix-profile/bin/bwmenu";
+          ",p" = "spawn --userscript ${pkgs.bwmenu}/bin/bwmenu";
+          "<Ctrl-Shift-l>" = "spawn --userscript ${pkgs.bwmenu}/bin/bwmenu";
         };
       };
     };
@@ -56,7 +58,7 @@
         btn = document.querySelector(".potentialidp > a.btn[title=\"Acceso con cuenta UCM\"]")
         if (btn){ btn.click(); }
       '';
- 
+
       "qutebrowser/greasemonkey/yt-adskipper.js".text = ''
         // ==UserScript==
         // @name               No more youtube ads! - UPDATED
