@@ -2,9 +2,9 @@
   imports = [
     ./hardware.nix
     # ./hydra.nix
-    # ./media.nix 
+    ./media.nix 
     # ./nextcloud.nix
-    # ./navidrome.nix
+    ./navidrome.nix
   ];
 
   nix.gc.options = "--delete-older-than 60d";
