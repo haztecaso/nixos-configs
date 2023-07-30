@@ -33,7 +33,7 @@ in
         "100.70.238.47" = (localNames "realme8") ++ (localNames "itinerante");
         "100.82.152.102" = localNames "beta-mac";
         "100.77.159.135" = localNames "nas";
-        "100.85.218.97" = localNames "elbrus";
+        "100.74.34.128" = localNames "elbrus";
       };
   };
 }
