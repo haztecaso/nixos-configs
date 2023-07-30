@@ -65,7 +65,7 @@ in
           editor.keymap = "vi";
           historySubstring.foundColor = "fg=blue";
           historySubstring.notFoundColor = "fg=red";
-          tmux.autoStartRemote = true;
+          # tmux.autoStartRemote = true; #TODO: fix
           tmux.defaultSessionName = hostname;
           utility.safeOps = true;
         };
@@ -89,6 +89,9 @@ in
           ${if nixosConfig.custom.dev.direnv.enable then "
             eval \"$(direnv hook zsh)\"
           " else ""}
+          if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" ]]; then
+            tmux attach-session -t ${hostname} || tmux new-session -s ${hostname}
+          fi
         '';
       };
       fzf = {
