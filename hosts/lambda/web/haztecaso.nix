@@ -25,6 +25,7 @@ in
           error_log syslog:server=unix:/dev/log debug;
           access_log syslog:server=unix:/dev/log,tag=haztecaso;
           add_header Access-Control-Allow-Origin "radio.haztecaso.com";
+          error_page 404 /404.html;
         '';
 
         # locations."/".extraConfig = ''
