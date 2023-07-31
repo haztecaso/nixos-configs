@@ -1,9 +1,12 @@
 { config, lib, pkgs, ... }:
+let
+  backupDir = "/var/backups/vaultwarden";
+in
 {
   services = {
     vaultwarden = {
       enable = true;
-      backupDir = "/srv/backups/vaultwarden"; #TODO: ensure that this folder exists and vaultwarden can write to it
+      backupDir = backupDir;
       config = {
         signupsAllowed = false;
         domain = "https://bw.haztecaso.com";
@@ -24,5 +27,16 @@
         locations."/".return = "301 https://bw.haztecaso.com$request_uri";
       };
     };
+    borgbackup.jobs.vaultwarden = {
+      paths = backupDir;
+      encryption.mode = "none"; 
+      environment.BORG_RSH = " -o StrictHostKeyChecking=nossh -i /home/skolem/.ssh/id_rsa -o StrictHostKeyChecking=no";
+      repo = "ssh://skolem@nas:22/mnt/raid/backups/borg/vaultwarden";
+      compression = "auto,zstd";
+      startAt = "3:30:0";
+      persistentTimer = true;
+    };
   };
+  systemd.tmpfiles.rules = [ "d ${backupDir} - vaultwarden vaultwarden 7d" ];
+  systemd.timers.backup-vaultwarden.timerConfig.OnCalendar = "3:0:0";
 }

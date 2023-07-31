@@ -44,6 +44,7 @@ in
     };
     programs = {
       light.enable = true;
+      kdeconnect.enable = true;
     };
     networking.networkmanager.enable = true;
     hardware = {

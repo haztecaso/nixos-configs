@@ -25,5 +25,6 @@
         }
       ];
     };
+    mysqlBackup.databases = [ "matomo" ];
   };
 }

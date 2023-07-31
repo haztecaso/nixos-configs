@@ -81,6 +81,7 @@ in
         }
       ];
     };
+    mysqlBackup.databases = [ app ];
   };
   users.users.${app} = {
     isSystemUser = true;

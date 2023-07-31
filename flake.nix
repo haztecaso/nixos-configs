@@ -17,54 +17,54 @@
     tidal = { url = "github:mitchmindtree/tidalcycles.nix"; };
   };
 
-  outputs = inputs@{ self, ... }: inputs.utils.lib.mkFlake {
-    inherit self inputs;
+  outputs = inputs@{ self, ... }: inputs.utils.lib.mkFlake
+    {
+      inherit self inputs;
 
-    channelsConfig.allowUnfree = true;
+      channelsConfig.allowUnfree = true;
 
-    sharedOverlays = [
-      inputs.agenix.overlays.default
-      inputs.neovim-flake.overlay
-      inputs.jobo_bot.overlay
-      inputs.remadbot.overlay
-      inputs.mpdws.overlay
-      inputs.tidal.overlays.default
-      (final: prev: { unstable = inputs.unstable.legacyPackages.${prev.system}; })
-      (final: prev: { bwmenu = inputs.bwmenu.packages.${prev.system}.bwmenu; })
-      self.overlays.default
-    ];
-
-    hostDefaults = {
-      extraArgs = { inherit inputs; };
-      modules = [
-        ./modules
-        inputs.agenix.nixosModules.default
-        inputs.home-manager.nixosModule
-        inputs.jobo_bot.nixosModule
-        inputs.remadbot.nixosModule
-        inputs.mpdws.nixosModule
-        inputs.snm.nixosModule
+      sharedOverlays = [
+        inputs.agenix.overlays.default
+        inputs.neovim-flake.overlay
+        inputs.jobo_bot.overlay
+        inputs.remadbot.overlay
+        inputs.mpdws.overlay
+        inputs.tidal.overlays.default
+        (final: prev: { unstable = inputs.unstable.legacyPackages.${prev.system}; })
+        (final: prev: { bwmenu = inputs.bwmenu.packages.${prev.system}.bwmenu; })
+        self.overlays.default
       ];
+
+      hostDefaults = {
+        extraArgs = { inherit inputs; };
+        modules = [
+          ./modules
+          inputs.agenix.nixosModules.default
+          inputs.home-manager.nixosModule
+          inputs.jobo_bot.nixosModule
+          inputs.remadbot.nixosModule
+          inputs.mpdws.nixosModule
+          inputs.snm.nixosModule
+        ];
+      };
+
+      hosts = {
+        beta.modules = [ ./hosts/beta inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x270 ];
+        elbrus.modules = [ ./hosts/elbrus ];
+        lambda.modules = [ ./hosts/lambda ];
+        nas.modules = [ ./hosts/nas ];
+      };
+
+      nixosModules.default = import ./modules;
+
+      overlays.default = import ./overlay;
+
+    } // {
+    hydraJobs = {
+      beta = self.nixosConfigurations.beta.config.system.build.vm;
+      elbrus = self.nixosConfigurations.elbrus.config.system.build.vm;
+      lambda = self.nixosConfigurations.lambda.config.system.build.vm;
+      nas = self.nixosConfigurations.nas.config.system.build.vm;
     };
-
-    hosts = {
-      beta.modules = [ ./hosts/beta inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x270 ];
-      elbrus.modules = [ ./hosts/elbrus ];
-      lambda.modules = [ ./hosts/lambda ];
-      nas.modules = [ ./hosts/nas ];
-    };
-
-    nixosModules.default = import ./modules;
-
-    overlays.default = import ./overlay;
-
-    # outputsBuilder = channels: {
-    #   packages = let
-    #     docs = import ./docs { pkgs = channels.nixpkgs; };
-    #   in {
-    #     docs-manpages = docs.manPages;
-    #     docs-html = docs.manual.html;
-    #   };
-    # };
   };
 }

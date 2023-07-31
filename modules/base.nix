@@ -1,6 +1,8 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 let
   cfg = config.base;
+  nixpkgsPath = "/etc/nixpkgs/channels/nixpkgs";
+  unstablePath = "/etc/nixpkgs/channels/unstable";
 in
 {
   options.base = with lib;{
@@ -52,16 +54,42 @@ in
 
   config = lib.mkMerge [
     {
-      nix = {
-        package = pkgs.nixFlakes;
-        extraOptions = ''
-          experimental-features = nix-command flakes
-          # trusted-substituters = https://lean4.cachix.org/
-        '';
-        settings.auto-optimise-store = true;
-        # binaryCachePublicKeys = [ "lean4.cachix.org-1:mawtxSxcaiWE24xCXXgh3qnvlTkyU7evRRnGeAhD4Wk=" ];
-        gc.automatic = true;
-      };
+      nix =
+        {
+          package = pkgs.nixFlakes;
+          extraOptions = ''
+            experimental-features = nix-command flakes
+          '';
+          settings = {
+            auto-optimise-store = true;
+            substituters = [
+              "http://nas:5555"
+              "https://cache.nixos.org"
+            ];
+            trusted-public-keys = [
+              "nas:TngeLMrJNW+7qgP4hMFsrtuqFMD434NGOoYLp+twews="
+              "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+            ];
+          };
+          # binaryCachePublicKeys = [ "lean4.cachix.org-1:mawtxSxcaiWE24xCXXgh3qnvlTkyU7evRRnGeAhD4Wk=" ];
+          gc.automatic = true;
+
+          registry = {
+            nixpkgs.flake = inputs.nixpkgs;
+            unstable.flake = inputs.unstable;
+          };
+
+          nixPath = [
+            "nixpkgs=${nixpkgsPath}"
+            "unstable=${unstablePath}"
+            # "/nix/var/nix/profiles/per-user/root/channels"
+          ];
+        };
+
+      systemd.tmpfiles.rules = [
+        "L+ ${nixpkgsPath}     - - - - ${inputs.nixpkgs}"
+        "L+ ${unstablePath}     - - - - ${inputs.unstable}"
+      ];
 
       base.ssh-keys = import ../ssh-keys.nix;
 
@@ -135,11 +163,11 @@ in
 
     (lib.mkIf cfg.sound {
       sound.enable = true; # Enable sound.
-      
+
       hardware = {
         pulseaudio = {
           enable = true;
-           # Needed by mpd to be able to use Pulseaudio
+          # Needed by mpd to be able to use Pulseaudio
           extraConfig = "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1";
         };
       };

@@ -62,6 +62,7 @@ myKeys conf = mkKeymap conf $
     ("M-n", withFocused toggleFloat), -- toggle float
     ("M-j", windows W.focusDown >> warpToWindowCenter), -- Move focus to the next window
     ("M-k", windows W.focusUp >> warpToWindowCenter), -- Move focus to the previous window
+    ("M-m", windows W.focusMaster >> warpToWindowCenter), -- Move focus to the master window
     ("M-S-<Return>", windows W.swapMaster >> warpToWindowCenter), -- Swap the focused window and the master window
     ("M-S-j", windows W.swapDown >> warpToWindowCenter), -- Swap the focused window with the next window
     ("M-S-k", windows W.swapUp >> warpToWindowCenter), -- Swap the focused window with the previous window
