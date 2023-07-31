@@ -57,14 +57,6 @@
 
       overlays.default = import ./overlay;
 
-      # outputsBuilder = channels: {
-      #   packages = let
-      #     docs = import ./docs { pkgs = channels.nixpkgs; };
-      #   in {
-      #     docs-manpages = docs.manPages;
-      #     docs-html = docs.manual.html;
-      #   };
-      # };
     } // {
     hydraJobs = {
       beta = self.nixosConfigurations.beta.config.system.build.vm;
