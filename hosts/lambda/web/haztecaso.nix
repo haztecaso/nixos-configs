@@ -70,6 +70,11 @@ in
         forceSSL = true;
         locations."/".proxyPass = "http://nas:4747";
       };
+      "cache.haztecaso.com" = {
+        useACMEHost = "haztecaso.com";
+        forceSSL = true;
+        locations."/".proxyPass = "http://nas:5555";
+      };
     };
     # mpdws = {
     #   enable = true;
