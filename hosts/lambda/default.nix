@@ -2,7 +2,6 @@
   imports = [
     ./hardware.nix
     # ./networking.nix
-    ./borg-backup.nix
     ./web
   ];
 
@@ -33,7 +32,7 @@
     stateVersion = "23.05";
   };
 
-  environment.systemPackages = with pkgs; [ agenix ];
+  environment.systemPackages = with pkgs; [ agenix borgbackup ];
 
   programs = {
     mosh.enable = true;

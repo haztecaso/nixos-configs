@@ -32,10 +32,20 @@
       recommendedProxySettings = true;
       recommendedTlsSettings = true;
     };
+    borgbackup.jobs.webs = {
+      paths = "/var/www/";
+      exclude = [ "/var/www/haztecaso.com/radio-old/" ];
+      encryption.mode = "none"; 
+      environment.BORG_RSH = "ssh -i /home/skolem/.ssh/id_rsa";
+      repo = "ssh://skolem@nas:22/mnt/raid/backups/borg/lambda-webs";
+      compression = "auto,zstd";
+      startAt = "3:30:0";
+      persistentTimer = true;
+    };
     mysql.package = pkgs.mariadb;
     mysqlBackup = {
       enable = true;
-      calendar = "03:30:00";
+      calendar = "03:00:00";
       location = "/var/www/mysqlBackup";
       singleTransaction = true;
     };
