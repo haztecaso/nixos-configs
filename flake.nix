@@ -9,6 +9,7 @@
     nixos-hardware = { url = "github:NixOS/nixos-hardware/master"; };
     agenix = { url = "github:ryantm/agenix"; inputs.nixpkgs.follows = "nixpkgs"; inputs.home-manager.follows = "home-manager"; };
     neovim-flake = { url = "github:haztecaso/neovim-flake"; inputs.nixpkgs.follows = "nixpkgs"; };
+    bwmenu = { url = "github:haztecaso/bwmenu"; inputs.nixpkgs.follows = "nixpkgs"; };
     jobo_bot = { url = "github:haztecaso/jobo_bot"; inputs.nixpkgs.follows = "nixpkgs"; };
     remadbot = { url = "github:haztecaso/remadbot"; inputs.nixpkgs.follows = "nixpkgs"; };
     mpdws = { url = "github:haztecaso/mpdws"; inputs = { nixpkgs.follows = "nixpkgs"; utils.follows = "utils"; }; };
@@ -29,6 +30,7 @@
       inputs.mpdws.overlay
       inputs.tidal.overlays.default
       (final: prev: { unstable = inputs.unstable.legacyPackages.${prev.system}; })
+      (final: prev: { bwmenu = inputs.bwmenu.packages.${prev.system}.bwmenu; })
       self.overlays.default
     ];
 
