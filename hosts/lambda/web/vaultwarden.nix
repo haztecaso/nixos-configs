@@ -13,15 +13,6 @@ in
         rocketPort = 8222;
       };
     };
-    borgbackup.jobs.vaultwarden = {
-      paths = backupDir;
-      encryption.mode = "none"; 
-      environment.BORG_RSH = "ssh -i /home/skolem/.ssh/id_rsa";
-      repo = "ssh://skolem@nas:22/mnt/raid/backups/borg/vaultwarden";
-      compression = "auto,zstd";
-      startAt = "0/6:0:0";
-      persistentTimer = true;
-    };
     nginx.virtualHosts = {
       vaultwarden = {
         enableACME = true;
@@ -36,5 +27,16 @@ in
         locations."/".return = "301 https://bw.haztecaso.com$request_uri";
       };
     };
+    borgbackup.jobs.vaultwarden = {
+      paths = backupDir;
+      encryption.mode = "none"; 
+      environment.BORG_RSH = " -o StrictHostKeyChecking=nossh -i /home/skolem/.ssh/id_rsa -o StrictHostKeyChecking=no";
+      repo = "ssh://skolem@nas:22/mnt/raid/backups/borg/vaultwarden";
+      compression = "auto,zstd";
+      startAt = "3:30:0";
+      persistentTimer = true;
+    };
   };
+  systemd.tmpfiles.rules = [ "d ${backupDir} - vaultwarden vaultwarden 7d" ];
+  systemd.timers.backup-vaultwarden.timerConfig.OnCalendar = "3:0:0";
 }
