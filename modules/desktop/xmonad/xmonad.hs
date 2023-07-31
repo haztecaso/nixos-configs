@@ -140,6 +140,7 @@ myManageHook =
       resource =? "desktop_window" --> doIgnore,
       resource =? "kdesktop" --> doIgnore,
       className =? "GParted" --> doRectFloat centerRect,
+      className =? "Pavucontrol" --> doRectFloat centerRect,
       className =? "mpvWorkspace9" --> doCenterFloat
     ]
     <+> insertPosition End Newer
