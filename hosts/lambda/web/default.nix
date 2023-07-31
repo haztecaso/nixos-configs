@@ -36,7 +36,7 @@
     mysqlBackup = {
       enable = true;
       calendar = "03:30:00";
-      location = '/var/www/mysqlBackup';
+      location = "/var/www/mysqlBackup";
       singleTransaction = true;
     };
     phpfpm.phpOptions = ''
