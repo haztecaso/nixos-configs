@@ -1,17 +1,17 @@
 { config, lib, pkgs, ... }:
 {
   imports = [
+    # ./lagransala.nix
     ./claudiogabis.nix
     ./colchonreview.nix
     ./drupaltest.nix
     ./elvivero.nix
     ./haztecaso.nix
-    # ./lagransala.nix
     ./matomo.nix
     ./thumbor.nix
+    ./vaultwarden.nix
     ./wpleandro.nix
     ./zulmarecchini.nix
-    ./vaultwarden.nix
   ];
 
   security.acme = {
@@ -33,6 +33,12 @@
       recommendedTlsSettings = true;
     };
     mysql.package = pkgs.mariadb;
+    mysqlBackup = {
+      enable = true;
+      calendar = "03:30:00";
+      location = '/var/www/mysqlBackup';
+      singleTransaction = true;
+    };
     phpfpm.phpOptions = ''
       extension=${pkgs.phpExtensions.imagick}/lib/php/extensions/imagick.so
     '';
