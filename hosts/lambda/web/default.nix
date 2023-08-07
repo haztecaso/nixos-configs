@@ -41,6 +41,13 @@
       compression = "auto,zstd";
       startAt = "3:30:0";
       persistentTimer = true;
+      prune.keep = {
+        within = "1d";
+        daily = 7;
+        weekly = 4;
+        monthly = 6;
+        yearly = 4;
+      };
     };
     mysql.package = pkgs.mariadb;
     mysqlBackup = {
