@@ -9,6 +9,7 @@
     ./haztecaso.nix
     ./matomo.nix
     ./thumbor.nix
+    ./ulogger.nix
     ./vaultwarden.nix
     ./wpleandro.nix
     ./zulmarecchini.nix
