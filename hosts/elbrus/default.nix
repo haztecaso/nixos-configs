@@ -82,6 +82,9 @@
     stateVersion = "23.05";
   };
 
+  environment.extraInit = ''
+    xset -s 300 300
+  '';
 
   programs = {
     mosh.enable = true;
