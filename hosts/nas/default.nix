@@ -1,7 +1,7 @@
 { config, pkgs, ... }: {
   imports = [
     ./hardware.nix
-    # ./hydra.nix
+    ./hydra.nix
     ./media.nix 
     # ./nextcloud.nix
     ./navidrome.nix
