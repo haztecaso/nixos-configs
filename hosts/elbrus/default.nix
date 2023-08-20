@@ -83,7 +83,7 @@
   };
 
   environment.extraInit = ''
-    xset -s 300 300
+    xset s 300 300
   '';
 
   programs = {
@@ -96,6 +96,11 @@
     printing.drivers = [
       (pkgs.writeTextDir "share/cups/model/ricoh-mp-c2011-pdf.ppd" (builtins.readFile ./Ricoh-MP_C2011-PDF-Ricoh.ppd))
     ];
+
+    mullvad-vpn = {
+      enable = true;
+      package = pkgs.mullvad-vpn;
+    };
   };
 
   custom = {
