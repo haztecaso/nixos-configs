@@ -38,7 +38,7 @@
             N = "~/Nube";
             l = "~/Nube/lecturas";
             mo = "~/Nube/money";
-            u = "~/Nube/uni/Actuales";
+            u = "~/Nube/uni";
           };
         };
         programs = {
