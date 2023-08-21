@@ -3,7 +3,7 @@
   custom.mesh.nodes = {
     lambda = { 
       publicIp = "185.215.164.95"; 
-      ip = "10.0.0.1";
+      ip = "10.0.1.1";
       Ed25519PublicKey = "nNqnvCbJyny153B7P3sW108RrnJ0rpOXDuttYIqfb+M";
       rsaPublicKey = ''
         MIICCgKCAgEA1jd6FRtcohz95Gk5Iceh6l7fbFDYgN445CT/+RbVl2TgQu4nK/HJ

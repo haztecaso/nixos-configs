@@ -77,15 +77,30 @@ in
         allowedTCPPorts = [ node.port ];
         allowedUDPPorts = [ node.port ];
       };
-      interfaces."tinc.mesh".ipv4 = {
-        addresses = [ { address = node.ip;  prefixLength = 24; } ];
-        # routes    = [ { address = "192.168.0.0"; prefixLength = 24; via = "10.0.0.2"; } ];
-      };
+      # interfaces."tinc.mesh".ipv4 = {
+      #   addresses = [ { address = node.ip;  prefixLength = 24; } ];
+      #   # routes    = [ { address = "192.168.0.0"; prefixLength = 24; via = "10.0.0.2"; } ];
+      # };
     };
     services.tinc.networks.mesh = {
       debugLevel = 4;
       name = nodeName;
       hosts = lib.mapAttrs mkTincHost cfg.nodes;
     };
+    environment.etc = {
+      "tinc/mesh/tinc-up".source = pkgs.writeScript "tinc-up-mesh" ''
+        #!${pkgs.stdenv.shell}
+        ${pkgs.nettools}/bin/ifconfig $INTERFACE ${node.ip} netmask 255.255.255.0
+      '';
+      "tinc/mesh/tinc-down".source = pkgs.writeScript "tinc-down-mesh" ''
+        /run/wrappers/bin/sudo ${pkgs.nettools}/bin/ifconfig $INTERFACE down
+      '';
+    };
+    security.sudo.extraRules = [
+      {
+        users = [ "tinc.mesh" ];
+        commands = [ { command  = "${pkgs.nettools}/bin/ifconfig"; options  = [ "NOPASSWD" ]; } ];
+      }
+    ];
   });
 }
