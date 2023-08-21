@@ -38,6 +38,7 @@
       hostDefaults = {
         extraArgs = { inherit inputs; };
         modules = [
+          ./meshNodes.nix
           ./modules
           inputs.agenix.nixosModules.default
           inputs.home-manager.nixosModule
