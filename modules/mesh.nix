@@ -83,6 +83,7 @@ in
       };
     };
     services.tinc.networks.mesh = {
+      debugLevel = 4;
       name = nodeName;
       hosts = lib.mapAttrs mkTincHost cfg.nodes;
     };
