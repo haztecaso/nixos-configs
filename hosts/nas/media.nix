@@ -43,7 +43,13 @@
       openFirewall = true;
     };
 
-    jellyseerr = {
+    # jellyseerr = {
+    #   enable = true;
+    #   openFirewall = true;
+    #   port = 5055;
+    # };
+
+    ombi = {
       enable = true;
       openFirewall = true;
       port = 5055;
