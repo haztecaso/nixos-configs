@@ -1,5 +1,62 @@
 { config, lib, pkgs, ... }: 
+let
+  cfg = config.custom.mesh;
+  nodeOptions = with lib; types.submodule {
+    options = {
+      name = mkOption {
+        type = types.str;
+        description = ''
+          Name of the node in the tinc network. 
+          Must match the machine's hostname.
+        '';
+      };
+      ip = mkOption {
+        type = types.str;
+        example = "10.0.0.1";
+        description = ''
+          The ipv4 address of the node in the tinc network.
+        '';
+      };
+      port = mkOption {
+        type = types.port;
+        default = 665;
+        description = ''
+          TCP/UDP port used by the tinc network.
+        '';
+      };
+      Ed25519PublicKey = mkOption {
+        type = types.str;
+        description = ''
+          The Ed25519 public key of the node.
+        '';
+      };
+      rsaPublicKey = {
+        type = types.str;
+        description = ''
+          The RSA public key of the node.
+        '';
+      }
+    };
+  };
+  mkTincHost = node: ''
+    Subnet = ${node.ip}
+    Port = ${node.port}
+    Ed25519PublicKey = ${node.Ed25519PublicKey}
+    -----BEGIN RSA PUBLIC KEY-----
+    ${rsaPublicKey}
+    -----END RSA PUBLIC KEY-----
+  '';
+in
 {
+  options.custom.mesh = with lib; {
+    nodes = mkOption {
+      default = [];
+      type = with types; attrsOf nodeOptions;
+      description = ''
+        Nodes of the tinc mesh network;
+      '';
+    };
+  };
   config = {
     networking = {
       firewall = {

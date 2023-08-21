@@ -6,7 +6,6 @@ in
   imports = [
     ./autofs.nix
     ./fava.nix
-    ./mesh.nix
     ./moodle-dl.nix
     ./music-server.nix
     ./syncthing.nix
