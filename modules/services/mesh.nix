@@ -13,9 +13,10 @@
     };
     services.tinc.networks.mesh = {
       name = config.networking.hostName;
+      debugLevel = 4;
       hostSettings = { 
         lambda = {
-          addresses = [ ];
+          addresses = [ { address = "185.215.164.95"; port = 655; } ];
           subnets = [ { address = "10.0.0.1"; } ];
           rsaPublicKey = ''
             -----BEGIN RSA PUBLIC KEY-----
