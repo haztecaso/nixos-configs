@@ -8,6 +8,7 @@
     ./elvivero.nix
     ./haztecaso.nix
     ./matomo.nix
+    ./meshcentral.nix
     ./thumbor.nix
     ./ulogger.nix
     ./vaultwarden.nix
