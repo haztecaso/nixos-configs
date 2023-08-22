@@ -77,10 +77,7 @@ in
         allowedTCPPorts = [ node.port ];
         allowedUDPPorts = [ node.port ];
       };
-      # interfaces."tinc.mesh".ipv4 = {
-      #   addresses = [ { address = node.ip;  prefixLength = 24; } ];
-      #   # routes    = [ { address = "192.168.0.0"; prefixLength = 24; via = "10.0.0.2"; } ];
-      # };
+      hosts = lib.mapAttrs' (name: value: (lib.nameValuePair value.ip [ name ])) cfg.nodes;
     };
     services.tinc.networks.mesh = {
       debugLevel = 4;
