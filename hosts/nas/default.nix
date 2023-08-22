@@ -51,6 +51,20 @@
     docker.enable = true;
   };
 
+  services = {
+    meshcentral = {
+      enable = true;
+      settings = {
+        settings = {
+          cert = "meshcentral.haztecaso.com";
+          tlsOffload = "10.0.0.1";
+          WANonly = true;
+          port = 4001;
+        };
+      };
+    };
+  };
+
   custom.services = {
     syncthing = {
       enable = true;
