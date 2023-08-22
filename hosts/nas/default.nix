@@ -60,6 +60,7 @@
           tlsOffload = "10.0.0.1";
           WANonly = true;
           port = 4001;
+          aliasPort = 443;
         };
       };
     };
