@@ -1,8 +1,8 @@
-{ config, lib, pkgs, ... }: 
+{ config, lib, pkgs, ... }:
 {
   custom.mesh.nodes = {
-    lambda = { 
-      publicIp = "185.215.164.95"; 
+    lambda = {
+      publicIp = "185.215.164.95";
       ip = "10.0.0.1";
       Ed25519PublicKey = "nNqnvCbJyny153B7P3sW108RrnJ0rpOXDuttYIqfb+M";
       rsaPublicKey = ''
@@ -19,7 +19,7 @@
         uj36F4x2VjVj8nhmlxJMMO6hDtuiPsOLJUC8kY5C0eU9vIaBbxgGlqkCAwEAAQ==
       '';
     };
-    nas = { 
+    nas = {
       ip = "10.0.0.2";
       connectTo = "lambda";
       Ed25519PublicKey = "6+O8yM8bm6UK+/BvZ/67DBr1Fw0hn+mm++Dh3aFxYoK";
@@ -35,6 +35,24 @@
         h4baYUf+EHn5ve1GWymd4hNCmomWhliozN9058/IbcG3qfAMhXtaDoPLPpOV6MPA
         a1z2pUX804Uao/eKvkbFt5/3i5uGK53OPcV0dsB/inydqOWwtr8Av7cci76yldfj
         3qMSiUBbCmVXF1vD++goAkjO9rqreeHDOGCMYksL+alXYkftq3jDfMMCAwEAAQ==
+      '';
+    };
+    elbrus = {
+      ip = "10.0.0.3";
+      connectTo = "lambda";
+      Ed25519PublicKey = "wl8bacoiy20G1QVhaUP16An2vcDVdUZ5Fa8CZ9TxfPN";
+      rsaPublicKey = ''
+        MIICCgKCAgEAl9WCDrUCUvAnQPfeGmfcgXRiAUgX8APK0jrvdTTuOm+WrIlH6X0h
+        dBRk0eFQs4daaXw5chuPabDZZWe3yaINiMJmUm+R1rMA9QrsnrlqBY/k+iX0cYl+
+        0tWXO+OktDlfTczct+cFQaQ1EM/7C9B7EprODZx6S/ozEC9aFiS7DajVog+D74Mb
+        etflyTti/pRoGPauMakae5ZZEfmHmwrVnmODSSg90YLETQJqCLpCycZrSSJrhHuy
+        z6KL3OzMHUXTSpR4TqS/gPopa24U7YUgq1/9yDCazEcDUY3ivc/SEh8CGYwLw4F7
+        G8r0vF2bLsAhyrfG6CiTo840z7zv4dt8QwC96VMS6tjkkp2V76XWg+0jySBjNKpz
+        eGcs/+Zn/8lq7qOCim7soDWJafaVDSmw/jJTv6rv1OxP+ci01laI8sIYRiTc80BK
+        LBj92yUKYblPUItByvOJGrbYuKUNqOOP6szJ8Ew/j5KBBSP76V1CfRkagXFkHO0o
+        jQKW5opbixF1TWwJ7N+SJZogSEHrAERDzFrupT9KL7YvhpD6qUuR4lXHV2nxOEJU
+        TmVykm7Hr5wAHt+kPNP6lTwrYnD2GHMgzClChcvuDU0NTZ8J5PjDLnprbklQpwUH
+        ixP6Min+TpcfDPGex8yXTP2WWy0+Tjpt6tKtbaEb7Wf9m10QSj2EHtUCAwEAAQ==
       '';
     };
   };
