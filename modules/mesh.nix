@@ -90,16 +90,19 @@ in
     environment.etc = {
       "tinc/mesh/tinc-up".source = pkgs.writeScript "tinc-up-mesh" ''
         #!${pkgs.stdenv.shell}
-        ${pkgs.nettools}/bin/ifconfig $INTERFACE ${node.ip} netmask 255.255.255.0
+        ${pkgs.iproute2}/bin/ip link set $INTERFACE up
+        ${pkgs.iproute2}/bin/ip addr add 10.0.0.0/32 dev $INTERFACE
       '';
       "tinc/mesh/tinc-down".source = pkgs.writeScript "tinc-down-mesh" ''
-        /run/wrappers/bin/sudo ${pkgs.nettools}/bin/ifconfig $INTERFACE down
+        #!${pkgs.stdenv.shell}
+        /run/wrappers/bin/sudo ${pkgs.iproute2}/bin/ip addr del 10.0.0.0/32 dev $INTERFACE
+        /run/wrappers/bin/sudo ${pkgs.iproute2}/bin/ip link set $INTERFACE down 
       '';
     };
     security.sudo.extraRules = [
       {
         users = [ "tinc.mesh" ];
-        commands = [ { command  = "${pkgs.nettools}/bin/ifconfig"; options  = [ "NOPASSWD" ]; } ];
+        commands = [ { command  = "${pkgs.iproute2}/bin/ip"; options  = [ "NOPASSWD" ]; } ];
       }
     ];
   });
