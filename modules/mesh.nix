@@ -95,7 +95,7 @@ in
       '';
       "tinc/mesh/tinc-down".source = pkgs.writeScript "tinc-down-mesh" ''
         #!${pkgs.stdenv.shell}
-        /run/wrappers/bin/sudo ${pkgs.iproute2}/bin/ip addr del ${node.ip}/32 dev $INTERFACE
+        /run/wrappers/bin/sudo ${pkgs.iproute2}/bin/ip addr del ${node.ip}/24 dev $INTERFACE
         /run/wrappers/bin/sudo ${pkgs.iproute2}/bin/ip link set $INTERFACE down 
       '';
     };
