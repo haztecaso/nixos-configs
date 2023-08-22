@@ -91,11 +91,11 @@ in
       "tinc/mesh/tinc-up".source = pkgs.writeScript "tinc-up-mesh" ''
         #!${pkgs.stdenv.shell}
         ${pkgs.iproute2}/bin/ip link set $INTERFACE up
-        ${pkgs.iproute2}/bin/ip addr add 10.0.0.0/32 dev $INTERFACE
+        ${pkgs.iproute2}/bin/ip addr add ${node.ip}/24 dev $INTERFACE
       '';
       "tinc/mesh/tinc-down".source = pkgs.writeScript "tinc-down-mesh" ''
         #!${pkgs.stdenv.shell}
-        /run/wrappers/bin/sudo ${pkgs.iproute2}/bin/ip addr del 10.0.0.0/32 dev $INTERFACE
+        /run/wrappers/bin/sudo ${pkgs.iproute2}/bin/ip addr del ${node.ip}/32 dev $INTERFACE
         /run/wrappers/bin/sudo ${pkgs.iproute2}/bin/ip link set $INTERFACE down 
       '';
     };
