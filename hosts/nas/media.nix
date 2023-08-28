@@ -18,6 +18,12 @@
       openFirewall = true;
     };
 
+    lidarr = {
+      enable = true;
+      group = "media";
+      openFirewall = true;
+    };
+
     # bazarr = {
     #   enable = true;
     #   group = "media";
@@ -42,12 +48,6 @@
       enable = true;
       openFirewall = true;
     };
-
-    # jellyseerr = {
-    #   enable = true;
-    #   openFirewall = true;
-    #   port = 5055;
-    # };
 
     ombi = {
       enable = true;
