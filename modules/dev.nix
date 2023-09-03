@@ -39,7 +39,7 @@ in
       ] ++ pythonPackages;
     })
     (lib.mkIf cfg.nodejs {
-      environment.systemPackages = with pkgs; [ nodejs yarn ];
+      environment.systemPackages = with pkgs; [ nodejs yarn nodePackages.pnpm ];
     })
     (lib.mkIf cfg.direnv.enable {
       # nix-direnv flake support
