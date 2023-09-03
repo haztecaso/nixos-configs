@@ -41,8 +41,8 @@
           xs = "config-cycle statusbar.show always never";
           xt = "config-cycle tabs.show always never";
           xx = "config-cycle tabs.show always never;; config-cycle statusbar.show always never";
-          ",p" = "spawn --userscript ${pkgs.bwmenu}/bin/bwmenu";
-          "<Ctrl-Shift-l>" = "spawn --userscript ${pkgs.bwmenu}/bin/bwmenu";
+          # ",p" = "spawn --userscript ${pkgs.bwmenu}/bin/bwmenu";
+          # "<Ctrl-Shift-l>" = "spawn --userscript ${pkgs.bwmenu}/bin/bwmenu";
         };
       };
     };
