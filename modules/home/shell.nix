@@ -15,7 +15,7 @@ in
     defaultShell = mkOption {
       type = types.package;
       description = "Default shell. For now only bash is working as intended.";
-      default = pkgs.bash; # TODO: bash for now, until I discover how to prolerly set EDITOR and VISUAL variables on zsh...
+      default = pkgs.zsh;
     };
     initExtra = mkOption {
       type = types.listOf types.str;
@@ -98,7 +98,7 @@ in
         enable = true;
         enableBashIntegration = true;
         enableZshIntegration = true;
-        changeDirWidgetOptions = [ "--preview 'tree -C {} | head -200'"];
+        changeDirWidgetOptions = [ "--preview 'tree -C {} | head -200'" ];
         fileWidgetOptions = [ "--preview 'head -200 {}'" ];
       };
     };
