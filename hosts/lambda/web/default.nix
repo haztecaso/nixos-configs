@@ -9,6 +9,7 @@
     ./haztecaso.nix
     ./matomo.nix
     ./meshcentral.nix
+    ./ombi.nix
     ./thumbor.nix
     ./ulogger.nix
     ./vaultwarden.nix
