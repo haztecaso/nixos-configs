@@ -26,6 +26,11 @@ in
         forceSSL = true;
         locations."/".return = "301 https://elvivero.es$request_uri";
       };
+      "cloud.elvivero.es" = {
+        useACMEHost = "elvivero.es";
+        forceSSL = true;
+        locations."/".proxyPass = "http://nas:8888";
+      };
     };
   };
   home-manager.sharedModules = [{
