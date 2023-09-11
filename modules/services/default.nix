@@ -15,34 +15,9 @@ in
   options.custom.services = with lib; {
     gitea.enable = mkEnableOption "Enable gitea code hosting.";
     netdata.enable = mkEnableOption "Enable netdata web panel.";
-    radicale.enable = mkEnableOption "Enable radicale (Cal|Card)DAV server.";
   };
 
   config = with lib; mkMerge [
-      (mkIf cfg.gitea.enable (let
-        port = 8006;
-        serverName = "dav.haztecaso.com";
-      in {
-        services = {
-          radicale = {
-            enable = true;
-            settings = {
-              server.hosts = [ "localhost:${toString port}"];
-              auth = {
-                type = "htpasswd";
-                htpasswd_filename = "/var/lib/radicale/htpasswd";
-                htpasswd_encryption = "bcrypt";
-              };
-            };
-          };
-          nginx.virtualHosts.radicale = {
-            enableACME = true;
-            forceSSL = true;
-            serverName = serverName;
-            locations."/".proxyPass = "http://127.0.0.1:${toString port}";
-          };
-        };
-      }))
       # gitea config
       (mkIf cfg.gitea.enable (let
         cfg = config.custom.services.gitea;

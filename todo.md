@@ -1,5 +1,6 @@
 ## To do
 
+- sistema automatizado de backups
 - mover proyectos github a instancia personal gitea
 - instalar statping
 - reemplazar thumbor por imgproxy

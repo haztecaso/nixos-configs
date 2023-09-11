@@ -3,6 +3,7 @@
     ./hardware.nix
     # ./networking.nix
     ./web
+    ./radicale.nix
   ];
 
   users.users = with config.base.ssh-keys; {
@@ -47,7 +48,6 @@
       #   folder = "/var/lib/syncthing/uni-moodle/";
       # };
       netdata.enable = true;
-      radicale.enable = true;
       syncthing = {
         enable = true;
         folders = [ "uni-moodle" "nube" "android-camara" "vault" "zotero-storage" ];
