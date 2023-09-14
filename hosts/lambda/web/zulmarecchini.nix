@@ -1,29 +1,31 @@
 { config, lib, pkgs, ... }:
 let
-  root = "/var/www/zulmarecchini.com";
+  host = "twozeroeightthree.com";
+  root = "/var/www/${host}";
 in
 {
-  security.acme.certs."zulmarecchini.com" = {
+  security.acme.certs."${host}" = {
     dnsProvider = "cloudflare";
     credentialsFile = config.age.secrets."cloudflare".path;
     group = "nginx";
-    extraDomainNames = [ "*.zulmarecchini.com" ];
+    extraDomainNames = [ "*.${host}" ];
   };
   services = {
     nginx.virtualHosts = {
-      "*.zulmarecchini.com" = {
-        serverName = "*.zulmarecchini.com";
+      "*.${host}" = {
+        serverName = "*.${host}";
+        useACMEHost = "${host}";
         forceSSL = true;
-        useACMEHost = "zulmarecchini.com";
-        locations."/".return = "404";
+        # locations."/".return = "404";
+        locations."/".return = "301 https://${host}$request_uri";
       };
-      "zulmarecchini.com" = {
-        useACMEHost = "zulmarecchini.com";
+      "${host}" = {
+        useACMEHost = "${host}";
         forceSSL = true;
         root = root;
         extraConfig = ''
           error_log syslog:server=unix:/dev/log debug;
-          access_log syslog:server=unix:/dev/log,tag=zulmarecchini;
+          access_log syslog:server=unix:/dev/log,tag=${host};
         '';
         locations."/".extraConfig = ''
           if ($request_uri ~ ^/(.*)index\.html) {
@@ -31,10 +33,6 @@ in
           }
           try_files $uri $uri.html $uri/ =404;
         '';
-      };
-      "www.zulmarecchini.com" = {
-        enableACME = true;
-        locations."/".return = "301 https://zulmarecchini.com$request_uri";
       };
     };
   };

@@ -17,7 +17,7 @@ in
         useACMEHost = "${host}";
         forceSSL = true;
         # locations."/".return = "404";
-        locations."/".return = "301 https://zulmarecchini.com$request_uri";
+        locations."/".return = "301 https://${host}$request_uri";
       };
       "${host}" = {
         useACMEHost = "${host}";
@@ -25,9 +25,12 @@ in
         root = root;
         extraConfig = ''
           error_log syslog:server=unix:/dev/log debug;
-          access_log syslog:server=unix:/dev/log,tag=zulmarecchini;
+          access_log syslog:server=unix:/dev/log,tag=${host};
         '';
         locations."/".extraConfig = ''
+          if ($request_uri ~ ^/(.*)index\.html) {
+            return 302 /$1;
+          }
           try_files $uri $uri.html $uri/ =404;
         '';
       };
