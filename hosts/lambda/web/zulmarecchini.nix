@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 let
-  host = "twozeroeightthree.com";
+  host = "zulmarecchini.com";
   root = "/var/www/${host}";
 in
 {
