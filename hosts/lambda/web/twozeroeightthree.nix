@@ -25,7 +25,7 @@ in
         root = root;
         extraConfig = ''
           error_log syslog:server=unix:/dev/log debug;
-          access_log syslog:server=unix:/dev/log,tag=${host};
+          access_log syslog:server=unix:/dev/log,tag=twozeroeightthree;
         '';
         locations."/".extraConfig = ''
           if ($request_uri ~ ^/(.*)index\.html) {
