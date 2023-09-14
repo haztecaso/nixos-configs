@@ -11,6 +11,7 @@
     ./meshcentral.nix
     ./ombi.nix
     ./thumbor.nix
+    ./twozeroeightthree.nix
     ./ulogger.nix
     ./vaultwarden.nix
     ./wpleandro.nix
