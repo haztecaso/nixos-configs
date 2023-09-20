@@ -5,6 +5,7 @@
     ./mesh.nix
     ./dev.nix
     ./home
+    ./web
     ./monitors.nix
     ./services
   ];
