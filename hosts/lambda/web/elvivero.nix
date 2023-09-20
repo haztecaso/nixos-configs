@@ -1,17 +1,25 @@
 { config, lib, pkgs, ... }:
 let
   root = "/var/www/elvivero.es";
+  host = "elvivero.es";
 in
 {
-  security.acme.certs."elvivero.es" = {
+  security.acme.certs."${host}" = {
     dnsProvider = "cloudflare";
     credentialsFile = config.age.secrets."cloudflare".path;
     group = "nginx";
+    extraDomainNames = [ "*.${host}" ];
   };
   services = {
     nginx.virtualHosts = {
-      "elvivero.es" = {
-        useACMEHost = "elvivero.es";
+      "*.${host}" = {
+        serverName = "*.${host}";
+        useACMEHost = host;
+        addSSL = true;
+        locations."/".return = "301 https://${host}$request_uri";
+      };
+      "${host}" = {
+        useACMEHost = host;
         forceSSL = true;
         root = root;
         extraConfig = ''
@@ -21,13 +29,13 @@ in
           access_log syslog:server=unix:/dev/log,tag=elvivero;
         '';
       };
-      "www.elvivero.es" = {
-        useACMEHost = "elvivero.es";
+      "www.${host}" = {
+        useACMEHost = host;
         forceSSL = true;
         locations."/".return = "301 https://elvivero.es$request_uri";
       };
       "cloud.elvivero.es" = {
-        useACMEHost = "elvivero.es";
+        useACMEHost = host;
         forceSSL = true;
         locations."/".proxyPass = "http://nas:8888";
       };

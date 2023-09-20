@@ -22,8 +22,7 @@ in
         "*.${host}" = {
           serverName = "*.${host}";
           useACMEHost = host;
-          forceSSL = true;
-          # locations."/".return = "404";
+          addSSL = true;
           locations."/".return = "301 https://${host}$request_uri";
         };
         "${host}" = {

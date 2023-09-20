@@ -2,18 +2,32 @@
 let
   root = "/var/www/wpleandro";
   app  = "wpleandro";
+  host = "paseourbano.com";
 in
 {
+  security.acme.certs."paseourbano.com" = {
+    dnsProvider = "cloudflare";
+    credentialsFile = config.age.secrets."cloudflare".path;
+    group = "nginx";
+    extraDomainNames = [ "*.${host}" ];
+  };
   services = {
     nginx = {
+      # additionalModules = [ pkgs.nginxModules.cache-purge ]; # TODO: Configurar cache
       upstreams."php-${app}" = {
         servers = {
           "unix:${config.services.phpfpm.pools.${app}.socket}" =  {};
         };
       };
       virtualHosts = {
-        "wpleandro.elvivero.es" = {
-          useACMEHost = "elvivero.es";
+        "*.${host}" = {
+          serverName = "*.${host}";
+          useACMEHost = host;
+          addSSL = true;
+          locations."/".return = "301 https://${host}$request_uri";
+        };
+        "${host}" = {
+          useACMEHost = host;
           forceSSL = true;
           root = root;
           extraConfig = ''
