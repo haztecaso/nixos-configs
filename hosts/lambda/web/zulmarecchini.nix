@@ -3,6 +3,7 @@ let
   host = "zulmarecchini.com";
   app  = "wpzulma";
   root = "/var/www/${host}";
+  max_upload_filesize = "30M";
 in
 {
   security.acme.certs."${host}" = {
@@ -28,27 +29,12 @@ in
         "${host}" = {
           useACMEHost = host;
           forceSSL = true;
-          root = "/var/www/zulmarecchini.com-static";
-          extraConfig = ''
-            error_log syslog:server=unix:/dev/log debug;
-            access_log syslog:server=unix:/dev/log,tag=zulmarecchini;
-          '';
-          locations."/".extraConfig = ''
-            if ($request_uri ~ ^/(.*)index\.html) {
-              return 302 /$1;
-            }
-            try_files $uri $uri.html $uri/ =404;
-          '';
-        };
-        "dev.${host}" = {
-          useACMEHost = host;
-          forceSSL = true;
           root = root;
           extraConfig = ''
             index index.php index.html;
             error_log syslog:server=unix:/dev/log debug;
             access_log syslog:server=unix:/dev/log,tag=${app};
-            client_max_body_size 20M;
+            client_max_body_size ${max_upload_filesize};
           '';
           locations = {
             "/".extraConfig = ''
@@ -94,8 +80,8 @@ in
         "catch_workers_output" = true;
       };
       phpOptions = ''
-        upload_max_filesize = 20M
-        post_max_size = 25M
+        upload_max_filesize = ${max_upload_filesize}
+        post_max_size = ${max_upload_filesize}
       '';
       phpEnv."PATH" = lib.makeBinPath [ pkgs.php ];
     };
