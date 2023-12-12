@@ -7,7 +7,7 @@ in
     enable = mkEnableOption "Enable music-server: mpd + icecast";
     library = mkOption {
       type = types.path;
-      description = "Music libary directory."; 
+      description = "Music libary directory.";
     };
     playlistDir = mkOption {
       type = types.path;
@@ -28,6 +28,7 @@ in
 
   config = lib.mkIf cfg.enable {
     users.extraGroups.users.members = [ "mpd" ];
+    users.extraGroups.media.members = [ "mpd" ];
     services = {
       mpd = {
         enable = true;
