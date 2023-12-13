@@ -23,17 +23,19 @@ import           XMonad.Layout.ThreeColumns
 import           XMonad.Layout.TwoPanePersistent
 import           XMonad.Prompt                   (amberXPConfig)
 import           XMonad.Prompt.ConfirmPrompt     (confirmPrompt)
-import qualified XMonad.StackSet                 as W
 import           XMonad.Util.EZConfig            (mkKeymap)
+import           XMonad.Util.NamedScratchpad
 import           XMonad.Util.Run
 import           XMonad.Util.SpawnOnce
+import           XMonad.Util.WorkspaceCompare
+import qualified XMonad.StackSet                 as W
 
 -- Main function
 ------------------------------------------------------------------------
 main :: IO ()
 main = do
   xmonad $
-    ewmh $
+    addEwmhWorkspaceSort (pure $ filterOutWs ["NSP"]) . ewmh $
       docks
         def
           { terminal = "alacritty",
@@ -56,7 +58,7 @@ myKeys conf = mkKeymap conf $
   [ ("M-S-r", spawn "xmonad --restart"), -- Recompile and restart xmonad
     ("M-S-e", confirmPrompt amberXPConfig "Quit XMonad" $ io exitSuccess), -- Quit xmonad
     -- Workspaces
-    ("M-<Tab>", toggleWS),
+    ("M-<Tab>", toggleWS' ["NSP"]),
     -- Windows
     ("M-q", kill), -- close focused window
     ("M-n", withFocused toggleFloat), -- toggle float
@@ -73,18 +75,21 @@ myKeys conf = mkKeymap conf $
     ("M-y",      sendMessage $ JumpToLayout "twopane"),
     ("M-S-y",    sendMessage $ JumpToLayout "twopanebottom"),
     ("M-b",      sendMessage $ JumpToLayout "bottom"),
-    ("M-M1-g",      sendMessage $ JumpToLayout "grid"),
+    ("M-M1-g",   sendMessage $ JumpToLayout "grid"),
     ("M-f",      sendMessage $ JumpToLayout "full"),
-    ("M-x", sendMessage NextLayout), -- Rotate through the available layout algorithms
-    ("M-h", sendMessage Shrink), -- Shrink the master area
-    ("M-l", sendMessage Expand), -- Expand the master area
-    ("M-,", sendMessage (IncMasterN 1)), -- Increment the number of windows in the master area
-    ("M-.", sendMessage (IncMasterN (-1))), -- Deincrement the number of windows in the master area
-    ("M-ñ", toggleSpacing),
-    ("M-g", goToSelected def),
-    ("M-S-g", bringSelected def),
-    ("M-+", incScreenWindowSpacing 2),
-    ("M--", decScreenWindowSpacing 2),
+    ("M-x",      sendMessage NextLayout), -- Rotate through the available layout algorithms
+    ("M-h",      sendMessage Shrink), -- Shrink the master area
+    ("M-l",      sendMessage Expand), -- Expand the master area
+    ("M-,",      sendMessage (IncMasterN 1)), -- Increment the number of windows in the master area
+    ("M-.",      sendMessage (IncMasterN (-1))), -- Deincrement the number of windows in the master area
+    ("M-ñ",      toggleSpacing),
+    ("M-g",      goToSelected def),
+    ("M-S-g",    bringSelected def),
+    ("M-+",      incScreenWindowSpacing 2),
+    ("M--",      decScreenWindowSpacing 2),
+    -- Scratchpads
+    ("M-S-n", namedScratchpadAction myScratchpads "ssh-nas"),
+    ("M-S-l", namedScratchpadAction myScratchpads "ssh-lambda"),
     -- Status bar
     ("M-z", sendMessage ToggleStruts), -- Toggle the status bar gap
     ("M-S-z", spawn "polybar-msg cmd toggle") -- Toggle the status bar
@@ -100,12 +105,16 @@ toggleFloat w =
     ( \s ->
         if M.member w (W.floating s)
           then W.sink w s
-          else W.float w centerRect s
+          else W.float w centerRectDefault s
     )
 
-centerRect = W.RationalRect d d d' d'
-  where d  = 0.04
-        d' = 1-2*d
+
+centerRect d = W.RationalRect d d (1-2*d) (1-2*d)
+
+centerRect' dx = W.RationalRect dx dy (1-2*dx) (1-2*dy)
+  where dy  = dx*16/9
+
+centerRectDefault = centerRect' 0.04
 
 warpToWindowCenter = warpToWindow 0.5 0.5
 
@@ -132,6 +141,16 @@ myLayout =
 toggleSpacing :: X ()
 toggleSpacing = toggleScreenSpacingEnabled >> toggleWindowSpacingEnabled
 
+-- Scratchpads
+------------------------------------------------------------------------
+myScratchpads = [
+    NS "ssh-nas" "alacritty -T ssh-nas -e ssh nas" (title =? "ssh-nas") 
+        (customFloating centerRectDefault),
+    NS "ssh-lambda" "alacritty -T ssh-lambda -e ssh lambda" (title =? "ssh-lambda") 
+        (customFloating centerRectDefault)
+  ]
+
+
 -- Hooks
 ------------------------------------------------------------------------
 -- Window rules
@@ -140,9 +159,10 @@ myManageHook =
     [
       resource =? "desktop_window" --> doIgnore,
       resource =? "kdesktop" --> doIgnore,
-      className =? "GParted" --> doRectFloat centerRect,
-      className =? "Pavucontrol" --> doRectFloat centerRect,
-      className =? "mpvWorkspace9" --> doCenterFloat
+      className =? "GParted" --> doRectFloat (centerRect 0.2),
+      className =? "Pavucontrol" --> doRectFloat (centerRect 0.2),
+      title =? "mpvSame" --> doRectFloat centerRectDefault,
+      namedScratchpadManageHook myScratchpads 
     ]
     <+> insertPosition End Newer
 
