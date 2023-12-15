@@ -12,11 +12,6 @@ in
       type = types.attrsOf types.str;
       description = "Shell aliases.";
     };
-    defaultShell = mkOption {
-      type = types.package;
-      description = "Default shell. For now only bash is working as intended.";
-      default = pkgs.zsh;
-    };
     initExtra = mkOption {
       type = types.listOf types.str;
       default = [ ];
