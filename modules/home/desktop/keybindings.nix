@@ -71,7 +71,7 @@ in
         "super + shift + Return" = "${term_launcher}/bin/term_launcher";
         "super + e" = "${run_if_present}/bin/run_if_present emacs";
         "super + p" = "${run_if_present}/bin/run_if_present bwmenu";
-        "super + {space,s}" = "${pkgs.rofi}/bin/rofi -show {run,ssh}";
+        "super + {space,s,c}" = "rofi -show {run,ssh,calc}";
         "super + w" = "${pkgs.qutebrowser}/bin/qutebrowser";
         "super + shift + w" = "${pkgs.qutebrowser}/bin/qutebrowser --target private-window";
         "super + alt + w" = "${pkgs.firefox}/bin/firefox";
@@ -80,13 +80,13 @@ in
         "super + {XF86LaunchA, Print}" = "${pkgs.flameshot}/bin/flameshot gui";
         "XF86LaunchB" = "${pkgs.alacritty}/bin/alacritty -e ssh skolem@haztecaso.com";
         "{XF86Eject, XF86Favorites}" = "${pkgs.betterlockscreen}/bin/betterlockscreen -l dim";
- 
+
         # Media keys
         "XF86Audio{Prev,Next,Play}" = "${pkgs.playerctl}/bin/playerctl -p mpd {previous,next,play-pause}";
         "super + alt + XF86Audio{Prev,Next,Play}" = "${pkgs.playerctl}/bin/playerctl {previous,next,play-pause}";
         "super + XF86Audio{Prev,Next}" = "${pkgs.playerctl}/bin/playerctl -p mpd position 2{-,+}";
         "super + XF86AudioPlay" = "${mpd_random}/bin/mpd_random";
- 
+
         # Volume
         "XF86Audio{Raise,Lower}Volume" = pamixer_cmd "{-i,-d} 10";
         "super + XF86Audio{Raise,Lower}Volume" = pamixer_cmd "{-i,-d} 5";
@@ -94,12 +94,12 @@ in
         "XF86AudioMute" = pamixer_cmd "-t";
         "XF86AudioMicMute" = pamixer_cmd "--source 1 -t";
         "super + XF86AudioMute" = pamixer_cmd "--set-volume 0";
- 
+
         # Screen brightness
         "XF86MonBrightness{Up,Down}" = light_cmd "{-A,-U} 5";
         "super + alt + XF86MonBrightness{Up,Down}" = light_cmd "{-A,-U} 1";
         "super + XF86MonBrightness{Up,Down}" = light_cmd "-S {100,0}";
- 
+
         # Keyboard brightness
         "XF86KbdBrightness{Up,Down}" = light_kbd_cmd "{-A,-U} 5";
         "super + alt + XF86KbdBrightness{Up,Down}" = light_kbd_cmd "{-A,-U} 1";
