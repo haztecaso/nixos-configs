@@ -37,7 +37,7 @@
           "<Alt-Shift-j>" = "tab-move -";
           "<Alt-Shift-k>" = "tab-move +";
           V = "hint links spawn --detach mpv {hint-url} --pause --ytdl-format=\"bestvideo[height<=720]+bestaudio/best[height<=720]\"";
-          "<Ctrl-Shift-v>" = "hint links spawn --detach mpv {hint-url} --pause --x11-name=mpvWorkspace9";
+          "<Ctrl-Shift-v>" = "hint links spawn --detach mpv {hint-url} --pause --title=mpvSame";
           xs = "config-cycle statusbar.show always never";
           xt = "config-cycle tabs.show always never";
           xx = "config-cycle tabs.show always never;; config-cycle statusbar.show always never";
