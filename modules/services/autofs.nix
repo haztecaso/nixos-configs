@@ -8,16 +8,18 @@ in
   };
   config = lib.mkIf cfg.enable {
     services.autofs = {
-        enable = true;
-        autoMaster = let 
-          options="-fstype=fuse,rw,sync,nodev,allow_other,follow_symlinks ";
-          sshfs="${pkgs.sshfs}/bin/sshfs";
+      enable = true;
+      autoMaster =
+        let
+          options = "-fstype=fuse,rw,sync,nodev,allow_other,follow_symlinks ";
+          sshfs = "${pkgs.sshfs}/bin/sshfs";
           mapConf = pkgs.writeText "auto" ''
             nas ${options} :${sshfs}\#root@nas\:/mnt/raid
           '';
-        in ''
+        in
+        ''
           /mnt/auto/ file:${mapConf} -v
-      '';
+        '';
     };
     environment.systemPackages = [ pkgs.sshfs ];
   };
