@@ -167,12 +167,16 @@ in
     programs = {
       rofi = {
         enable = true;
+        package = pkgs.rofi.override { plugins = [ pkgs.rofi-rbw pkgs.rofi-calc ]; };
         font = "Hack Nerd Font 10";
         location = "center";
         terminal = "${pkgs.alacritty}/bin/alacritty";
         pass.enable = true;
         theme = "gruvbox-dark-hard";
-        # extraConfig = { "ssh-client" = "mosh"; };
+        extraConfig = {
+          modi = "run,ssh,window,drun,calc";
+          # "ssh-client" = "mosh"; 
+        };
       };
     };
   };
