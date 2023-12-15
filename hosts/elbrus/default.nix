@@ -28,6 +28,11 @@
         zotero
       ];
       services.syncthing.enable = true;
+      programs.nushell = {
+        enable = true;
+        # configFile.source = ./config.nu;
+        # envFile.source = ./env.nu;
+      };
       custom = {
         desktop = {
           enable = true;
@@ -39,13 +44,58 @@
             l = "~/Nube/lecturas";
             mo = "~/Nube/money";
             u = "~/Nube/uni";
+            v = "~/vault";
           };
         };
         programs = {
           latex.enable = true;
           money.enable = true;
           tmux.color = "#aaee00";
-          vim.package = pkgs.neovimDefault;
+          # music.enable = true;
+          vim.package = pkgs.mkNeovim {
+            completion.enable = true;
+            snippets.enable = true;
+            lsp = {
+              enable = true;
+              languages = {
+                bash = true;
+                clang = true;
+                css = true;
+                docker = true;
+                html = true;
+                json = true;
+                lean = false;
+                lua = true;
+                nix = true;
+                php = true;
+                python = true;
+                tex = true;
+                typescript = true;
+                vimscript = true;
+                yaml = true;
+              };
+            };
+            plugins = {
+              ack = true;
+              commentary = true;
+              copilot = true;
+              enuch = true;
+              fugitive = true;
+              gitgutter = true;
+              gruvbox = true;
+              lastplace = true;
+              nix = true;
+              repeat = true;
+              telescope = true;
+              tidal = true;
+              toggleterm = true;
+              treesitter = true;
+              vim-airline = true;
+              vim-visual-multi = true;
+              vimtex = true;
+              vinegar = true;
+            };
+          };
         };
         shell.aliases = {
           python = "${pkgs.python38Packages.ipython}/bin/ipython";
@@ -57,20 +107,30 @@
   };
 
   environment.systemPackages = with pkgs; [
-    docker-compose
-    sqlitebrowser
-    redis
+    nmap
+    blender
     darktable
-    qgis
-    gparted
-    parted
-    mixxx
+    docker-compose
     ffmpeg
+    gparted
+    mixxx
+    obs-studio
     openai-whisper-cpp
+    parted
+    qgis
+    redis
+    rofi-calc # todo: move to home module
+    rofi-rbw # todo: move to home module
+    soulseekqt
+    sqlitebrowser
+    superdirt-start
+    teamviewer
+    tidal
   ];
 
   virtualisation = {
     docker.enable = true;
+    waydroid.enable = true;
   };
 
   base = {
@@ -89,18 +149,13 @@
   programs = {
     mosh.enable = true;
     dconf.enable = true;
+    adb.enable = true;
   };
 
   services = {
     safeeyes.enable = true;
-    printing.drivers = [
-      (pkgs.writeTextDir "share/cups/model/ricoh-mp-c2011-pdf.ppd" (builtins.readFile ./Ricoh-MP_C2011-PDF-Ricoh.ppd))
-    ];
-
-    mullvad-vpn = {
-      enable = true;
-      package = pkgs.mullvad-vpn;
-    };
+    tor.enable = true;
+    teamviewer.enable = true;
   };
 
   custom = {
