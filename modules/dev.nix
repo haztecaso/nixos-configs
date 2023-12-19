@@ -24,16 +24,15 @@ in
         poetry
         wget
         axel
-        python310
         silver-searcher
         jq
         git
         du-dust
         ncdu
-        python38Full
+        python3Full
         filezilla
         bat
-        exa
+        eza
         fd
         ripgrep
       ] ++ pythonPackages;
@@ -42,17 +41,25 @@ in
       environment.systemPackages = with pkgs; [ nodejs yarn nodePackages.pnpm ];
     })
     (lib.mkIf cfg.direnv.enable {
+      # TODO: remove old config
       # nix-direnv flake support
-      nixpkgs.overlays = [
-        (self: super: { nix-direnv = super.nix-direnv.override { enableFlakes = true; }; })
-      ];
-      environment.systemPackages = with pkgs; [ direnv nix-direnv ];
+      # nixpkgs.overlays = [
+      #   (self: super: { nix-direnv = super.nix-direnv.override { enableFlakes = true; }; })
+      # ];
+      # environment.systemPackages = with pkgs; [ direnv nix-direnv ];
+      # environment.pathsToLink = [ "/share/nix-direnv" ];
+      programs.direnv = {
+        enable = true;
+        silent = false;
+        loadInNixShell = true;
+        nix-direnv.enable = true;
+      };
+      # TODO: understand implications of this config
       # nix options for derivations to persist garbage collection
       nix.extraOptions = ''
         keep-outputs = true
         keep-derivations = true
       '';
-      environment.pathsToLink = [ "/share/nix-direnv" ];
     })
   ];
 }

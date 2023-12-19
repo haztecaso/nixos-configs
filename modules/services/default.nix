@@ -18,12 +18,14 @@ in
   };
 
   config = with lib; mkMerge [
-      # gitea config
-      (mkIf cfg.gitea.enable (let
+    # gitea config
+    (mkIf cfg.gitea.enable (
+      let
         cfg = config.custom.services.gitea;
         port = 8003;
         serverName = "git.haztecaso.com";
-      in {
+      in
+      {
         services = {
           gitea = {
             enable = true;
@@ -66,30 +68,34 @@ in
             locations."/".proxyPass = "http://127.0.0.1:${toString port}";
           };
         };
-        mailserver.loginAccounts."gitea@haztecaso.com" = {
-          hashedPassword = "$2y$05$YHivXvJqLKBlXuddFkGpiev087Ve0DsJwyvKJFUsEfB31ULkZPS5O";
-          name = "Gitea";
-          sendOnly = true;
-        };
-      }))
+        # mailserver.loginAccounts."gitea@haztecaso.com" = {
+        #   hashedPassword = "$2y$05$YHivXvJqLKBlXuddFkGpiev087Ve0DsJwyvKJFUsEfB31ULkZPS5O";
+        #   name = "Gitea";
+        #   sendOnly = true;
+        # };
+      }
+    ))
 
-      # netdata config
-      (mkIf cfg.netdata.enable (let
+    # netdata config
+    (mkIf cfg.netdata.enable (
+      let
         cfg = config.custom.services.netdata;
         port = 8004;
         serverName = "netdata.lambda.lan";
-      in {
+      in
+      {
         services = {
           netdata = {
             enable = true;
             config.web."default port" = port;
           };
-       
+
           nginx.virtualHosts.netdata = {
             serverName = serverName;
             locations."/".proxyPass = "http://127.0.0.1:${toString port}";
           };
         };
-      }))
+      }
+    ))
   ];
 }

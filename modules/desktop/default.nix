@@ -52,8 +52,8 @@ in
       opengl.enable = true;
     };
     fonts = {
-      enableDefaultFonts = true;
-      fonts = with pkgs; [
+      enableDefaultPackages = true;
+      packages = with pkgs; [
         dejavu_fonts
         noto-fonts
         noto-fonts-emoji

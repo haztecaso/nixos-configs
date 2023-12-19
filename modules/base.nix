@@ -93,8 +93,6 @@ in
 
       base.ssh-keys = import ../ssh-keys.nix;
 
-      nixpkgs.config.allowUnfree = true;
-
       users = {
         mutableUsers = true;
         defaultUserShell = pkgs.zsh;

@@ -98,7 +98,7 @@
           };
         };
         shell.aliases = {
-          python = "${pkgs.python38Packages.ipython}/bin/ipython";
+          python = "${pkgs.python3Packages.ipython}/bin/ipython";
           youtube-dl = "yt-dlp";
           ytdl = "yt-dlp";
         };
@@ -139,7 +139,7 @@
     bat = "BAT1";
     wlp = { interface = "wlp4s0"; useDHCP = true; };
     eth.interface = "enp0s31f6";
-    stateVersion = "23.05";
+    stateVersion = "23.11";
   };
 
   environment.extraInit = ''
@@ -173,6 +173,6 @@
     };
   };
 
-  fonts.fonts = [ pkgs.google-fonts ];
+  fonts.packages = [ pkgs.google-fonts ];
 
 }
