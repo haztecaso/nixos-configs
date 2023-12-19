@@ -49,9 +49,11 @@ in
   config = lib.mkIf cfg.enable {
     services.syncthing = {
       enable = true;
-      inherit devices;
-      folders = lib.getAttrs cfg.folders folders;
       openDefaultPorts = true;
+      settings = {
+        inherit devices;
+        folders = lib.getAttrs cfg.folders folders;
+      };
     };
   };
 }
