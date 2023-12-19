@@ -50,7 +50,6 @@
       };
 
       hosts = {
-        beta.modules = [ ./hosts/beta inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x270 ];
         elbrus.modules = [ ./hosts/elbrus ];
         lambda.modules = [ ./hosts/lambda ];
         nas.modules = [ ./hosts/nas ];
@@ -62,7 +61,6 @@
 
     } // {
     hydraJobs = {
-      beta = self.nixosConfigurations.beta.config.system.build.vm;
       elbrus = self.nixosConfigurations.elbrus.config.system.build.vm;
       lambda = self.nixosConfigurations.lambda.config.system.build.vm;
       nas = self.nixosConfigurations.nas.config.system.build.vm;
