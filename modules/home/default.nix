@@ -22,7 +22,6 @@ in
           ./mail.nix
           ./money.nix
           ./monitors.nix
-          ./music.nix
           ./nnn.nix
           ./ranger
           ./shell.nix

@@ -3,6 +3,7 @@
     ./hardware.nix
     ./hydra.nix
     ./media.nix
+    ./music.nix
     # ./nextcloud.nix
     ./navidrome.nix
   ];
@@ -27,10 +28,6 @@
     skolem = { ... }: {
       custom.programs = {
         tmux.color = "#aaee00";
-        music = {
-          enable = true;
-          library = "/mnt/raid/music/Library";
-        };
       };
     };
   };
@@ -79,10 +76,6 @@
       beancountFile = "/var/lib/syncthing/nube/money/ledger.book";
     };
     tailscale.enable = true;
-    music-server = {
-      enable = true;
-      library = "/mnt/raid/music/Library";
-    };
   };
 
   networking.firewall = {
