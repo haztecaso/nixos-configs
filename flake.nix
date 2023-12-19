@@ -7,7 +7,12 @@
     # snm = { url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-22.05"; inputs = { nixpkgs.follows = "unstable"; nixpkgs-22_05.follows = "nixpkgs"; }; };
     nixos-hardware = { url = "github:NixOS/nixos-hardware/master"; };
     agenix = { url = "github:ryantm/agenix"; inputs.nixpkgs.follows = "nixpkgs"; inputs.home-manager.follows = "home-manager"; };
-    neovim-flake = { url = "github:haztecaso/neovim-flake"; inputs.nixpkgs.follows = "nixpkgs"; };
+    neovim-flake = {
+      url = "github:haztecaso/neovim-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.utils.follows = "utils";
+      inputs.tidal.follows = "tidal";
+    };
     # bwmenu = { url = "github:haztecaso/bwmenu"; inputs.nixpkgs.follows = "nixpkgs"; };
     jobo_bot = { url = "github:haztecaso/jobo_bot"; inputs.nixpkgs.follows = "nixpkgs"; };
     remadbot = { url = "github:haztecaso/remadbot"; inputs.nixpkgs.follows = "nixpkgs"; };
