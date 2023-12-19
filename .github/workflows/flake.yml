@@ -1,0 +1,23 @@
+name: "flake check"
+on:
+  pull_request:
+  push:
+  workflow_run:
+    workflows: ["update flakes"]
+    types: [completed]
+    branches: [main]
+
+jobs:
+  nix-flake-check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    # dont' use runner since check won't run if it fails.
+    - uses: cachix/install-nix-action@v22
+      with:
+        extra_nix_config: |
+          experimental-features = nix-command flakes
+
+    - run: |
+        nix flake check .
