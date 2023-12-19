@@ -2,7 +2,7 @@
   imports = [
     ./hardware.nix
     ./hydra.nix
-    ./media.nix 
+    ./media.nix
     # ./nextcloud.nix
     ./navidrome.nix
   ];
@@ -15,7 +15,7 @@
   base = {
     hostname = "nas";
     hostnameSymbol = "ν";
-    stateVersion = "23.05";
+    stateVersion = "23.11";
   };
 
   home-manager.users = {
