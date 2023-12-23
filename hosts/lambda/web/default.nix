@@ -6,6 +6,7 @@
     ./colchonreview.nix
     ./drupaltest.nix
     ./elvivero.nix
+    ./enelpetirrojo.nix
     ./haztecaso.nix
     ./matomo.nix
     ./meshcentral.nix
@@ -14,6 +15,7 @@
     ./twozeroeightthree.nix
     ./ulogger.nix
     ./vaultwarden.nix
+    ./wplay.nix
     ./wpleandro.nix
     ./zulmarecchini.nix
   ];
