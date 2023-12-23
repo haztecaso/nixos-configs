@@ -50,7 +50,7 @@
 
   services = {
     meshcentral = {
-      enable = true;
+      enable = false; # TODO: config properly
       settings = {
         settings = {
           cert = "meshcentral.haztecaso.com";
