@@ -48,10 +48,6 @@
       #   folder = "/var/lib/syncthing/uni-moodle/";
       # };
       netdata.enable = true;
-      syncthing = {
-        enable = true;
-        folders = [ "uni-moodle" "nube" "android-camara" "vault" "zotero-storage" ];
-      };
       tailscale.enable = true;
     };
   };
@@ -63,6 +59,12 @@
   };
 
   services = {
+
+    syncthing = {
+      enable = true;
+      openDefaultPorts = true;
+      guiAddress = "0.0.0.0:8384";
+    };
 
     jobo_bot = {
       enable = true;
@@ -77,27 +79,6 @@
       prod = true;
       configFile = config.age.secrets."remadbot.conf".path;
     };
-
-    # radicale =
-    #   let
-    #     htpasswd = pkgs.writeText "radicale.users" (concatStrings
-    #       (flip mapAttrsToList config.mailserver.loginAccounts (mail: user:
-    #         mail + ":" + user.hashedPassword + "\n"
-    #       ))
-    #     );
-    #   in
-    #   {
-    #     enable = true;
-    #     config = ''
-    #       [auth]
-    #       type = htpasswd
-    #       htpasswd_filename = ${htpasswd}
-    #       htpasswd_encryption = bcrypt
-    #     '';
-    #   };
-
-    # nginx.virtualHosts."dav.haztecaso.com" = {
-    # };
 
     # roundcube = {
     #   enable = false;
