@@ -1,6 +1,8 @@
 # IDEAS
-# Use only nginx with image_filter module:
-# - https://charlesleifer.com/blog/nginx-a-caching-thumbnailing-reverse-proxying-image-server-/
+# - Use only nginx with some module and cache enabled:
+#   - https://charlesleifer.com/blog/nginx-a-caching-thumbnailing-reverse-proxying-image-server-/
+#   - https://github.com/cubicdaiya/ngx_small_light
+# - migrate to https://github.com/cshum/imagor
 
 { config, lib, pkgs, ... }: {
   age.secrets."thumbor".file = ../../../secrets/thumbor.age;
