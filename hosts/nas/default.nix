@@ -49,6 +49,11 @@
   };
 
   services = {
+    syncthing = {
+      enable = true;
+      openDefaultPorts = true;
+      # guiAddress = "0.0.0.0:8384";
+    };
     meshcentral = {
       enable = false; # TODO: config properly
       settings = {
@@ -64,10 +69,6 @@
   };
 
   custom.services = {
-    syncthing = {
-      enable = true;
-      folders = [ "uni-moodle" "nube" "android-camara" "vault" "zotero-storage" ];
-    };
     fava = {
       enable = true;
       hostname = "0.0.0.0";

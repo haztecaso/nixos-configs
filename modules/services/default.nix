@@ -7,7 +7,6 @@ in
     ./autofs.nix
     ./fava.nix
     ./moodle-dl.nix
-    ./syncthing.nix
     ./tailscale.nix
   ];
 
