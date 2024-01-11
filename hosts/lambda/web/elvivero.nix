@@ -28,12 +28,23 @@ in
         "${host}" = {
           useACMEHost = host;
           forceSSL = true;
+          root = "${root}-old";
+          extraConfig = ''
+            expires 1d;
+            error_page 404 /404.html;
+            error_log syslog:server=unix:/dev/log debug;
+            access_log syslog:server=unix:/dev/log,tag=elvivero-old;
+          '';
+        };
+        "static.${host}" = {
+          useACMEHost = host;
+          forceSSL = true;
           root = "${root}-static";
           extraConfig = ''
             expires 1d;
             error_page 404 /404.html;
             error_log syslog:server=unix:/dev/log debug;
-            access_log syslog:server=unix:/dev/log,tag=elvivero;
+            access_log syslog:server=unix:/dev/log,tag=elvivero-static;
           '';
         };
         "www.${host}" = {
