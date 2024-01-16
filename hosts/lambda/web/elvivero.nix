@@ -52,6 +52,11 @@ in
           forceSSL = true;
           locations."/".return = "301 https://elvivero.es$request_uri";
         };
+        "cloud.elvivero.es" = {
+          useACMEHost = host;
+          forceSSL = true;
+          locations."/".return = "301 https://en.elvivero.es$request_uri";
+        };
         "dev.${host}" = {
           useACMEHost = host;
           forceSSL = true;
