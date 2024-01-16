@@ -1,6 +1,11 @@
 { config, lib, pkgs, ... }:
 let
   root = "/var/www/haztecaso.com";
+  redirectTo = destination: {
+    useACMEHost = "haztecaso.com";
+    forceSSL = true;
+    locations."/".return = "301 https://${destination}$request_uri";
+  };
 in
 {
   security.acme.certs."haztecaso.com" = {
@@ -52,30 +57,19 @@ in
           add_after_body /autoindex/after-radio.txt;
         '';
       };
-      "devjxqhdknupcorelqxdbxo.haztecaso.com" = {
-        useACMEHost = "haztecaso.com";
-        forceSSL = true;
-        root = "/var/www/devjxqhdknupcorelqxdbxo.haztecaso.com";
-      };
+      # "devjxqhdknupcorelqxdbxo.haztecaso.com" = {
+      #   useACMEHost = "haztecaso.com";
+      #   forceSSL = true;
+      #   root = "/var/www/devjxqhdknupcorelqxdbxo.haztecaso.com";
+      # };
       "www.haztecaso.com" = {
         enableACME = true;
         locations."/".return = "301 https://haztecaso.com$request_uri";
       };
-      "media.haztecaso.com" = {
-        useACMEHost = "haztecaso.com";
-        forceSSL = true;
-        locations."/".proxyPass = "http://nas:8096";
-      };
-      "music.haztecaso.com" = {
-        useACMEHost = "haztecaso.com";
-        forceSSL = true;
-        locations."/".proxyPass = "http://nas:4747";
-      };
-      "cache.haztecaso.com" = {
-        useACMEHost = "haztecaso.com";
-        forceSSL = true;
-        locations."/".proxyPass = "http://nas:5555";
-      };
+      "media.haztecaso.com" = redirectTo "media.bufanda.cc";
+      "music.haztecaso.com" = redirectTo "music.bufanda.cc";
+      "ombi.haztecaso.com" = redirectTo "ombi.bufanda.cc";
+      "dl.haztecaso.com" = redirectTo "dl.bufanda.cc";
     };
     # mpdws = {
     #   enable = true;

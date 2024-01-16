@@ -2,22 +2,23 @@
 {
   imports = [
     # ./lagransala.nix
+    ./bufanda.nix
     ./claudiogabis.nix
     ./colchonreview.nix
-    ./drupaltest.nix
     ./elvivero.nix
     ./enelpetirrojo.nix
     ./haztecaso.nix
-    ./matomo.nix
-    ./meshcentral.nix
-    ./ombi.nix
     ./thumbor.nix
     ./twozeroeightthree.nix
-    ./ulogger.nix
     ./vaultwarden.nix
     ./wplay.nix
     ./wpleandro.nix
     ./zulmarecchini.nix
+    # ./matomo.nix
+    # ./meshcentral.nix
+    # ./ombi.nix
+    # ./ulogger.nix
+    # ./drupaltest.nix
   ];
 
   security.acme = {
