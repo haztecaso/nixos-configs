@@ -4,7 +4,7 @@
     ./hydra.nix
     ./media.nix
     ./music.nix
-    # ./nextcloud.nix
+    ./nextcloud.nix
     ./navidrome.nix
   ];
 
@@ -52,7 +52,7 @@
     syncthing = {
       enable = true;
       openDefaultPorts = true;
-      # guiAddress = "0.0.0.0:8384";
+      guiAddress = "0.0.0.0:8384";
     };
     meshcentral = {
       enable = false; # TODO: config properly
