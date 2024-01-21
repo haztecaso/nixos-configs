@@ -3,7 +3,7 @@ let
   host = "zulmarecchini.com";
   app  = "wpzulma";
   root = "/var/www/${host}";
-  max_upload_filesize = "30M";
+  max_upload_filesize = "300M";
 in
 {
   security.acme.certs."${host}" = {
