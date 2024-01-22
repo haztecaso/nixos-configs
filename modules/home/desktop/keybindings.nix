@@ -70,7 +70,6 @@ in
         "super + alt + Return" = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.tmux}/bin/tmux new-session -A -s 0";
         "super + shift + Return" = "${term_launcher}/bin/term_launcher";
         "super + e" = "${run_if_present}/bin/run_if_present emacs";
-        "super + p" = "${run_if_present}/bin/run_if_present bwmenu";
         "super + {space,s,c}" = "rofi -show {run,ssh,calc}";
         "super + w" = "${pkgs.qutebrowser}/bin/qutebrowser";
         "super + shift + w" = "${pkgs.qutebrowser}/bin/qutebrowser --target private-window";
