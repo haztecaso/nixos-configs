@@ -3,6 +3,8 @@
   config = lib.mkIf config.custom.desktop.enable {
     home.packages = with pkgs; [
       # buku 
+      keyutils
+      bitwarden-cli
     ];
     programs.qutebrowser = {
       enable = true;
@@ -39,6 +41,7 @@
           K = "tab-next";
           "<Alt-Shift-j>" = "tab-move -";
           "<Alt-Shift-k>" = "tab-move +";
+          v = "spawn --userscript view_in_mpv";
           V = "hint links spawn --detach mpv {hint-url} --pause --ytdl-format=\"bestvideo[height<=720]+bestaudio/best[height<=720]\"";
           "<Ctrl-Shift-v>" = "hint links spawn --detach mpv {hint-url} --pause --title=mpvSame";
           xs = "config-cycle statusbar.show always never";
