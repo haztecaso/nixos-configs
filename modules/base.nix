@@ -61,6 +61,7 @@ in
             experimental-features = nix-command flakes
           '';
           settings = {
+            keep-derivations = true;
             auto-optimise-store = true;
             substituters = [
               "http://nas:5555"
@@ -90,6 +91,7 @@ in
         "L+ ${nixpkgsPath}     - - - - ${inputs.nixpkgs}"
         "L+ ${unstablePath}     - - - - ${inputs.unstable}"
       ];
+
 
       base.ssh-keys = import ../ssh-keys.nix;
 
@@ -137,6 +139,16 @@ in
           ripgrep
         ];
         shells = with pkgs; [ bashInteractive zsh fish ];
+        # Copied from comment in https://www.reddit.com/r/NixOS/comments/19595vc/how_to_keep_source_when_doing_garbage_collection
+        # this should help avoid flake dependencies being garbage collected
+        etc = builtins.listToAttrs (builtins.map
+          (input:
+            lib.attrsets.nameValuePair "sources/${input}" {
+              enable = true;
+              source = inputs.${input};
+              mode = "symlink";
+            })
+          (builtins.attrNames inputs));
       };
 
       programs.zsh.enable = true;
