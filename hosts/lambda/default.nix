@@ -99,22 +99,6 @@
     #     "persistent_login"
     #   ];
     # };
-
-    # headscale = {
-    #   enable = true;
-    #   port = 8004;
-    #   settings = {
-    #     tls_cert_path = "${config.security.acme.certs."headscale.haztecaso.com".directory}/certfile";
-    #     tls_key_path = "${config.security.acme.certs."headscale.haztecaso.com".directory}/keyfile";
-    #   };
-    # };
-
-    # nginx.virtualHosts.headscale = {
-    #   enableACME = true;
-    #   forceSSL = true;
-    #   serverName = "headscale.haztecaso.com";
-    #   locations."/".proxyPass = "http://127.0.0.1:8004";
-    # };
   };
 
   # mailserver = {
