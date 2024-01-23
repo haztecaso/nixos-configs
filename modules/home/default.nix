@@ -20,7 +20,6 @@ in
           ./irssi.nix
           ./latex.nix
           ./mail.nix
-          ./monitors.nix
           ./nnn.nix
           ./ranger
           ./shell.nix

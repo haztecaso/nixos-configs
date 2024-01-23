@@ -185,7 +185,6 @@
     # money
     beancount
     fava
-
     # Downloads
     soulseekqt
     transmission-gtk
