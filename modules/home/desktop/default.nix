@@ -135,13 +135,12 @@ in
           # "ssh-client" = "mosh"; 
         };
       };
-      programs.autorandr = {
+      autorandr = {
         enable = true;
         hooks.postswitch = {
           "polybar-restart" = "systemctl --user restart polybar";
           "hsetroot" = "${pkgs.hsetroot}/bin/hsetroot";
         };
-        profiles = cfg.profiles;
       };
     };
   };
