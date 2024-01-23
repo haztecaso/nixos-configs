@@ -41,6 +41,7 @@
           latex.enable = true;
           tmux.color = "#aaee00";
           # music.enable = true;
+          # TODO: reenable custom vim package
           vim.package = pkgs.mkNeovim {
             completion.enable = true;
             snippets.enable = true;
@@ -115,6 +116,12 @@
 
     # Identity
     autofirma
+
+    # dev
+    redis
+    sqlitebrowser
+    docker-compose
+    subfinder
 
     # network
     nmap
@@ -222,9 +229,8 @@
 
     dev = {
       enable = true;
-      python = true;
       nodejs = true;
-      direnv = true;
+      direnv.enable = true;
     };
   };
 

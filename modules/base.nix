@@ -60,11 +60,13 @@ in
           extraOptions = ''
             experimental-features = nix-command flakes
           '';
+          gc.automatic = true;
           settings = {
             keep-derivations = true;
             auto-optimise-store = true;
             substituters = [
               "http://nas:5555"
+              # "https://cache.bufanda.cc" # TODO: mejor que no pase el trafico por lambda
               "https://cache.nixos.org"
             ];
             trusted-public-keys = [
@@ -72,8 +74,6 @@ in
               "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
             ];
           };
-          # binaryCachePublicKeys = [ "lean4.cachix.org-1:mawtxSxcaiWE24xCXXgh3qnvlTkyU7evRRnGeAhD4Wk=" ];
-          gc.automatic = true;
 
           registry = {
             nixpkgs.flake = inputs.nixpkgs;
@@ -140,7 +140,6 @@ in
         ];
         shells = with pkgs; [ bashInteractive zsh fish ];
         # Copied from comment in https://www.reddit.com/r/NixOS/comments/19595vc/how_to_keep_source_when_doing_garbage_collection
-        # this should help avoid flake dependencies being garbage collected
         etc = builtins.listToAttrs (builtins.map
           (input:
             lib.attrsets.nameValuePair "sources/${input}" {
