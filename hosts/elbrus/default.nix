@@ -106,28 +106,28 @@
     gparted
     parted
 
-    logseq
+    unstable.logseq
     obsidian
 
     timewarrior
 
     # Editors
-    vscodium
+    unstable.vscodium
 
     # Identity
     autofirma
 
     # dev, utils
     redis
-    sqlitebrowser
-    docker-compose
-    subfinder
     gcc
-    file
-    pass
-    axel
-    aria2
     pciutils
+    unstable.sqlitebrowser
+    unstable.docker-compose
+    unstable.subfinder
+    unstable.file
+    unstable.pass
+    unstable.axel
+    unstable.aria2
 
     # network
     nmap
@@ -140,58 +140,60 @@
     # discord
 
     # Mail
-    thunderbird
+    unstable.thunderbird
 
     # Maps
-    qgis
+    unstable.qgis
 
     # Browsers
-    firefox
-    chromium
-    brave
+    unstable.firefox
+    unstable.chromium
+    unstable.brave
     unstable.tor-browser-bundle-bin
 
     # Passwords
-    bitwarden
+    unstable.bitwarden
 
     # Pdf
-    evince
-    okular
-    pdfarranger
+    unstable.evince
+    unstable.okular
+    unstable.pdfarranger
 
     # Documents, books
-    libreoffice
-    zotero
-    calibre
+    unstable.libreoffice
+    unstable.zotero
+    unstable.calibre
     # scantailor-advanced
 
     # Images
-    gimp
-    inkscape
-    darktable
-    sxiv
+    unstable.gimp
+    unstable.inkscape
+    unstable.darktable
+    unstable.sxiv
 
     # Video
-    ffmpeg
+    unstable.ffmpeg
     vlc
-    obs-studio
-    kdenlive
+    unstable.obs-studio
+    unstable.kdenlive
 
     # Audio & music
-    audacity
-    mixxx
+    unstable.audacity
+    unstable.mixxx
     # tidal
     # superdirt-start
 
     # 3d
-    blender
+    unstable.blender
 
     # money
-    beancount
-    fava
+    unstable.beancount
+    unstable.fava
+
     # Downloads
     soulseekqt
-    transmission-gtk
+    # transmission-gtk
+    unstable.transmission_4-gtk
     unstable.yt-dlp
   ];
 
