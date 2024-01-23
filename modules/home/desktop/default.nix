@@ -5,7 +5,7 @@ in
 {
   imports = [
     ./alacritty.nix
-    ./polybar.nix
+    ./polybar
     ./keybindings.nix
     ./mpv.nix
     ./notifications.nix
@@ -42,8 +42,8 @@ in
         xorg.xmodmap
       ];
       keyboard = {
-        layout = "es";
-        options = [ "caps:escape" ];
+        layout = "es,us";
+        options = [ "caps:escape" "grp:alt_space_toggle" ];
       };
     };
     xsession = {

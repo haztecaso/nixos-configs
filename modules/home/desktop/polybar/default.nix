@@ -4,6 +4,10 @@ let
   base = nixosConfig.base;
   wifi = lib.stringLength base.wlp.interface != 0;
   eth = lib.stringLength base.eth.interface != 0;
+  batteryCombined = pkgs.writeScriptBin "battery-combined-udev" ''
+    #!${pkgs.runtimeShell}
+    ${builtins.readFile ./battery-combined-udev.sh}
+  '';
 in
 {
   options.custom.desktop.polybar = with lib; {
@@ -11,6 +15,16 @@ in
       type = types.bool;
       default = true;
       description = "Wether to enable polybar";
+    };
+    batteryCombined = mkOption {
+      type = types.bool;
+      default = false;
+      description = "Wether to enable custom module for displaying BAT0 and BAT1 combined";
+    };
+    bat = mkOption {
+      type = types.string;
+      example = "BAT0";
+      description = "Battery device (value required if batteryCombined is set to false).";
     };
     mpd = mkEnableOption "polybar mpd module";
   };
@@ -39,8 +53,8 @@ in
         module-margin-right = 2
 
         modules-left = ewmh
-        modules-right = ${if cfg.mpd then "mpd " else ""}temp fs ${if wifi then "wifi " else ""}${if eth then "ethernet " else ""}bat vol date
-        tray-position = right
+        modules-right = ${if cfg.mpd then "mpd " else ""}temp fs ${if wifi then
+        "wifi " else ""}${if eth then "ethernet " else ""}${if cfg.batteryCombined then "bat-combined" else "bat"} vol date tray
 
         font-0 = "Literation Mono Nerd Font:size=10;2"
         font-1 = "Hack Nerd Font:size=8;2"
@@ -63,7 +77,7 @@ in
         ${if cfg.mpd then ''[module/mpd]
         type = internal/mpd
         host = 127.0.0.1
-        port = 6600'' else ""}
+        port = 6600
 
         format-online = <label-song>
         format-playing = <label-song> <icon-play>
@@ -73,13 +87,13 @@ in
         icon-play = 
         icon-pause = 
         icon-stop = 
-
+        '' else ""}
         [module/fs]
         type = internal/fs
         mount-0 = /
         interval = 10
         fixed-values = true
-        label-mounted =  %free%
+        label-mounted = %free%
 
         [module/temp]
         type = internal/temperature
@@ -89,14 +103,14 @@ in
         type = internal/network
         interface = ${base.wlp.interface}
         interval = 3
-        label-connected = 直 %local_ip%
+        label-connected = ${base.wlp.interface} %local_ip%
         '' else ""}
         ${if eth then ''
         [module/ethernet]
         type = internal/network
         interface = ${base.eth.interface}
         interval = 3
-        label-connected =  %local_ip%
+        label-connected = ${base.eth.interface} %local_ip%
         '' else ""}
         [module/vol]
         type = internal/pulseaudio
@@ -109,17 +123,17 @@ in
         ramp-volume-1 = 
         ramp-volume-2 = 
 
-        [module/custom-bat]
+        ${if cfg.batteryCombined then ''
+        [module/bat-combined]
         type = custom/script
-        exec = battery_level ${base.bat}
-        interval = 10
-        label =  %output%%
-
+        exec = ${batteryCombined}/bin/battery-combined-udev
+        tail = true
+        '' else ''
         [module/bat]
         type = internal/battery
         full-at = 99
         adapter = ADP1
-        battery = ${base.bat}
+        battery = ${cfg.bat}
         poll-interval = 2
         format-charging = <animation-charging>  <label-charging>
         label-charging = %percentage%%
@@ -138,13 +152,18 @@ in
         animation-discharging-2 = 
         animation-discharging-3 = 
         animation-discharging-4 = 
-
+        ''}
         [module/date]
         type=internal/date
         internal=1
         date=%d %b
         label=%time%  %date%
         time=%H:%M:%S
+
+        [module/tray]
+        type = internal/tray
+        tray-spacing = 6px
+        tray-size = 100%:-6px
       '';
     };
   };
