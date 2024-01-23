@@ -117,11 +117,17 @@
     # Identity
     autofirma
 
-    # dev
+    # dev, utils
     redis
     sqlitebrowser
     docker-compose
     subfinder
+    gcc
+    file
+    pass
+    axel
+    aria2
+    pciutils
 
     # network
     nmap
@@ -130,7 +136,7 @@
     wirelesstools
 
     # Chats
-    # unstable.tdesktop # TODO: reactivate
+    unstable.tdesktop
     # discord
 
     # Mail
@@ -167,15 +173,15 @@
 
     # Video
     ffmpeg
-    # vlc
-    # obs-studio
+    vlc
+    obs-studio
     kdenlive
 
     # Audio & music
     audacity
-    tidal
-    superdirt-start
     mixxx
+    # tidal
+    # superdirt-start
 
     # 3d
     blender
