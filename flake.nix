@@ -4,7 +4,6 @@
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = { url = "github:nix-community/home-manager/release-23.11"; inputs.nixpkgs.follows = "nixpkgs"; };
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus/v1.4.0";
-    # snm = { url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-22.05"; inputs = { nixpkgs.follows = "unstable"; nixpkgs-22_05.follows = "nixpkgs"; }; };
     nixos-hardware = { url = "github:NixOS/nixos-hardware/master"; };
     agenix = { url = "github:ryantm/agenix"; inputs.nixpkgs.follows = "nixpkgs"; inputs.home-manager.follows = "home-manager"; };
     neovim-flake = {
@@ -50,7 +49,6 @@
           inputs.jobo_bot.nixosModule
           inputs.remadbot.nixosModule
           inputs.mpdws.nixosModule
-          # inputs.snm.nixosModule
         ];
       };
 
