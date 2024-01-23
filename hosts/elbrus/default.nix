@@ -116,12 +116,6 @@
     # Identity
     autofirma
 
-    # dev
-    redis
-    sqlitebrowser
-    docker-compose
-    subfinder
-
     # network
     nmap
     dig
@@ -228,8 +222,9 @@
 
     dev = {
       enable = true;
+      python = true;
       nodejs = true;
-      direnv.enable = true;
+      direnv = true;
     };
   };
 
