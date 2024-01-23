@@ -13,7 +13,6 @@
       inputs.utils.follows = "utils";
       inputs.tidal.follows = "tidal";
     };
-    # bwmenu = { url = "github:haztecaso/bwmenu"; inputs.nixpkgs.follows = "nixpkgs"; };
     jobo_bot = { url = "github:haztecaso/jobo_bot"; inputs.nixpkgs.follows = "nixpkgs"; };
     remadbot = { url = "github:haztecaso/remadbot"; inputs.nixpkgs.follows = "nixpkgs"; };
     mpdws = { url = "github:haztecaso/mpdws"; inputs = { nixpkgs.follows = "nixpkgs"; utils.follows = "utils"; }; };
@@ -38,7 +37,6 @@
         inputs.mpdws.overlay
         inputs.tidal.overlays.default
         (final: prev: { unstable = inputs.unstable.legacyPackages.${prev.system}; })
-        # (final: prev: { bwmenu = inputs.bwmenu.packages.${prev.system}.bwmenu; })
         self.overlays.default
       ];
 
