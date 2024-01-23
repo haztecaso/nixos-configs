@@ -22,7 +22,7 @@ in
       description = "Wether to enable custom module for displaying BAT0 and BAT1 combined";
     };
     bat = mkOption {
-      type = types.string;
+      type = types.str;
       example = "BAT0";
       description = "Battery device (value required if batteryCombined is set to false).";
     };

@@ -27,6 +27,8 @@
         desktop = {
           enable = true;
           fontSize = 9;
+          # polybar.batteryCombined = true; # TODO: arreglar
+          polybar.bat = "BAT1";
         };
         shortcuts = {
           paths = {
@@ -143,7 +145,7 @@
     unstable.thunderbird
 
     # Maps
-    unstable.qgis
+    qgis
 
     # Browsers
     unstable.firefox
@@ -189,7 +191,6 @@
     # money
     unstable.beancount
     unstable.fava
-
     # Downloads
     soulseekqt
     # transmission-gtk
@@ -205,7 +206,6 @@
   base = {
     hostname = "elbrus";
     hostnameSymbol = "ε";
-    bat = "BAT1";
     wlp = { interface = "wlp4s0"; useDHCP = true; };
     eth.interface = "enp0s31f6";
     stateVersion = "23.11";
