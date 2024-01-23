@@ -41,13 +41,12 @@
 
   custom = {
     services = {
-      gitea.enable = true;
+      # netdata.enable = true;
       # moodle-dl = { 
       #   enable = true; 
       #   configFile = config.age.secrets."moodle-dl.conf".path; 
       #   folder = "/var/lib/syncthing/uni-moodle/";
       # };
-      netdata.enable = true;
       tailscale.enable = true;
     };
   };
@@ -59,26 +58,25 @@
   };
 
   services = {
-
     syncthing = {
       enable = true;
       openDefaultPorts = true;
       guiAddress = "0.0.0.0:8384";
     };
 
-    jobo_bot = {
-      enable = true;
-      frequency = 20;
-      prod = true;
-      configFile = config.age.secrets."jobo_bot.conf".path;
-    };
+    # jobo_bot = {
+    #   enable = true;
+    #   frequency = 20;
+    #   prod = true;
+    #   configFile = config.age.secrets."jobo_bot.conf".path;
+    # };
 
-    remadbot = {
-      enable = true;
-      frequency = 15;
-      prod = true;
-      configFile = config.age.secrets."remadbot.conf".path;
-    };
+    # remadbot = {
+    #   enable = true;
+    #   frequency = 15;
+    #   prod = true;
+    #   configFile = config.age.secrets."remadbot.conf".path;
+    # };
   };
 }
 
