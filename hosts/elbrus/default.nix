@@ -1,6 +1,6 @@
 { config, pkgs, inputs, ... }:
 {
-  imports = [ ./hardware.nix ./monitors.nix ];
+  imports = [ ./hardware.nix ];
 
   nix.gc.options = "--delete-older-than 18d";
 
@@ -16,9 +16,8 @@
       };
     };
     skolem = { ... }: {
-      home.packages = with pkgs; [
-      ];
       services.syncthing.enable = true;
+      programs.autorandr.profiles = import ./monitors.nix;
       # programs.nushell = {
       #   enable = true;
       #   configFile.source = ./config.nu;
@@ -40,54 +39,52 @@
         };
         programs = {
           latex.enable = true;
-          money.enable = true;
           tmux.color = "#aaee00";
           # music.enable = true;
-          # TODO: reenable custom vim package
-          # vim.package = pkgs.mkNeovim {
-          #   completion.enable = true;
-          #   snippets.enable = true;
-          #   lsp = {
-          #     enable = true;
-          #     languages = {
-          #       bash = true;
-          #       clang = true;
-          #       css = true;
-          #       docker = true;
-          #       html = true;
-          #       json = true;
-          #       lean = false;
-          #       lua = true;
-          #       nix = true;
-          #       php = true;
-          #       python = true;
-          #       tex = true;
-          #       typescript = true;
-          #       vimscript = true;
-          #       yaml = true;
-          #     };
-          #   };
-          #   plugins = {
-          #     ack = true;
-          #     commentary = true;
-          #     copilot = true;
-          #     enuch = true;
-          #     fugitive = true;
-          #     gitgutter = true;
-          #     gruvbox = true;
-          #     lastplace = true;
-          #     nix = true;
-          #     repeat = true;
-          #     telescope = true;
-          #     tidal = true;
-          #     toggleterm = true;
-          #     treesitter = true;
-          #     vim-airline = true;
-          #     vim-visual-multi = true;
-          #     vimtex = true;
-          #     vinegar = true;
-          #   };
-          # };
+          vim.package = pkgs.mkNeovim {
+            completion.enable = true;
+            snippets.enable = true;
+            lsp = {
+              enable = true;
+              languages = {
+                bash = true;
+                clang = true;
+                css = true;
+                docker = true;
+                html = true;
+                json = true;
+                lean = false;
+                lua = true;
+                nix = true;
+                php = true;
+                python = true;
+                tex = true;
+                typescript = true;
+                vimscript = true;
+                yaml = true;
+              };
+            };
+            plugins = {
+              ack = true;
+              commentary = true;
+              copilot = true;
+              enuch = true;
+              fugitive = true;
+              gitgutter = true;
+              gruvbox = true;
+              lastplace = true;
+              nix = true;
+              repeat = true;
+              telescope = true;
+              tidal = true;
+              toggleterm = true;
+              treesitter = true;
+              vim-airline = true;
+              vim-visual-multi = true;
+              vimtex = true;
+              vinegar = true;
+            };
+          };
         };
         shell.aliases = {
           python = "${pkgs.python3Packages.ipython}/bin/ipython";
@@ -158,7 +155,7 @@
     # Documents, books
     libreoffice
     zotero
-    calibre
+    # calibre
     # scantailor-advanced
 
     # Images
@@ -169,8 +166,8 @@
 
     # Video
     ffmpeg
-    vlc
-    obs-studio
+    # vlc
+    # obs-studio
     kdenlive
 
     # Audio & music
