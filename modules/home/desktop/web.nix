@@ -1,14 +1,17 @@
 { config, lib, pkgs, ... }:
 {
   config = lib.mkIf config.custom.desktop.enable {
-    home.packages = with pkgs; [ buku keyutils chromium bitwarden-cli xdotool ];
+    home.packages = with pkgs; [
+      # buku 
+    ];
     programs.qutebrowser = {
       enable = true;
+      package = pkgs.unstable.qutebrowser;
       settings = {
         content = {
-          headers.user_agent = "Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0";
+          # headers.user_agent = "Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0";
           autoplay = false;
-          pdfjs = true;
+          pdfjs = false;
         };
       };
       searchEngines = {
