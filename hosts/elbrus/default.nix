@@ -17,22 +17,13 @@
     };
     skolem = { ... }: {
       home.packages = with pkgs; [
-        autofirma
-        logseq
-        obsidian
-        pdfarranger
-        thunderbird
-        timewarrior
-        unstable.yt-dlp
-        vscodium
-        zotero
       ];
       services.syncthing.enable = true;
-      programs.nushell = {
-        enable = true;
-        # configFile.source = ./config.nu;
-        # envFile.source = ./env.nu;
-      };
+      # programs.nushell = {
+      #   enable = true;
+      #   configFile.source = ./config.nu;
+      #   envFile.source = ./env.nu;
+      # };
       custom = {
         desktop = {
           enable = true;
@@ -52,50 +43,51 @@
           money.enable = true;
           tmux.color = "#aaee00";
           # music.enable = true;
-          vim.package = pkgs.mkNeovim {
-            completion.enable = true;
-            snippets.enable = true;
-            lsp = {
-              enable = true;
-              languages = {
-                bash = true;
-                clang = true;
-                css = true;
-                docker = true;
-                html = true;
-                json = true;
-                lean = false;
-                lua = true;
-                nix = true;
-                php = true;
-                python = true;
-                tex = true;
-                typescript = true;
-                vimscript = true;
-                yaml = true;
-              };
-            };
-            plugins = {
-              ack = true;
-              commentary = true;
-              copilot = true;
-              enuch = true;
-              fugitive = true;
-              gitgutter = true;
-              gruvbox = true;
-              lastplace = true;
-              nix = true;
-              repeat = true;
-              telescope = true;
-              tidal = true;
-              toggleterm = true;
-              treesitter = true;
-              vim-airline = true;
-              vim-visual-multi = true;
-              vimtex = true;
-              vinegar = true;
-            };
-          };
+          # TODO: reenable custom vim package
+          # vim.package = pkgs.mkNeovim {
+          #   completion.enable = true;
+          #   snippets.enable = true;
+          #   lsp = {
+          #     enable = true;
+          #     languages = {
+          #       bash = true;
+          #       clang = true;
+          #       css = true;
+          #       docker = true;
+          #       html = true;
+          #       json = true;
+          #       lean = false;
+          #       lua = true;
+          #       nix = true;
+          #       php = true;
+          #       python = true;
+          #       tex = true;
+          #       typescript = true;
+          #       vimscript = true;
+          #       yaml = true;
+          #     };
+          #   };
+          #   plugins = {
+          #     ack = true;
+          #     commentary = true;
+          #     copilot = true;
+          #     enuch = true;
+          #     fugitive = true;
+          #     gitgutter = true;
+          #     gruvbox = true;
+          #     lastplace = true;
+          #     nix = true;
+          #     repeat = true;
+          #     telescope = true;
+          #     tidal = true;
+          #     toggleterm = true;
+          #     treesitter = true;
+          #     vim-airline = true;
+          #     vim-visual-multi = true;
+          #     vimtex = true;
+          #     vinegar = true;
+          #   };
+          # };
         };
         shell.aliases = {
           python = "${pkgs.python3Packages.ipython}/bin/ipython";
@@ -107,25 +99,97 @@
   };
 
   environment.systemPackages = with pkgs; [
-    nmap
-    blender
-    darktable
-    docker-compose
-    ffmpeg
-    gparted
-    mixxx
-    obs-studio
-    openai-whisper-cpp
-    parted
-    qgis
-    redis
+    # openai-whisper-cpp
     rofi-calc # todo: move to home module
     rofi-rbw # todo: move to home module
-    soulseekqt
+
+    # Partitions
+    filezilla
+    gparted
+    parted
+
+    logseq
+    obsidian
+
+    timewarrior
+
+    # Editors
+    vscodium
+
+    # Identity
+    autofirma
+
+    # dev
+    redis
     sqlitebrowser
-    superdirt-start
-    teamviewer
+    docker-compose
+    subfinder
+
+    # network
+    nmap
+    dig
+    iw
+    wirelesstools
+
+    # Chats
+    # unstable.tdesktop # TODO: reactivate
+    # discord
+
+    # Mail
+    thunderbird
+
+    # Maps
+    qgis
+
+    # Browsers
+    firefox
+    chromium
+    brave
+    unstable.tor-browser-bundle-bin
+
+    # Passwords
+    bitwarden
+
+    # Pdf
+    evince
+    okular
+    pdfarranger
+
+    # Documents, books
+    libreoffice
+    zotero
+    calibre
+    # scantailor-advanced
+
+    # Images
+    gimp
+    inkscape
+    darktable
+    sxiv
+
+    # Video
+    ffmpeg
+    vlc
+    obs-studio
+    kdenlive
+
+    # Audio & music
+    audacity
     tidal
+    superdirt-start
+    mixxx
+
+    # 3d
+    blender
+
+    # money
+    beancount
+    fava
+
+    # Downloads
+    soulseekqt
+    transmission-gtk
+    unstable.yt-dlp
   ];
 
   virtualisation = {

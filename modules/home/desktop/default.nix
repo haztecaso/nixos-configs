@@ -19,60 +19,32 @@ in
       default = 10;
       description = "Base desktop font size";
     };
-    theme = mkOption {
-      type = types.enum [ "dark" "light" ];
-      description = "Color theme."; #TODO: extend action of this option
-      default = "dark";
-    };
   };
   config = lib.mkIf cfg.enable {
     home = {
       packages = with pkgs; [
-        # blender
-        # discord
-        # kdenlive
-        # minecraft
-        # scantailor-advanced
-        # soulseekqt
-        # anki
         arandr
-        audacity
         battery_level
         betterlockscreen
-        bitwarden
-        bitwarden-rofi
         blueman
         dmenu
-        evince
-        filezilla
-        firefox
-        gimp
-        gparted
         hsetroot
-        inkscape
-        libreoffice
         light
         lxappearance
         networkmanager-vpnc
-        okular
         pamixer
-        pavucontrol
         scrot
-        sxiv
-        transmission-gtk
-        unstable.tdesktop
-        unstable.tor-browser-bundle-bin
-        vlc
+        pavucontrol
+        xfce.thunar
         wmctrl
         xarchiver
-        xfce.thunar
         xorg.xev
         xorg.xmodmap
       ];
-      # keyboard = {
-      #   layout = "es";
-      #   options = [ "caps:escape" ];
-      # };
+      keyboard = {
+        layout = "es";
+        options = [ "caps:escape" ];
+      };
     };
     xsession = {
       enable = true;
@@ -83,42 +55,27 @@ in
 
     xresources.extraConfig = builtins.readFile ./.Xresources;
 
-    gtk = lib.mkMerge [
-      {
-        # TODO: mix with shortcuts module
-        gtk3.bookmarks = let home = config.home.homeDirectory; in [
-          "file://${home}/Nube"
-          "file://${home}/Documents"
-          "file://${home}/Music"
-          "file://${home}/Pictures"
-          "file://${home}/Videos"
-          "file://${home}/Downloads"
-          "file://${home}/src"
-        ];
-      }
-      (lib.mkIf (cfg.theme == "dark") {
-        enable = true;
-        iconTheme = {
-          package = pkgs.papirus-icon-theme;
-          name = "Papirus";
-        };
-        theme = {
-          package = pkgs.arc-theme;
-          name = "Arc-Dark";
-        };
-      })
-      (lib.mkIf (cfg.theme == "light") {
-        enable = true;
-        iconTheme = {
-          package = pkgs.elementary-xfce-icon-theme;
-          name = "elementary";
-        };
-        theme = {
-          package = pkgs.greybird;
-          name = "greybird";
-        };
-      })
-    ];
+    gtk = {
+      enable = true;
+      # TODO: mix with shortcuts module
+      gtk3.bookmarks = let home = config.home.homeDirectory; in [
+        "file://${home}/Nube"
+        "file://${home}/Documents"
+        "file://${home}/Music"
+        "file://${home}/Pictures"
+        "file://${home}/Videos"
+        "file://${home}/Downloads"
+        "file://${home}/src"
+      ];
+      iconTheme = {
+        package = pkgs.papirus-icon-theme;
+        name = "Papirus";
+      };
+      theme = {
+        package = pkgs.arc-theme;
+        name = "Arc-Dark";
+      };
+    };
 
     services = {
       network-manager-applet.enable = true;
