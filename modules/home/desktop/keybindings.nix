@@ -58,6 +58,7 @@ let
       $1
     fi
   '';
+  mkRunIfPresent = cmd: "${run_if_present}/bin/run_if_present ${cmd}";
 in
 {
   config = lib.mkIf config.custom.desktop.enable {
@@ -66,16 +67,16 @@ in
       keybindings = {
         # "super + shift + alt + r" = "${pkgs.gksu}/bin/gksu \"${pkgs.systemd}/bin/systemctl restart user.slice\""; #TODO: find replacement for gksu
         # Launchers
-        "super + Return" = "${pkgs.alacritty}/bin/alacritty";
+        "super + Return" = mkRunIfPresent "alacritty";
         "super + alt + Return" = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.tmux}/bin/tmux new-session -A -s 0";
         "super + shift + Return" = "${term_launcher}/bin/term_launcher";
-        "super + e" = "${run_if_present}/bin/run_if_present emacs";
+        "super + e" = mkRunIfPresent "emacs";
         "super + {space,s,c}" = "rofi -show {run,ssh,calc}";
-        "super + w" = "${pkgs.qutebrowser}/bin/qutebrowser";
-        "super + shift + w" = "${pkgs.qutebrowser}/bin/qutebrowser --target private-window";
-        "super + alt + w" = "${pkgs.firefox}/bin/firefox";
-        "super + shift + b" = "${run_if_present}/bin/run_if_present bitwarden";
-        "super + shift + t" = "${pkgs.tdesktop}/bin/telegram-desktop";
+        "super + w" = mkRunIfPresent "qutebrowser";
+        # "super + shift + w" = mkRunIfPresent "qutebrowser --target private-window";
+        "super + alt + w" = mkRunIfPresent "firefox";
+        "super + shift + b" = mkRunIfPresent "bitwarden";
+        "super + shift + t" = mkRunIfPresent "telegram-desktop";
         "super + {XF86LaunchA, Print}" = "${pkgs.flameshot}/bin/flameshot gui";
         "XF86LaunchB" = "${pkgs.alacritty}/bin/alacritty -e ssh skolem@haztecaso.com";
         "{XF86Eject, XF86Favorites}" = "${pkgs.betterlockscreen}/bin/betterlockscreen -l dim";
