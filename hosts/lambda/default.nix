@@ -79,33 +79,6 @@
       prod = true;
       configFile = config.age.secrets."remadbot.conf".path;
     };
-
-    # roundcube = {
-    #   enable = false;
-    #   hostName = "mail.haztecaso.com";
-    #   extraConfig = ''
-    #     # starttls needed for authentication, so the fqdn required to match the certificate
-    #     $config['smtp_server'] = "tls://${config.mailserver.fqdn}";
-    #     $config['smtp_user'] = "%u";
-    #     $config['smtp_pass'] = "%p";
-    #   '';
-    #   package = pkgs.roundcube.withPlugins (p: with p; [ persistent_login ]);
-    #   plugins = [
-    #     "archive"
-    #     "hide_blockquote"
-    #     "newmail_notifier"
-    #     "show_additional_headers"
-    #     "zipdownload"
-    #     "persistent_login"
-    #   ];
-    # };
   };
-
-  # mailserver = {
-  #   enable = true;
-  #   fqdn = "mail.haztecaso.com";
-  #   domains = [ "haztecaso.com" ];
-  #   # certificateScheme = 3;
-  # };
 }
 
