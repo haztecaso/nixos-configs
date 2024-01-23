@@ -1,10 +1,8 @@
-{ config, lib, pkgs, ... }: let
+{ config, lib, pkgs, ... }:
+let
   cfg = config.custom.services.fava;
-  script = pkgs.writeScriptBin "moodle-dl" ''
-    #!${pkgs.runtimeShell}
-    ${pkgs.fava}/bin/fava -H ${cfg.hostname} -p ${cfg.port} ${cfg.beancountFile}
-  '';
-in {
+in
+{
   options.custom.services.fava = with lib; {
     enable = mkEnableOption "Enable fava, a web ui for beancount";
     beancountFile = mkOption {
@@ -29,12 +27,10 @@ in {
     systemd.services.fava = {
       description = "Web interface for beancount";
       wantedBy = [ "multi-user.target" ];
-      serviceConfig = {
-          ExecStart = ''
-            ${pkgs.fava}/bin/fava ${cfg.beancountFile} -H ${cfg.hostname} -p ${toString cfg.port}
-          '';
-      };
+      serviceConfig.ExecStart = ''
+        ${pkgs.unstable.fava}/bin/fava ${cfg.beancountFile} -H ${cfg.hostname} -p ${toString cfg.port}
+      '';
     };
-    networking.firewall.allowedTCPPorts = if cfg.openPort then [ cfg.port ] else [];
+    networking.firewall.allowedTCPPorts = if cfg.openPort then [ cfg.port ] else [ ];
   };
 }
