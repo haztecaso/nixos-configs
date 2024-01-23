@@ -162,7 +162,7 @@
     # Documents, books
     libreoffice
     zotero
-    # calibre
+    calibre
     # scantailor-advanced
 
     # Images
