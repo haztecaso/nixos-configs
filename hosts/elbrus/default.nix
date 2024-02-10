@@ -29,6 +29,7 @@
           fontSize = 9;
           # polybar.batteryCombined = true; # TODO: arreglar
           polybar.bat = "BAT1";
+          polybar.mpd = true;
         };
         shortcuts = {
           paths = {
@@ -139,6 +140,7 @@
 
     # Chats
     unstable.tdesktop
+    gajim
     # discord
 
     # Mail
