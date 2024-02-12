@@ -18,6 +18,8 @@ in
         playlistDirectory = cfg.playlistDir;
         network.listenAddress = "nas";
         extraConfig = ''
+          auto_update "yes"
+          auto_update_depth "6"
           audio_output {
             type "shout"
             encoding "lame"
@@ -45,7 +47,7 @@ in
         '';
       };
       mopidy = {
-        enable = true;
+        enable = false; #TODO: enable
         extensionPackages = with pkgs; [ mopidy-iris ];
         configuration = ''
           [file]
@@ -61,8 +63,8 @@ in
         '';
       };
     };
-    users.extraGroups.media.members = [ "mpd" ];
-    users.users.mopidy.extraGroups = [ "users" "audio" ];
+    users.extraGroups.media.members = [ "mpd" "mopidy" ];
+    # users.users.mopidy.group = "media";
     networking.firewall = {
       allowedUDPPorts = [ 6600 6680 8000 ];
       allowedTCPPorts = [ 6600 6680 8000 ];
