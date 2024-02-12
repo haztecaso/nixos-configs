@@ -4,8 +4,8 @@
     ./hydra.nix
     ./media.nix
     ./music.nix
-    ./nextcloud.nix
     ./navidrome.nix
+    ./nextcloud.nix
   ];
 
   nix.gc.options = "--delete-older-than 60d";
@@ -58,7 +58,7 @@
       enable = false; # TODO: config properly
       settings = {
         settings = {
-          cert = "meshcentral.haztecaso.com";
+          cert = "remote.bufanda.cc";
           tlsOffload = "10.0.0.1";
           WANonly = true;
           port = 4001;
