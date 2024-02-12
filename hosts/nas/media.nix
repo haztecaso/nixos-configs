@@ -69,6 +69,7 @@
       image = "hrfee/jfa-go";
       ports = [ "8097:8056" ];
       volumes = [
+        # TODO: include config in this repo
         "/var/lib/jfa-go:/data"
         "/var/lib/jellyfin:/jf"
         "/etc/localtime:/etc/localtime:ro"
