@@ -1,5 +1,6 @@
 { config, pkgs, ... }: 
 {
+  # age.secrets."cloudflare".file = ../../secrets/cloudflare.age;
   security.acme = {
     acceptTerms = true;
     defaults.email = "adrianlattes@disroot.org";
@@ -23,7 +24,6 @@
         dbtype = "mysql";
         adminpassFile = "/mnt/raid/nextcloud-admin-pass";
         defaultPhoneRegion = "ES";
-        extraTrustedDomains = ["nas"];
       };
     };
     nginx.virtualHosts.${config.services.nextcloud.hostName} = {
@@ -42,6 +42,4 @@
     };
   };
   networking.firewall.allowedTCPPorts = [ 80 443 ];
-
-  age.secrets."cloudflare".file = ../../secrets/cloudflare.age;
 }
