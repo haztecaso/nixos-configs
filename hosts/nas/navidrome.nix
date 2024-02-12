@@ -14,7 +14,7 @@
   users.users.navidrome = {
       isSystemUser = true;
       group = "navidrome";
-      extraGroups = [ "users" ];
+      extraGroups = [ "media" ];
   };
   users.groups.navidrome = { };
 }
