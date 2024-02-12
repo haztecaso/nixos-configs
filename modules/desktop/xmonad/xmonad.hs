@@ -88,6 +88,7 @@ myKeys conf = mkKeymap conf $
     ("M-+",      incScreenWindowSpacing 2),
     ("M--",      decScreenWindowSpacing 2),
     -- Scratchpads
+    ("M-S-b", namedScratchpadAction myScratchpads "bitwarden"),
     ("M-S-n", namedScratchpadAction myScratchpads "ssh-nas"),
     ("M-S-l", namedScratchpadAction myScratchpads "ssh-lambda"),
     -- Status bar
@@ -144,6 +145,8 @@ toggleSpacing = toggleScreenSpacingEnabled >> toggleWindowSpacingEnabled
 -- Scratchpads
 ------------------------------------------------------------------------
 myScratchpads = [
+    NS "bitwarden" "bitwarden" (title =? "Bitwarden") 
+        (customFloating centerRectDefault),
     NS "ssh-nas" "alacritty -T ssh-nas -e ssh nas" (title =? "ssh-nas") 
         (customFloating centerRectDefault),
     NS "ssh-lambda" "alacritty -T ssh-lambda -e ssh lambda" (title =? "ssh-lambda") 

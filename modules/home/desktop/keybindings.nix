@@ -75,7 +75,7 @@ in
         "super + w" = mkRunIfPresent "qutebrowser";
         # "super + shift + w" = mkRunIfPresent "qutebrowser --target private-window";
         "super + alt + w" = mkRunIfPresent "firefox";
-        "super + shift + b" = mkRunIfPresent "bitwarden";
+        # "super + shift + b" = mkRunIfPresent "bitwarden";
         "super + shift + t" = mkRunIfPresent "telegram-desktop";
         "super + {XF86LaunchA, Print}" = "${pkgs.flameshot}/bin/flameshot gui";
         "XF86LaunchB" = "${pkgs.alacritty}/bin/alacritty -e ssh skolem@haztecaso.com";
