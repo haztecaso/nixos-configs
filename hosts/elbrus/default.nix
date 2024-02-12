@@ -17,7 +17,7 @@
     };
     skolem = { ... }: {
       services.syncthing.enable = true;
-      programs.autorandr.profiles = import ./monitors.nix;
+      programs.autorandr = import ./monitors.nix;
       # programs.nushell = {
       #   enable = true;
       #   configFile.source = ./config.nu;

@@ -6,7 +6,6 @@
     ./dev.nix
     ./home
     ./web
-    ./monitors.nix
     ./services
   ];
 }

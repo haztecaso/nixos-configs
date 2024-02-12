@@ -3,40 +3,43 @@ let
   HDMI = "00ffffffffffff0009d11b8045540000251b010380351e78260cd5a9554ca1250d5054a56b80818081c08100a9c0b300d1c001010101565e00a0a0a02950302035000f282100001a000000ff0044394830303535383031390a20000000fd00324c1e591b000a202020202020000000fc0042656e51204c43440a202020200158020322f14f901f05140413031207161501061102230907078301000065030c001000023a801871382d40582c450056502100001f011d8018711c1620582c250056502100009f011d007251d01e206e28550056502100001e8c0ad08a20e02d10103e960056502100001800000000000000000000000000000000000000000047";
 in
 {
-  onlysmall = {
-    fingerprint.eDP-1 = eDP;
-    config = {
-      eDP-1 = {
-        enable = true;
-        crtc = 1;
-        primary = true;
-        position = "0x0";
-        mode = "1366x768";
-        rate = "59.99";
+  enable = true;
+  profiles = {
+    onlysmall = {
+      fingerprint.eDP-1 = eDP;
+      config = {
+        eDP-1 = {
+          enable = true;
+          crtc = 1;
+          primary = true;
+          position = "0x0";
+          mode = "1366x768";
+          rate = "59.99";
+        };
       };
     };
-  };
-  both = {
-    fingerprint = {
-      HDMI-2 = HDMI;
-      eDP-1 = eDP;
-    };
-    config = {
-      HDMI-2 = {
-        enable = true;
-        crtc = 0;
-        primary = true;
-        position = "1366x0";
-        mode = "2560x1440";
-        rate = "59.95";
+    both = {
+      fingerprint = {
+        HDMI-2 = HDMI;
+        eDP-1 = eDP;
       };
-      eDP-1 = {
-        enable = true;
-        crtc = 1;
-        primary = false;
-        position = "0x0";
-        mode = "1366x768";
-        rate = "59.99";
+      config = {
+        HDMI-2 = {
+          enable = true;
+          crtc = 0;
+          primary = true;
+          position = "1366x0";
+          mode = "2560x1440";
+          rate = "59.95";
+        };
+        eDP-1 = {
+          enable = true;
+          crtc = 1;
+          primary = false;
+          position = "0x0";
+          mode = "1366x768";
+          rate = "59.99";
+        };
       };
     };
   };
