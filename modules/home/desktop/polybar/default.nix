@@ -76,7 +76,7 @@ in
 
         ${if cfg.mpd then ''[module/mpd]
         type = internal/mpd
-        host = 127.0.0.1
+        host = nas
         port = 6600
 
         format-online = <label-song>
