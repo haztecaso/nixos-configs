@@ -32,6 +32,7 @@ in
         sqlitebrowser
         docker-compose
         subfinder
+        gnumake
       ];
     })
     (lib.mkIf cfg.nodejs {
