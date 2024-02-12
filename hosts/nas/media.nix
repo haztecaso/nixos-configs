@@ -18,12 +18,13 @@
       openFirewall = true;
     };
 
-    lidarr = {
-      enable = true;
-      group = "media";
-      openFirewall = true;
-    };
+    # lidarr = {
+    #   enable = true;
+    #   group = "media";
+    #   openFirewall = true;
+    # };
 
+    # TODO: fix and reenable
     # bazarr = {
     #   enable = true;
     #   group = "media";
@@ -49,12 +50,36 @@
       openFirewall = true;
     };
 
+    # invidious = {
+    #   enable = true;
+    #   domain = "i.bufanda.cc";
+    #   port = 3001;
+    # };
+
     ombi = {
       enable = true;
       openFirewall = true;
       port = 5055;
     };
   };
+
+  virtualisation = {
+    docker.enable = true;
+    oci-containers.containers."jfa-go" = {
+      image = "hrfee/jfa-go";
+      ports = [ "8097:8056" ];
+      volumes = [
+        "/var/lib/jfa-go:/data"
+        "/var/lib/jellyfin:/jf"
+        "/etc/localtime:/etc/localtime:ro"
+      ];
+    };
+  };
+  systemd.tmpfiles.rules = [
+    "d /var/lib/jfa-go 0755 root root"
+  ];
+
+  networking.firewall.allowedTCPPorts = [ 111 3001 4001 5000 50000 ];
 
   users.groups."media" = { 
     members = [ "skolem" ];
