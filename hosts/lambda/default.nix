@@ -4,6 +4,7 @@
     # ./networking.nix
     ./web
     ./radicale.nix
+    # ./gitea.nix
   ];
 
   users.users = with config.base.ssh-keys; {
