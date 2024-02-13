@@ -23,6 +23,7 @@ in
           useACMEHost = host;
           forceSSL = true;
           root = "${root}";
+          locations."/".return = "301 https://es.wikipedia.org/wiki/Bufanda";
           extraConfig = ''
             expires 1d;
             error_page 404 /404.html;
@@ -31,15 +32,30 @@ in
             try_files $uri $uri.html $uri/ =404;
           '';
         };
+        "git.${host}" = {
+          useACMEHost = host;
+          forceSSL = true;
+          locations."/".proxyPass = "http://127.0.0.1:8003";
+        };
         "cache.${host}" = {
           useACMEHost = host;
           forceSSL = true;
           locations."/".proxyPass = "http://nas:5555";
         };
+        "media-signup.bufanda.cc" = {
+          useACMEHost = "bufanda.cc";
+          forceSSL = true;
+          locations."/".proxyPass = "http://nas:8097";
+        };
         "media.bufanda.cc" = {
           useACMEHost = "bufanda.cc";
           forceSSL = true;
           locations."/".proxyPass = "http://nas:8096";
+        };
+        "radio.bufanda.cc" = {
+          useACMEHost = "bufanda.cc";
+          forceSSL = true;
+          locations."/".proxyPass = "http://nas:8000/stream.mp3";
         };
         "music.bufanda.cc" = {
           useACMEHost = "bufanda.cc";
