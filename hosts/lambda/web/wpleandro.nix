@@ -2,10 +2,17 @@
 let
   root = "/var/www/wpleandro";
   app  = "wpleandro";
-  host = "paseourbano.com";
+  host = "delunesadomingo.es";
+  host_old = "paseourbano.com";
 in
 {
-  security.acme.certs."paseourbano.com" = {
+  security.acme.certs."${host}" = {
+    dnsProvider = "cloudflare";
+    credentialsFile = config.age.secrets."cloudflare".path;
+    group = "nginx";
+    extraDomainNames = [ "*.${host}" ];
+  };
+  security.acme.certs."${host_old}" = {
     dnsProvider = "cloudflare";
     credentialsFile = config.age.secrets."cloudflare".path;
     group = "nginx";
@@ -20,6 +27,12 @@ in
         };
       };
       virtualHosts = {
+        "${host_old}" = {
+          serverName = host_old;
+          useACMEHost = host_old;
+          addSSL = true;
+          locations."/".return = "301 https://${host}$request_uri";
+        };
         "*.${host}" = {
           serverName = "*.${host}";
           useACMEHost = host;
