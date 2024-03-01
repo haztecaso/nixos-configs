@@ -80,6 +80,7 @@ in
         "super + {XF86LaunchA, Print}" = "${pkgs.flameshot}/bin/flameshot gui";
         "XF86LaunchB" = "${pkgs.alacritty}/bin/alacritty -e ssh skolem@haztecaso.com";
         "{XF86Eject, XF86Favorites}" = "${pkgs.betterlockscreen}/bin/betterlockscreen -l dim";
+        "super + {XF86Eject, XF86Favorites}" = mkRunIfPresent "autorandr -c";
 
         # Media keys
         "XF86Audio{Prev,Next,Play}" = "${pkgs.playerctl}/bin/playerctl -p mpd {previous,next,play-pause}";
