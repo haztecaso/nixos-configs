@@ -2,6 +2,7 @@
 let
   root = "/var/www/claudiogabis.com";
   app  = "wpclau";
+  max_upload_filesize = "400M";
 in
 {
   security.acme.certs."claudiogabis.com" = {
@@ -32,6 +33,7 @@ in
             index index.php index.html;
             error_log syslog:server=unix:/dev/log debug;
             access_log syslog:server=unix:/dev/log,tag=claudiogabis;
+            client_max_body_size ${max_upload_filesize};
           '';
           locations = {
             "/".extraConfig = ''
@@ -80,6 +82,10 @@ in
         "php_admin_flag[log_errors]" = true;
         "catch_workers_output" = true;
       };
+      phpOptions = ''
+        upload_max_filesize = ${max_upload_filesize}
+        post_max_size = ${max_upload_filesize}
+      '';
       phpEnv."PATH" = lib.makeBinPath [ pkgs.php ];
     };
     mysql = {
