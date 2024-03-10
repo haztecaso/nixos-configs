@@ -3,6 +3,7 @@
   imports = [
     # ./lagransala.nix
     ./bufanda.nix
+    ./bach.nix
     ./claudiogabis.nix
     ./colchonreview.nix
     ./elvivero.nix
