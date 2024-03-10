@@ -26,9 +26,9 @@ in
             name "NAS music stream"
             host "localhost"
             port "8000"
-            mount "/stream.mp3"
+            mount "/mpd.mp3"
             user "mpd"
-            password "mpd"
+            password "hackme"
             bitrate "160"
             format "44100:16:1"
           }
@@ -40,12 +40,62 @@ in
         admin.password = "pass";
         extraConf = ''
           <mount type="normal">
-            <mount-name>/stream.mp3</mount-name>
+            <mount-name>/mixxx.ogg</mount-name>
+            <username>mixxx</username>
+            <password>hackme</password>
+          </mount>
+          <mount type="normal">
+            <mount-name>/mpd.mp3</mount-name>
             <username>mpd</username>
-            <password>mpd</password>
+            <password>hackme</password>
+          </mount>
+          <mount type="normal">
+            <mount-name>/stream.mp3</mount-name>
+            <username>liquid</username>
+            <password>soap</password>
           </mount>
         '';
       };
+      liquidsoap.streams.liquidsoap-bufanda =
+      pkgs.writeText "config.liq" ''
+        set("tag.encodings",["UTF-8","ISO-8859-1"])
+
+        day_playlist = playlist("${cfg.library}/radio/day.m3u")
+        night_playlist = playlist("${cfg.library}/radio/night.m3u")
+        set("tag.encodings",["UTF-8","ISO-8859-1"])
+
+        playlists = switch([
+          ({ 6h-22h }, day_playlist),
+          ({ 22h-6h }, night_playlist),
+        ])
+
+        mixxx = blank.strip(
+          max_blank=10.0, 
+          input.http('http://localhost:8000/mixxx.ogg')
+        )
+
+        mpd = blank.strip(
+          max_blank=10.0, 
+          input.http('http://localhost:8000/mpd.mp3')
+        )
+
+        stream = fallback(track_sensitive=false, [
+          mixxx,
+          mpd,
+          playlists,
+          single('${cfg.library}/radio/error.mp3'),
+        ])
+
+        stream = mksafe(stream)
+
+        output.icecast(%mp3,
+          host = "localhost", port = 8000,
+          user = "liquid", password = "soap",
+          mount = "stream.mp3",
+          name = "Radio Bufanda",
+          description = "una radio aleatoria",
+          stream)
+      '';
       mopidy = {
         enable = false; #TODO: enable
         extensionPackages = with pkgs; [ mopidy-iris ];
@@ -63,7 +113,7 @@ in
         '';
       };
     };
-    users.extraGroups.media.members = [ "mpd" "mopidy" ];
+    users.extraGroups.media.members = [ "mpd" "mopidy" "liquidsoap" ];
     # users.users.mopidy.group = "media";
     networking.firewall = {
       allowedUDPPorts = [ 6600 6680 8000 ];
