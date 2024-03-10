@@ -8,22 +8,22 @@ in
     dnsProvider = "cloudflare";
     credentialsFile = config.age.secrets."cloudflare".path;
     group = "nginx";
-    extraDomainNames = [ "*.${host}" ];
+    extraDomainNames = [ "*.${host}" "*.dev.${host}" ];
   };
   services = {
     nginx = {
       virtualHosts = {
-        "*.${host}" = {
-          serverName = "*.${host}";
-          useACMEHost = host;
-          addSSL = true;
-          locations."/".return = "404";
-        };
+        # "*.${host}" = {
+        #   serverName = "*.${host}";
+        #   useACMEHost = host;
+        #   addSSL = true;
+        #   locations."/".return = "404";
+        # };
         "${host}" = {
           useACMEHost = host;
           forceSSL = true;
           root = "${root}";
-          locations."/".return = "301 https://es.wikipedia.org/wiki/Bufanda";
+          # locations."/".return = "301 https://es.wikipedia.org/wiki/Bufanda";
           extraConfig = ''
             expires 1d;
             error_page 404 /404.html;
@@ -32,15 +32,22 @@ in
             try_files $uri $uri.html $uri/ =404;
           '';
         };
-        "git.${host}" = {
-          useACMEHost = host;
-          forceSSL = true;
-          locations."/".proxyPass = "http://127.0.0.1:8003";
-        };
         "cache.${host}" = {
           useACMEHost = host;
           forceSSL = true;
           locations."/".proxyPass = "http://nas:5555";
+        };
+        "dev.${host}" = {
+          useACMEHost = host;
+          forceSSL = true;
+          serverName = "~^(?<sub>\\w+)\\.dev\\.bufanda\\.cc$";
+          root = "/var/www/dev.bufanda.cc/$sub";
+          extraConfig = ''
+            error_page 404 /404.html;
+            error_log syslog:server=unix:/dev/log debug;
+            access_log syslog:server=unix:/dev/log,tag=devbufanda;
+            try_files $uri $uri.html $uri/ =404;
+          '';
         };
         "media-signup.bufanda.cc" = {
           useACMEHost = "bufanda.cc";
