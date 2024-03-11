@@ -17,6 +17,7 @@
     };
     skolem = { ... }: {
       services.syncthing.enable = true;
+      services.nextcloud-client.enable = true;
       programs.autorandr = import ./monitors.nix;
       # programs.nushell = {
       #   enable = true;
@@ -131,6 +132,7 @@
     unstable.pass
     unstable.axel
     unstable.aria2
+    rustdesk
 
     # network
     nmap
@@ -190,9 +192,13 @@
     # 3d
     unstable.blender
 
+    # sync
+    nextcloud-client
+
     # money
     unstable.beancount
     unstable.fava
+
     # Downloads
     soulseekqt
     # transmission-gtk
