@@ -91,6 +91,7 @@ myKeys conf = mkKeymap conf $
     ("M-S-b", namedScratchpadAction myScratchpads "bitwarden"),
     ("M-S-n", namedScratchpadAction myScratchpads "ssh-nas"),
     ("M-S-l", namedScratchpadAction myScratchpads "ssh-lambda"),
+    ("M-S-s", namedScratchpadAction myScratchpads "tmux"),
     -- Status bar
     ("M-z", sendMessage ToggleStruts), -- Toggle the status bar gap
     ("M-S-z", spawn "polybar-msg cmd toggle") -- Toggle the status bar
@@ -150,6 +151,8 @@ myScratchpads = [
     NS "ssh-nas" "alacritty -T ssh-nas -e ssh nas" (title =? "ssh-nas") 
         (customFloating centerRectDefault),
     NS "ssh-lambda" "alacritty -T ssh-lambda -e ssh lambda" (title =? "ssh-lambda") 
+        (customFloating centerRectDefault),
+    NS "tmux" "alacritty -T tmux -e tmux new-session -A -s scratch" (title =? "tmux") 
         (customFloating centerRectDefault)
   ]
 
