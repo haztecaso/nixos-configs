@@ -37,6 +37,8 @@ in
         packages = [ pkgs.dconf ];
       };
       gnome.gnome-keyring.enable = true;
+      gvfs.enable = true;
+      tumbler.enable = true;
     };
     base = {
       sound = true;
@@ -45,6 +47,10 @@ in
     programs = {
       light.enable = true;
       kdeconnect.enable = true;
+      thunar = {
+        enable = true;
+        plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];
+      };
     };
     networking.networkmanager.enable = true;
     hardware = {
