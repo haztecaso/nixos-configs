@@ -34,10 +34,10 @@
         };
         shortcuts = {
           paths = {
-            N = "~/Nube";
-            l = "~/Nube/lecturas";
+            N = "~/Nextcloud";
+            l = "~/Nextcloud/lecturas";
             mo = "~/Nube/money";
-            u = "~/Nube/uni";
+            u = "~/Nextcloud/uni";
             v = "~/vault";
           };
         };

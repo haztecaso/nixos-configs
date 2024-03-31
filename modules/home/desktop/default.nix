@@ -59,7 +59,7 @@ in
       enable = true;
       # TODO: mix with shortcuts module
       gtk3.bookmarks = let home = config.home.homeDirectory; in [
-        "file://${home}/Nube"
+        "file://${home}/Nextcloud"
         "file://${home}/Documents"
         "file://${home}/Music"
         "file://${home}/Pictures"
