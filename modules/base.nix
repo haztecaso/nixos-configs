@@ -132,6 +132,7 @@ in
           zip
           silver-searcher
           ripgrep
+          sshfs
         ];
         shells = with pkgs; [ bashInteractive zsh fish ];
         # Copied from comment in https://www.reddit.com/r/NixOS/comments/19595vc/how_to_keep_source_when_doing_garbage_collection
