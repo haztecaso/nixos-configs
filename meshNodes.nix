@@ -37,6 +37,13 @@
         3qMSiUBbCmVXF1vD++goAkjO9rqreeHDOGCMYksL+alXYkftq3jDfMMCAwEAAQ==
       '';
     };
+    # deambulante = { # TODO
+    #    ip = "10.0.0.4";
+    #    connectTo = "lambda";
+    #    Ed25519PublicKey = "";
+    #    rsaPublicKey = ''
+    #    '';
+    #  };
     elbrus = {
       ip = "10.0.0.3";
       connectTo = "lambda";
