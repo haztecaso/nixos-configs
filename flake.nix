@@ -53,6 +53,7 @@
       };
 
       hosts = {
+        deambulante.modules = [ ./hosts/deambulante ];
         elbrus.modules = [ ./hosts/elbrus ];
         lambda.modules = [ ./hosts/lambda ];
         nas.modules = [ ./hosts/nas ];
