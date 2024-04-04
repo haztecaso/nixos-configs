@@ -34,6 +34,7 @@ in
         "100.82.152.102" = localNames "beta-mac";
         "100.77.159.135" = localNames "nas";
         "100.74.34.128" = localNames "elbrus";
+        "100.101.76.71" = localNames "deambulante";
       };
   };
 }
