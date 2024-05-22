@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: 
+{ config, pkgs, lib, ... }: 
 {
   # age.secrets."cloudflare".file = ../../secrets/cloudflare.age;
   security.acme = {
@@ -25,6 +25,11 @@
         adminpassFile = "/mnt/raid/nextcloud-admin-pass";
         defaultPhoneRegion = "ES";
       };
+      extraOptions = {
+        "memories.exiftool" = "${lib.getExe pkgs.exiftool}";
+        "memories.vod.ffmpeg" = "${lib.getExe pkgs.ffmpeg-headless}";
+        "memories.vod.ffprobe" = "${pkgs.ffmpeg-headless}/bin/ffprobe";
+      };
     };
     nginx.virtualHosts.${config.services.nextcloud.hostName} = {
       forceSSL = true;
@@ -40,6 +45,9 @@
       use = "web, web=https://ipinfo.io/ip";
       passwordFile = "/mnt/raid/cloudflare-dns-zone-apikey";
     };
+  };
+  systemd.services.nextcloud-cron = {
+    path = [pkgs.perl];
   };
   networking.firewall.allowedTCPPorts = [ 80 443 ];
 }
