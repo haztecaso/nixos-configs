@@ -6,18 +6,6 @@ let
   host_old = "paseourbano.com";
 in
 {
-  security.acme.certs."${host}" = {
-    dnsProvider = "cloudflare";
-    credentialsFile = config.age.secrets."cloudflare".path;
-    group = "nginx";
-    extraDomainNames = [ "*.${host}" ];
-  };
-  security.acme.certs."${host_old}" = {
-    dnsProvider = "cloudflare";
-    credentialsFile = config.age.secrets."cloudflare".path;
-    group = "nginx";
-    extraDomainNames = [ "*.${host}" ];
-  };
   services = {
     nginx = {
       # additionalModules = [ pkgs.nginxModules.cache-purge ]; # TODO: Configurar cache

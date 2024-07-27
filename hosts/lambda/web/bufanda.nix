@@ -4,21 +4,9 @@ let
   root = "/var/www/bufanda.cc";
 in
 {
-  security.acme.certs."${host}" = {
-    dnsProvider = "cloudflare";
-    credentialsFile = config.age.secrets."cloudflare".path;
-    group = "nginx";
-    extraDomainNames = [ "*.${host}" "*.dev.${host}" ];
-  };
   services = {
     nginx = {
       virtualHosts = {
-        # "*.${host}" = {
-        #   serverName = "*.${host}";
-        #   useACMEHost = host;
-        #   addSSL = true;
-        #   locations."/".return = "404";
-        # };
         "${host}" = {
           useACMEHost = host;
           forceSSL = true;

@@ -6,12 +6,6 @@ let
   max_upload_filesize = "20M";
 in
 {
-  security.acme.certs."${host}" = {
-    dnsProvider = "cloudflare";
-    credentialsFile = config.age.secrets."cloudflare".path;
-    group = "nginx";
-    extraDomainNames = [ "*.${host}" ];
-  };
   services = {
     nginx = {
       upstreams."php-${app}" = {

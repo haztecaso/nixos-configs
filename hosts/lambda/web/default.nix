@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }:
 {
   imports = [
+    ./domains.nix
+
     ./bufanda.nix
     ./bici.bufanda.nix
     ./claudiogabis.nix

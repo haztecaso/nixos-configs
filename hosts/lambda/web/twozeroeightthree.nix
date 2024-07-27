@@ -4,12 +4,6 @@ let
   root = "/var/www/${host}";
 in
 {
-  security.acme.certs."${host}" = {
-    dnsProvider = "cloudflare";
-    credentialsFile = config.age.secrets."cloudflare".path;
-    group = "nginx";
-    extraDomainNames = [ "*.${host}" ];
-  };
   services = {
     nginx.virtualHosts = {
       "*.${host}" = {

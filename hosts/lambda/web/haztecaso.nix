@@ -8,12 +8,6 @@ let
   };
 in
 {
-  security.acme.certs."haztecaso.com" = {
-    dnsProvider = "cloudflare";
-    credentialsFile = config.age.secrets."cloudflare".path;
-    group = "nginx";
-    extraDomainNames = [ "*.haztecaso.com" ];
-  };
   services = {
     nginx.virtualHosts = {
       "*.haztecaso.com" = {

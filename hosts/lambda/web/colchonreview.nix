@@ -4,12 +4,6 @@ let
   app = "wpcolchon";
 in
 {
-  security.acme.certs."colchon.review" = {
-    dnsProvider = "cloudflare";
-    credentialsFile = config.age.secrets."cloudflare".path;
-    group = "nginx";
-    extraDomainNames = [ "*.colchon.review" ];
-  };
   services = {
     nginx = {
       upstreams."php-${app}" = {

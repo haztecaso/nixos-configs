@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ ... }:
 let
   backupDir = "/var/backups/vaultwarden";
 in
@@ -23,7 +23,7 @@ in
     };
     borgbackup.jobs.vaultwarden = {
       paths = backupDir;
-      encryption.mode = "none"; 
+      encryption.mode = "none";
       environment.BORG_RSH = " -o StrictHostKeyChecking=nossh -i /home/skolem/.ssh/id_rsa -o StrictHostKeyChecking=no";
       repo = "ssh://skolem@nas:22/mnt/raid/backups/borg/vaultwarden";
       compression = "auto,zstd";

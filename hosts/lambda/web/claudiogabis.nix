@@ -5,12 +5,6 @@ let
   max_upload_filesize = "400M";
 in
 {
-  security.acme.certs."claudiogabis.com" = {
-    dnsProvider = "cloudflare";
-    credentialsFile = config.age.secrets."cloudflare".path;
-    group = "nginx";
-    extraDomainNames = [ "*.claudiogabis.com" ];
-  };
   services = {
     nginx = {
       upstreams."php-wpclau" = {

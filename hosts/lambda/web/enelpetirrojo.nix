@@ -1,16 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ ... }:
 let
   root = "/var/www/enelpetirrojo.com";
   host = "enelpetirrojo.com";
-  app = "enelepetirrojo";
 in
 {
-  security.acme.certs."${host}" = {
-    dnsProvider = "cloudflare";
-    credentialsFile = config.age.secrets."cloudflare".path;
-    group = "nginx";
-    extraDomainNames = [ "*.${host}" ];
-  };
   services = {
     nginx = {
       virtualHosts = {
