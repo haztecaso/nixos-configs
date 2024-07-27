@@ -77,25 +77,6 @@ in
             proxyPass = "http://nas:8998";
           };
         };
-        "remote.bufanda.cc" = {
-          useACMEHost = host;
-          forceSSL = true;
-          extraConfig = ''
-            access_log syslog:server=unix:/dev/log,tag=meshcentral;
-            proxy_send_timeout 330s;
-            proxy_read_timeout 330s;
-          '';
-          locations."/" = {
-            proxyPass = "http://nas:4001";
-            extraConfig = ''
-              proxy_set_header Upgrade $http_upgrade;
-              proxy_set_header Connection "upgrade";
-              proxy_set_header X-Forwarded-Host $host:$server_port;
-              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-              proxy_set_header X-Forwarded-Proto $scheme;
-            '';
-          };
-        };
         "ombi.bufanda.cc" = {
           useACMEHost = host;
           forceSSL = true;
