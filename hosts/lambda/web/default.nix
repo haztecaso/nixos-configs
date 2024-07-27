@@ -4,7 +4,6 @@
     # ./lagransala.nix
     ./bufanda.nix
     ./bici.bufanda.nix
-    # ./bach.nix
     ./claudiogabis.nix
     ./colchonreview.nix
     ./elvivero.nix
@@ -45,7 +44,7 @@
     borgbackup.jobs.webs = {
       paths = "/var/www/";
       exclude = [ "/var/www/haztecaso.com/radio-old/" ];
-      encryption.mode = "none"; 
+      encryption.mode = "none";
       environment.BORG_RSH = "ssh -i /home/skolem/.ssh/id_rsa";
       repo = "ssh://skolem@nas:22/mnt/raid/backups/borg/lambda-webs";
       compression = "auto,zstd";
