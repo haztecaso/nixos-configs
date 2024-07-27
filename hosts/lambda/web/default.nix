@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 {
   imports = [
-    # ./lagransala.nix
     ./bufanda.nix
     ./bici.bufanda.nix
     ./claudiogabis.nix
