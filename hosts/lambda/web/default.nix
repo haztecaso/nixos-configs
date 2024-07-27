@@ -16,8 +16,6 @@
     ./wpleandro.nix
     ./zulmarecchini.nix
     # ./matomo.nix
-    # ./meshcentral.nix
-    # ./ombi.nix
     # ./ulogger.nix
     # ./drupaltest.nix
   ];
