@@ -61,7 +61,6 @@ in
             auto-optimise-store = true;
             substituters = [
               "http://nas:5555"
-              # "https://cache.bufanda.cc" # TODO: mejor que no pase el trafico por lambda
               "https://cache.nixos.org"
             ];
             trusted-public-keys = [
