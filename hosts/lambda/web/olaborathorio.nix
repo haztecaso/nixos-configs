@@ -2,17 +2,18 @@
 let
   root = "/var/www/olaborathorio";
   host = "olaborathorio.elvivero.es";
-  app  = "olaborathorio";
+  app = "olaborathorio";
 in
 {
   services = {
     nginx = {
       upstreams."php-${app}" = {
         servers = {
-          "unix:${config.services.phpfpm.pools.${app}.socket}" =  {};
+          "unix:${config.services.phpfpm.pools.${app}.socket}" = { };
         };
       };
       virtualHosts = {
+        # TODO: abstract nginx config
         "${host}" = {
           useACMEHost = "elvivero.es";
           forceSSL = true;
@@ -87,9 +88,9 @@ in
   users.users.${app} = {
     isSystemUser = true;
     home = root;
-    group  = app;
+    group = app;
   };
-  users.groups.${app} = {};
+  users.groups.${app} = { };
   home-manager.sharedModules = [{
     custom.shortcuts.paths.wol = root;
   }];

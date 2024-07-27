@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   root = "/var/www/wpleandro";
-  app  = "wpleandro";
+  app = "wpleandro";
   host = "delunesadomingo.es";
   host_old = "paseourbano.com";
 in
@@ -23,7 +23,7 @@ in
       # additionalModules = [ pkgs.nginxModules.cache-purge ]; # TODO: Configurar cache
       upstreams."php-${app}" = {
         servers = {
-          "unix:${config.services.phpfpm.pools.${app}.socket}" =  {};
+          "unix:${config.services.phpfpm.pools.${app}.socket}" = { };
         };
       };
       virtualHosts = {
@@ -39,6 +39,7 @@ in
           addSSL = true;
           locations."/".return = "301 https://${host}$request_uri";
         };
+        # TODO: abstract nginx config
         "${host}" = {
           useACMEHost = host;
           forceSSL = true;
@@ -113,9 +114,9 @@ in
   users.users.${app} = {
     isSystemUser = true;
     home = root;
-    group  = app;
+    group = app;
   };
-  users.groups.${app} = {};
+  users.groups.${app} = { };
   home-manager.sharedModules = [{
     custom.shortcuts.paths.wl = root;
   }];

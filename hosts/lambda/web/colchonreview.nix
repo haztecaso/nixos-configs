@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   root = "/var/www/colchon.review";
-  app  = "wpcolchon";
+  app = "wpcolchon";
 in
 {
   security.acme.certs."colchon.review" = {
@@ -14,7 +14,7 @@ in
     nginx = {
       upstreams."php-${app}" = {
         servers = {
-          "unix:${config.services.phpfpm.pools.${app}.socket}" =  {};
+          "unix:${config.services.phpfpm.pools.${app}.socket}" = { };
         };
       };
       virtualHosts = {
@@ -24,6 +24,7 @@ in
           useACMEHost = "colchon.review";
           locations."/".return = "404";
         };
+        # TODO: abstract nginx config
         "colchon.review" = {
           useACMEHost = "colchon.review";
           forceSSL = true;
@@ -100,9 +101,9 @@ in
     isSystemUser = true;
     createHome = true;
     home = root;
-    group  = app;
+    group = app;
   };
-  users.groups.${app} = {};
+  users.groups.${app} = { };
   home-manager.sharedModules = [{
     custom.shortcuts.paths.wcr = root;
   }];

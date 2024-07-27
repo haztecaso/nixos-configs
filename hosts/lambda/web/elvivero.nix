@@ -2,7 +2,7 @@
 let
   root = "/var/www/elvivero.es";
   host = "elvivero.es";
-  app  = "wpelvivero";
+  app = "wpelvivero";
 in
 {
   security.acme.certs."${host}" = {
@@ -15,7 +15,7 @@ in
     nginx = {
       upstreams."php-${app}" = {
         servers = {
-          "unix:${config.services.phpfpm.pools.${app}.socket}" =  {};
+          "unix:${config.services.phpfpm.pools.${app}.socket}" = { };
         };
       };
       virtualHosts = {
@@ -25,6 +25,7 @@ in
           addSSL = true;
           locations."/".return = "301 https://${host}$request_uri";
         };
+        # TODO: abstract nginx config
         "${host}" = {
           useACMEHost = host;
           forceSSL = true;
@@ -126,9 +127,9 @@ in
   users.users.${app} = {
     isSystemUser = true;
     home = root;
-    group  = app;
+    group = app;
   };
-  users.groups.${app} = {};
+  users.groups.${app} = { };
   home-manager.sharedModules = [{
     custom.shortcuts.paths.we = root;
   }];

@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   root = "/var/www/claudiogabis.com";
-  app  = "wpclau";
+  app = "wpclau";
   max_upload_filesize = "400M";
 in
 {
@@ -15,7 +15,7 @@ in
     nginx = {
       upstreams."php-wpclau" = {
         servers = {
-          "unix:${config.services.phpfpm.pools.${app}.socket}" =  {};
+          "unix:${config.services.phpfpm.pools.${app}.socket}" = { };
         };
       };
       virtualHosts = {
@@ -25,6 +25,7 @@ in
           useACMEHost = "claudiogabis.com";
           locations."/".return = "404";
         };
+        # TODO: abstract nginx config
         "claudiogabis.com" = {
           useACMEHost = "claudiogabis.com";
           forceSSL = true;
@@ -104,9 +105,9 @@ in
     isSystemUser = true;
     # createHome = true;
     home = root;
-    group  = app;
+    group = app;
   };
-  users.groups.${app} = {};
+  users.groups.${app} = { };
   home-manager.sharedModules = [{
     custom.shortcuts.paths.wcg = root;
   }];

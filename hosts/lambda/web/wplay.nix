@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   host = "haztecaso.com";
-  app  = "wplay";
+  app = "wplay";
   root = "/var/www/wplay";
   max_upload_filesize = "20M";
 in
@@ -16,10 +16,11 @@ in
     nginx = {
       upstreams."php-${app}" = {
         servers = {
-          "unix:${config.services.phpfpm.pools.${app}.socket}" =  {};
+          "unix:${config.services.phpfpm.pools.${app}.socket}" = { };
         };
       };
       virtualHosts = {
+        # TODO: abstract nginx config
         "wplay.${host}" = {
           useACMEHost = host;
           forceSSL = true;
@@ -94,7 +95,7 @@ in
   users.users.${app} = {
     isSystemUser = true;
     home = root;
-    group  = app;
+    group = app;
   };
-  users.groups.${app} = {};
+  users.groups.${app} = { };
 }

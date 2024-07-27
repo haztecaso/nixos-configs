@@ -9,10 +9,11 @@ in
     nginx = {
       upstreams."php-wpbici" = {
         servers = {
-          "unix:${config.services.phpfpm.pools.${app}.socket}" =  {};
+          "unix:${config.services.phpfpm.pools.${app}.socket}" = { };
         };
       };
       virtualHosts = {
+        # TODO: abstract nginx config
         "bici.bufanda.cc" = {
           useACMEHost = "bufanda.cc";
           forceSSL = true;
@@ -110,9 +111,9 @@ in
     isSystemUser = true;
     # createHome = true;
     home = root;
-    group  = app;
+    group = app;
   };
-  users.groups.${app} = {};
+  users.groups.${app} = { };
   home-manager.sharedModules = [{
     custom.shortcuts.paths.wbb = root;
   }];
