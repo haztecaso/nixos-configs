@@ -1,16 +1,10 @@
 { config, lib, pkgs, ... }:
 let
-  root = "/var/www/elvivero.es";
-  host = "elvivero.es";
-  app  = "wpelvivero";
+  root = "/var/www/olaborathorio";
+  host = "olaborathorio.elvivero.es";
+  app  = "olaborathorio";
 in
 {
-  security.acme.certs."${host}" = {
-    dnsProvider = "cloudflare";
-    credentialsFile = config.age.secrets."cloudflare".path;
-    group = "nginx";
-    extraDomainNames = [ "*.${host}" ];
-  };
   services = {
     nginx = {
       upstreams."php-${app}" = {
@@ -19,14 +13,8 @@ in
         };
       };
       virtualHosts = {
-        "*.${host}" = {
-          serverName = "*.${host}";
-          useACMEHost = host;
-          addSSL = true;
-          locations."/".return = "301 https://${host}$request_uri";
-        };
         "${host}" = {
-          useACMEHost = host;
+          useACMEHost = "elvivero.es";
           forceSSL = true;
           root = root;
           extraConfig = ''
@@ -61,33 +49,6 @@ in
               access_log off;
             '';
           };
-        };
-        "old.${host}" = {
-          useACMEHost = host;
-          forceSSL = true;
-          root = "${root}-old";
-          extraConfig = ''
-            expires 1d;
-            error_page 404 /404.html;
-            error_log syslog:server=unix:/dev/log debug;
-            access_log syslog:server=unix:/dev/log,tag=elviveroOld;
-          '';
-        };
-        "static.${host}" = {
-          useACMEHost = host;
-          forceSSL = true;
-          root = "${root}-static";
-          extraConfig = ''
-            expires 1d;
-            error_page 404 /404.html;
-            error_log syslog:server=unix:/dev/log debug;
-            access_log syslog:server=unix:/dev/log,tag=elviveroStatic;
-          '';
-        };
-        "www.${host}" = {
-          useACMEHost = host;
-          forceSSL = true;
-          locations."/".return = "301 https://elvivero.es$request_uri";
         };
       };
     };
@@ -130,6 +91,6 @@ in
   };
   users.groups.${app} = {};
   home-manager.sharedModules = [{
-    custom.shortcuts.paths.we = root;
+    custom.shortcuts.paths.wol = root;
   }];
 }

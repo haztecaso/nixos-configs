@@ -1,39 +1,27 @@
 { config, lib, pkgs, ... }:
 let
-  root = "/var/www/elvivero.es";
-  host = "elvivero.es";
-  app  = "wpelvivero";
+  app = "bicibufanda";
+  root = "/var/www/bici.bufanda.cc";
+  max_upload_filesize = "100M";
 in
 {
-  security.acme.certs."${host}" = {
-    dnsProvider = "cloudflare";
-    credentialsFile = config.age.secrets."cloudflare".path;
-    group = "nginx";
-    extraDomainNames = [ "*.${host}" ];
-  };
   services = {
     nginx = {
-      upstreams."php-${app}" = {
+      upstreams."php-wpbici" = {
         servers = {
           "unix:${config.services.phpfpm.pools.${app}.socket}" =  {};
         };
       };
       virtualHosts = {
-        "*.${host}" = {
-          serverName = "*.${host}";
-          useACMEHost = host;
-          addSSL = true;
-          locations."/".return = "301 https://${host}$request_uri";
-        };
-        "${host}" = {
-          useACMEHost = host;
+        "bici.bufanda.cc" = {
+          useACMEHost = "bufanda.cc";
           forceSSL = true;
-          root = root;
+          inherit root;
           extraConfig = ''
             index index.php index.html;
             error_log syslog:server=unix:/dev/log debug;
-            access_log syslog:server=unix:/dev/log,tag=${app};
-            client_max_body_size 20M;
+            access_log syslog:server=unix:/dev/log,tag=wpbici;
+            client_max_body_size ${max_upload_filesize};
           '';
           locations = {
             "/".extraConfig = ''
@@ -42,7 +30,7 @@ in
             "~ \.php$".extraConfig = ''
               fastcgi_split_path_info ^(.+\.php)(/.+)$;
               fastcgi_intercept_errors on;
-              fastcgi_pass php-${app};
+              fastcgi_pass php-wpbici;
               include ${pkgs.nginx}/conf/fastcgi_params;
               include ${pkgs.nginx}/conf/fastcgi.conf;
               fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
@@ -62,32 +50,27 @@ in
             '';
           };
         };
-        "old.${host}" = {
-          useACMEHost = host;
+        "tools.bufanda.cc" = {
+          useACMEHost = "bufanda.cc";
           forceSSL = true;
-          root = "${root}-old";
+          root = "/var/www/tools.bufanda.cc/";
           extraConfig = ''
-            expires 1d;
             error_page 404 /404.html;
             error_log syslog:server=unix:/dev/log debug;
-            access_log syslog:server=unix:/dev/log,tag=elviveroOld;
+            access_log syslog:server=unix:/dev/log,tag=toolsbufanda;
+            try_files $uri $uri.html $uri/ =404;
           '';
         };
-        "static.${host}" = {
-          useACMEHost = host;
+        "mapa.bufanda.cc" = {
+          useACMEHost = "bufanda.cc";
           forceSSL = true;
-          root = "${root}-static";
+          root = "/var/www/mapa.bufanda.cc/";
           extraConfig = ''
-            expires 1d;
             error_page 404 /404.html;
             error_log syslog:server=unix:/dev/log debug;
-            access_log syslog:server=unix:/dev/log,tag=elviveroStatic;
+            access_log syslog:server=unix:/dev/log,tag=mapabufanda;
+            try_files $uri $uri.html $uri/ =404;
           '';
-        };
-        "www.${host}" = {
-          useACMEHost = host;
-          forceSSL = true;
-          locations."/".return = "301 https://elvivero.es$request_uri";
         };
       };
     };
@@ -106,8 +89,8 @@ in
         "catch_workers_output" = true;
       };
       phpOptions = ''
-        upload_max_filesize = 50M
-        post_max_size = 50M
+        upload_max_filesize = ${max_upload_filesize}
+        post_max_size = ${max_upload_filesize}
       '';
       phpEnv."PATH" = lib.makeBinPath [ pkgs.php ];
     };
@@ -125,11 +108,12 @@ in
   };
   users.users.${app} = {
     isSystemUser = true;
+    # createHome = true;
     home = root;
     group  = app;
   };
   users.groups.${app} = {};
   home-manager.sharedModules = [{
-    custom.shortcuts.paths.we = root;
+    custom.shortcuts.paths.wbb = root;
   }];
 }

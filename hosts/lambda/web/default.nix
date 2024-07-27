@@ -3,12 +3,14 @@
   imports = [
     # ./lagransala.nix
     ./bufanda.nix
-    ./bach.nix
+    ./bici.bufanda.nix
+    # ./bach.nix
     ./claudiogabis.nix
     ./colchonreview.nix
     ./elvivero.nix
     ./enelpetirrojo.nix
     ./haztecaso.nix
+    ./olaborathorio.nix
     ./thumbor.nix
     ./twozeroeightthree.nix
     ./vaultwarden.nix

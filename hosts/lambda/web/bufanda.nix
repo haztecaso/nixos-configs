@@ -87,6 +87,13 @@ in
           '';
           locations."/" = {
             proxyPass = "http://nas:4001";
+            extraConfig = ''
+              proxy_set_header Upgrade $http_upgrade;
+              proxy_set_header Connection "upgrade";
+              proxy_set_header X-Forwarded-Host $host:$server_port;
+              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              proxy_set_header X-Forwarded-Proto $scheme;
+            '';
           };
         };
         "ombi.bufanda.cc" = {
