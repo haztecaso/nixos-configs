@@ -1,4 +1,11 @@
 { config, lib, pkgs, ... }:
+#TODO: 
+# automate some installation and config processes:
+# - Create root folder if not exists and add install script that does the
+# following (using wp-cli)
+#   - helps setting mysql password
+#   - downloads latest wordpress
+#   - fills up wp-config.php
 let
   cfg = config.services.custom.web.wordpress;
   siteOptions = { lib, options, config, ... }: 
@@ -93,6 +100,17 @@ in
           expires max;
           log_not_found off;
         '';
+        "~* /(wp-config.php|readme.html|license.txt)".extraConfig = ''
+          deny all;
+        '';
+        "~* /(?:uploads|files|wp-content|wp-includes|akismet)/.*.php$".extraConfig = ''
+          deny all;
+        '';
+        "~* ^.+\.(bak|log|old|orig|original|php#|php~|php_bak|save|swo|swp|sql)$".extraConfig = ''
+          deny all;
+          access_log off;
+          log_not_found off;
+        '';
         "/favicon.ico".extraConfig = ''
           log_not_found off;
           access_log off;
@@ -147,11 +165,12 @@ in
   config.users = lib.mkMerge (lib.mapAttrsToList (name: cfg: {
     users.${cfg.appName} = {
       isSystemUser = true;
-      #TODO: automate folder creation without using this option. This changes the permissions of the folder
-      # createHome = true; 
+      # createHome = true; # Don't use this option! It will change the folder
+      # permissions
       home = cfg.root;
       group = cfg.appName;
     };
     groups.${cfg.appName} = { };
   }) cfg.sites);
+  config.environment.systemPackages = [ pkgs.wp-cli ];
 }
