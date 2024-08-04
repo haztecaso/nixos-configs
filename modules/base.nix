@@ -60,8 +60,7 @@ in
             keep-derivations = true;
             auto-optimise-store = true;
             substituters = [
-              "http://nas:5555"
-              "https://cache.nixos.org"
+              # "http://nas:5555"
             ];
             trusted-public-keys = [
               "nas:TngeLMrJNW+7qgP4hMFsrtuqFMD434NGOoYLp+twews="

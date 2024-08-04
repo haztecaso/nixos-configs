@@ -20,6 +20,28 @@ in
             try_files $uri $uri.html $uri/ =404;
           '';
         };
+        "tools.bufanda.cc" = {
+          useACMEHost = "bufanda.cc";
+          forceSSL = true;
+          root = "/var/www/tools.bufanda.cc/";
+          extraConfig = ''
+            error_page 404 /404.html;
+            error_log syslog:server=unix:/dev/log debug;
+            access_log syslog:server=unix:/dev/log,tag=toolsbufanda;
+            try_files $uri $uri.html $uri/ =404;
+          '';
+        };
+        "mapa.bufanda.cc" = {
+          useACMEHost = "bufanda.cc";
+          forceSSL = true;
+          root = "/var/www/mapa.bufanda.cc/";
+          extraConfig = ''
+            error_page 404 /404.html;
+            error_log syslog:server=unix:/dev/log debug;
+            access_log syslog:server=unix:/dev/log,tag=mapabufanda;
+            try_files $uri $uri.html $uri/ =404;
+          '';
+        };
         "cache.${host}" = {
           useACMEHost = host;
           forceSSL = true;

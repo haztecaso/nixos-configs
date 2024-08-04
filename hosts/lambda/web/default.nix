@@ -2,21 +2,15 @@
 {
   imports = [
     ./domains.nix
+    ./wordpress.nix
 
     ./bufanda.nix
-    ./bici.bufanda.nix
-    ./claudiogabis.nix
-    ./colchonreview.nix
     ./elvivero.nix
     ./enelpetirrojo.nix
     ./haztecaso.nix
-    ./olaborathorio.nix
     ./thumbor.nix
     ./twozeroeightthree.nix
     ./vaultwarden.nix
-    ./wplay.nix
-    ./wpleandro.nix
-    ./zulmarecchini.nix
     # ./matomo.nix
     # ./ulogger.nix
     # ./drupaltest.nix
