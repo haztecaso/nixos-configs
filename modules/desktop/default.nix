@@ -16,20 +16,22 @@ in
     services = {
       xserver = {
         enable = true;
-        layout = "es,us";
-        xkbOptions = "caps:escape,grp:alt_space_toggle";
+        xkb = {
+          layout = "es,us";
+          options = "caps:escape,grp:alt_space_toggle";
+        };
         windowManager.xmonad = {
           enable = true;
           enableContribAndExtras = true;
           config = ./xmonad/xmonad.hs;
         };
-        displayManager = {
-          autoLogin.enable = true;
-          autoLogin.user = lib.mkDefault "skolem";
-          sessionCommands = ''
-            ${pkgs.xorg.xmodmap}/bin/xmodmap -e "keycode 135 = Super_L NoSymbol Super_L"
-          '';
-        };
+        displayManager.sessionCommands = ''
+          ${pkgs.xorg.xmodmap}/bin/xmodmap -e "keycode 135 = Super_L NoSymbol Super_L"
+        '';
+      };
+      displayManager.autoLogin = {
+        enable = true;
+        user = lib.mkDefault "skolem";
       };
       blueman.enable = true;
       dbus = {
