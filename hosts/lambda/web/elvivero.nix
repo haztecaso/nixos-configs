@@ -1,23 +1,19 @@
 { config, lib, pkgs, ... }:
 let
-  root = "/var/www/elvivero.es";
-  host = "elvivero.es";
-  app = "wpelvivero";
+  redirectTo = destination: {
+    useACMEHost = "haztecaso.com";
+    forceSSL = true;
+    locations."/".return = "301 https://${destination}$request_uri";
+  };
 in
 {
   services = {
     nginx = {
       virtualHosts = {
-        "*.${host}" = {
-          serverName = "*.${host}";
-          useACMEHost = host;
-          addSSL = true;
-          locations."/".return = "301 https://${host}$request_uri";
-        };
-        "old.${host}" = {
-          useACMEHost = host;
+        "old.elvivero.es" = {
+          useACMEHost = "elvivero.es";
           forceSSL = true;
-          root = "${root}-old";
+          root = "/var/www/elvivero.es-old";
           extraConfig = ''
             expires 1d;
             error_page 404 /404.html;
@@ -25,10 +21,10 @@ in
             access_log syslog:server=unix:/dev/log,tag=elviveroOld;
           '';
         };
-        "static.${host}" = {
-          useACMEHost = host;
+        "static.elvivero.es" = {
+          useACMEHost = "elvivero.es";
           forceSSL = true;
-          root = "${root}-static";
+          root = "/var/www/elvivero.es-static";
           extraConfig = ''
             expires 1d;
             error_page 404 /404.html;
@@ -36,11 +32,8 @@ in
             access_log syslog:server=unix:/dev/log,tag=elviveroStatic;
           '';
         };
-        "www.${host}" = {
-          useACMEHost = host;
-          forceSSL = true;
-          locations."/".return = "301 https://elvivero.es$request_uri";
-        };
+        "www.elvivero.es" = redirectTo "elvivero.es";
+        "equisoain.elvivero.es" = redirectTo "equisoain.com";
       };
     };
   };

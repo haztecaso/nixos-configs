@@ -10,12 +10,6 @@ in
 {
   services = {
     nginx.virtualHosts = {
-      "*.haztecaso.com" = {
-        serverName = "*.haztecaso.com";
-        forceSSL = true;
-        useACMEHost = "haztecaso.com";
-        locations."/".return = "404";
-      };
       "haztecaso.com" = {
         useACMEHost = "haztecaso.com";
         forceSSL = true;
@@ -56,10 +50,7 @@ in
       #   forceSSL = true;
       #   root = "/var/www/devjxqhdknupcorelqxdbxo.haztecaso.com";
       # };
-      "www.haztecaso.com" = {
-        enableACME = true;
-        locations."/".return = "301 https://haztecaso.com$request_uri";
-      };
+      "www.haztecaso.com" = redirectTo "haztecaso.com";
     };
     # mpdws = {
     #   enable = true;

@@ -33,6 +33,11 @@
       recommendedOptimisation = true;
       recommendedProxySettings = true;
       recommendedTlsSettings = true;
+      virtualHosts."_" = { #default
+        forceSSL = true;
+        useACMEHost = "haztecaso.com";
+        locations."/".return = "404";
+      };
     };
     borgbackup.jobs.webs = {
       paths = "/var/www/";
