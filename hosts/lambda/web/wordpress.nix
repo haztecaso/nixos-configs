@@ -5,30 +5,25 @@
       appName = "wplay";
       domain = "haztecaso.com";
       subdomain = "wplay";
-      root = "/var/www/wplay";
     };
     elvivero = {
       appName = "wpelvivero";
       domain = "elvivero.es";
-      root = "/var/www/elvivero.es";
     };
     bicibufanda = {
       appName = "bicibufanda";
       domain = "bufanda.cc";
       subdomain = "bici";
-      root = "/var/www/bici.bufanda.cc";
       max_upload_filesize = 200;
     };
     claudiogabis = {
       appName = "wpclau";
       domain = "claudiogabis.com";
-      root = "/var/www/claudiogabis.com";
       max_upload_filesize = 400;
     };
     delunesadomingo = {
       appName = "wpleandro";
       domain = "delunesadomingo.es";
-      root = "/var/www/wpleandro/";
     };
     colchonreview = {
       appName = "wpcolchon";
