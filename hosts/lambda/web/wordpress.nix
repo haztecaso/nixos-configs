@@ -33,13 +33,11 @@
     colchonreview = {
       appName = "wpcolchon";
       domain = "colchon.review";
-      root = "/var/www/colchon.review";
       max_upload_filesize = 1024;
     };
     equisoain = {
       appName = "wpequisoain";
-      domain = "elvivero.es";
-      subdomain = "equisoain";
+      domain = "equisoain.com";
     };
     olaborathorio = {
       appName = "wpolaborathorio";
@@ -50,7 +48,6 @@
     zulmarecchini = {
       appName = "wpzulma";
       domain = "zulmarecchini.com";
-      root = "/var/www/zulmarecchini.com";
       max_upload_filesize = 350;
     };
   };

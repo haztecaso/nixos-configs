@@ -15,6 +15,7 @@ in
     "delunesadomingo.es" = cloudflareCert [ "*.delunesadomingo.es" ];
     "elvivero.es" = cloudflareCert [ "*.elvivero.es" ];
     "enelpetirrojo.com" = cloudflareCert [ "*.enelpetirrojo.com" ];
+    "equisoain.com" = cloudflareCert [ "*.equisoain.com" ];
     "haztecaso.com" = cloudflareCert [ "*.haztecaso.com" ];
     "paseourbano.com" = cloudflareCert [ "*.paseourbano.com" ];
     "twozeroeightthree.com" = cloudflareCert [ "*.twozeroeightthree.com" ];
