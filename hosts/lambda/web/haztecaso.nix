@@ -60,10 +60,6 @@ in
         enableACME = true;
         locations."/".return = "301 https://haztecaso.com$request_uri";
       };
-      "media.haztecaso.com" = redirectTo "media.bufanda.cc";
-      "music.haztecaso.com" = redirectTo "music.bufanda.cc";
-      "ombi.haztecaso.com" = redirectTo "ombi.bufanda.cc";
-      "dl.haztecaso.com" = redirectTo "dl.bufanda.cc";
     };
     # mpdws = {
     #   enable = true;
