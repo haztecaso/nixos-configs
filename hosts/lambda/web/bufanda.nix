@@ -4,21 +4,9 @@ let
   root = "/var/www/bufanda.cc";
 in
 {
-  security.acme.certs."${host}" = {
-    dnsProvider = "cloudflare";
-    credentialsFile = config.age.secrets."cloudflare".path;
-    group = "nginx";
-    extraDomainNames = [ "*.${host}" "*.dev.${host}" ];
-  };
   services = {
     nginx = {
       virtualHosts = {
-        # "*.${host}" = {
-        #   serverName = "*.${host}";
-        #   useACMEHost = host;
-        #   addSSL = true;
-        #   locations."/".return = "404";
-        # };
         "${host}" = {
           useACMEHost = host;
           forceSSL = true;
@@ -29,6 +17,28 @@ in
             error_page 404 /404.html;
             error_log syslog:server=unix:/dev/log debug;
             access_log syslog:server=unix:/dev/log,tag=bufanda;
+            try_files $uri $uri.html $uri/ =404;
+          '';
+        };
+        "tools.bufanda.cc" = {
+          useACMEHost = "bufanda.cc";
+          forceSSL = true;
+          root = "/var/www/tools.bufanda.cc/";
+          extraConfig = ''
+            error_page 404 /404.html;
+            error_log syslog:server=unix:/dev/log debug;
+            access_log syslog:server=unix:/dev/log,tag=toolsbufanda;
+            try_files $uri $uri.html $uri/ =404;
+          '';
+        };
+        "mapa.bufanda.cc" = {
+          useACMEHost = "bufanda.cc";
+          forceSSL = true;
+          root = "/var/www/mapa.bufanda.cc/";
+          extraConfig = ''
+            error_page 404 /404.html;
+            error_log syslog:server=unix:/dev/log debug;
+            access_log syslog:server=unix:/dev/log,tag=mapabufanda;
             try_files $uri $uri.html $uri/ =404;
           '';
         };
@@ -75,18 +85,6 @@ in
           locations."/" = {
             basicAuth = { user = "password"; };
             proxyPass = "http://nas:8998";
-          };
-        };
-        "remote.bufanda.cc" = {
-          useACMEHost = host;
-          forceSSL = true;
-          extraConfig = ''
-            access_log syslog:server=unix:/dev/log,tag=meshcentral;
-            proxy_send_timeout 330s;
-            proxy_read_timeout 330s;
-          '';
-          locations."/" = {
-            proxyPass = "http://nas:4001";
           };
         };
         "ombi.bufanda.cc" = {

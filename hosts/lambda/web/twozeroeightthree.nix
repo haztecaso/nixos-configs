@@ -1,28 +1,11 @@
 { config, lib, pkgs, ... }:
-let
-  host = "twozeroeightthree.com";
-  root = "/var/www/${host}";
-in
 {
-  security.acme.certs."${host}" = {
-    dnsProvider = "cloudflare";
-    credentialsFile = config.age.secrets."cloudflare".path;
-    group = "nginx";
-    extraDomainNames = [ "*.${host}" ];
-  };
   services = {
     nginx.virtualHosts = {
-      "*.${host}" = {
-        serverName = "*.${host}";
-        useACMEHost = "${host}";
+      "twozeroeightthree.com" = {
+        useACMEHost = "twozeroeightthree.com";
         forceSSL = true;
-        # locations."/".return = "404";
-        locations."/".return = "301 https://${host}$request_uri";
-      };
-      "${host}" = {
-        useACMEHost = "${host}";
-        forceSSL = true;
-        root = root;
+        root = "/var/www/twozeroeightthree.com";
         extraConfig = ''
           error_log syslog:server=unix:/dev/log debug;
           access_log syslog:server=unix:/dev/log,tag=twozeroeightthree;
@@ -36,7 +19,4 @@ in
       };
     };
   };
-  home-manager.sharedModules = [{
-    custom.shortcuts.paths.wtz = root;
-  }];
 }

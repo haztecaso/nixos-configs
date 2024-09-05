@@ -19,7 +19,7 @@ in
           bold_italic = { family = fontFamily; style = "Bold Italic"; };
         };
 
-        key_bindings = [
+        keyboard.bindings = [
           { key = "K"; mods = "Control|Alt"; action = "IncreaseFontSize"; }
           { key = "J"; mods = "Control|Alt"; action = "DecreaseFontSize"; }
           { key = "Return"; mods = "Control|Shift"; action = "SpawnNewInstance"; }

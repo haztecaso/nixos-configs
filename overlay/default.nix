@@ -1,7 +1,7 @@
-final: prev: {
-  autofirma = prev.callPackage ./autofirma.nix { };
+self: super: {
+  autofirma = super.callPackage ./autofirma.nix { };
 
-  battery_level = prev.callPackage
+  battery_level = super.callPackage
     ({ pkgs, ... }: pkgs.writeScriptBin "battery_level" ''
       #!${pkgs.runtimeShell}
       now=$(cat /sys/class/power_supply/$1/charge_now)
@@ -10,8 +10,8 @@ final: prev: {
     '')
     { };
 
-  moodle-dl-new = prev.callPackage ./moodle-dl { };
+  moodle-dl-new = super.callPackage ./moodle-dl { };
 
-  configuradorfmnt = prev.callPackage ./configuradorfmnt.nix { };
+  configuradorfmnt = super.callPackage ./configuradorfmnt.nix { };
 
 }

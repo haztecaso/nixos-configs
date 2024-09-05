@@ -1,23 +1,17 @@
 { config, lib, pkgs, ... }:
 {
   imports = [
-    # ./lagransala.nix
+    ./domains.nix
+    ./wordpress.nix
+
     ./bufanda.nix
-    ./bach.nix
-    ./claudiogabis.nix
-    ./colchonreview.nix
     ./elvivero.nix
     ./enelpetirrojo.nix
     ./haztecaso.nix
     ./thumbor.nix
     ./twozeroeightthree.nix
     ./vaultwarden.nix
-    ./wplay.nix
-    ./wpleandro.nix
-    ./zulmarecchini.nix
     # ./matomo.nix
-    # ./meshcentral.nix
-    # ./ombi.nix
     # ./ulogger.nix
     # ./drupaltest.nix
   ];
@@ -39,11 +33,16 @@
       recommendedOptimisation = true;
       recommendedProxySettings = true;
       recommendedTlsSettings = true;
+      virtualHosts."_" = { #default
+        forceSSL = true;
+        useACMEHost = "haztecaso.com";
+        locations."/".return = "404";
+      };
     };
     borgbackup.jobs.webs = {
       paths = "/var/www/";
       exclude = [ "/var/www/haztecaso.com/radio-old/" ];
-      encryption.mode = "none"; 
+      encryption.mode = "none";
       environment.BORG_RSH = "ssh -i /home/skolem/.ssh/id_rsa";
       repo = "ssh://skolem@nas:22/mnt/raid/backups/borg/lambda-webs";
       compression = "auto,zstd";

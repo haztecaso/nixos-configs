@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: 
+{ config, pkgs, lib, ... }: 
 {
   # age.secrets."cloudflare".file = ../../secrets/cloudflare.age;
   security.acme = {
@@ -14,7 +14,7 @@
   services = {
     nextcloud = {
       enable = true;
-      package = pkgs.nextcloud27;
+      package = pkgs.nextcloud29;
       appstoreEnable = true;
       hostName = "en.elvivero.es";
       https = true;
@@ -23,7 +23,17 @@
       config = {
         dbtype = "mysql";
         adminpassFile = "/mnt/raid/nextcloud-admin-pass";
-        defaultPhoneRegion = "ES";
+      };
+      settings = {
+        "default_phone_region" = "ES";
+        "maintenance_window_start" = 2;
+        "memories.exiftool" = "${lib.getExe pkgs.exiftool}";
+        "memories.vod.ffmpeg" = "${lib.getExe pkgs.ffmpeg-headless}";
+        "memories.vod.ffprobe" = "${pkgs.ffmpeg-headless}/bin/ffprobe";
+        "overwriteprotocol" = "https";
+      };
+      phpOptions = {
+        "opcache.interned_strings_buffer" = 16;
       };
     };
     nginx.virtualHosts.${config.services.nextcloud.hostName} = {
@@ -40,6 +50,9 @@
       use = "web, web=https://ipinfo.io/ip";
       passwordFile = "/mnt/raid/cloudflare-dns-zone-apikey";
     };
+  };
+  systemd.services.nextcloud-cron = {
+    path = [pkgs.perl];
   };
   networking.firewall.allowedTCPPorts = [ 80 443 ];
 }

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ ... }:
 let
   backupDir = "/var/backups/vaultwarden";
 in
@@ -20,16 +20,10 @@ in
         serverName = "bw.haztecaso.com";
         locations."/".proxyPass = "http://127.0.0.1:8222";
       };
-      "vaultwarden_old" = {
-        enableACME = true;
-        forceSSL = true;
-        serverName = "vault.haztecaso.com";
-        locations."/".return = "301 https://bw.haztecaso.com$request_uri";
-      };
     };
     borgbackup.jobs.vaultwarden = {
       paths = backupDir;
-      encryption.mode = "none"; 
+      encryption.mode = "none";
       environment.BORG_RSH = " -o StrictHostKeyChecking=nossh -i /home/skolem/.ssh/id_rsa -o StrictHostKeyChecking=no";
       repo = "ssh://skolem@nas:22/mnt/raid/backups/borg/vaultwarden";
       compression = "auto,zstd";

@@ -1,29 +1,12 @@
-{ config, lib, pkgs, ... }:
-let
-  root = "/var/www/enelpetirrojo.com";
-  host = "enelpetirrojo.com";
-  app = "enelepetirrojo";
-in
+{ ... }:
 {
-  security.acme.certs."${host}" = {
-    dnsProvider = "cloudflare";
-    credentialsFile = config.age.secrets."cloudflare".path;
-    group = "nginx";
-    extraDomainNames = [ "*.${host}" ];
-  };
   services = {
     nginx = {
       virtualHosts = {
-        "*.${host}" = {
-          serverName = "*.${host}";
-          useACMEHost = host;
-          addSSL = true;
-          locations."/".return = "301 https://${host}$request_uri";
-        };
-        "${host}" = {
-          useACMEHost = host;
+        "enelpetirrojo.com" = {
+          useACMEHost = "enelpetirrojo.com";
           forceSSL = true;
-          root = "${root}";
+          root = "/var/www/enelpetirrojo.com";
           extraConfig = ''
             expires 1d;
             error_page 404 /404.html;

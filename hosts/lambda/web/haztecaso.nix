@@ -8,20 +8,8 @@ let
   };
 in
 {
-  security.acme.certs."haztecaso.com" = {
-    dnsProvider = "cloudflare";
-    credentialsFile = config.age.secrets."cloudflare".path;
-    group = "nginx";
-    extraDomainNames = [ "*.haztecaso.com" ];
-  };
   services = {
     nginx.virtualHosts = {
-      "*.haztecaso.com" = {
-        serverName = "*.haztecaso.com";
-        forceSSL = true;
-        useACMEHost = "haztecaso.com";
-        locations."/".return = "404";
-      };
       "haztecaso.com" = {
         useACMEHost = "haztecaso.com";
         forceSSL = true;
@@ -62,14 +50,7 @@ in
       #   forceSSL = true;
       #   root = "/var/www/devjxqhdknupcorelqxdbxo.haztecaso.com";
       # };
-      "www.haztecaso.com" = {
-        enableACME = true;
-        locations."/".return = "301 https://haztecaso.com$request_uri";
-      };
-      "media.haztecaso.com" = redirectTo "media.bufanda.cc";
-      "music.haztecaso.com" = redirectTo "music.bufanda.cc";
-      "ombi.haztecaso.com" = redirectTo "ombi.bufanda.cc";
-      "dl.haztecaso.com" = redirectTo "dl.bufanda.cc";
+      "www.haztecaso.com" = redirectTo "haztecaso.com";
     };
     # mpdws = {
     #   enable = true;
