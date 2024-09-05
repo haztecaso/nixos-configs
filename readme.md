@@ -1,51 +1,18 @@
-# Nix configs
+# nixos configs
 
-## Hosts
+Configs for my linux machines using the *NixOS* distribution.
 
-### lambda
+My machines:
 
-VPS for services and web hosting.
+- *elbrus* is my laptop, a Thinkpad T470.
+- *nas* is my server, a custom build tower using cheap hardware.
+- *lambda* is a VPS from *contabo*.
 
-#### Services
+Uncomplete list of things managed with this configs:
 
-- [bitwarden server (vaultwarden)](https://bw.haztecaso.com)
-- [matomo analytics](https://matomo.haztecaso.com)
-- [thumbor image thumbnailer](https://img.haztecaso.com)
-- [vscode web](https://code.haztecaso.com)
-- [gitea](https://git.haztecaso.com)
-
-#### Webs
-
-- [haztecaso.com](https://haztecaso.com)
-- [elvivero.es](https://elvivero.es)
-- [zulmarecchini.com](https://zulmarecchini.com)
-
-Future:
-
-- twozeroeightthree.com: jekyll
-
-### beta
-
-Thinkpad x270. Personal machine.
-
-### galois
-
-Macbook Pro mid 2012. Personal machine.
-
-
-## Tips
-
-- nix flake update single input:
-```bash
-nix flake lock --update-input nixpkgs
-```
-
-- nginx webserver logs are managed with journalctl. For example:
-```bash
-journalctl -f --since today -u nginx
-```
-
-
-## References
-
-- Module organization based on [chvp/nixos-config](https://github.com/chvp/nixos-config/)
+- mesh VPN between machines using *tinc*.
+- custom desktop environment
+  - *xmonad* as window manager
+  - *polybar* as status bar
+  - *alacritty* as terminal emulator
+  - *sxhkd* for keybindings
