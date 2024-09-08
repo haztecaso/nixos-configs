@@ -1,11 +1,6 @@
 { config, lib, pkgs, ... }:
 let
   root = "/var/www/haztecaso.com";
-  redirectTo = destination: {
-    useACMEHost = "haztecaso.com";
-    forceSSL = true;
-    locations."/".return = "301 https://${destination}$request_uri";
-  };
 in
 {
   services = {
@@ -50,7 +45,6 @@ in
       #   forceSSL = true;
       #   root = "/var/www/devjxqhdknupcorelqxdbxo.haztecaso.com";
       # };
-      "www.haztecaso.com" = redirectTo "haztecaso.com";
     };
     # mpdws = {
     #   enable = true;

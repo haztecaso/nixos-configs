@@ -1,11 +1,4 @@
 { config, lib, pkgs, ... }:
-let
-  redirectTo = destination: {
-    useACMEHost = "haztecaso.com";
-    forceSSL = true;
-    locations."/".return = "301 https://${destination}$request_uri";
-  };
-in
 {
   services = {
     nginx = {
@@ -32,8 +25,6 @@ in
             access_log syslog:server=unix:/dev/log,tag=elviveroStatic;
           '';
         };
-        "www.elvivero.es" = redirectTo "elvivero.es";
-        "equisoain.elvivero.es" = redirectTo "equisoain.com";
       };
     };
   };

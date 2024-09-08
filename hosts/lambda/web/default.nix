@@ -36,7 +36,13 @@
       virtualHosts."_" = { #default
         forceSSL = true;
         useACMEHost = "haztecaso.com";
+        extraConfig = ''
+          error_page 404 /404.html;
+        '';
         locations."/".return = "404";
+        locations."/404.html".extraConfig = ''
+          root /var/www/errors/;
+        '';
       };
     };
     borgbackup.jobs.webs = {

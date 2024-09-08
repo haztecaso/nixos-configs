@@ -21,4 +21,24 @@ in
     "twozeroeightthree.com" = cloudflareCert [ "*.twozeroeightthree.com" ];
     "zulmarecchini.com" = cloudflareCert [ "*.zulmarecchini.com" ];
   };
+  services.nginx.virtualHosts = builtins.listToAttrs (map (domain: { 
+    name = "www.${domain}"; 
+    value = {
+      useACMEHost = domain;
+      forceSSL = true;
+      locations."/".return = "301 https://${domain}$request_uri";
+    }; 
+  }) [ 
+    "bufanda.cc"
+    "claudiogabis.com"
+    "colchon.review"
+    "delunesadomingo.es"
+    "elvivero.es"
+    "enelpetirrojo.com"
+    "equisoain.com"
+    "haztecaso.com"
+    "paseourbano.com"
+    "twozeroeightthree.com"
+    "zulmarecchini.com"
+  ]);
 }
