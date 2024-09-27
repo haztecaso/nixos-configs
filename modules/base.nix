@@ -49,36 +49,35 @@ in
 
   config = lib.mkMerge [
     {
-      nix =
-        {
-          package = pkgs.nixFlakes;
-          extraOptions = ''
-            experimental-features = nix-command flakes
-          '';
-          gc.automatic = true;
-          settings = {
-            keep-derivations = true;
-            auto-optimise-store = true;
-            substituters = [
-              # "http://nas:5555"
-            ];
-            trusted-public-keys = [
-              "nas:TngeLMrJNW+7qgP4hMFsrtuqFMD434NGOoYLp+twews="
-              "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-            ];
-          };
-
-          registry = {
-            nixpkgs.flake = inputs.nixpkgs;
-            unstable.flake = inputs.unstable;
-          };
-
-          nixPath = [
-            "nixpkgs=${nixpkgsPath}"
-            "unstable=${unstablePath}"
-            # "/nix/var/nix/profiles/per-user/root/channels"
+      nix = {
+        package = pkgs.nixFlakes;
+        extraOptions = ''
+          experimental-features = nix-command flakes
+        '';
+        gc.automatic = true;
+        settings = {
+          keep-derivations = true;
+          auto-optimise-store = true;
+          substituters = [
+            # "http://nas:5555"
+          ];
+          trusted-public-keys = [
+            "nas:TngeLMrJNW+7qgP4hMFsrtuqFMD434NGOoYLp+twews="
+            "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
           ];
         };
+
+        registry = {
+          nixpkgs.flake = inputs.nixpkgs;
+          unstable.flake = inputs.unstable;
+        };
+
+        nixPath = [
+          "nixpkgs=${nixpkgsPath}"
+          "unstable=${unstablePath}"
+          # "/nix/var/nix/profiles/per-user/root/channels"
+        ];
+      };
 
       systemd.tmpfiles.rules = [
         "L+ ${nixpkgsPath}     - - - - ${inputs.nixpkgs}"
