@@ -25,7 +25,7 @@
 
       channelsConfig = {
         allowUnfree = true;
-        permittedInsecurePackages = [ "electron-25.9.0" ]; # TODO: remove this, necessary for logseq
+        permittedInsecurePackages = [ "electron-27.3.11" ]; # necessary for logseq
       };
 
       sharedOverlays = [
