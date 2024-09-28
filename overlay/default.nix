@@ -14,8 +14,8 @@ self: super: {
 
   configuradorfmnt = super.callPackage ./configuradorfmnt.nix { };
 
-  logseq = super.logseq.override {
-    electron = super.electron_27;
-  };
+  # logseq = super.logseq.override {
+  #   electron = super.electron_27;
+  # };
 
 }
