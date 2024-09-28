@@ -133,6 +133,7 @@
     unstable.axel
     unstable.aria2
     rustdesk
+    android-tools
 
     # network
     nmap
@@ -233,6 +234,7 @@
     safeeyes.enable = true;
     tor.enable = true;
     teamviewer.enable = true;
+    udev.packages = [ pkgs.android-udev-rules ];
   };
 
   custom = {
