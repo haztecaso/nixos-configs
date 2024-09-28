@@ -110,7 +110,7 @@
     gparted
     parted
 
-    unstable.logseq
+    logseq
     obsidian
 
     # Identity
