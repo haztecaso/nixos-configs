@@ -112,6 +112,7 @@
 
     logseq
     obsidian
+    klog-time-tracker
 
     timewarrior
 
@@ -235,6 +236,9 @@
     tor.enable = true;
     teamviewer.enable = true;
     udev.packages = [ pkgs.android-udev-rules ];
+    printing.drivers = [
+      (pkgs.writeTextDir "share/cups/model/ricoh-mp-c2011-pdf.ppd" (builtins.readFile ./Ricoh-MP_C2011-PDF-Ricoh.ppd))
+    ];
   };
 
   custom = {
