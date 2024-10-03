@@ -24,6 +24,10 @@
       #   configFile.source = ./config.nu;
       #   envFile.source = ./env.nu;
       # };
+      home.packages = [ pkgs.klog-time-tracker ];
+      programs.zsh.initExtra = ''
+        source <(klog completion -c zsh)
+      '';
       custom = {
         desktop = {
           enable = true;
@@ -112,7 +116,6 @@
 
     logseq
     obsidian
-    klog-time-tracker
 
     timewarrior
 
