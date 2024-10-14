@@ -14,7 +14,7 @@
 
   users.users.skolem = {
     openssh.authorizedKeys.keys = with config.base.ssh-keys; [ viaje24 skolem_elbrus termux ];
-    extraGroups = [ "docker" "adbusers" ];
+    extraGroups = [ "docker" "adbusers" "dialout" ];
   };
 
   home-manager.users = {
@@ -68,6 +68,7 @@
 
     logseq
     obsidian
+    klog-time-tracker
 
     # Identity
     autofirma

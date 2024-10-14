@@ -20,6 +20,7 @@
       https = true;
       datadir = "/mnt/raid/nextcloud";
       database.createLocally = true;
+      maxUploadSize = "20G";
       config = {
         dbtype = "mysql";
         adminpassFile = "/mnt/raid/nextcloud-admin-pass";
