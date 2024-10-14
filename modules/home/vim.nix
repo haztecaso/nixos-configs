@@ -11,7 +11,7 @@ in
     };
     package = mkOption {
       type = types.package;
-      default = pkgs.neovimBase;
+      default = pkgs.nvim.core;
       description = "Neovim package to install.";
     };
     defaultEditor = mkOption {

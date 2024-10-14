@@ -49,51 +49,7 @@
           latex.enable = true;
           tmux.color = "#aaee00";
           # music.enable = true;
-          # TODO: reenable custom vim package
-          vim.package = pkgs.mkNeovim {
-            completion.enable = true;
-            snippets.enable = true;
-            lsp = {
-              enable = true;
-              languages = {
-                bash = true;
-                clang = true;
-                css = true;
-                docker = true;
-                html = true;
-                json = true;
-                lean = false;
-                lua = true;
-                nix = true;
-                php = true;
-                python = true;
-                tex = true;
-                typescript = true;
-                vimscript = true;
-                yaml = true;
-              };
-            };
-            plugins = {
-              ack = true;
-              commentary = true;
-              copilot = true;
-              enuch = true;
-              fugitive = true;
-              gitgutter = true;
-              gruvbox = true;
-              lastplace = true;
-              nix = true;
-              repeat = true;
-              telescope = true;
-              tidal = true;
-              toggleterm = true;
-              treesitter = true;
-              vim-airline = true;
-              vim-visual-multi = true;
-              vimtex = true;
-              vinegar = true;
-            };
-          };
+          vim.package = pkgs.nvim.full;
         };
         shell.aliases = {
           python = "${pkgs.python3Packages.ipython}/bin/ipython";

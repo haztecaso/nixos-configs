@@ -30,7 +30,7 @@
 
       sharedOverlays = [
         inputs.agenix.overlays.default
-        inputs.neovim-flake.overlay
+        inputs.neovim-flake.overlays.default
         inputs.jobo_bot.overlay
         inputs.remadbot.overlay
         inputs.mpdws.overlay
