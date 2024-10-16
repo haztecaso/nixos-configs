@@ -55,6 +55,7 @@
         elbrus.modules = [ ./hosts/elbrus ];
         lambda.modules = [ ./hosts/lambda ];
         nas.modules = [ ./hosts/nas ];
+        posets.modules = [ ./hosts/posets ];
       };
 
       nixosModules.default = import ./modules;
