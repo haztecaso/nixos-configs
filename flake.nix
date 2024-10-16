@@ -26,7 +26,8 @@
         permittedInsecurePackages = [ "electron-27.3.11" ]; # necessary for logseq
       };
 
-      sharedOverlays = [
+      sharedOverlays = let 
+      in [
         inputs.agenix.overlays.default
         inputs.neovim-flake.overlays.default
         inputs.jobo_bot.overlay
@@ -60,7 +61,7 @@
 
       nixosModules.default = import ./modules;
 
-      overlays.default = import ./overlay;
+      overlays.default = final: prev: (import ./overlay) final prev;
 
     } // {
     # TODO
