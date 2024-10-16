@@ -71,6 +71,8 @@ in
     ];
   };
 
+  programs.dconf.enable = true;
+
   # Create users for home-manager configs
   users.users =
     lib.mapAttrs (_: _: { isNormalUser = true; })
