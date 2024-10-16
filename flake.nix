@@ -9,8 +9,6 @@
     neovim-flake = {
       url = "github:haztecaso/neovim-flake";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.utils.follows = "utils";
-      inputs.tidal.follows = "tidal";
     };
     jobo_bot = { url = "github:haztecaso/jobo_bot"; inputs.nixpkgs.follows = "nixpkgs"; };
     remadbot = { url = "github:haztecaso/remadbot"; inputs.nixpkgs.follows = "nixpkgs"; };
