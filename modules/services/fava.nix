@@ -1,8 +1,6 @@
 { config, lib, pkgs, ... }:
-let
-  cfg = config.custom.services.fava;
-in
-{
+let cfg = config.custom.services.fava;
+in {
   options.custom.services.fava = with lib; {
     enable = mkEnableOption "Enable fava, a web ui for beancount";
     beancountFile = mkOption {
@@ -21,16 +19,19 @@ in
       default = "127.0.0.1";
       description = "Listen hostname for fava";
     };
-    openPort = mkEnableOption "Wether to open firewall.";
+    openPort = mkEnableOption "Whether to open firewall.";
   };
   config = lib.mkIf cfg.enable {
     systemd.services.fava = {
       description = "Web interface for beancount";
       wantedBy = [ "multi-user.target" ];
       serviceConfig.ExecStart = ''
-        ${pkgs.unstable.fava}/bin/fava ${cfg.beancountFile} -H ${cfg.hostname} -p ${toString cfg.port}
+        ${pkgs.unstable.fava}/bin/fava ${cfg.beancountFile} -H ${cfg.hostname} -p ${
+          toString cfg.port
+        }
       '';
     };
-    networking.firewall.allowedTCPPorts = if cfg.openPort then [ cfg.port ] else [ ];
+    networking.firewall.allowedTCPPorts =
+      if cfg.openPort then [ cfg.port ] else [ ];
   };
 }

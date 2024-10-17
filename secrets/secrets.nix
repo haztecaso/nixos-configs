@@ -1,7 +1,5 @@
-let
-  keys = import ../ssh-keys.nix;
-in
-with keys; {
+let keys = import ../ssh-keys.nix;
+in with keys; {
   "jobo_bot.age".publicKeys = [ skolem host_lambda ];
   "remadbot.age".publicKeys = [ skolem host_lambda ];
   "moodle-dl.age".publicKeys = [ skolem host_lambda ];

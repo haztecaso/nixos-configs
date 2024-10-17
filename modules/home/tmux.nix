@@ -1,4 +1,4 @@
-{ lib, pkgs, config, ... }:
+{ lib,  config, ... }:
 with lib;
 let
   cfg = config.custom.programs.tmux;
@@ -8,7 +8,7 @@ in
     enable = mkOption {
       type = types.bool;
       default = true;
-      description = "Wether to enable tmux.";
+      description = "Whether to enable tmux.";
     };
     customConfig = mkOption {
       type = types.bool;

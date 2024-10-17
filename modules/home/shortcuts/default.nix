@@ -1,19 +1,17 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 with lib;
 let
   fst = list: elemAt list 0;
 
   mkShortcut = action:
     mapAttrs' (short: path:
-      nameValuePair "${action.prefix}${short}" "${action.cmd} ${path}"
-    );
+      nameValuePair "${action.prefix}${short}" "${action.cmd} ${path}");
 
   mkShortcuts = paths: actions:
     zipAttrsWith (n: v: fst v) (map (action: mkShortcut action paths) actions);
 
   cfg = config.custom.shortcuts;
-in
-{
+in {
   imports = [ ./uni.nix ];
 
   options.custom.shortcuts = {
@@ -24,9 +22,18 @@ in
     actions = mkOption {
       type = types.listOf (types.attrsOf types.str);
       default = [
-        { cmd = "cd"; prefix = ""; }
-        { cmd = "nvim"; prefix = "v"; }
-        { cmd = "ranger"; prefix = "r"; }
+        {
+          cmd = "cd";
+          prefix = "";
+        }
+        {
+          cmd = "nvim";
+          prefix = "v";
+        }
+        {
+          cmd = "ranger";
+          prefix = "r";
+        }
       ];
       description = "Actions of shortcuts.";
     };
@@ -36,12 +43,12 @@ in
       description = "Aliases generated from shortcuts.";
     };
   };
-  config.custom.shortcuts.paths = with lib;{
-    D  = mkDefault "~/Downloads";
+  config.custom.shortcuts.paths = with lib; {
+    D = mkDefault "~/Downloads";
     cf = mkDefault "~/.config";
-    d  = mkDefault "~/Documents";
+    d = mkDefault "~/Documents";
     mm = mkDefault "~/Music";
-    n  = mkDefault "/etc/nixos";
+    n = mkDefault "/etc/nixos";
     pp = mkDefault "~/Pictures";
     sr = mkDefault "~/src";
     vv = mkDefault "~/Videos";

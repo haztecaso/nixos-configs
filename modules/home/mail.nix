@@ -3,7 +3,7 @@
 { config, lib, pkgs, ... }:
 let
   cfg = config.custom.mail;
-  mkConfig = name: { address, imapAddress, smtpAddress, primary ? false }: {
+  mkConfig = name: { address, imapAddress, primary ? false }: {
     inherit address primary;
     realName = "Adrián Lattes Grassi";
     userName = address;

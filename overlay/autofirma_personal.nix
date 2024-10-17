@@ -1,13 +1,12 @@
 { stdenv, lib, fetchurl, unzip, dpkg, makeWrapper, jre }:
 let
   version = "1.6.5";
-  src =
-    fetchurl {
-      url = "http://estaticos.redsara.es/comunes/autofirma/currentversion/AutoFirma_Linux.zip";
-      sha256 = "1zys8sl03fbh9w8b2kv7xldfsrz53yrhjw3yn45bdxzpk7yh4f5j";
-    };
-in
-stdenv.mkDerivation {
+  src = fetchurl {
+    url =
+      "http://estaticos.redsara.es/comunes/autofirma/currentversion/AutoFirma_Linux.zip";
+    sha256 = "1zys8sl03fbh9w8b2kv7xldfsrz53yrhjw3yn45bdxzpk7yh4f5j";
+  };
+in stdenv.mkDerivation {
   name = "autofirma-${version}";
   inherit src;
 

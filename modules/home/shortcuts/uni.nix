@@ -1,9 +1,6 @@
-{ config, lib, pkgs, ... }:
-with lib;
-let
-  cfg = config.custom.shortcuts.uni;
-in
-{
+{ config, lib, ... }:
+let cfg = config.custom.shortcuts.uni;
+in {
   options.custom.shortcuts.uni = with lib; {
     enable = mkEnableOption "Uni shortcuts";
     path = mkOption {
@@ -18,8 +15,7 @@ in
     };
   };
   config = lib.mkIf cfg.enable {
-    custom.shell.aliases = lib.genAttrs cfg.asignaturas (
-      a: "cd ${cfg.path}${a}"
-    );
+    custom.shell.aliases =
+      lib.genAttrs cfg.asignaturas (a: "cd ${cfg.path}${a}");
   };
 }

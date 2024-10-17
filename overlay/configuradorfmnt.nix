@@ -3,12 +3,12 @@ let
   pname = "configuradorfnmt";
   version = "1.0.1";
   install_cmd = file: "install -Dvm644 ./usr/${file} $out/${file}";
-in
-stdenv.mkDerivation {
+in stdenv.mkDerivation {
   inherit version pname;
 
   src = fetchurl {
-    url = "https://descargas.cert.fnmt.es/Linux/configuradorfnmt_${version}-0_amd64.deb";
+    url =
+      "https://descargas.cert.fnmt.es/Linux/configuradorfnmt_${version}-0_amd64.deb";
     sha256 = "0f7kfipmrmsahrr6p3783vdqq7vmgkjgqqgnznwjnlzj2y0gafhw";
   };
 
@@ -38,8 +38,9 @@ stdenv.mkDerivation {
 
   meta = with lib; {
     description = "Tool for requesting Spanish official keys and certificates";
-    homepage = "https://www.sede.fnmt.gob.es/descargas/descarga-software/instalacion-software-generacion-de-claves";
-    license = licenses.unfree; #no upstream license
+    homepage =
+      "https://www.sede.fnmt.gob.es/descargas/descarga-software/instalacion-software-generacion-de-claves";
+    license = licenses.unfree; # no upstream license
     platforms = platforms.linux;
   };
 }

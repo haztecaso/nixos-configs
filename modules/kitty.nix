@@ -1,31 +1,62 @@
 { config, pkgs, lib, ... }:
-let
-  font_family = "Liberation mono";
-in
-{
+let font_family = "Liberation mono";
+in {
   config = lib.mkIf config.desktop.enable {
     home-manager.users.skolem = { ... }: {
       programs.alacritty = {
         enable = true;
         settings = {
-          window.padding = { x = 6; y = 6; };
-          scrolling = { multiplier = 3; history = 10000; };
+          window.padding = {
+            x = 6;
+            y = 6;
+          };
+          scrolling = {
+            multiplier = 3;
+            history = 10000;
+          };
 
           font = {
             size = config.desktop.fontSize;
-            normal = { family = font_family; style = "Regular"; };
-            bold = { family = font_family; style = "Bold"; };
-            italic = { family = font_family; style = "Italic"; };
-            bold_italic = { family = font_family; style = "Bold Italic"; };
+            normal = {
+              family = font_family;
+              style = "Regular";
+            };
+            bold = {
+              family = font_family;
+              style = "Bold";
+            };
+            italic = {
+              family = font_family;
+              style = "Italic";
+            };
+            bold_italic = {
+              family = font_family;
+              style = "Bold Italic";
+            };
           };
 
           key_bindings = [
-            { key = "K"; mods = "Control|Alt"; action = "IncreaseFontSize"; }
-            { key = "J"; mods = "Control|Alt"; action = "DecreaseFontSize"; }
-            { key = "Return"; mods = "Control|Shift"; action = "SpawnNewInstance"; }
+            {
+              key = "K";
+              mods = "Control|Alt";
+              action = "IncreaseFontSize";
+            }
+            {
+              key = "J";
+              mods = "Control|Alt";
+              action = "DecreaseFontSize";
+            }
+            {
+              key = "Return";
+              mods = "Control|Shift";
+              action = "SpawnNewInstance";
+            }
           ];
 
-          cursor = { style = "Beam"; vi_mode_style = "Block"; };
+          cursor = {
+            style = "Beam";
+            vi_mode_style = "Block";
+          };
 
           mouse.hide_when_typing = true;
 

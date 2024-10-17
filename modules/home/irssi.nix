@@ -1,4 +1,4 @@
-{ lib, pkgs, config, inputs, ... }:
+{ lib,  config, ... }:
 let
   cfg = config.custom.programs.irssi;
 in

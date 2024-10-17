@@ -3,8 +3,7 @@ let
   stateVersionModule = { nixosConfig, ... }: {
     home.stateVersion = nixosConfig.base.stateVersion;
   };
-in
-{
+in {
   home-manager = {
     extraSpecialArgs = {
       inherit inputs;
@@ -28,15 +27,9 @@ in
           ./tmux.nix
           ./vim.nix
         ];
-        custom = {
-          programs.ranger.enable = lib.mkDefault true;
-        };
-        programs = {
-          gpg.enable = true;
-        };
-        services = {
-          gpg-agent.enable = true;
-        };
+        custom = { programs.ranger.enable = lib.mkDefault true; };
+        programs = { gpg.enable = true; };
+        services = { gpg-agent.enable = true; };
         xdg.mimeApps = {
           enable = true;
           associations.added = {
@@ -52,8 +45,10 @@ in
             "x-scheme-handler/http" = "org.qutebrowser.qutebrowser.desktop";
             "x-scheme-handler/https" = "org.qutebrowser.qutebrowser.desktop";
             "x-scheme-handler/chrome" = "org.qutebrowser.qutebrowser.desktop";
-            "application/x-extension-htm" = "org.qutebrowser.qutebrowser.desktop";
-            "application/x-extension-html" = "org.qutebrowser.qutebrowser.desktop";
+            "application/x-extension-htm" =
+              "org.qutebrowser.qutebrowser.desktop";
+            "application/x-extension-html" =
+              "org.qutebrowser.qutebrowser.desktop";
             "text/html" = "org.qutebrowser.qutebrowser.desktop";
             "image/gif" = "sxiv.desktop";
             "image/jpeg" = "sxiv.desktop";
@@ -74,8 +69,6 @@ in
   programs.dconf.enable = true;
 
   # Create users for home-manager configs
-  users.users =
-    lib.mapAttrs (_: _: { isNormalUser = true; })
-      (lib.filterAttrs (name: _: name != "root")
-        config.home-manager.users);
+  users.users = lib.mapAttrs (_: _: { isNormalUser = true; })
+    (lib.filterAttrs (name: _: name != "root") config.home-manager.users);
 }

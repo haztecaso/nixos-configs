@@ -8,7 +8,7 @@ My machines:
 - *nas* is my server, a custom build tower using cheap hardware.
 - *lambda* is a VPS from *contabo*.
 
-Uncomplete list of things managed with this configs:
+Incomplete list of things managed with this configs:
 
 - mesh VPN between machines using *tinc*.
 - custom desktop environment

@@ -16,7 +16,7 @@ in
     programs = {
       nnn = {
         enable = true;
-        package = pkgs.nnn.override ({ withNerdIcons = true; });
+        package = pkgs.nnn.override { withNerdIcons = true; };
         extraPackages = with pkgs; [ sxiv ];
         plugins = {
           src = "${inputs.nnn}/plugins";

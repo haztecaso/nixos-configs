@@ -1,4 +1,4 @@
-{ lib, pkgs, config, nixosConfig, ... }:
+{ lib, config, nixosConfig, ... }:
 with lib;
 let
   cfg = config.custom.shell;

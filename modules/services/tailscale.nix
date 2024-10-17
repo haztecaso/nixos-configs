@@ -1,8 +1,6 @@
 { config, lib, pkgs, ... }:
-let
-  cfg = config.custom.services.tailscale;
-in
-{
+let cfg = config.custom.services.tailscale;
+in {
   options.custom.services.tailscale = with lib; {
     enable = mkEnableOption "Tailscale service and package.";
     hosts = mkOption {
@@ -24,10 +22,8 @@ in
       hosts = cfg.hosts;
     };
     custom.services.tailscale.hosts =
-      let
-        localNames = name: [ name "${name}.lan" "${name}.local" ];
-      in
-      {
+      let localNames = name: [ name "${name}.lan" "${name}.local" ];
+      in {
         "100.84.40.96" = (localNames "lambda") ++ (localNames "netdata.lambda");
         "100.109.49.55" = localNames "beta";
         "100.70.238.47" = (localNames "realme8") ++ (localNames "itinerante");

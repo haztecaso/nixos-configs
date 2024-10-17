@@ -3,9 +3,8 @@ let
   cfg = config.base;
   nixpkgsPath = "/etc/nixpkgs/channels/nixpkgs";
   unstablePath = "/etc/nixpkgs/channels/unstable";
-in
-{
-  options.base = with lib;{
+in {
+  options.base = with lib; {
     stateVersion = mkOption {
       example = "21.11";
       description = "stateVersion for nixos and home-manager configs";
@@ -18,7 +17,8 @@ in
     hostnameSymbol = mkOption {
       type = types.str;
       default = cfg.hostname;
-      description = "hostname symbol of the machine. For shells and other programs.";
+      description =
+        "hostname symbol of the machine. For shells and other programs.";
     };
     wlp = {
       interface = mkOption {
@@ -38,8 +38,9 @@ in
       };
       useDHCP = mkEnableOption "enable dhcp for the eth interface";
     };
-    sound = mkEnableOption "Wether to enable sound support (with pulseaudio).";
-    printing = mkEnableOption "Wether to enable printing support (installing drivers).";
+    sound = mkEnableOption "Whether to enable sound support (with pulseaudio).";
+    printing =
+      mkEnableOption "Whether to enable printing support (installing drivers).";
     ssh-keys = mkOption {
       type = types.attrsOf types.str;
       description = "Public ssh keys";
@@ -83,7 +84,6 @@ in
         "L+ ${nixpkgsPath}     - - - - ${inputs.nixpkgs}"
         "L+ ${unstablePath}     - - - - ${inputs.unstable}"
       ];
-
 
       base.ssh-keys = import ../ssh-keys.nix;
 
@@ -133,14 +133,12 @@ in
         ];
         shells = with pkgs; [ bashInteractive zsh fish ];
         # Copied from comment in https://www.reddit.com/r/NixOS/comments/19595vc/how_to_keep_source_when_doing_garbage_collection
-        etc = builtins.listToAttrs (builtins.map
-          (input:
-            lib.attrsets.nameValuePair "sources/${input}" {
-              enable = true;
-              source = inputs.${input};
-              mode = "symlink";
-            })
-          (builtins.attrNames inputs));
+        etc = builtins.listToAttrs (builtins.map (input:
+          lib.attrsets.nameValuePair "sources/${input}" {
+            enable = true;
+            source = inputs.${input};
+            mode = "symlink";
+          }) (builtins.attrNames inputs));
       };
 
       programs.zsh.enable = true;
@@ -170,7 +168,8 @@ in
         pulseaudio = {
           enable = true;
           # Needed by mpd to be able to use Pulseaudio
-          extraConfig = "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1";
+          extraConfig =
+            "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1";
         };
       };
     })

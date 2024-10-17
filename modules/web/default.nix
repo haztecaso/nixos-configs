@@ -1,6 +1,1 @@
-{ config, lib, pkgs, ... }:
-{
-  imports = [
-    ./wordpress.nix
-  ];
-}
+{ ... }: { imports = [ ./wordpress.nix ]; }

@@ -1,6 +1,5 @@
 { config, lib, pkgs, ... }: let
   cfg = config.custom.services.moodle-dl;
-  i2s = lib.strings.floatToString;
   script = pkgs.writeScriptBin "moodle-dl" ''
     #!${pkgs.runtimeShell}
     FOLDER=${cfg.folder}

@@ -6,7 +6,8 @@ stdenv.mkDerivation rec {
   version = "1.6.5";
 
   src = fetchurl {
-    url = "https://estaticos.redsara.es/comunes/autofirma/1/6/5/AutoFirma_Linux.zip";
+    url =
+      "https://estaticos.redsara.es/comunes/autofirma/1/6/5/AutoFirma_Linux.zip";
     sha256 = "1zys8sl03fbh9w8b2kv7xldfsrz53yrhjw3yn45bdxzpk7yh4f5j";
   };
 
@@ -23,8 +24,10 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ unzip dpkg jre8 ];
 
   unpackPhase = ''
-    unzip $src AutoFirma_${builtins.replaceStrings ["."] ["_"] version}.deb
-    dpkg-deb -x AutoFirma_${builtins.replaceStrings ["."] ["_"] version}.deb .
+    unzip $src AutoFirma_${builtins.replaceStrings [ "." ] [ "_" ] version}.deb
+    dpkg-deb -x AutoFirma_${
+      builtins.replaceStrings [ "." ] [ "_" ] version
+    }.deb .
   '';
 
   buildPhase = ''
@@ -52,7 +55,8 @@ stdenv.mkDerivation rec {
 
   meta = with lib; {
     description = "Spanish Government digital signature tool";
-    homepage = "https://firmaelectronica.gob.es/Home/Ciudadanos/Aplicaciones-Firma.html";
+    homepage =
+      "https://firmaelectronica.gob.es/Home/Ciudadanos/Aplicaciones-Firma.html";
     license = with licenses; [ gpl2Only eupl11 ];
     platforms = platforms.linux;
   };

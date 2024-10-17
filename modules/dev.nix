@@ -1,14 +1,10 @@
 { config, lib, pkgs, ... }:
-let
-  cfg = config.custom.dev;
-in
-{
+let cfg = config.custom.dev;
+in {
   options.custom.dev = with lib; {
     enable = mkEnableOption "Enable dev module";
     nodejs = mkEnableOption "Enable nodejs dev packages and configs";
-    direnv = {
-      enable = mkEnableOption "direnv support";
-    };
+    direnv = { enable = mkEnableOption "direnv support"; };
   };
 
   config = lib.mkMerge [

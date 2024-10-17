@@ -3,8 +3,7 @@ let
   cfg = config.custom.programs.vim;
   mkFlakeUri = config: "github:haztecaso/neovim-flake\\#${config}";
   mkRunCmd = config: "nix run ${mkFlakeUri config}";
-in
-{
+in {
   options.custom.programs.vim = with lib; {
     package = mkOption {
       type = types.one;
@@ -21,19 +20,21 @@ in
     defaultEditor = mkOption {
       type = types.bool;
       default = true;
-      description = "When enabled sets nvim as the default editor using the EDITOR environment variable.";
+      description =
+        "When enabled sets nvim as the default editor using the EDITOR environment variable.";
     };
   };
 
   config = lib.mkMerge [
-    {custom.shell.aliases = {
-      nvimCore = mkRunCmd "core";
-      nvimFull = mkRunCmd "full";
-      nvim = mkRunCmd cfg.defaultConfig;
-      vim = "nvim";
-      vi = "nvim";
-    };
-  }
+    {
+      custom.shell.aliases = {
+        nvimCore = mkRunCmd "core";
+        nvimFull = mkRunCmd "full";
+        nvim = mkRunCmd cfg.defaultConfig;
+        vim = "nvim";
+        vi = "nvim";
+      };
+    }
 
     (lib.mkIf (cfg.defaultEditor) {
       home.sessionVariables = {
