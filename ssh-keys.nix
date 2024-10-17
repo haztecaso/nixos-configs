@@ -13,13 +13,13 @@ rec {
     "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDB6IKkijF9KvkYITNhfZx0siDrOjfhcnqCMhA2sdIgRXKErKl3pmBT+th6YRQ5i4rA//6g/eORHQ4lFnmGX3rNlKaff81Hh/0p3JDlLU1J135o3RWdB7mIUFPEwJXpra81fIeeXTh41EQhb4U+GWv6K2bJRnXeCLQ4L0NcvQZOK4YYwOJC169RVAZrap6pBdJ6guqA2Ef61zDEdmKmufwZvip95AneTlv2oNEZYewbQvowavuOAsN/eDLC8fWOr6ncyopOhnuLiEzHcud/ZdBTteeZQlS97DORzoWvLr0jorbDIX2PCuTBG6UFJm2dkHrjyx0Ms+raqsTRazAMNrpKFXLdQ7TCzvoIFUjwvzIl5GQnPFXlLm5Cc4WkGsGUcqL1fa2p55N6qnjOdUMGojcazsE7C4r+w9lDNETV0ek6w1QWn79w7YAmbSeZlEYH7+aW9B8pz7k9noe2VanBN0K9tN4kggMQQWCHootDzbtknL4tJrTvvEGSGHBMl1ofyKk= skolem@beta-mac";
   skolem_lambda =
     "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCw2kQSwABgl0TgqVbC2D8sgTdSpvztnS5sCKYmqNbhAZyCIseVV60PRqPQW4holZwi9UeXNsxhtgExLtVZFPmDDWc/qMwNZJgggeLJMLFXhorJz0dok8eNYoqHyZUqU2BDkkyf1IoJIzdvKU8vGwUQkiyoeEF9Tra4Ww95dsikDm4kVONjj2AjvyrcbHVM8j6aCMgazC6u7Qa0AcpZJkHYna3ErhYBaYjyRysnVI+W/evXS7AB/a3PgUvaW3v9Vp18H+dEwb+Vc83doOadkEtUoFjMUEXluG9aNJvH9PlOYJgxyJ5qjSQxX0TLSg+cgPq27J9UTn5hHb7x+xal4xjNPjOq8uFRqkjqA9pktTE6X6DiTs5ncNKSFxeERcVK3XQrE1CAJyRCnEaxJRkmw7btQw8hVHLsxb/nh/p4aYYVuiQB1qwKLXYQfchf/72zGMVTEXKxVQnICk9BFtxaGzDxuxIzx8Vxq6qdk0obozV3XATyafG/fvVI2Ttvz1YtkH0= skolem@lambda";
+  skolem_posets =
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAXhNAlsxKSZkJzZzPduLY4/D5y1bW3QXo4gBBtxtL+k skolem@posets";
   termux =
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB591T55APw90rm+OmtnIbLNk2B8AUSbTazqtgSqKlPx termux@pixel7a";
   host_lambda =
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIBf0kpg0FD8U9USfZ684QrhLnqxihW/D4FTP9xKhv1+";
-  host_galois =
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIo1FjxBi1OAXAw4OlTFXgo/vCuEO6q9uzlhoAftqEqz";
   host_beta =
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBX8Vnq006RRvvQgsSoQUDkp6RPtCxesbgbfIjgf9gwf";
-  hosts = [ host_lambda host_galois host_beta ];
+  hosts = [ host_lambda host_beta ];
 }

@@ -9,7 +9,15 @@
 
   users.users = with config.base.ssh-keys; {
     root.openssh.authorizedKeys.keys = [ skolem ];
-    skolem.openssh.authorizedKeys.keys = [ skolem termux skolem_elbrus skolem_mac skolem_deambulante viaje24 ];
+    skolem.openssh.authorizedKeys.keys = [
+      skolem
+      termux
+      skolem_elbrus
+      skolem_mac
+      skolem_deambulante
+      skolem_posets
+      viaje24
+    ];
   };
 
   nix.gc.options = "--delete-older-than 3d";
