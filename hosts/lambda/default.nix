@@ -23,11 +23,7 @@
   nix.gc.options = "--delete-older-than 3d";
 
   home-manager.users = {
-    root = { ... }: {
-      custom.programs = {
-        tmux.color = "#112277";
-      };
-    };
+    root = { ... }: { custom.programs = { tmux.color = "#112277"; }; };
     skolem = { ... }: {
       custom.programs = {
         tmux.color = "#0055aa";
@@ -44,9 +40,7 @@
 
   environment.systemPackages = with pkgs; [ agenix borgbackup ];
 
-  programs = {
-    mosh.enable = true;
-  };
+  programs = { mosh.enable = true; };
 
   custom = {
     services = {

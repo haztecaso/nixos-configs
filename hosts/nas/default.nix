@@ -29,16 +29,8 @@
   };
 
   home-manager.users = {
-    root = { ... }: {
-      custom.programs = {
-        tmux.color = "#aa0022";
-      };
-    };
-    skolem = { ... }: {
-      custom.programs = {
-        tmux.color = "#aa00ee";
-      };
-    };
+    root = { ... }: { custom.programs = { tmux.color = "#aa0022"; }; };
+    skolem = { ... }: { custom.programs = { tmux.color = "#aa00ee"; }; };
   };
 
   environment.systemPackages = with pkgs; [
@@ -49,13 +41,9 @@
     openai-whisper-cpp
   ];
 
-  programs = {
-    mosh.enable = true;
-  };
+  programs = { mosh.enable = true; };
 
-  virtualisation = {
-    docker.enable = true;
-  };
+  virtualisation = { docker.enable = true; };
 
   services = {
     syncthing = {

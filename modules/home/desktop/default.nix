@@ -1,8 +1,6 @@
 { config, lib, pkgs, ... }:
-let
-  cfg = config.custom.desktop;
-in
-{
+let cfg = config.custom.desktop;
+in {
   imports = [
     ./alacritty.nix
     ./polybar
@@ -58,7 +56,8 @@ in
     gtk = {
       enable = true;
       # TODO: mix with shortcuts module
-      gtk3.bookmarks = let home = config.home.homeDirectory; in [
+      gtk3.bookmarks = let home = config.home.homeDirectory;
+      in [
         "file://${home}/Nextcloud"
         "file://${home}/Documents"
         "file://${home}/Music"
@@ -91,7 +90,7 @@ in
       };
 
       screen-locker = {
-        enable = false; #TODO
+        enable = false; # TODO
         inactiveInterval = 30;
         lockCmd = "${pkgs.betterlockscreen}/bin/betterlockscreen -l dim";
       };
@@ -124,7 +123,8 @@ in
     programs = {
       rofi = {
         enable = true;
-        package = pkgs.rofi.override { plugins = [ pkgs.rofi-rbw pkgs.rofi-calc ]; };
+        package =
+          pkgs.rofi.override { plugins = [ pkgs.rofi-rbw pkgs.rofi-calc ]; };
         font = "Hack Nerd Font 10";
         location = "center";
         terminal = "${pkgs.alacritty}/bin/alacritty";
@@ -132,6 +132,7 @@ in
         theme = "gruvbox-dark-hard";
         extraConfig = {
           modi = "run,ssh,window,drun,calc";
+          dpi = 180;
           # "ssh-client" = "mosh"; 
         };
       };
