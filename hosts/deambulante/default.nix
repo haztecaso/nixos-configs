@@ -20,7 +20,7 @@
   home-manager.users = {
     root = { ... }: {
       custom.programs = {
-        tmux.color = "#eeaa00";
+        tmux.color = "#ee6600";
       };
     };
     skolem = { ... }: {
@@ -45,7 +45,7 @@
         programs = {
           tmux.color = "#aaee00";
           # music.enable = true;
-          vim.package = pkgs.nvim.full;
+          vim.defaultConfig = "full";
         };
         shell.aliases = {
           python = "${pkgs.python3Packages.ipython}/bin/ipython";

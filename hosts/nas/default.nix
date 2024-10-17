@@ -22,12 +22,12 @@
   home-manager.users = {
     root = { ... }: {
       custom.programs = {
-        tmux.color = "#aaee00";
+        tmux.color = "#aa0022";
       };
     };
     skolem = { ... }: {
       custom.programs = {
-        tmux.color = "#aaee00";
+        tmux.color = "#aa00ee";
       };
     };
   };

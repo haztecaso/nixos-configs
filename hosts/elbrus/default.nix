@@ -12,7 +12,7 @@
   home-manager.users = {
     root = { ... }: {
       custom.programs = {
-        tmux.color = "#eeaa00";
+        tmux.color = "#ee8800";
       };
     };
     skolem = { ... }: {

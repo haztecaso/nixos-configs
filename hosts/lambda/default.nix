@@ -17,12 +17,12 @@
   home-manager.users = {
     root = { ... }: {
       custom.programs = {
-        tmux.color = "#aaee00";
+        tmux.color = "#112277";
       };
     };
     skolem = { ... }: {
       custom.programs = {
-        tmux.color = "#aaee00";
+        tmux.color = "#0055aa";
         nnn.bookmarks = { w = "/var/www/"; };
       };
     };

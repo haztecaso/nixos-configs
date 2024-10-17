@@ -39,7 +39,7 @@
         };
         programs = {
           tmux.color = "#aaee00";
-          # vim.package = pkgs.nvim.full;
+          vim.defaultConfig = "full";
         };
       };
     };
