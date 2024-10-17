@@ -1,11 +1,13 @@
-{ config, pkgs, ... }:
-{
+{ config, pkgs, ... }: {
   imports = [ ./hardware.nix ];
 
   base = {
     hostname = "posets";
     hostnameSymbol = "π";
-    wlp = { interface = "wlp2s0"; useDHCP = true; };
+    wlp = {
+      interface = "wlp2s0";
+      useDHCP = true;
+    };
     eth.interface = "enp0s31f6";
     stateVersion = "23.11";
   };
@@ -13,7 +15,11 @@
   nix.gc.options = "--delete-older-than 18d";
 
   users.users.skolem = {
-    openssh.authorizedKeys.keys = with config.base.ssh-keys; [ viaje24 skolem_elbrus termux ];
+    openssh.authorizedKeys.keys = with config.base.ssh-keys; [
+      viaje24
+      skolem_elbrus
+      termux
+    ];
     extraGroups = [ "docker" "adbusers" ];
   };
 
@@ -25,8 +31,9 @@
         desktop = {
           enable = true;
           fontSize = 9;
+          polybar.fontSize = 18;
           polybar.bat = "BAT0";
-          polybar.mpd = true;
+          # polybar.mpd = true;
         };
         shortcuts = {
           paths = {
@@ -44,7 +51,7 @@
       };
     };
   };
-  
+
   environment.systemPackages = with pkgs; [
     # openai-whisper-cpp
     rofi-calc # todo: move to home module
