@@ -6,10 +6,6 @@
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus/v1.4.0";
     nixos-hardware = { url = "github:NixOS/nixos-hardware/master"; };
     agenix = { url = "github:ryantm/agenix"; inputs.nixpkgs.follows = "nixpkgs"; inputs.home-manager.follows = "home-manager"; };
-    neovim-flake = {
-      url = "github:haztecaso/neovim-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     jobo_bot = { url = "github:haztecaso/jobo_bot"; inputs.nixpkgs.follows = "nixpkgs"; };
     remadbot = { url = "github:haztecaso/remadbot"; inputs.nixpkgs.follows = "nixpkgs"; };
     mpdws = { url = "github:haztecaso/mpdws"; inputs = { nixpkgs.follows = "nixpkgs"; utils.follows = "utils"; }; };
@@ -29,7 +25,6 @@
       sharedOverlays = let 
       in [
         inputs.agenix.overlays.default
-        inputs.neovim-flake.overlays.default
         inputs.jobo_bot.overlay
         inputs.remadbot.overlay
         inputs.mpdws.overlay
