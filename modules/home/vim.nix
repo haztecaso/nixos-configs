@@ -3,6 +3,7 @@ let
   cfg = config.custom.programs.vim;
   mkFlakeUri = config: "github:haztecaso/neovim-flake\\#${config}";
   mkRunCmd = config: "nix run ${mkFlakeUri config}";
+  runDefaultVim = mkRunCmd cfg.defaultConfig;
 in {
   options.custom.programs.vim = with lib; {
     package = mkOption {
@@ -30,16 +31,16 @@ in {
       custom.shell.aliases = {
         nvimCore = mkRunCmd "core";
         nvimFull = mkRunCmd "full";
-        nvim = mkRunCmd cfg.defaultConfig;
-        vim = "nvim";
-        vi = "nvim";
+        nvim = runDefaultVim;
+        vim = runDefaultVim;
+        vi = runDefaultVim;
       };
     }
 
     (lib.mkIf (cfg.defaultEditor) {
       home.sessionVariables = {
-        EDITOR = "nvim";
-        VISUAL = "nvim";
+        EDITOR = runDefaultVim;
+        VISUAL = runDefaultVim;
       };
     })
   ];
