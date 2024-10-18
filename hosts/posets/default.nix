@@ -27,6 +27,10 @@
     skolem = { ... }: {
       services.syncthing.enable = true;
       services.nextcloud-client.enable = true;
+      home.packages = [ pkgs.klog-time-tracker ];
+      programs.zsh.initExtra = ''
+        source <(klog completion -c zsh)
+      '';
       custom = {
         desktop = {
           enable = true;
@@ -112,12 +116,14 @@
     unstable.zotero
     unstable.calibre
     # scantailor-advanced
+    xournalpp
 
     # Images
     unstable.gimp
     unstable.inkscape
     unstable.darktable
     unstable.sxiv
+    mypaint
 
     # Video
     unstable.ffmpeg
