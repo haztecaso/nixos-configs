@@ -18,7 +18,6 @@
     skolem_lambda
     skolem_lambda
     skolem_deambulante
-    skolem_posets
     viaje24
   ];
 
