@@ -5,6 +5,6 @@ in with keys; {
   "moodle-dl.age".publicKeys = [ skolem host_lambda ];
   "cloudflare.age".publicKeys = [ skolem host_lambda ];
   "thumbor.age".publicKeys = [ skolem host_lambda ];
-  "users/skolem.age".publicKeys = hosts ++ [ skolem ];
-  "users/root.age".publicKeys = hosts ++ [ skolem ];
+  "users/skolem.age".publicKeys = [ skolem ];
+  "users/root.age".publicKeys = [ skolem ];
 }
