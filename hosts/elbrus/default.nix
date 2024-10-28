@@ -5,7 +5,11 @@
   nix.gc.options = "--delete-older-than 18d";
 
   users.users.skolem = {
-    openssh.authorizedKeys.keys = with config.base.ssh-keys; [ skolem termux viaje24 skolem_deambulante ];
+    openssh.authorizedKeys.keys = with config.base.ssh-keys; [
+      skolem
+      termux
+      skolem_deambulante
+    ];
     extraGroups = [ "docker" "adbusers" ];
   };
 

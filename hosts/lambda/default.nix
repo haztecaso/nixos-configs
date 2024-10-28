@@ -15,7 +15,6 @@
       skolem_elbrus
       skolem_mac
       skolem_deambulante
-      viaje24
     ];
   };
 

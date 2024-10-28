@@ -13,7 +13,7 @@
   nix.gc.options = "--delete-older-than 18d";
 
   users.users.skolem = {
-    openssh.authorizedKeys.keys = with config.base.ssh-keys; [ viaje24 skolem_elbrus termux ];
+    openssh.authorizedKeys.keys = with config.base.ssh-keys; [ skolem_elbrus termux ];
     extraGroups = [ "docker" "adbusers" "dialout" ];
   };
 
