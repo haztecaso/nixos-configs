@@ -8,7 +8,7 @@
     ];
     programs.qutebrowser = {
       enable = true;
-      package = pkgs.unstable.qutebrowser;
+      package = pkgs.qutebrowser;
       settings = {
         content = {
           # headers.user_agent = "Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0";

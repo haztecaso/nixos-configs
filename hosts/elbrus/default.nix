@@ -119,7 +119,7 @@
     unstable.tor-browser-bundle-bin
 
     # Passwords
-    unstable.bitwarden
+    bitwarden
 
     # Pdf
     unstable.evince
@@ -145,13 +145,13 @@
     unstable.kdenlive
 
     # Audio & music
-    unstable.audacity
-    unstable.mixxx
+    audacity
+    mixxx
     # tidal
     # superdirt-start
 
     # 3d
-    unstable.blender
+    blender
 
     # sync
     nextcloud-client
