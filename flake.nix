@@ -37,6 +37,7 @@
       flake = false;
     };
     tidal = { url = "github:mitchmindtree/tidalcycles.nix"; };
+    actual-nix = { url = "git+https://git.xeno.science/xenofem/actual-nix"; inputs.nixpkgs.follows = "nixpkgs"; };
   };
 
   outputs = inputs@{ self, ... }:
