@@ -49,6 +49,11 @@
   };
 
   services = {
+    actual = {
+      enable = true;
+      hostname = "0.0.0.0";
+      port = 5006;
+    };
     syncthing = {
       enable = true;
       openDefaultPorts = true;
