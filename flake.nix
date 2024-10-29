@@ -71,6 +71,7 @@
           ./meshNodes.nix
           ./modules
           inputs.agenix.nixosModules.default
+          inputs.actual-nix.nixosModules.default
           inputs.home-manager.nixosModule
           inputs.jobo_bot.nixosModule
           inputs.remadbot.nixosModule
