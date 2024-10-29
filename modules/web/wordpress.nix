@@ -1,8 +1,9 @@
 { config, lib, pkgs, ... }:
 #TODO: 
+# nginx caching
 # automate some installation and config processes:
-# - Create root folder if not exists and add install script that does the
-# following (using wp-cli)
+# detect hostname changes (bind hostname to wordpress conifg somehow)
+# - Create root folder if not exists and add install script that does the following (using wp-cli)
 #   - helps setting mysql password
 #   - downloads latest wordpress
 #   - fills up wp-config.php
@@ -20,21 +21,10 @@ let
           # TODO: assertions: appName should be only alpha characters
           # mirar type.strMatching
         };
-        domain = mkOption {
-          type = types.str;
-          example = "myweb.com";
-          description = "Website domain";
-        };
-        subdomain = mkOption {
-          type = types.nullOr types.str;
-          example = "wp";
-          description =
-            "Subdomain where to install wordpress. Main domain if null.";
-        };
         host = mkOption {
           type = types.str;
-          readOnly = true;
-          description = "Concatenation of subdomain with domain.";
+          example = "sub.domain.com";
+          description = "The hostname of the wordpress site.";
         };
         root = mkOption {
           type = types.str;
@@ -43,7 +33,10 @@ let
         };
         ACMEHost = mkOption {
           type = types.str;
-          description = "The ACME host to use for SSL.";
+          description = ''
+            The ACME host to use for SSL. Defaults to the wordpress host (change 
+            if your wordpress is installed on a subdomain).
+          '';
         };
         max_upload_filesize = mkOption {
           type = types.numbers.positive;
@@ -52,15 +45,10 @@ let
         };
       };
       config = {
-        subdomain = lib.mkDefault null;
         # TODO: use submodule attr name
         # appName = lib.mkDefault "wp${cfg.name}";
         root = lib.mkDefault "/var/www/wordpress/${cfg.host}";
-        host = if cfg.subdomain == null then
-          cfg.domain
-        else
-          "${cfg.subdomain}.${cfg.domain}";
-        ACMEHost = lib.mkDefault cfg.domain;
+        ACMEHost = lib.mkDefault cfg.host;
       };
     };
 in {
