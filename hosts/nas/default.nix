@@ -1,7 +1,7 @@
 { config, pkgs, ... }: {
   imports = [
     ./hardware.nix
-    ./hydra.nix
+    # ./hydra.nix
     ./media.nix
     ./music.nix
     ./navidrome.nix
@@ -71,6 +71,14 @@
         };
       };
     };
+  };
+
+  services.prometheus.exporters.node = {
+    enable = true;
+    port = 9100;
+    enabledCollectors = [ "systemd" "logind" ];
+    openFirewall = true;
+    # firewallFilter = "-i br0 -p tcp -m tcp --dport 9100";
   };
 
   custom.services = {
