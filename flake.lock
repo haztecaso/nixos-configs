@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "actual-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1728580104,
+        "narHash": "sha256-M+t/DmOj4cjF7/M9qBW5OK/Lam69z4LX+hXraqegz0w=",
+        "ref": "refs/heads/main",
+        "rev": "befcf0b6e2b9540f01b5caaafcbe62fcf36a063a",
+        "revCount": 16,
+        "type": "git",
+        "url": "https://git.xeno.science/xenofem/actual-nix"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.xeno.science/xenofem/actual-nix"
+      }
+    },
     "agenix": {
       "inputs": {
         "darwin": "darwin",
@@ -361,11 +381,11 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1728729581,
-        "narHash": "sha256-oazkQ/z7r43YkDLLQdMg8oIB3CwWNb+2ZrYOxtLEWTQ=",
+        "lastModified": 1730161780,
+        "narHash": "sha256-z5ILcmwMtiCoHTXS1KsQWqigO7HJO8sbyK7f7wn9F/E=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "a8dd1b21995964b115b1e3ec639dd6ce24ab9806",
+        "rev": "07d15e8990d5d86a631641b4c429bc0a7400cfb8",
         "type": "github"
       },
       "original": {
@@ -377,11 +397,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1729880355,
-        "narHash": "sha256-RP+OQ6koQQLX5nw0NmcDrzvGL8HDLnyXt/jHhL1jwjM=",
+        "lastModified": 1728888510,
+        "narHash": "sha256-nsNdSldaAyu6PE3YUA+YQLqUDJh+gRbBooMMekZJwvI=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "18536bf04cd71abd345f9579158841376fdd0c5a",
+        "rev": "a3c0b3b21515f74fd2665903d4ce6bc4dc81c77c",
         "type": "github"
       },
       "original": {
@@ -405,11 +425,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1728909085,
-        "narHash": "sha256-WLxED18lodtQiayIPDE5zwAfkPJSjHJ35UhZ8h3cJUg=",
+        "lastModified": 1730189606,
+        "narHash": "sha256-LgkEB/b9JRWdGHx95mxSWPV5PaSPp8Aau+lsbDUXb44=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "c0b1da36f7c34a7146501f684e9ebdf15d2bebf8",
+        "rev": "6aa8749b515f9dec000b24794b2787b64037db51",
         "type": "github"
       },
       "original": {
@@ -467,11 +487,11 @@
     "nnn": {
       "flake": false,
       "locked": {
-        "lastModified": 1727879854,
-        "narHash": "sha256-P/kvZHcpFk4LgQ41lxwsSrsm4WoSSzFD3gNblsuYDzo=",
+        "lastModified": 1729779588,
+        "narHash": "sha256-SloRQqszFYT3AeUvibL7N9Yrc9QvJls6ZmkoNFpA3Ys=",
         "owner": "jarun",
         "repo": "nnn",
-        "rev": "614ebe73fa3250dfbdbf5f4a8dc0150ef239236a",
+        "rev": "877d7c06876287930e03e232dd0b0167cadd9abd",
         "type": "github"
       },
       "original": {
@@ -525,6 +545,7 @@
     },
     "root": {
       "inputs": {
+        "actual-nix": "actual-nix",
         "agenix": "agenix",
         "home-manager": "home-manager",
         "jobo_bot": "jobo_bot",
@@ -664,11 +685,11 @@
     },
     "unstable": {
       "locked": {
-        "lastModified": 1728492678,
-        "narHash": "sha256-9UTxR8eukdg+XZeHgxW5hQA9fIKHsKCdOIUycTryeVw=",
+        "lastModified": 1729880355,
+        "narHash": "sha256-RP+OQ6koQQLX5nw0NmcDrzvGL8HDLnyXt/jHhL1jwjM=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "5633bcff0c6162b9e4b5f1264264611e950c8ec7",
+        "rev": "18536bf04cd71abd345f9579158841376fdd0c5a",
         "type": "github"
       },
       "original": {
