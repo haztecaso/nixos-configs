@@ -1,5 +1,4 @@
-{ config, pkgs, inputs, ... }:
-{
+{ config, pkgs, inputs, ... }: {
   imports = [ ./hardware.nix ];
 
   nix.gc.options = "--delete-older-than 18d";
@@ -14,11 +13,7 @@
   };
 
   home-manager.users = {
-    root = { ... }: {
-      custom.programs = {
-        tmux.color = "#ee8800";
-      };
-    };
+    root = { ... }: { custom.programs = { tmux.color = "#ee8800"; }; };
     skolem = { ... }: {
       services.syncthing.enable = true;
       services.nextcloud-client.enable = true;
@@ -179,7 +174,10 @@
   base = {
     hostname = "elbrus";
     hostnameSymbol = "ε";
-    wlp = { interface = "wlp4s0"; useDHCP = true; };
+    wlp = {
+      interface = "wlp4s0";
+      useDHCP = true;
+    };
     eth.interface = "enp0s31f6";
     stateVersion = "23.11";
   };
@@ -199,8 +197,19 @@
     teamviewer.enable = true;
     udev.packages = [ pkgs.android-udev-rules ];
     printing.drivers = [
-      (pkgs.writeTextDir "share/cups/model/ricoh-mp-c2011-pdf.ppd" (builtins.readFile ./Ricoh-MP_C2011-PDF-Ricoh.ppd))
+      (pkgs.writeTextDir "share/cups/model/ricoh-mp-c2011-pdf.ppd"
+        (builtins.readFile ./Ricoh-MP_C2011-PDF-Ricoh.ppd))
     ];
+    # ollama = {
+    #   enable = true;
+    #   package = pkgs.unstable.ollama;
+    # };
+    # open-webui = {
+    #   enable = true;
+    #   package = pkgs.unstable.open-webui;
+    #   environment.OLLAMA__API_BASE_URL = "http://localhost:11434";
+    #   environment.WEBUI_AUTH = "False";
+    # };
   };
 
   custom = {
