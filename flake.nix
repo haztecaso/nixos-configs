@@ -28,6 +28,10 @@
         utils.follows = "utils";
       };
     };
+    neovim-flake = {
+      url = "github:haztecaso/neovim-flake";
+      # inputs.nixpkgs.follows = "nixpkgs"; TODO: fix
+    };
     nnn = {
       url = "github:jarun/nnn";
       flake = false;
@@ -48,8 +52,8 @@
       sharedOverlays = [
         inputs.agenix.overlays.default
         inputs.jobo_bot.overlay
-        inputs.remadbot.overlay
         inputs.mpdws.overlay
+        inputs.remadbot.overlay
         inputs.tidal.overlays.default
         (final: prev: {
           unstable = inputs.unstable.legacyPackages.${prev.system};
@@ -58,7 +62,10 @@
       ];
 
       hostDefaults = {
-        extraArgs = { inherit inputs; };
+        extraArgs = {
+          inherit inputs;
+          system = "x86_64-linux";
+        };
         modules = [
           ./meshNodes.nix
           ./modules

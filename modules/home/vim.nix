@@ -1,19 +1,9 @@
-{ lib, pkgs, config, ... }:
-let
-  cfg = config.custom.programs.vim;
-  mkFlakeUri = config: "github:haztecaso/neovim-flake\\#${config}";
-  mkRunCmd = config: "nix run ${mkFlakeUri config}";
-  runDefaultVim = mkRunCmd cfg.defaultConfig;
+{ lib, config, inputs, system, ... }:
+let cfg = config.custom.programs.vim;
 in {
   options.custom.programs.vim = with lib; {
-    package = mkOption {
-      type = types.one;
-      default = pkgs.nvim.core;
-      description = "Neovim package to install.";
-    };
-
     defaultConfig = mkOption {
-      type = types.enum [ "core" "full" ];
+      type = types.enum [ "core" "full" null ];
       default = "core";
       description = "neovim default config (see haztecaso/neovim-flake)";
     };
@@ -27,20 +17,19 @@ in {
   };
 
   config = lib.mkMerge [
-    {
+    (lib.mkIf (cfg.defaultConfig != null) {
+      home.packages =
+        [ inputs.neovim-flake.packages.${system}.${cfg.defaultConfig} ];
       custom.shell.aliases = {
-        nvimCore = mkRunCmd "core";
-        nvimFull = mkRunCmd "full";
-        nvim = runDefaultVim;
-        vim = runDefaultVim;
-        vi = runDefaultVim;
+        vim = "nvim";
+        vi = "nvim";
       };
-    }
+    })
 
     (lib.mkIf (cfg.defaultEditor) {
       home.sessionVariables = {
-        EDITOR = runDefaultVim;
-        VISUAL = runDefaultVim;
+        EDITOR = "nvim";
+        VISUAL = "nvim";
       };
     })
   ];
