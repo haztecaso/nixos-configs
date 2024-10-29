@@ -14,8 +14,6 @@
     skolem
     termux
     skolem_elbrus
-    skolem_mac
-    skolem_lambda
     skolem_lambda
     skolem_deambulante
   ];
