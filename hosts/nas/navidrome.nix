@@ -16,9 +16,9 @@
       filter = {
         INCLUDES.before = "common.conf";
         Definition = {
-          failregex = "^.*msg=\"Unsuccessful login\".*X-Real-Ip:\[<HOST>\]";
+          failregex = ''^.*msg="Unsuccessful login".*X-Real-Ip:\[<ADDR>\]'';
           ignoreregex = "";
-        }
+        };
       };
       settings = {
         backend = "systemd";
