@@ -72,6 +72,14 @@
     phpfpm.phpOptions = ''
       extension=${pkgs.phpExtensions.imagick}/lib/php/extensions/imagick.so
     '';
+    fail2ban = {
+      enable = true;
+      jails = {
+        nginx-http-auth.settings.enabled = true;
+        nginx-botsearch.settings.enabled = true;
+        nginx-bad-request.settings.enabled = true;
+      };
+    };
   };
 
   home-manager.sharedModules = [{
