@@ -26,6 +26,7 @@
         aw = "https://wiki.archlinux.org/index.php?search={}";
         w = "https://en.wikipedia.org/w/index.php?search={}";
         we = "https://es.wikipedia.org/w/index.php?search={}";
+        nw = "https://wiki.nixos.org/index.php?search={}";
         wi = "https://it.wikipedia.org/w/index.php?search={}";
         nix = "https://search.nixos.org/packages?query={}";
         nixpkg = "https://search.nixos.org/packages?query={}";
