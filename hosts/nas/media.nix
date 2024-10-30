@@ -61,6 +61,30 @@
       openFirewall = true;
       port = 5055;
     };
+
+    fail2ban = {
+      enable = true;
+      jails = {
+        jellyfin = {
+          filter = {
+            INCLUDES.before = "common.conf";
+            Definition = {
+              failregex = ''^.*Authentication request for .* has been denied \(IP: "<ADDR>"\)\.'';
+              ignoreregex = "";
+            };
+          };
+          settings = {
+            backend = "systemd";
+            port = "80,443";
+            filter = "jellyfin[journalmatch='_SYSTEMD_UNIT=jellyfin.service']";
+            banaction = "%(banaction_allports)s";
+            maxretry = 5;
+            bantime = 86400;
+            findtime = 43200;
+          };
+        };
+      };
+    };
   };
 
   virtualisation = {
