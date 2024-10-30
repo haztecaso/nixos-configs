@@ -76,13 +76,13 @@
     # dev, utils
     gcc
     pciutils
-    unstable.sqlitebrowser
-    unstable.docker-compose
-    unstable.subfinder
-    unstable.file
-    unstable.pass
-    unstable.axel
-    unstable.aria2
+    sqlitebrowser
+    docker-compose
+    subfinder
+    file
+    pass
+    axel
+    aria2
     rustdesk
 
     # network
@@ -92,46 +92,46 @@
     wirelesstools
 
     # Chats
-    unstable.tdesktop
+    tdesktop
     gajim
 
     # Mail
-    unstable.thunderbird
+    thunderbird
 
     # Maps
     qgis
 
     # Browsers
-    unstable.firefox
-    unstable.chromium
+    firefox
+    chromium
     unstable.tor-browser-bundle-bin
 
     # Passwords
     unstable.bitwarden
 
     # Pdf
-    unstable.evince
-    unstable.okular
-    unstable.pdfarranger
+    evince
+    okular
+    pdfarranger
 
     # Documents, books
-    unstable.libreoffice
-    unstable.calibre
+    libreoffice
+    calibre
 
     # Images
-    unstable.gimp
-    unstable.inkscape
-    unstable.darktable
-    unstable.sxiv
+    gimp
+    inkscape
+    darktable
+    sxiv
 
     # Video
     unstable.ffmpeg
     vlc
-    unstable.kdenlive
+    kdenlive
 
     # Audio & music
-    unstable.audacity
-    unstable.mixxx
+    audacity
+    mixxx
 
     # sync
     nextcloud-client
@@ -142,8 +142,8 @@
 
     # Downloads
     soulseekqt
-    unstable.transmission_4-gtk
-    unstable.yt-dlp
+    transmission_4-gtk
+    yt-dlp
   ];
 
   virtualisation = {
