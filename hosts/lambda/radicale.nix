@@ -20,5 +20,26 @@ in {
       serverName = "dav.haztecaso.com";
       locations."/".proxyPass = "http://127.0.0.1:${toString port}";
     };
+    fail2ban = {
+      enable = true;
+      jails.radicale = {
+        filter = {
+          INCLUDES.before = "common.conf";
+          Definition = {
+            failregex = "^.*Failed login attempt from .+ \(forwarded for '<ADDR>'\): '<F-USER>.+</F-USER>$";
+            ignoreregex = "";
+          };
+        };
+        settings = {
+          backend = "systemd";
+          port = "80,443";
+          filter = "radicale[journalmatch='_SYSTEMD_UNIT=radicale.service']";
+          banaction = "%(banaction_allports)s";
+          maxretry = 3;
+          bantime = 14400;
+          findtime = 14400;
+        };
+      };
+    };
   };
 }
