@@ -112,29 +112,29 @@
     qgis
 
     # Browsers
-    unstable.firefox
-    unstable.chromium
-    unstable.brave
-    unstable.tor-browser-bundle-bin
+    firefox
+    chromium
+    brave
+    tor-browser-bundle-bin
 
     # Passwords
     bitwarden
 
     # Pdf
-    unstable.evince
-    unstable.okular
-    unstable.pdfarranger
+    evince
+    okular
+    pdfarranger
 
     # Documents, books
-    unstable.libreoffice
-    unstable.zotero
-    unstable.calibre
+    libreoffice
+    zotero
+    calibre
     # scantailor-advanced
 
     # Images
-    unstable.gimp
-    unstable.inkscape
-    unstable.darktable
+    gimp
+    inkscape
+    darktable
     unstable.sxiv
 
     # Video
@@ -146,6 +146,7 @@
     # Audio & music
     audacity
     mixxx
+    shortwave
     # tidal
     # superdirt-start
 
@@ -162,7 +163,7 @@
     # Downloads
     soulseekqt
     # transmission-gtk
-    unstable.transmission_4-gtk
+    transmission_4-gtk
     unstable.yt-dlp
   ];
 

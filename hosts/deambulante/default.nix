@@ -132,6 +132,7 @@
     # Audio & music
     audacity
     mixxx
+    shortwave
 
     # sync
     nextcloud-client
