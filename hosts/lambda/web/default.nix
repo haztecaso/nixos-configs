@@ -33,16 +33,9 @@
       recommendedOptimisation = true;
       recommendedProxySettings = true;
       recommendedTlsSettings = true;
-      virtualHosts."_" = { #default
-        forceSSL = true;
-        useACMEHost = "haztecaso.com";
-        extraConfig = ''
-          error_page 404 /404.html;
-        '';
-        locations."/".return = "404";
-        locations."/404.html".extraConfig = ''
-          root /var/www/errors/;
-        '';
+      virtualHosts."_" = { # default: dont serve SSL certificates and drop connection
+        rejectSSL = true;
+        locations."/".return = "444";
       };
     };
     borgbackup.jobs.webs = {
