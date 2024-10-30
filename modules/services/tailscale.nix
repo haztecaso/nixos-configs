@@ -14,6 +14,7 @@ in {
   config = lib.mkIf cfg.enable {
     environment.systemPackages = [ pkgs.tailscale ];
     services.tailscale.enable = true;
+    services.fail2ban.ignoreIP = [ "100.64.0.0/10" ];
     networking = {
       firewall = {
         allowedUDPPorts = [ 41641 ];

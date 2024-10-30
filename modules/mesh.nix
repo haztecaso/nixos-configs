@@ -86,6 +86,7 @@ in {
         name = nodeName;
         hosts = lib.mapAttrs mkTincHost cfg.nodes;
       };
+      services.fail2ban.ignoreIP = [ "10.0.0.0/24" ];
       environment.etc = {
         "tinc/mesh/tinc-up".source = pkgs.writeScript "tinc-up-mesh" ''
           #!${pkgs.stdenv.shell}
