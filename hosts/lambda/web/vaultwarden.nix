@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 let
   backupDir = "/var/backups/vaultwarden";
 in
@@ -11,6 +11,48 @@ in
         signupsAllowed = false;
         domain = "https://bw.haztecaso.com";
         rocketPort = 8222;
+        rocketLog = "critical";
+      };
+    };
+    fail2ban = {
+      enable = true;
+      jails = {
+        vaultwarden = {
+          filter = {
+            INCLUDES.before = "common.conf";
+            Definition = {
+              failregex = "^.*Username or password is incorrect\. Try again\. IP: <ADDR>\. Username:.*$";
+              ignoreregex = "";
+            };
+          };
+          settings = {
+            backend = "systemd";
+            port = "80,443";
+            filter = "vaultwarden_web[journalmatch='_SYSTEMD_UNIT=vaultwarden.service']";
+            banaction = "%(banaction_allports)s";
+            maxretry = 5;
+            bantime = 14400;
+            findtime = 14400;
+          };
+        };
+        vaultwarden-admin = {
+          filter = {
+            INCLUDES.before = "common.conf";
+            Definition = {
+              failregex = "^.*Invalid admin token\. IP: <ADDR>.*$";
+              ignoreregex = "";
+            };
+          };
+          settings = {
+            backend = "systemd";
+            port = "80,443";
+            filter = "vaultwarden-admin[journalmatch='_SYSTEMD_UNIT=vaultwarden.service']";
+            banaction = "%(banaction_allports)s";
+            maxretry = 3;
+            bantime = 14400;
+            findtime = 14400;
+          };
+        };
       };
     };
     nginx.virtualHosts = {
@@ -18,7 +60,7 @@ in
         useACMEHost = "haztecaso.com";
         forceSSL = true;
         serverName = "bw.haztecaso.com";
-        locations."/".proxyPass = "http://127.0.0.1:8222";
+        locations."/".proxyPass = "http://127.0.0.1:${toString config.services.vaultwarden.config.rocketPort}";
       };
     };
     borgbackup.jobs.vaultwarden = {
