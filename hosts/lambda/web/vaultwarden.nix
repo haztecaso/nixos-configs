@@ -15,7 +15,7 @@ in
     };
     nginx.virtualHosts = {
       vaultwarden = {
-        enableACME = true;
+        useACMEHost = "haztecaso.com";
         forceSSL = true;
         serverName = "bw.haztecaso.com";
         locations."/".proxyPass = "http://127.0.0.1:8222";

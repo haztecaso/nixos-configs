@@ -15,7 +15,7 @@ in {
       };
     };
     nginx.virtualHosts.radicale = {
-      enableACME = true;
+      useACMEHost = "haztecaso.com";
       forceSSL = true;
       serverName = "dav.haztecaso.com";
       locations."/".proxyPass = "http://127.0.0.1:${toString port}";

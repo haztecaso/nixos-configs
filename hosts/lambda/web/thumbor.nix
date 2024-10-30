@@ -20,7 +20,7 @@
     '';
     virtualHosts = {
       thumbor = {
-        enableACME = true;
+        useACMEHost = "haztecaso.com";
         forceSSL = true;
         serverName = "img.haztecaso.com";
         extraConfig = ''
