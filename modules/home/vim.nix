@@ -3,7 +3,7 @@ let cfg = config.custom.programs.vim;
 in {
   options.custom.programs.vim = with lib; {
     config = mkOption {
-      type = types.enum [ "core" "full" null ];
+      type = types.enum [ "core" "full" "latex" null ];
       default = "core";
       description = "neovim config (see haztecaso/neovim-flake)";
     };
@@ -18,8 +18,7 @@ in {
 
   config = lib.mkMerge [
     (lib.mkIf (cfg.config != null) {
-      home.packages =
-        [ inputs.neovim-flake.packages.${system}.${cfg.config} ];
+      home.packages = [ inputs.neovim-flake.packages.${system}.${cfg.config} ];
       custom.shell.aliases = {
         vim = "nvim";
         vi = "nvim";
