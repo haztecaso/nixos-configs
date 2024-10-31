@@ -45,7 +45,7 @@
         programs = {
           tmux.color = "#aaee00";
           # music.enable = true;
-          vim.defaultConfig = "full";
+          vim.config = "full";
         };
         shell.aliases = {
           python = "${pkgs.python3Packages.ipython}/bin/ipython";

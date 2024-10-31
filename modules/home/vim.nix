@@ -2,10 +2,10 @@
 let cfg = config.custom.programs.vim;
 in {
   options.custom.programs.vim = with lib; {
-    defaultConfig = mkOption {
+    config = mkOption {
       type = types.enum [ "core" "full" null ];
       default = "core";
-      description = "neovim default config (see haztecaso/neovim-flake)";
+      description = "neovim config (see haztecaso/neovim-flake)";
     };
 
     defaultEditor = mkOption {
@@ -17,9 +17,9 @@ in {
   };
 
   config = lib.mkMerge [
-    (lib.mkIf (cfg.defaultConfig != null) {
+    (lib.mkIf (cfg.config != null) {
       home.packages =
-        [ inputs.neovim-flake.packages.${system}.${cfg.defaultConfig} ];
+        [ inputs.neovim-flake.packages.${system}.${cfg.config} ];
       custom.shell.aliases = {
         vim = "nvim";
         vi = "nvim";
