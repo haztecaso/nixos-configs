@@ -10,25 +10,26 @@ in {
   config = lib.mkMerge [
     (lib.mkIf cfg.enable {
       environment.systemPackages = with pkgs; [
-        poetry
-        wget
         axel
-        silver-searcher
-        jq
-        git
-        du-dust
-        ncdu
-        python3Full
-        filezilla
         bat
+        docker-compose
+        du-dust
         eza
         fd
-        ripgrep
-        redis
-        sqlitebrowser
-        docker-compose
-        subfinder
+        filezilla
+        git
         gnumake
+        jq
+        lazygit
+        ncdu
+        poetry
+        python3Full
+        redis
+        ripgrep
+        silver-searcher
+        sqlitebrowser
+        subfinder
+        wget
       ];
     })
     (lib.mkIf cfg.nodejs {
