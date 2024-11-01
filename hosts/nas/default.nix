@@ -43,6 +43,7 @@
   virtualisation = { docker.enable = true; };
 
   services = {
+    earlyoom.enable = true;
     actual = {
       enable = true;
       hostname = "0.0.0.0";
