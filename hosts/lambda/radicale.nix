@@ -19,6 +19,10 @@ in {
       forceSSL = true;
       serverName = "dav.haztecaso.com";
       locations."/".proxyPass = "http://127.0.0.1:${toString port}";
+      extraConfig = ''
+        error_log /var/log/nginx/radicale-error.log warn;
+        access_log /var/log/nginx/radicale-access.log withHost;
+      '';
     };
     fail2ban = {
       enable = true;
