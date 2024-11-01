@@ -7,4 +7,5 @@ in with keys; {
   "thumbor.age".publicKeys = [ skolem host_lambda ];
   "users/skolem.age".publicKeys = [ skolem ];
   "users/root.age".publicKeys = [ skolem ];
+  "grafana-cloud-prometheus-endpoint.age".publicKeys = [ skolem_elbrus skolem_nas host_nas ];
 }

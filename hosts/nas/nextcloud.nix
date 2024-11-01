@@ -1,6 +1,5 @@
 { config, pkgs, lib, ... }: 
 {
-  # age.secrets."cloudflare".file = ../../secrets/cloudflare.age;
   security.acme = {
     acceptTerms = true;
     defaults.email = "adrianlattes@disroot.org";
