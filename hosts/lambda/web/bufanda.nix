@@ -87,6 +87,24 @@ in
             proxyPass = "http://nas:8998";
           };
         };
+        "actual.bufanda.cc" = {
+          useACMEHost = host;
+          forceSSL = true;
+          extraConfig = ''
+            error_log syslog:server=unix:/dev/log debug;
+            access_log syslog:server=unix:/dev/log,tag=actual;
+          '';
+          locations."/" = {
+            proxyPass = "http://nas:5006";
+            extraConfig = ''
+              proxy_set_header Upgrade $http_upgrade;
+              proxy_set_header Connection "upgrade";
+
+              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $host;
+            '';
+          };
+        };
         "ombi.bufanda.cc" = {
           useACMEHost = host;
           forceSSL = true;
