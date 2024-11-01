@@ -8,6 +8,7 @@ let
   };
 in
 {
+  age.secrets."cloudflare".file = ../../../secrets/cloudflare.age;
   security.acme.certs = {
     "bufanda.cc" = cloudflareCert [ "*.bufanda.cc" "*.dev.bufanda.cc" ];
     "claudiogabis.com" = cloudflareCert [ "*.claudiogabis.com" ];
