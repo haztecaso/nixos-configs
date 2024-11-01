@@ -8,8 +8,8 @@
         forceSSL = true;
         enableACME = true;
         extraConfig = ''
-          error_log syslog:server=unix:/dev/log debug;
-          access_log syslog:server=unix:/dev/log,tag=matomo;
+          error_log /var/log/nginx/matomo-error.log warn;
+          access_log /var/log/nginx/matomo-access.log;
         '';
       };
     };

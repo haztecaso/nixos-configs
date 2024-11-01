@@ -18,8 +18,8 @@ in
           root = root;
           extraConfig = ''
             index index.php index.html;
-            error_log syslog:server=unix:/dev/log debug;
-            access_log syslog:server=unix:/dev/log,tag=${app};
+            error_log /var/log/nginx/drupaltest-error.log warn;
+            access_log /var/log/nginx/drupaltest-access.log;
             client_max_body_size 20M;
             if ($request_uri ~* "^(.*/)index\.php/(.*)") {
                 return 307 $1$2;

@@ -61,6 +61,10 @@ in
         forceSSL = true;
         serverName = "bw.haztecaso.com";
         locations."/".proxyPass = "http://127.0.0.1:${toString config.services.vaultwarden.config.rocketPort}";
+        extraConfig = ''
+          error_log /var/log/nginx/vaultwarden-error.log warn;
+          access_log /var/log/nginx/vaultwarden-access.log;
+        '';
       };
     };
     borgbackup.jobs.vaultwarden = {

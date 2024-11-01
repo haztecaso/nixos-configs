@@ -24,8 +24,8 @@
         forceSSL = true;
         serverName = "img.haztecaso.com";
         extraConfig = ''
-          error_log syslog:server=unix:/dev/log debug;
-          access_log syslog:server=unix:/dev/log,tag=thumbor;
+          error_log /var/log/nginx/thumbor-error.log warn;
+          access_log /var/log/nginx/thumbor-access.log;
         '';
         locations."/" = {
           proxyPass = "http://127.0.0.1:8001";

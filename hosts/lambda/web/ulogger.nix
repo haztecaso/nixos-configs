@@ -13,8 +13,8 @@
         forceSSL = true;
         serverName = "ulogger.haztecaso.com";
         extraConfig = ''
-          error_log syslog:server=unix:/dev/log debug;
-          access_log syslog:server=unix:/dev/log,tag=ulogger;
+          error_log /var/log/nginx/ulogger-error.log warn;
+          access_log /var/log/nginx/ulogger-access.log;
         '';
         locations."/" = {
           proxyPass = "http://127.0.0.1:4007";

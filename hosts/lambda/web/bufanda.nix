@@ -15,9 +15,9 @@ in
           extraConfig = ''
             expires 1d;
             error_page 404 /404.html;
-            error_log syslog:server=unix:/dev/log debug;
-            access_log syslog:server=unix:/dev/log,tag=bufanda;
             try_files $uri $uri.html $uri/ =404;
+            error_log /var/log/nginx/bufanda-error.log warn;
+            access_log /var/log/nginx/bufanda-access.log;
           '';
         };
         "tools.bufanda.cc" = {
@@ -26,9 +26,9 @@ in
           root = "/var/www/tools.bufanda.cc/";
           extraConfig = ''
             error_page 404 /404.html;
-            error_log syslog:server=unix:/dev/log debug;
-            access_log syslog:server=unix:/dev/log,tag=toolsbufanda;
             try_files $uri $uri.html $uri/ =404;
+            error_log /var/log/nginx/tools-bufanda-error.log warn;
+            access_log /var/log/nginx/tools-bufanda-access.log;
           '';
         };
         "mapa.bufanda.cc" = {
@@ -37,15 +37,10 @@ in
           root = "/var/www/mapa.bufanda.cc/";
           extraConfig = ''
             error_page 404 /404.html;
-            error_log syslog:server=unix:/dev/log debug;
-            access_log syslog:server=unix:/dev/log,tag=mapabufanda;
             try_files $uri $uri.html $uri/ =404;
+            error_log /var/log/nginx/mapa-bufanda-error.log warn;
+            access_log /var/log/nginx/mapa-bufanda-access.log;
           '';
-        };
-        "cache.${host}" = {
-          useACMEHost = host;
-          forceSSL = true;
-          locations."/".proxyPass = "http://nas:5555";
         };
         "dev.${host}" = {
           useACMEHost = host;
@@ -54,30 +49,46 @@ in
           root = "/var/www/dev.bufanda.cc/$sub";
           extraConfig = ''
             error_page 404 /404.html;
-            error_log syslog:server=unix:/dev/log debug;
-            access_log syslog:server=unix:/dev/log,tag=devbufanda;
             try_files $uri $uri.html $uri/ =404;
+            error_log /var/log/nginx/dev-bufanda-error.log warn;
+            access_log /var/log/nginx/dev-bufanda-access.log;
           '';
         };
         "media-signup.bufanda.cc" = {
           useACMEHost = "bufanda.cc";
           forceSSL = true;
           locations."/".proxyPass = "http://nas:8097";
+          extraConfig = ''
+            error_log /var/log/nginx/media-signup-bufanda-error.log warn;
+            access_log /var/log/nginx/media-signup-bufanda-access.log;
+          '';
         };
         "media.bufanda.cc" = {
           useACMEHost = "bufanda.cc";
           forceSSL = true;
           locations."/".proxyPass = "http://nas:8096";
+          extraConfig = ''
+            error_log /var/log/nginx/jellyfin-bufanda-error.log warn;
+            access_log /var/log/nginx/jellyfin-bufanda-access.log;
+          '';
         };
         "radio.bufanda.cc" = {
           useACMEHost = "bufanda.cc";
           forceSSL = true;
           locations."/".proxyPass = "http://nas:8000/stream.mp3";
+          extraConfig = ''
+            error_log /var/log/nginx/radio-bufanda-error.log warn;
+            access_log /var/log/nginx/radio-bufanda-access.log;
+          '';
         };
         "music.bufanda.cc" = {
           useACMEHost = "bufanda.cc";
           forceSSL = true;
           locations."/".proxyPass = "http://nas:4747";
+          extraConfig = ''
+            error_log /var/log/nginx/navidrome-bufanda-error.log warn;
+            access_log /var/log/nginx/navidrome-bufanda-access.log;
+          '';
         };
         "dl.bufanda.cc" = {
           useACMEHost = host;
@@ -86,13 +97,17 @@ in
             basicAuth = { user = "password"; };
             proxyPass = "http://nas:8998";
           };
+          extraConfig = ''
+            error_log /var/log/nginx/dl-bufanda-error.log warn;
+            access_log /var/log/nginx/dl-bufanda-access.log;
+          '';
         };
         "actual.bufanda.cc" = {
           useACMEHost = host;
           forceSSL = true;
           extraConfig = ''
-            error_log syslog:server=unix:/dev/log debug;
-            access_log syslog:server=unix:/dev/log,tag=actual;
+            error_log /var/log/nginx/actual-bufanda-error.log warn;
+            access_log /var/log/nginx/actual-bufanda-access.log;
           '';
           locations."/" = {
             proxyPass = "http://nas:5006";
@@ -109,8 +124,8 @@ in
           useACMEHost = host;
           forceSSL = true;
           extraConfig = ''
-            error_log syslog:server=unix:/dev/log debug;
-            access_log syslog:server=unix:/dev/log,tag=ombi;
+            error_log /var/log/nginx/ombi-bufanda-error.log warn;
+            access_log /var/log/nginx/ombi-bufanda-access.log;
           '';
           locations."/" = {
             proxyPass = "http://nas:5055";

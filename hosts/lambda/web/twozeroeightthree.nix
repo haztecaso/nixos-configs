@@ -7,8 +7,8 @@
         forceSSL = true;
         root = "/var/www/twozeroeightthree.com";
         extraConfig = ''
-          error_log syslog:server=unix:/dev/log debug;
-          access_log syslog:server=unix:/dev/log,tag=twozeroeightthree;
+          error_log /var/log/nginx/twozeroeightthree-error.log warn;
+          access_log /var/log/nginx/twozeroeightthree-access.log;
         '';
         locations."/".extraConfig = ''
           if ($request_uri ~ ^/(.*)index\.html) {
