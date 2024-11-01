@@ -9,22 +9,62 @@
 #   - fills up wp-config.php
 let
   cfg = config.services.custom.web.wordpress;
+  takeLast = with lib; n: list: reverseList (take n (reverseList list));
+  getSecondLast = with builtins; list: elemAt list (length list - 2);
+  getDomain = with lib; host: 
+    concatStringsSep "." (takeLast 2 (splitString "." host));
+  getBasename = with lib; host: getSecondLast (splitString "." host);
   siteOptions = { lib, config, ... }:
     let cfg = config;
     in {
       options = with lib; {
-        appName = mkOption {
+        logFilePrefix = mkOption {
           type = types.str;
-          example = "myweb";
-          description =
-            "Identifier used for naming php service (phpfpm) and database (mysql).";
-          # TODO: assertions: appName should be only alpha characters
-          # mirar type.strMatching
+          description = ''
+            The log filename prefix. Logs will be stored in 
+            `/var/log/nginx/<logFolder>-error.log` and
+            `/var/log/nginx/<logFolder>-access.log`
+            Defaults to appName option.
+            '';
+        };
+        errorLogFile = mkOption {
+          type = types.str;
+          description = "Error log path."; 
+          readOnly = true;
+        };
+        accessLogFile = mkOption {
+          type = types.str;
+          description = "Error log path."; 
+          readOnly = true;
         };
         host = mkOption {
           type = types.str;
           example = "sub.domain.com";
           description = "The hostname of the wordpress site.";
+        };
+        domain = mkOption {
+          type = types.str;
+          description = ''
+            The domain of the hostname. Automatically extracted by the module.
+          '';
+          readOnly = true;
+        };
+        basename = mkOption {
+          type = types.str;
+          description = ''
+            The basename of the hostname. Automatically extracted by the module.
+          '';
+          readOnly = true;
+        };
+        appName = mkOption {
+          type = types.str;
+          description = ''
+            Name used for:
+              - the user that runs php-fpm
+              - the mariadb database name
+              - the php-fpm service name: php-fpm-<appName>
+            Defaults to 'wp<basename>'.
+          '';
         };
         root = mkOption {
           type = types.str;
@@ -34,8 +74,8 @@ let
         ACMEHost = mkOption {
           type = types.str;
           description = ''
-            The ACME host to use for SSL. Defaults to the wordpress host (change 
-            if your wordpress is installed on a subdomain).
+            The ACME host to use for SSL. Defaults to the wordpress domain
+            (calculated automatically from the host).
           '';
         };
         max_upload_filesize = mkOption {
@@ -45,10 +85,15 @@ let
         };
       };
       config = {
-        # TODO: use submodule attr name
-        # appName = lib.mkDefault "wp${cfg.name}";
+        # TODO: use submodule attr name to set host default
         root = lib.mkDefault "/var/www/wordpress/${cfg.host}";
-        ACMEHost = lib.mkDefault cfg.host;
+        domain = getDomain cfg.host;
+        basename = getBasename cfg.host;
+        appName = lib.mkDefault "wp${cfg.basename}";
+        logFilePrefix = lib.mkDefault cfg.appName;
+        errorLogFile = "/var/log/nginx/${cfg.logFilePrefix}-error.log";
+        accessLogFile = "/var/log/nginx/${cfg.logFilePrefix}-access.log";
+        ACMEHost = lib.mkDefault cfg.domain;
       };
     };
 in {
@@ -73,8 +118,8 @@ in {
       forceSSL = true;
       extraConfig = ''
         index index.php index.html;
-        error_log syslog:server=unix:/dev/log debug;
-        access_log syslog:server=unix:/dev/log,tag=${cfg.appName};
+        error_log ${cfg.errorLogFile} warn;
+        access_log ${cfg.accessLogFile};
         client_max_body_size ${builtins.toString cfg.max_upload_filesize}M;
       '';
       locations = {
@@ -165,5 +210,6 @@ in {
     };
     groups.${cfg.appName} = { };
   }) cfg.sites);
+
   config.environment.systemPackages = [ pkgs.wp-cli ];
 }

@@ -13,7 +13,6 @@
       max_upload_filesize = 400; 
     };
     colchonreview = { 
-      appName = "wpcolchon"; 
       host = "colchon.review"; 
       root = "/var/www/colchon.review"; 
       max_upload_filesize = 1024; 
@@ -23,11 +22,9 @@
       host = "delunesadomingo.es"; 
     };
     elvivero = { 
-      appName = "wpelvivero"; 
       host = "elvivero.es"; 
     };
     equisoain = { 
-      appName = "wpequisoain"; 
       host = "equisoain.com"; 
     };
     olaborathorio = { 
