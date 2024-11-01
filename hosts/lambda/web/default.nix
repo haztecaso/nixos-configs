@@ -8,8 +8,9 @@
     ./elvivero.nix
     ./enelpetirrojo.nix
     ./haztecaso.nix
-    ./thumbor.nix
     ./twozeroeightthree.nix
+
+    # ./imgproxy.nix #TODO: finish config
     # ./matomo.nix
     # ./ulogger.nix
     # ./drupaltest.nix
