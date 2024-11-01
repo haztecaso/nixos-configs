@@ -35,7 +35,7 @@
     stateVersion = "23.05";
   };
 
-  environment.systemPackages = with pkgs; [ agenix borgbackup ];
+  environment.systemPackages = with pkgs; [ borgbackup ];
 
   programs = { mosh.enable = true; };
 
