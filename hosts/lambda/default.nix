@@ -4,6 +4,7 @@
     # ./networking.nix
     ./web
     ./radicale.nix
+    ./vaultwarden.nix
     # ./gitea.nix
   ];
 

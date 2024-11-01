@@ -10,7 +10,6 @@
     ./haztecaso.nix
     ./thumbor.nix
     ./twozeroeightthree.nix
-    ./vaultwarden.nix
     # ./matomo.nix
     # ./ulogger.nix
     # ./drupaltest.nix
