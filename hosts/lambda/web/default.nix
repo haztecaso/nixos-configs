@@ -12,7 +12,6 @@
 
     # ./imgproxy.nix #TODO: finish config
     # ./matomo.nix
-    # ./ulogger.nix
     # ./drupaltest.nix
   ];
 

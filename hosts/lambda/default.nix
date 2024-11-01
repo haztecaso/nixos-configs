@@ -6,6 +6,7 @@
     ./radicale.nix
     ./vaultwarden.nix
     # ./gitea.nix
+    # ./ulogger.nix
   ];
 
   users.users = with config.base.ssh-keys; {
