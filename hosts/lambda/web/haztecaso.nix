@@ -10,11 +10,12 @@ in
       root = root;
       extraConfig = ''
         error_log /var/log/nginx/haztecaso-error.log warn;
-        access_log /var/log/nginx/haztecaso-access.log;
+        access_log /var/log/nginx/haztecaso-access.log withHost;
         add_header Access-Control-Allow-Origin "radio.haztecaso.com";
         error_page 404 /404.html;
       '';
 
+      locations."/stream".proxyPass = "http://nas:8000/stream.mp3";
       locations."/stream.mp3".proxyPass = "http://nas:8000/stream.mp3";
 
       # Radio archive

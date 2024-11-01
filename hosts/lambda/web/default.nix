@@ -35,6 +35,12 @@
         rejectSSL = true;
         locations."/".return = "444";
       };
+      commonHttpConfig = ''
+        log_format withHost '$remote_addr - $remote_user [$time_local] "$host" '
+                        '"$request" $status $body_bytes_sent '
+                        '"$http_referer" "$http_user_agent"';
+        access_log /var/log/nginx/access.log withHost;
+      '';
     };
     borgbackup.jobs.webs = {
       paths = "/var/www/";

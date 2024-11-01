@@ -11,7 +11,7 @@
             expires 1d;
             error_page 404 /404.html;
             error_log /var/log/nginx/elvivero-error.log warn;
-            access_log /var/log/nginx/elvivero-access.log;
+            access_log /var/log/nginx/elvivero-access.log withHost;
           '';
         };
         "static.elvivero.es" = {
@@ -22,7 +22,7 @@
             expires 1d;
             error_page 404 /404.html;
             error_log /var/log/nginx/elvivero-error.log warn;
-            access_log /var/log/nginx/elvivero-access.log;
+            access_log /var/log/nginx/elvivero-access.log withHost;
           '';
         };
       };
