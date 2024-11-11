@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 let
   backupDir = "/var/backups/vaultwarden";
 in
@@ -6,6 +6,7 @@ in
   services = {
     vaultwarden = {
       enable = true;
+      pakcage = pkgs.unstable.vaultwarden;
       backupDir = backupDir;
       config = {
         signupsAllowed = false;
