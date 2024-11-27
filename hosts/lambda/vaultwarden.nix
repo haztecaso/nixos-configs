@@ -6,7 +6,7 @@ in
   services = {
     vaultwarden = {
       enable = true;
-      pakcage = pkgs.unstable.vaultwarden;
+      package = pkgs.unstable.vaultwarden;
       backupDir = backupDir;
       config = {
         signupsAllowed = false;
