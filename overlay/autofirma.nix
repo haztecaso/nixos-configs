@@ -3,12 +3,12 @@
 
 stdenv.mkDerivation rec {
   pname = "autofirma";
-  version = "1.6.5";
+  version = "1.7.1";
 
   src = fetchurl {
     url =
-      "https://estaticos.redsara.es/comunes/autofirma/1/6/5/AutoFirma_Linux.zip";
-    sha256 = "1zys8sl03fbh9w8b2kv7xldfsrz53yrhjw3yn45bdxzpk7yh4f5j";
+      "https://estaticos.redsara.es/comunes/autofirma/1/7/1/AutoFirma_Linux.zip";
+    sha256 = "sha256-bNYaWciKlJvdO4GwYOrIDN2mcQWtf3UpoqHu2RbotmA=";
   };
 
   desktopItem = makeDesktopItem {
