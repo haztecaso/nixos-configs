@@ -84,6 +84,7 @@
         elbrus.modules = [ ./hosts/elbrus ];
         lambda.modules = [ ./hosts/lambda ];
         nas.modules = [ ./hosts/nas ];
+        tejo.modules = [ ./hosts/tejo ];
       };
 
       nixosModules.default = import ./modules;
