@@ -7,7 +7,6 @@
     openssh.authorizedKeys.keys = with config.base.ssh-keys; [
       skolem
       termux
-      skolem_deambulante
     ];
     extraGroups = [ "docker" "adbusers" ];
   };

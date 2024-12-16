@@ -16,6 +16,7 @@
       termux
       skolem_elbrus
       skolem_deambulante
+      skolem_tejo
     ];
   };
 

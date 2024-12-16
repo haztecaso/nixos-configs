@@ -8,6 +8,7 @@
       skolem
       termux
       skolem_deambulante
+      skolem_tejo
     ];
     extraGroups = [ "docker" "adbusers" ];
   };
