@@ -7,8 +7,6 @@
     openssh.authorizedKeys.keys = with config.base.ssh-keys; [
       skolem
       termux
-      skolem_deambulante
-      skolem_tejo
     ];
     extraGroups = [ "docker" "adbusers" ];
   };
@@ -18,21 +16,11 @@
     skolem = { ... }: {
       services.syncthing.enable = true;
       services.nextcloud-client.enable = true;
-      programs.autorandr = import ./monitors.nix;
-      # programs.nushell = {
-      #   enable = true;
-      #   configFile.source = ./config.nu;
-      #   envFile.source = ./env.nu;
-      # };
-      home.packages = [ pkgs.klog-time-tracker ];
-      programs.zsh.initExtra = ''
-        source <(klog completion -c zsh)
-      '';
+      # programs.autorandr = import ./monitors.nix;
       custom = {
         desktop = {
           enable = true;
           fontSize = 9;
-          # polybar.batteryCombined = true; # TODO: arreglar
           polybar.bat = "BAT1";
           polybar.mpd = true;
         };
@@ -60,7 +48,7 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [ 
     # openai-whisper-cpp
     rofi-calc # todo: move to home module
     rofi-rbw # todo: move to home module
@@ -92,7 +80,7 @@
     unstable.pass
     unstable.axel
     unstable.aria2
-    rustdesk
+    # rustdesk
     android-tools
 
     # network
@@ -102,12 +90,11 @@
     wirelesstools
 
     # Chats
-    unstable.tdesktop
+    tdesktop
     gajim
-    # discord
 
     # Mail
-    unstable.thunderbird
+    thunderbird
 
     # Maps
     qgis
@@ -115,8 +102,7 @@
     # Browsers
     firefox
     chromium
-    brave
-    tor-browser-bundle-bin
+    unstable.tor-browser-bundle-bin
 
     # Passwords
     bitwarden
@@ -141,15 +127,13 @@
     # Video
     unstable.ffmpeg
     vlc
-    unstable.obs-studio
-    unstable.kdenlive
+    obs-studio
+    kdenlive
 
     # Audio & music
     audacity
     mixxx
     shortwave
-    # tidal
-    # superdirt-start
 
     # 3d
     blender
@@ -170,38 +154,27 @@
 
   virtualisation = {
     docker.enable = true;
-    waydroid.enable = true;
   };
 
   base = {
-    hostname = "elbrus";
-    hostnameSymbol = "ε";
+    hostname = "tejo";
+    hostnameSymbol = "𝜏";
     wlp = {
-      interface = "wlp4s0";
+      interface = "wlp0s20f3";
       useDHCP = true;
     };
     eth.interface = "enp0s31f6";
-    stateVersion = "23.11";
+    stateVersion = "24.11";
   };
 
   environment.extraInit = ''
     xset s 300 300
   '';
 
-  programs = {
-    mosh.enable = true;
-    adb.enable = true;
-  };
-
   services = {
     safeeyes.enable = true;
     tor.enable = true;
-    teamviewer.enable = true;
     udev.packages = [ pkgs.android-udev-rules ];
-    printing.drivers = [
-      (pkgs.writeTextDir "share/cups/model/ricoh-mp-c2011-pdf.ppd"
-        (builtins.readFile ./Ricoh-MP_C2011-PDF-Ricoh.ppd))
-    ];
     # ollama = {
     #   enable = true;
     #   package = pkgs.unstable.ollama;
@@ -229,6 +202,6 @@
     };
   };
 
-  fonts.packages = [ pkgs.google-fonts ];
+  # fonts.packages = [ pkgs.google-fonts ];
 
 }

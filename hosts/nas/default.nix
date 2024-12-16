@@ -17,6 +17,7 @@
     skolem_elbrus
     skolem_lambda
     skolem_deambulante
+    skolem_tejo
   ];
 
   base = {
